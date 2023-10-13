@@ -1,0 +1,17 @@
+header li {
+    list-style: none;
+    display: inline;
+}
+
+.Top_Left_Header{
+    float: left;
+}
+
+.Top_Right_Header{
+    float: right;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
