@@ -17,13 +17,15 @@ li{
     text-align: center; /* Centrez le texte horizontalement */
 }
 
-.logo {
-    max-width: 100%; /* Le logo s'ajustera à la largeur de l'écran */
-    height: auto;
-}
+
 
 /* Media Query pour les écrans de tablette */
 @media (min-width: 768px) {
+    .logo {
+        max-width: 100%; /* Le logo s'ajustera à la largeur de l'écran */
+        height: auto;
+    }
+
     header {
         flex-direction: row; /* Affichez les éléments côte à côte */
         justify-content: space-between; /* Espacez les éléments à gauche et à droite */
@@ -54,6 +56,11 @@ li{
 
 /* Media Query pour les écrans de bureau */
 @media (min-width: 1024px) {
+
+    .logo {
+        max-width: 100%; /* Le logo s'ajustera à la largeur de l'écran */
+        height: auto;
+    }
     
     .Top_Left_Header ul {
         display: flex;
