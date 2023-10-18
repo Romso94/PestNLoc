@@ -1,17 +1,84 @@
-header li {
+/* Styles de base pour les écrans mobiles */
+header {
+    display: flex;
+    flex-direction: column; /* Empilez les éléments les uns sur les autres */
+    align-items: center; /* Centrez les éléments verticalement */
+    padding: 10px;
+    justify-content: center;
+}
+
+li{
     list-style: none;
-    display: inline;
 }
 
-.Top_Left_Header{
-    float: left;
+.Top_Left_Header,
+.Top_Right_Header {
+    width: 100%; /* Largeur de 100% pour occuper toute la largeur de l'écran */
+    text-align: center; /* Centrez le texte horizontalement */
 }
 
-.Top_Right_Header{
-    float: right;
+
+
+/* Media Query pour les écrans de tablette */
+@media (min-width: 768px) {
+    .logo {
+        max-width: 100%; /* Le logo s'ajustera à la largeur de l'écran */
+        height: auto;
+    }
+
+    header {
+        flex-direction: row; /* Affichez les éléments côte à côte */
+        justify-content: space-between; /* Espacez les éléments à gauche et à droite */
+        align-items: center; /* Centrez les éléments verticalement */
+        justify-content: center;
+    }
+
+    .Top_Left_Header ul {
+        display: flex;
+        justify-content: left; /* Espacez les éléments à gauche et à droite */
+        align-items: center; /* Centrez les éléments verticalement */
+    }
+
+    .Top_Right_Header ul {
+        display: flex;
+        justify-content: right; /* Espacez les éléments à gauche et à droite */
+        align-items: center; /* Centrez les éléments verticalement */
+    }
+
+    .Top_Left_Header li {
+        margin-right: 20px;
+    }
+
+    .Top_Right_Header li {
+        margin-left: 20px; /* Espacement des éléments à droite sur l'écran large */
+    }
 }
 
-.logo{
-    width: 100px;
-    height: 100px;
+/* Media Query pour les écrans de bureau */
+@media (min-width: 1024px) {
+
+    .logo {
+        max-width: 100%; /* Le logo s'ajustera à la largeur de l'écran */
+        height: auto;
+    }
+    
+    .Top_Left_Header ul {
+        display: flex;
+        justify-content: left; /* Espacez les éléments à gauche et à droite */
+        align-items: center; /* Centrez les éléments verticalement */
+    }
+
+    .Top_Right_Header ul {
+        display: flex;
+        justify-content: right; /* Espacez les éléments à gauche et à droite */
+        align-items: center; /* Centrez les éléments verticalement */
+    }
+
+    .Top_Left_Header li {
+        margin-right: 20px;
+    }
+
+    .Top_Right_Header li {
+        margin-left: 20px; /* Espacement des éléments à droite sur l'écran large */
+    }
 }
