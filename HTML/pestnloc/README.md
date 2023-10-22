@@ -1,24 +1,11 @@
-# pestnloc
+# PestNLoc
 
-## Project setup
-```
-npm install
-```
+### POSCENTE Florian - GAS Romain - ROUX Noé
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Renting Vehicle in Hungary
 
-### Compiles and minifies for production
-```
-npm run build
-```
+We are going to make a website for a company that rents cars in Hungary. 
+There will be many categories of cars, like sports, family cars, electric cars... 
+On our website we will propose to our client to rent some cars for short to long time.
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+We will use Vue.Js files to make this project. 
