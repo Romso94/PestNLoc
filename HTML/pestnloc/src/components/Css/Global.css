@@ -1,0 +1,43 @@
+/*Variables*/
+:root{
+    --mainFont : "Arial Black";
+}
+/*Mobile design First*/
+ header{
+     display: flex;
+     flex-direction: column ;
+     font-family: var(--mainFont) ;
+     align-items:center;
+     justify-content: center;
+     font-size: 15px;
+}
+
+ ul{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0;
+
+ }
+
+ li{
+     list-style: none;
+     margin: 20px;
+ }
+
+
+
+
+/* Media Query for Tablet Screen */
+@media (min-width: 768px){
+    header{
+        display: flex;
+        flex-direction: row;
+    }
+
+}
+
+/* Media Query for Desktop Screen */
+@media (min-width: 1024px){
+
+}
