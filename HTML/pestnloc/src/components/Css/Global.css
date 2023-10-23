@@ -1,6 +1,10 @@
 /*Variables*/
 :root{
     --mainFont : "Arial Black";
+    --sizeFontMobile : 15px;
+    --sizeFontTablet : 20px;
+    --sizeFontDesktop : 25px;
+    --svgSizeMobile : 35px;
 }
 /*Mobile design First*/
  header{
@@ -9,7 +13,8 @@
      font-family: var(--mainFont) ;
      align-items:center;
      justify-content: center;
-     font-size: 15px;
+     font-size: var(--sizeFontMobile);
+     background: red;
 }
 
  ul{
@@ -22,8 +27,46 @@
 
  li{
      list-style: none;
-     margin: 20px;
+     margin: 50px;
  }
+
+ .logo{
+     height: 100%;
+     width: auto;
+ }
+
+ .OurAgencies{
+     content: url("/src/assets/logoAgency.svg");
+     width: var(--svgSizeMobile);
+     height: var(--svgSizeMobile);
+ }
+
+ .Profile{
+     content: url("/src/assets/profile.svg");
+     width: var(--svgSizeMobile);
+     height: var(--svgSizeMobile);
+
+ }
+
+ .Langue{
+     content: url("/src/assets/world.svg");
+     width: var(--svgSizeMobile);
+     height: var(--svgSizeMobile);
+ }
+
+.Rent{
+    content: url("/src/assets/keys.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+.Contract{
+    content: url("/src/assets/contract.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+
 
 
 
@@ -33,6 +76,37 @@
     header{
         display: flex;
         flex-direction: row;
+        font-size: 15px;
+    }
+
+
+    li{
+        margin: 25px;
+    }
+
+    .logo{
+        height: auto;
+        width: 100%;
+    }
+
+    .OurAgencies{
+        content: "";
+    }
+
+    .Profile{
+        content: "";
+    }
+    .Langue{
+        width: 35px;
+        height: 35px;
+    }
+
+    .Rent{
+        content: "";
+    }
+
+    .Contract{
+        content: "";
     }
 
 }
@@ -40,4 +114,27 @@
 /* Media Query for Desktop Screen */
 @media (min-width: 1024px){
 
+    header{
+        font-size: var(--sizeFontDesktop);
+    }
+
+    .logo{
+        height: auto;
+        width: 90%;
+
+    }
+
+    .divlogo{
+        display: flex;
+        justify-content: left;
+    }
+
+    .Langue{
+        width: 45px;
+        height: 45px;
+    }
+
+    li{
+        margin: 45px;
+    }
 }

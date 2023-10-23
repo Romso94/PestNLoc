@@ -10,26 +10,26 @@
 
     <ul>
       <li>
-        <a>Rent</a>
+        <a class="Rent">Rent</a>
       </li>
 
       <li>
-        <a>Our Agencies</a>
+        <a class="OurAgencies">Agencies</a>
       </li>
 
       <li>
-        <a> My Vehicules</a>
+        <a class="Contract"> Contracts</a>
       </li>
 
       <li>
         <div>
 <!--          <svg/>  Icon de Personne en svg -->
-          <a>Sing Up | Sign In</a>
+          <a class="Profile">Profile</a>
         </div>
       </li>
 
       <li>
-        <a>Langue</a>
+        <a class="Langue"> </a>
 <!--        <svg/>  Drapeaux Pour modifier la Langue-->
       </li>
     </ul>
