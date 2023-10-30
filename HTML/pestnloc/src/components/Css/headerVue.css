@@ -1,12 +1,5 @@
 
-:root{
-    --mainFont : "Arial Black";
-    --sizeFontMobile : 15px;
-    --sizeFontTablet : 20px;
-    --sizeFontDesktop : 19px;
-    --svgSizeMobile : 35px;
-    --svgSizeTablet : 40px;
-}
+
 /* Mobile First */
 header{
     display: flex;
@@ -45,6 +38,8 @@ li{
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
+
+
 
 .Profile{
     content: url("/src/assets/profile.svg");
@@ -134,9 +129,18 @@ li{
         content: "";
     }
 
+    .OurAgencies:hover{
+        color: var(--pestnlocColor);
+    }
+
     .Profile{
         content: "";
     }
+
+    .Profile:hover{
+        color: var(--pestnlocColor);
+    }
+
 
     .Langue{
         content: url("/src/assets/englishL.svg");
@@ -148,7 +152,18 @@ li{
         content: "";
     }
 
+    .Rent:hover{
+        color: var(--pestnlocColor);
+    }
+
     .Contract{
         content: "";
+        
+
+    }
+
+    .Contract:hover{
+
+        color: var(--pestnlocColor);
     }
 }
