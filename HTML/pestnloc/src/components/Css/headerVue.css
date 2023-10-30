@@ -1,0 +1,154 @@
+
+:root{
+    --mainFont : "Arial Black";
+    --sizeFontMobile : 15px;
+    --sizeFontTablet : 20px;
+    --sizeFontDesktop : 19px;
+    --svgSizeMobile : 35px;
+    --svgSizeTablet : 40px;
+}
+/* Mobile First */
+header{
+    display: flex;
+    flex-direction: column ;
+    font-family: var(--mainFont) ;
+    align-items:center;
+    justify-content: center;
+    font-size: var(--sizeFontMobile);
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+
+}
+
+ul{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+li{
+    list-style: none;
+    margin: 10%;
+}
+
+.logo{
+    height: 100%;
+    width: auto;
+}
+
+.OurAgencies{
+    content: url("/src/assets/logoAgency.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+.Profile{
+    content: url("/src/assets/profile.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+
+}
+
+.Langue{
+    content: url("/src/assets/englishL.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+.Rent{
+    content: url("/src/assets/keys.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+.Contract{
+    content: url("/src/assets/contract.svg");
+    width: var(--svgSizeMobile);
+    height: var(--svgSizeMobile);
+}
+
+@media (min-width: 768px){
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .divButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    li{
+        margin: 20%;
+    }
+
+}
+
+/* Media Query for Desktop Screen */
+@media (min-width: 1024px){
+
+    header{
+        display: flex;
+        flex-direction: row;
+        font-size: var(--sizeFontDesktop);
+        margin-top: 0;
+    }
+
+    .logo{
+        height: auto;
+        width: 60%;
+
+    }
+
+    .divlogo{
+        display: flex;
+        justify-content: left;
+    }
+
+    .Langue{
+        width: 45px;
+        height: 45px;
+    }
+
+    li{
+
+        margin: 7vh;
+    }
+
+    .OurAgencies{
+        content: "";
+    }
+
+    .Profile{
+        content: "";
+    }
+
+    .Langue{
+        content: url("/src/assets/englishL.svg");
+        width: 30px;
+        height: 30px;
+    }
+
+    .Rent{
+        content: "";
+    }
+
+    .Contract{
+        content: "";
+    }
+}
