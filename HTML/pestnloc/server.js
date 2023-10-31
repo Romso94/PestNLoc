@@ -1,4 +1,5 @@
 const mysql = require('mysql2/promise');
+
 const conn = mysql.createConnection({
     host:'localhost', user: 'root', database: 'PesNloc', password: 'Florian1!', debug: false
 });
@@ -13,7 +14,13 @@ dotenv.config();
 
 const express = require('express');
 const app = express();
-app.set("view engine", "ejs");
+
+
+
+var path = require('path');
+var serveStatic = require('serve-static');
+
+app.use(serveStatic(__dirname + "/dist"));
 
 app.listen(process.env.WEB_PORT, '0.0.0.0',
     function() { console.log("Listening on "+process.env.WEB_PORT); }
@@ -24,4 +31,5 @@ app.get('/', (request, response) => { // 'GET' as a HTTP VERB, not as a 'getter'
     response.send(`Hello, dear ${clientIp}. I am a nodejs website...`);
     response.end(); // optional
 });
+
 
