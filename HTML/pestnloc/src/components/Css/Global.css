@@ -1,0 +1,18 @@
+/*Variables*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+}
+
+:root{
+    --mainFont : "Arial Black";
+    --sizeFontMobile : 15px;
+    --sizeFontTablet : 20px;
+    --sizeFontDesktop : 19px;
+    --svgSizeMobile : 35px;
+    --svgSizeTablet : 40px;
+    --pestnlocColor : #1CB005;
+}
+
+
+
