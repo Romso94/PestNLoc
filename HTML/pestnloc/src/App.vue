@@ -1,6 +1,7 @@
 <template>
   <HeaderApp/>
   <TestComponent/>
+  <LoginComponent/>
 
 </template>
 
@@ -8,6 +9,7 @@
 
 import HeaderApp from "@/components/HeaderApp";
 import TestComponent from "@/components/TestComponent";
+import LoginComponent from "@/components/LoginComponent.vue";
 
 
 </script>
