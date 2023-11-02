@@ -2,7 +2,7 @@
 <template>
   <header>
     <div class="divlogo">
-      <a>
+      <a href="" @click="showComponent('home')">
         <img  class="logo" src="../assets/logo.png"/> <!--Logo -->
       </a>
     </div>
@@ -24,7 +24,7 @@
         <li>
           <div>
             <!--          <svg/>  Icon de Personne en svg -->
-            <a class="Profile">Profile</a>
+            <a @click="showComponent('login')" class="Profile"  :class="{ active: activeItem === 'login' }">Profile</a>
           </div>
         </li>
 
@@ -40,6 +40,17 @@
 </template>
 
 <script setup>
+
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits(['show-component']);
+const activeItem = ref(null);
+
+const showComponent = (componentName) => {
+  emit('show-component', componentName);
+  activeItem.value = componentName;
+};
+
 
 </script>
 

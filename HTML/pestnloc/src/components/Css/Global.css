@@ -5,13 +5,13 @@
 }
 
 :root{
-    --mainFont : "Arial Black";
-    --sizeFontMobile : 15px;
+    --mainFont : Arial, sans-serif;
+    --sizeFontMobile : 16px;
     --sizeFontTablet : 20px;
     --sizeFontDesktop : 19px;
     --svgSizeMobile : 35px;
     --svgSizeTablet : 40px;
-    --pestnlocColor : #1CB005;
+    --pestnlocColor : #1CB005;  /*Color #1CB005*/
 }
 
 

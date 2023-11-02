@@ -1,3 +1,7 @@
+body{
+    margin: 0 0 0;
+    padding: 0 0 0;
+}
 
 
 /* Mobile First */
@@ -5,6 +9,7 @@ header{
     display: flex;
     flex-direction: column ;
     font-family: var(--mainFont) ;
+    font-weight: bold;
     align-items:center;
     justify-content: center;
     font-size: var(--sizeFontMobile);
@@ -64,6 +69,13 @@ li{
     content: url("/src/assets/contract.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
+}
+
+.Profile.active {
+    color: var(--pestnlocColor);
+    text-decoration: underline;
+    text-underline-offset: 10px;
+
 }
 
 @media (min-width: 768px){
@@ -158,7 +170,7 @@ li{
 
     .Contract{
         content: "";
-        
+
 
     }
 
