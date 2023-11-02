@@ -26,9 +26,7 @@ const getComponentToShow = (nameComponent) =>{
        listComponentToShow.value.loginComponent = true;
        break;
      }
-     case 'home' :{
-       break;
-     }
+
 
      default : {
        break;

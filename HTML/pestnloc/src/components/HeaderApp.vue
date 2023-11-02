@@ -24,7 +24,7 @@
         <li>
           <div>
             <!--          <svg/>  Icon de Personne en svg -->
-            <a @click="showComponent('login')" class="Profile"  :class="{ active: activeItem === 'login' }">Profile</a>
+            <a @click="showComponent('login')" class="Profile"  :class="{ active: activeItem === 'login' }">Sign In</a>
           </div>
         </li>
 

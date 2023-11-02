@@ -10,8 +10,11 @@ body{
     align-items: center;
     justify-content: center;
     width: 32vh;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 20px;
+    border: 1px solid  var(--pestnlocColor);
+
+
 
 }
 
@@ -21,8 +24,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--pestnlocColor);
-    height: 370px;
+    background: url("/src/assets/loginbg.jpg");
+    background-size: cover;
+
+    height: 380px;
     width: 100%;
 
 }
@@ -81,7 +86,7 @@ input[type="submit"]:hover {
 
 @media (min-width: 768px){
     .maindiv{
-        height: 400px;
+        height: 410px;
     }
 
     input[type="submit"]{
@@ -102,7 +107,7 @@ input[type="submit"]:hover {
 @media (min-width: 1024px){
 
     .maindiv{
-        height: 450px;
+        height: 480px;
     }
 
     .formLogin{
