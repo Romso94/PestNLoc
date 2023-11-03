@@ -19,7 +19,6 @@ const app = express();
 
 var path = require('path');
 var serveStatic = require('serve-static');
-
 app.use(serveStatic(__dirname + "/dist"));
 
 app.listen(process.env.WEB_PORT, '0.0.0.0',
