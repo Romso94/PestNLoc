@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+// const mysql = require('mysql2/promise');
 const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
@@ -23,6 +23,7 @@ const app = express();
 
 // Servez les fichiers statiques de l'application Vue.js depuis le répertoire "dist"
 app.use(express.static(path.join(__dirname, 'dist')));
+
 
 // Gérez toutes les autres routes en renvoyant l'index.html (SPA)
 app.get('*', (req, res) => {

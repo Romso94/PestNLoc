@@ -17,7 +17,7 @@
         </li>
 
         <li>
-          <a class="Contract" >Contracts</a>
+          <a href="/Contracts" class="Contract" >Contracts</a>
         </li>
 
         <li>

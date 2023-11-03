@@ -17,8 +17,14 @@ header{
     height: 100%;
     margin-top: 20px;
     text-decoration: none;
+
+
 }
 
+a{
+    text-decoration:none;
+    color:black;
+}
 
 ul{
 

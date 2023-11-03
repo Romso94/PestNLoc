@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../components/LoginComponent.vue"
+import Contracts from "../components/ContractsComponent.vue"
 import DefaultLayout from "../Static_Components/DefaultLayout.vue"
 
 
@@ -24,6 +25,13 @@ const router = createRouter({
                     name : "Login",
                     component : Login,
                 },
+
+                {
+
+                    path : '/Contracts',
+                    name : "Contracts",
+                    component : Contracts,
+                }
 
 
 
