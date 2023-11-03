@@ -17,7 +17,7 @@ const app = express();
 
 
 
-var path = require('./main.mjs');
+var path = require('path');
 var serveStatic = require('serve-static');
 
 app.use(serveStatic(__dirname + "/dist"));
