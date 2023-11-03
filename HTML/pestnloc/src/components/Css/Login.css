@@ -1,0 +1,129 @@
+body{
+    margin: 0 0 0;
+    padding: 0 0 0;
+}
+
+.formLogin{
+    background: white;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    width: 32vh;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid  var(--pestnlocColor);
+
+
+
+}
+
+
+
+.maindiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/src/assets/loginbg.jpg");
+    background-size: cover;
+
+    height: 380px;
+    width: 100%;
+
+}
+
+tr {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: var(--mainFont);
+    font-size: var(--sizeFontMobile);
+
+}
+
+td {
+    padding: 10px;
+}
+
+a{
+    margin-top: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 65%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid ;
+    border-radius: 5px;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+}
+
+input[type="submit"] {
+    background-color: var(--pestnlocColor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #147E05FF;
+}
+
+@media (min-width: 768px){
+    .maindiv{
+        height: 410px;
+    }
+
+    input[type="submit"]{
+        font-size: var(--sizeFontTablet);
+    }
+
+    input[type="text"],
+    input[type="password"]{
+        font-size: var(--sizeFontTablet);
+    }
+
+    label{
+        font-size: var(--sizeFontTablet);
+    }
+
+}
+
+@media (min-width: 1024px){
+
+    .maindiv{
+        height: 480px;
+    }
+
+    .formLogin{
+        width: 50vh;
+    }
+
+    input[type="submit"]{
+        font-size: var(--sizeFontDesktop);
+    }
+
+    input[type="text"],
+    input[type="password"]{
+        font-size: var(--sizeFontDesktop);
+    }
+
+    label{
+        font-size: var(--sizeFontDesktop);
+    }
+}

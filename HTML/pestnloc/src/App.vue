@@ -1,15 +1,15 @@
 <template>
-  <HeaderApp/>
-  <TestComponent/>
+  <div class="app">
+
+    <router-view/>
+
+  </div>
+
+
 
 </template>
 
 <script setup>
-
-import HeaderApp from "@/components/HeaderApp";
-import TestComponent from "@/components/TestComponent";
-
-
 </script>
 
 <style>
