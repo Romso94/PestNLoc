@@ -26,9 +26,9 @@
           </div>
         </li>
 
-        <li>
-          <a class="Langue"></a>
-        </li>
+<!--        <li>-->
+<!--          <a class="Langue"></a>-->
+<!--        </li>-->
       </ul>
     </div>
   </header>
