@@ -11,6 +11,8 @@
         <div class="formRegister">
           <tr>
             <td>
+              <label for="name">Name</label>
+              <input type="text" id="Name" required>
               <label for="email">Email</label>
               <input type="text" id="email" required>
               <br><br>
@@ -20,7 +22,7 @@
               <input class="bouton" type="submit" value="Register">
             </td>
             <td>
-              <a href="/Login"  onclick="">No account ? Click Here to Sign In !</a>
+              <a href="/Login"  onclick="">You already have an account? Click Here to Sign In !</a>
             </td>
           </tr>
 
