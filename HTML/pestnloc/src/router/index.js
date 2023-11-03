@@ -3,6 +3,7 @@ import Login from "../components/LoginComponent.vue"
 import Contracts from "../components/ContractsComponent.vue"
 import Agencies from "../components/AgenciesComponent.vue"
 import Rent from "../components/RentComponent.vue"
+import Register from "../components/RegisterComponent.vue"
 import DefaultLayout from "../Static_Components/DefaultLayout.vue"
 
 
@@ -47,6 +48,12 @@ const router = createRouter({
                     path : '/Rent',
                     name : "Rent",
                     component : Rent,
+                },
+
+                {
+                    path : '/Register',
+                    name : "Register",
+                    component : Register,
                 }
 
 
