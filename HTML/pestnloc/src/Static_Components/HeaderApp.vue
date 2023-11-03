@@ -9,11 +9,11 @@
     <div class="divButton">
       <ul>
         <li>
-          <a class="Rent" >Rent</a>
+          <a href ="/Rent" class="Rent" >Rent</a>
         </li>
 
         <li>
-          <a class="OurAgencies" >Agencies</a>
+          <a href ="/Agencies" class="OurAgencies" >Agencies</a>
         </li>
 
         <li>
