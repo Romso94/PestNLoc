@@ -16,7 +16,7 @@
               <input class="bouton" type="submit" value="Login">
             </td>
             <td>
-              <a href=""  onclick="">No account ? Click Here to Sign up !</a>
+              <a href="/register"  onclick="">No account ? Click Here to Sign up !</a>
             </td>
           </tr>
 
