@@ -22,7 +22,7 @@
               <input class="bouton" type="submit" value="Register">
             </td>
             <td>
-              <a href="/Login"  onclick="">You already have an account? Click Here to Sign In !</a>
+              <a href="/login"  onclick="">You already have an account? Click Here to Sign In !</a>
             </td>
           </tr>
 
