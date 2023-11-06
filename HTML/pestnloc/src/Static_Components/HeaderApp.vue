@@ -9,15 +9,15 @@
     <div class="divButton">
       <ul>
         <li>
-          <a class="Rent" >Rent</a>
+          <a href ="/Rent" class="Rent" >Rent</a>
         </li>
 
         <li>
-          <a class="OurAgencies" >Agencies</a>
+          <a href ="/Agencies" class="OurAgencies" >Agencies</a>
         </li>
 
         <li>
-          <a class="Contract" >Contracts</a>
+          <a href="/Contracts" class="Contract" >Contracts</a>
         </li>
 
         <li>
@@ -26,9 +26,9 @@
           </div>
         </li>
 
-        <li>
-          <a class="Langue"></a>
-        </li>
+<!--        <li>-->
+<!--          <a class="Langue"></a>-->
+<!--        </li>-->
       </ul>
     </div>
   </header>

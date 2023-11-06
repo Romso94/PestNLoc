@@ -17,21 +17,25 @@ header{
     height: 100%;
     margin-top: 20px;
     text-decoration: none;
+
+
 }
 
+header a{
+    text-decoration:none;
+    color:black;
+}
 
 ul{
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-
 }
 
 li{
     list-style: none;
-    margin: 10%;
+    margin: 30%;
 }
 
 .logo{
@@ -89,6 +93,39 @@ li{
 
     }
 
+    .OurAgencies{
+        content: url("/src/assets/logoAgency.svg");
+        width:  var(--svgSizeTablet);
+        height:  var(--svgSizeTablet);
+    }
+
+
+
+    .Profile{
+        content: url("/src/assets/profile.svg");
+        width:  var(--svgSizeTablet);
+        height:  var(--svgSizeTablet);
+
+    }
+
+    .Langue{
+        content: url("/src/assets/englishL.svg");
+        width:  var(--svgSizeTablet);
+        height:  var(--svgSizeTablet);
+    }
+
+    .Rent{
+        content: url("/src/assets/keys.svg");
+        width: var(--svgSizeTablet);
+        height:  var(--svgSizeTablet);
+    }
+
+    .Contract{
+        content: url("/src/assets/contract.svg");
+        width:  var(--svgSizeTablet);
+        height:  var(--svgSizeTablet);
+    }
+
     .divButton{
         display: flex;
         align-items: center;
@@ -101,9 +138,9 @@ li{
         justify-content: center;
     }
 
-    li{
-        margin: 20%;
-    }
+   li{
+       margin: 30%;
+   }
 
 }
 
