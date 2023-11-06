@@ -1,10 +1,16 @@
+<template>
+<footer>
+  <div>
+  </div>
+  <div>
+    <ul> Test </ul>
+  </div>
+</footer>
+</template>
+
 <script setup>
 
 </script>
-
-<template>
-  $END$
-</template>
 
 <style scoped>
 
