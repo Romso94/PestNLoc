@@ -3,7 +3,7 @@
 <template>
   <div class="maindiv">
 
-      <form>
+      <form class="formRegister">
         <div class=""></div>
         <div class="formRegisterInputs">
           <div class="NameInput">

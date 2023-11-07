@@ -18,7 +18,7 @@ body{
 
 }
 
-form{
+.formRegister{
     background: white;
     display: flex;
     flex-direction: column ;
@@ -133,12 +133,7 @@ input[type="submit"]:hover {
         flex-direction: row;
     }
 
-    form{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
+
 
     input[type="submit"]{
         font-size: var(--sizeFontDesktop);
