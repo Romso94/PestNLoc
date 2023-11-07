@@ -4,7 +4,7 @@
   <div class="maindiv">
 
       <form class="formRegister">
-        <div class=""></div>
+
         <div class="formRegisterInputs">
           <div class="NameInput">
             <label>Firs tName</label>
