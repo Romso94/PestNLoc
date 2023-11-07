@@ -3,44 +3,46 @@
 <template>
   <div class="maindiv">
 
-    <div class="formulaire">
-      <form>
+      <form class="formRegister">
+        <div class=""></div>
+        <div class="formRegisterInputs">
+          <div class="NameInput">
+            <label>Firs tName</label>
+            <input type="text" id="FirstName" required>
+            <label>Last Name</label>
+            <input type="text" id="LastName" required>
+          </div>
+          <div class="MailPasswordInput">
+            <label for="email">Email</label>
+            <input type="text" id="email" required>
 
-        <div class="formRegister">
-          <tr>
-            <td>
-              <label for="name">FirstName</label>
-              <input type="text" id="FirstName" required>
-              <label for="name">LastName</label>
-              <input type="text" id="LastName" required>
-              <label for="email">Email</label>
-              <input type="text" id="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            <label for="Confirmpassword">Confirm Password</label>
+            <input type="password" id="Confirmpassword" required>
 
-
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-                <label for="Confirmpassword">Confirm Password</label>
-                <input type="password" id="Confirmpassword" required>
-
-
-              <br><br>
-
-              <input class="bouton" type="submit" value="Register" @click="validatePassword">
-            </td>
-            <td>
-              <a href="/login"  onclick="">You already have an account? Click Here to Sign In !</a>
-            </td>
-          </tr>
-
+          </div>
         </div>
+
+
+          <br><br>
+
+          <input class="bouton" type="submit" value="Register" @click="validatePassword">
+
+          <a href="/login"  onclick="">You already have an account? Click Here to Sign In !</a>
+
+
+
+
 
 
       </form>
 
-    </div>
-
-
   </div>
+
+
+
+
 
 </template>
 
