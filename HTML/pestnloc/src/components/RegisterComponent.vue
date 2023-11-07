@@ -11,14 +11,18 @@
         <div class="formRegister">
           <tr>
             <td>
-              <label for="name">Name</label>
-              <input type="text" id="Name" required>
+              <label for="name">FirstName</label>
+              <input type="text" id="FirstName" required>
+              <label for="name">LastName</label>
+              <input type="text" id="LastName" required>
               <label for="email">Email</label>
               <input type="text" id="email" required>
-              <br><br>
               <label for="password">Password</label>
               <input type="password" id="password" required>
+              <label for="password">ConfirmPassword</label>
+              <input type="password" id="Confirmpassword" required>
               <br><br>
+
               <input class="bouton" type="submit" value="Register">
             </td>
             <td>
