@@ -5,6 +5,7 @@
     <WelcomeComponent/>
   </div>
 <!--  <FooterComponent/>-->
+
 </template>
 
 <script setup>
@@ -19,6 +20,7 @@ import WelcomeComponent from "@/components/WelcomeComponent";
 const router = useRouter();
 
 const isHomePage = computed(() => router.currentRoute.value.path === "/");
+
 
 
 </script>

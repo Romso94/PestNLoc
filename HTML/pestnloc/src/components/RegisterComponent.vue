@@ -9,9 +9,6 @@
 
 
 
-
-
-
           <input class="bouton" type="submit" value="Register" @click="validatePassword">
 
           <a href="/login"  onclick="">You already have an account? Click Here to Sign In !</a>
