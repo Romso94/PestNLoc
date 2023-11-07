@@ -5,6 +5,7 @@
 
       <form class="formRegister">
 
+
         <div class="formRegisterInputs">
           <div class="NameInput">
             <label>Firs tName</label>
@@ -25,7 +26,8 @@
         </div>
 
 
-          <br><br>
+
+
 
           <input class="bouton" type="submit" value="Register" @click="validatePassword">
 
