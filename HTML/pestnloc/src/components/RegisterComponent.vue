@@ -55,7 +55,7 @@ const  validatePassword = () => {
 
   if (password !== confirmPassword) {
     errorElement.textContent = "Passwords do not match. Please try again.";
-    return false; 
+    return false;
   } else {
     errorElement.textContent = "";
     return true;
