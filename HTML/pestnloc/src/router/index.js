@@ -7,6 +7,7 @@ import Register from "../components/RegisterComponent.vue"
 import DefaultLayout from "../Static_Components/DefaultLayout.vue"
 
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -18,10 +19,11 @@ const router = createRouter({
                 {
                     path: "/",
                     redirect: "",
+
                 },
                 {
                     path: '/:pathMatch(.*)*',
-                    redirect: "/"
+                    redirect: "/",
                 },
                 {
                     path :'/login',

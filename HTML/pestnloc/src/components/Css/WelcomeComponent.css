@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.WelcomeContainer{
+    display: flex;
+    background-color : var(--pestnlocColor);
+    margin-top: 50px;
+    height: 500px;
+    width : 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.formResearch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 400px;
+    width: 70vh;
+    border-radius: 15px;
+    flex-direction: column;
+
+}
+
+
+
+button{
+    margin-right: 10%;
+    margin-bottom: 10%;
+    background-color: var(--pestnlocColor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+
+}
+
+.divButtonWelcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+button[type="submit"]{
+    background-color: var(--pestnlocColor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    margin : 0;
+}
+
+button[type="submit"]:hover {
+    background-color: #147E05FF;
+}
+
+input[type="search"],
+input[type="date"]{
+    width: 65%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid ;
+    border-radius: 5px;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+
+}
+
+.divDateWelcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -9,20 +9,20 @@
     <div class="divButton">
       <ul>
         <li>
-          <a href ="/Rent" class="Rent" >Rent</a>
+          <router-link to="/Rent" class="Rent" exact-active-class="active" >Rent</router-link>
         </li>
 
         <li>
-          <a href ="/Agencies" class="OurAgencies" >Agencies</a>
+          <router-link to="/Agencies" class="OurAgencies"  exact-active-class="active">Agencies</router-link>
         </li>
 
         <li>
-          <a href="/Contracts" class="Contract" >Contracts</a>
+          <router-link to="/Contracts" class="Contract" exact-active-class="active" >Contracts</router-link>
         </li>
 
         <li>
           <div>
-            <a href="/login" class="Profile" :class="{ active: true }" >Sign In</a>
+            <router-link to="/login" class="Profile" exact-active-class="active" >Sign In</router-link>
           </div>
         </li>
 
