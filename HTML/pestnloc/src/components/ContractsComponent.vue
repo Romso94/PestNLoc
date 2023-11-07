@@ -1,20 +1,28 @@
+<template>
+  <div class ="topMain"/>
+
+</template>
+
 <script setup>
 
 </script>
 
-<template>
-  <div>
-    coucou
-  </div>
-</template>
-
 <style scoped>
 
-
-
-div{
-  background-color: red;
-  height:300px;
-  width:93238px;
+p{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.topMain{
+  background: var(--pestnlocColor);
+  height: 250px;
+  width: 100%;
+  margin-top: 50px;
+}
+
+
+
+
 </style>
