@@ -4,12 +4,12 @@
   <div v-if="isHomePage">
     <WelcomeComponent/>
   </div>
-<!--  <FooterComponent/>-->
+<FooterComponent/>
 </template>
 
 <script setup>
 import HeaderApp from "@/Static_Components/HeaderApp";
-// import FooterComponent from "@/Static_Components/FooterComponent.vue";
+import FooterComponent from "@/Static_Components/FooterComponent.vue";
 
 import { computed } from "vue";
 import { useRouter } from "vue-router";
