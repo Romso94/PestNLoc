@@ -32,14 +32,15 @@
         </ul>
       </div>
 
+
       <div class = "footer-column">
         <h4 class ="title ">Follow us</h4>
 
           <div class ="Social-networks">
-            <a href="#"><i class ="fab fa-facebook-f"></i></a>
-            <a href="#"><i class ="fab fa-instagram"></i></a>
-            <a href="#"><i class ="fab fa-snapchat"></i></a>
-            <a href="#"><i class ="fab fa-tiktok"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-facebook-f"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-instagram"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-snapchat"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-tiktok"></i></a>
         </div>
 
 

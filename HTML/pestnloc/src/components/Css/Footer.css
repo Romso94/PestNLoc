@@ -72,13 +72,51 @@ i{
     width: 200%;
 }
 
+.Social-icon{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #1CB005;
+    height : 40px;
+    width: 40px;
+    margin-right: 8px;
+    color : white;
+    text-align: center;
+    line-height: 40px;
+}
+
+.fa-facebook-f:hover{
+    color : dodgerblue;
+    padding-right: 22px;
+}
+
+.fa-instagram:hover{
+    color : blueviolet;
+    padding-right: 22px;
+}
+
+.fa-snapchat:hover{
+    color: yellow;
+    padding-right: 22px;
+}
+
+.fa-tiktok:hover{
+    color: fuchsia;
+    padding-right: 22px;
+}
+
 ul{
     width: 600%;
 }
 
 a{
     text-decoration : none;
-    color: white;
+    color: grey;
+    transition:all 0.4s ease;
+}
+
+a:hover{
+    padding-left: 10px;
+    color : #1CB005;
 }
 
 
@@ -90,7 +128,7 @@ a{
     .title{
         width: 300%;
         font-size: 60%;
-        color: black;
+        color: white;
         text-transform: capitalize;
         margin-bottom: 15%;
         font-weight: 500;
