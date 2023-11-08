@@ -35,6 +35,27 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
+const test = ref(null);
+
+const fetchData = async () => {
+  try {
+    const response = await fetch("http://localhost:9000");
+    if (response.ok) {
+      console.log(response);
+      test.value = await response.text();
+    } else {
+      console.error("Failed to fetch data:", response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching data:", error);
+  }
+};
+
+onMounted(() => {
+  fetchData();
+});
 
 </script>
 
