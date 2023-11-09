@@ -9,27 +9,28 @@ footer{
     background-color: #333333;
     padding-top: 3%;
     padding-bottom: 0;
+
+
 }
 
 .container{
-    max-width: 90%;
+    max-width: 100%;
     margin:auto;
 }
 
 .row{
     display: flex;
-    flex-wrap: wrap ;
+
 }
 
 .footer-column{
     width: 25%;
-    padding: 0 10%;
+    padding:0 5%;
 }
 
 
-
 .title{
-    width: 300%;
+    width: 100%;
     font-size: 100%;
     color: white;
     text-transform: capitalize;
@@ -53,14 +54,20 @@ footer{
 body{
     line-height: 1.2;
     font-family: 'Poppins', sans-serif;
+    font-size: var(--sizeFontMobile);
 }
 
+
 .li-footer{
-    width: 400%;
+    width: 100%;
     font-size: 100%;
     margin-top: 5%;
     padding: 0;
     margin-left: 0;
+}
+
+.ulFooter{
+    width: 100%;
 }
 
 i{
@@ -69,10 +76,11 @@ i{
 }
 
 .Social-networks{
-    width: 200%;
+    width: 100%;
 }
 
 .Social-icon{
+
     display: inline-block;
     border-radius: 50%;
     background-color: #1CB005;
@@ -84,49 +92,45 @@ i{
     line-height: 40px;
 }
 
-.fa-facebook-f:hover{
-    color : dodgerblue;
-    padding-right: 22px;
+.Icon:hover{
+    color : #333333;
+
 }
 
-.fa-instagram:hover{
-    color : blueviolet;
-    padding-right: 22px;
+.snap{
+    padding-left:10px ;
 }
 
-.fa-snapchat:hover{
-    color: yellow;
-    padding-right: 22px;
-}
 
-.fa-tiktok:hover{
-    color: fuchsia;
-    padding-right: 22px;
-}
 
-ul{
-    width: 600%;
-}
 
-a{
+
+.linkFooter{
     text-decoration : none;
     color: grey;
     transition:all 0.4s ease;
 }
 
-a:hover{
+.linkFooter:hover{
     padding-left: 10px;
     color : #1CB005;
 }
 
 
-@media (max-width: 768px){
+
+@media (min-width: 768px){
+
+
+    .row{
+        display: flex;
+        flex-wrap: wrap ;
+    }
     .li-footer{
         font-size: 60%;
     }
 
     .title{
-        width: 300%;
+        width: 100%;
         font-size: 60%;
         color: white;
         text-transform: capitalize;
@@ -141,6 +145,6 @@ a:hover{
     }
 
     .Social-networks{
-        width: 200%;
+        width: 100%;
     }
 }

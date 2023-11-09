@@ -41,10 +41,10 @@ const test = ref(null);
 
 const fetchData = async () => {
   try {
-    const response = await fetch("http://localhost:9000");
+    const response = await fetch("http://localhost:9000/");
     if (response.ok) {
-      console.log(response);
       test.value = await response.text();
+      console.log(test.value);
     } else {
       console.error("Failed to fetch data:", response.status, response.statusText);
     }

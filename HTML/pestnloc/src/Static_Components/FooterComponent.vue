@@ -8,18 +8,18 @@
 
       <div class = "footer-column">
            <h4 class ="title ">About us</h4>
-            <ul>
-              <li class ="li-footer"><a href="#">Ex turba vero imae sortis et
+            <ul class="ulFooter">
+              <li class ="li-footer"><a class="linkFooter" href="#">Ex turba vero imae sortis et
                 paupertinae in tabernis aliqui pernoctant
                 vinariis, non nulli velariis umbraculorum
                 theatralium latent;</a></li>
             </ul>
     </div>
 
-      <div class = "footer-column">
+      <div class = "footer-column localisation">
         <h4 class ="title ">Our Localisation</h4>
-        <ul>
-          <li class ="li-footer"><a href="#">Budapest, 41 Baross utca</a></li>
+        <ul class="ulFooter">
+          <li class ="li-footer"><a class="linkFooter" href="#">Budapest, 41 Baross utca</a></li>
         </ul>
       </div>
 
@@ -27,8 +27,8 @@
 
       <div class = "footer-column">
         <h4 class ="title ">Contact us</h4>
-        <ul>
-          <li class ="li-footer"><a href="#">pestnloc@gmail.com</a></li>
+        <ul class="ulFooter">
+          <li class ="li-footer"><a class="linkFooter" href="#">pestnloc@gmail.com</a></li>
         </ul>
       </div>
 
@@ -37,10 +37,10 @@
         <h4 class ="title ">Follow us</h4>
 
           <div class ="Social-networks">
-            <a class = "Social-icon" href="#"><i class ="fab fa-facebook-f"></i></a>
-            <a class = "Social-icon" href="#"><i class ="fab fa-instagram"></i></a>
-            <a class = "Social-icon" href="#"><i class ="fab fa-snapchat"></i></a>
-            <a class = "Social-icon" href="#"><i class ="fab fa-tiktok"></i></a>
+            <a class = "Social-icon Icon " href="#"><i class ="fab fa-facebook-f"></i></a>
+            <a class = "Social-icon Icon insta" href="#"><i class ="fab fa-instagram"></i></a>
+            <a class = "Social-icon Icon snap" href="#"><i class ="fab fa-snapchat"></i></a>
+            <a class = "Social-icon Icon" href="#"><i class ="fab fa-tiktok"></i></a>
         </div>
 
 
