@@ -75,7 +75,9 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"]
+{
     width: 65%;
     padding: 8px;
     margin-bottom: 10px;
@@ -83,6 +85,17 @@ input[type="password"] {
     border-radius: 5px;
     font-size: var(--sizeFontMobile);
     font-weight: bold;
+}
+input[type="tel"],
+input[type="number"]{
+    width: 77%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid ;
+    border-radius: 5px;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+
 }
 
 input[type="submit"] {
