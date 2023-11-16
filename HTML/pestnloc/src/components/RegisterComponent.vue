@@ -2,8 +2,11 @@
   <div class="maindiv">
 
     <div class="formRegister">
-      <component :is="currentStepComponent" />
-      <button class="bouton" @click="showNextStep">Next</button>
+      <component :is="currentStepComponent " />
+
+      <button class="bouton" @click="showPreviousStep"  :disabled="currentStep.value === 1" >Previous</button>
+
+      <button class="bouton" @click="showNextStep"  >Next</button>
       <a href="/login" onclick="">You already have an account? Click Here to Sign In!</a>
     </div>
 
@@ -27,10 +30,17 @@ const currentStepComponent = computed(() => {
 }
 });
 
+
 const showNextStep = () => {
   currentStep.value += 1;
   if (currentStep.value > 3) currentStep.value = 1;
 };
+
+
+const showPreviousStep = () => {
+  currentStep.value = currentStep.value === 1 ? 3 : currentStep.value - 1;
+};
+
 
 import RegisterEtape1 from "@/components/RegisterEtape1.vue";
 import RegisterEtape2 from "@/components/RegisterEtape2.vue";
