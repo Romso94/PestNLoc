@@ -1,10 +1,12 @@
 <template>
   <div class="maindiv">
+
     <div class="formRegister">
       <component :is="currentStepComponent" />
       <button class="bouton" @click="showNextStep">Next</button>
       <a href="/login" onclick="">You already have an account? Click Here to Sign In!</a>
     </div>
+
   </div>
 </template>
 

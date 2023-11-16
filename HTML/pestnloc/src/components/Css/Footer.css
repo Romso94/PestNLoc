@@ -1,3 +1,150 @@
-li{
-    color : black;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+footer{
+    background-color: #333333;
+    padding-top: 3%;
+    padding-bottom: 0;
+
+
+}
+
+.container{
+    max-width: 100%;
+    margin:auto;
+}
+
+.row{
+    display: flex;
+
+}
+
+.footer-column{
+    width: 25%;
+    padding:0 5%;
+}
+
+
+.title{
+    width: 100%;
+    font-size: 100%;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 15%;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-column h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #1CB005;
+    height: 2px;
+    width: 50px;
+    box-sizing: border-box;
+}
+
+
+body{
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--sizeFontMobile);
+}
+
+
+.li-footer{
+    width: 100%;
+    font-size: 100%;
+    margin-top: 5%;
+    padding: 0;
+    margin-left: 0;
+}
+
+.ulFooter{
+    width: 100%;
+}
+
+i{
+    margin-top: 15%;
+    width: 25%;
+}
+
+.Social-networks{
+    width: 100%;
+}
+
+.Social-icon{
+
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #1CB005;
+    height : 40px;
+    width: 40px;
+    margin-right: 8px;
+    color : white;
+    text-align: center;
+    line-height: 40px;
+}
+
+.Icon:hover{
+    color : #333333;
+
+}
+
+.snap{
+    padding-left:10px ;
+}
+
+
+
+
+
+.linkFooter{
+    text-decoration : none;
+    color: grey;
+    transition:all 0.4s ease;
+}
+
+.linkFooter:hover{
+    padding-left: 10px;
+    color : #1CB005;
+}
+
+
+
+@media (min-width: 768px){
+
+
+    .row{
+        display: flex;
+        flex-wrap: wrap ;
+    }
+    .li-footer{
+        font-size: 60%;
+    }
+
+    .title{
+        width: 100%;
+        font-size: 60%;
+        color: white;
+        text-transform: capitalize;
+        margin-bottom: 15%;
+        font-weight: 500;
+        position: relative;
+    }
+
+    i{
+        margin-top: 15%;
+        width: 25%;
+    }
+
+    .Social-networks{
+        width: 100%;
+    }
 }

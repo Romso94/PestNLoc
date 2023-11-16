@@ -7,41 +7,42 @@
     <div class = "row">
 
       <div class = "footer-column">
-           <h4>About us</h4>
-            <ul>
-              <li><a href="#">Ex turba vero imae sortis et
+           <h4 class ="title ">About us</h4>
+            <ul class="ulFooter">
+              <li class ="li-footer"><a class="linkFooter" href="#">Ex turba vero imae sortis et
                 paupertinae in tabernis aliqui pernoctant
                 vinariis, non nulli velariis umbraculorum
-                theatralium latent, quae Campanam imitatus
-                lasciviam Catulus in aedilitate sua suspendit
-                omnium primus;</a></li>
+                theatralium latent;</a></li>
             </ul>
     </div>
 
-      <div class = "footer-column">
-        <h4>Our Localisation</h4>
-        <ul>
-          <li><a href="#">Budapest, 41 Baross utca</a></li>
+      <div class = "footer-column localisation">
+        <h4 class ="title ">Our Localisation</h4>
+        <ul class="ulFooter">
+          <li class ="li-footer"><a class="linkFooter" href="#">Budapest, 41 Baross utca</a></li>
         </ul>
       </div>
 
 
 
       <div class = "footer-column">
-        <h4>Contact us</h4>
-        <ul>
-          <li><a href="#">+33617465312</a></li>
-          <li><a href="#">pestnloc@gmail.com</a></li>
+        <h4 class ="title ">Contact us</h4>
+        <ul class="ulFooter">
+          <li class ="li-footer"><a class="linkFooter" href="#">pestnloc@gmail.com</a></li>
         </ul>
       </div>
 
+
       <div class = "footer-column">
-        <h4>Follow us</h4>
-        <div>
-          <div class ="Social networks">
-          <li><a href="#">On Snapchat</a></li>
+        <h4 class ="title ">Follow us</h4>
+
+          <div class ="Social-networks">
+            <a class = "Social-icon Icon " href="#"><i class ="fab fa-facebook-f"></i></a>
+            <a class = "Social-icon Icon insta" href="#"><i class ="fab fa-instagram"></i></a>
+            <a class = "Social-icon Icon snap" href="#"><i class ="fab fa-snapchat"></i></a>
+            <a class = "Social-icon Icon" href="#"><i class ="fab fa-tiktok"></i></a>
         </div>
-      </div>
+
 
 
   </div>
