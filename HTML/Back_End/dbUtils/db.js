@@ -19,10 +19,10 @@ const connection = createConnection(dbConfig);
 
 connection.connect((err) => {
   if (err) {
-    console.error('Erreur de connexion à la base de données :', err);
+    console.error('DataBase connexion error :', err);
     throw err;
   }
-  console.log('Connecté à la base de données MySQL');
+  console.log('Connected to  MySQL');
 });
 
 
