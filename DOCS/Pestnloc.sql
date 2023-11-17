@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE TABLE Agency(
    Id_Agency INT,
    Agency_Name VARCHAR(50) NOT NULL,
@@ -112,4 +111,3 @@ CREATE TABLE Contract(
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
    FOREIGN KEY(Id_Registration) REFERENCES Car(Id_Registration)
 );
->>>>>>> 88e744b7375c6b41d938f6fb9c4fab1ba1df324d
