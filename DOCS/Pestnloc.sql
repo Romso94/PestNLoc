@@ -1,3 +1,8 @@
+ Drop Table if exists Agency ;
+ Drop Table if exists Car ;
+ Drop Table if exists client ;
+ Drop Table if exists contract ;
+
 CREATE TABLE Agency(
    Id_Agency INT,
    Agency_Name VARCHAR(50) NOT NULL,
@@ -33,7 +38,7 @@ CREATE TABLE Car(
    Id_Registration VARCHAR(50),
    Model VARCHAR(50) NOT NULL,
    Brand VARCHAR(50) NOT NULL,
-   Fuel_State LOGICAL NOT NULL,
+   Fuel_State boolean NOT NULL,
    Car_Power VARCHAR(50) NOT NULL,
    Car_Type VARCHAR(50) NOT NULL,
    Id_Agency INT NOT NULL,
