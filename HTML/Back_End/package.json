@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "back_end for Pestnloc",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "/",
     "start": "node server.js"
