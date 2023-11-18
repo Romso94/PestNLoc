@@ -4,7 +4,7 @@
  Drop Table if exists contract ;
 
 CREATE TABLE Agency(
-   Id_Agency INT,
+   Id_Agency INT NOT NULL AUTO_INCREMENT,
    Agency_Name VARCHAR(50) NOT NULL,
    Adress VARCHAR(50) NOT NULL,
    Phone_Number INT NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE Agency(
 );
 
 CREATE TABLE Client(
-   Id_Client INT,
+   Id_Client INT NOT NULL AUTO_INCREMENT,
    LastName VARCHAR(50) NOT NULL,
    Name VARCHAR(50) NOT NULL,
    Age INT NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE Car(
 );
 
 CREATE TABLE Contract(
-   Id_Contract INT,
+   Id_Contract INT NOT NULL AUTO_INCREMENT,
    Contract_Availability DATE NOT NULL,
    Start_Date DATE NOT NULL,
    Price INT NOT NULL,
