@@ -1,9 +1,9 @@
- SET FOREIGNKEY_CHECK = 0;
+ SET FOREIGN_KEY_CHECKS = 0;
  Drop Table if exists Agency ;
  Drop Table if exists Car ;
  Drop Table if exists client ;
  Drop Table if exists contract ;
- SET FOREIGNKEY_CHECK = 1;
+ SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE Agency(
    Id_Agency INT NOT NULL AUTO_INCREMENT,
@@ -37,7 +37,7 @@ CREATE TABLE Client(
 );
 
 CREATE TABLE Car(
-   Id_Registration VARCHAR(50),
+   Id_Registration VARCHAR(50) NOT NULL,
    Model VARCHAR(50) NOT NULL,
    Brand VARCHAR(50) NOT NULL,
    Fuel_State boolean NOT NULL,
