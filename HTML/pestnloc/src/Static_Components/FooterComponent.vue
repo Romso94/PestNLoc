@@ -5,7 +5,6 @@
 
   <div class = "container">
     <div class = "row">
-
       <div class = "footer-column">
            <h4 class ="title ">About us</h4>
             <ul class="ulFooter">
