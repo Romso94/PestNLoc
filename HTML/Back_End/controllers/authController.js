@@ -21,6 +21,7 @@ const registerUserController = async (req, res) => {
   }
 };
 
+// A terminer
 async function loginUser(req, res) {
   const {email, password} = req.body;
   // Logique de connexion
