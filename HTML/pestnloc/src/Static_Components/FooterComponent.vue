@@ -5,7 +5,6 @@
 
   <div class = "container">
     <div class = "row">
-
       <div class = "footer-column">
            <h4 class ="title ">About us</h4>
             <ul class="ulFooter">
@@ -37,10 +36,10 @@
         <h4 class ="title ">Follow us</h4>
 
           <div class ="Social-networks">
-            <a class = "Social-icon Icon " href="#"><i class ="fab fa-facebook-f"></i></a>
-            <a class = "Social-icon Icon insta" href="#"><i class ="fab fa-instagram"></i></a>
-            <a class = "Social-icon Icon snap" href="#"><i class ="fab fa-snapchat"></i></a>
-            <a class = "Social-icon Icon" href="#"><i class ="fab fa-tiktok"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-facebook-f"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-instagram"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-snapchat"></i></a>
+            <a class = "Social-icon" href="#"><i class ="fab fa-tiktok"></i></a>
         </div>
 
 

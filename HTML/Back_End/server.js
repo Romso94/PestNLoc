@@ -1,15 +1,12 @@
-import express from 'express';
-import cors from 'cors'; 
+const express = require('express');
+const cors = require('cors');
+const routes = require('./route/routes.js');
 
 const app = express();
 const port = 9000;
 
-
 app.use(cors());
-
-app.get('/', (req, res) => {
-  res.send('Hello World !');
-});
+app.use('/', routes);
 
 app.listen(port, () => {
   console.log(`Starting Server on ${port}`);
