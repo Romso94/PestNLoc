@@ -21,7 +21,7 @@ const registerUser = async (registerData)  => {
 
         const result = await execute(query, values);
 
-        return result.insertId;
+        return result;
     } catch (error) {
         console.error(error);
         throw error;
