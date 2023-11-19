@@ -41,7 +41,7 @@ const test = ref(null);
 
 const fetchData = async () => {
   try {
-    const response = await fetch("http://localhost:9000/");
+    const response = await fetch("http://localhost:9000/pestnloc/contracts");
     if (response.ok) {
       test.value = await response.text();
       console.log(test.value);
