@@ -31,7 +31,7 @@ footer{
 
 .title{
     width: 100%;
-    font-size: 100%;
+    font-size: var(--sizeFontMobileFooter);
     color: white;
     text-transform: capitalize;
     margin-bottom: 15%;
@@ -46,7 +46,7 @@ footer{
     bottom: -10px;
     background-color: #1CB005;
     height: 2px;
-    width: 50px;
+    width: 40px;
     box-sizing: border-box;
 }
 
@@ -60,49 +60,40 @@ body{
 
 .li-footer{
     width: 100%;
-    font-size: 100%;
-    margin-top: 5%;
-    padding: 0;
-    margin-left: 0;
+    font-size: var(--sizeFontMobileFooter);
+    margin-top: 5px;
+    margin-left: -3px;
 }
 
 .ulFooter{
     width: 100%;
 }
 
-i{
-    margin-top: 15%;
-    width: 25%;
-}
 
 .Social-networks{
     width: 100%;
 }
 
 .Social-icon{
-
     display: inline-block;
     border-radius: 50%;
     background-color: #1CB005;
-    height : 40px;
-    width: 40px;
+    height : 24px;
+    width: 24px;
     margin-right: 8px;
+    margin-top: 5px;
     color : white;
     text-align: center;
-    line-height: 40px;
+    line-height: 22px;
 }
 
-.Icon:hover{
+.fab{
+    font-size: 12px;
+}
+
+.Social-icon:hover{
     color : #333333;
-
 }
-
-.snap{
-    padding-left:10px ;
-}
-
-
-
 
 
 .linkFooter{
@@ -117,21 +108,19 @@ i{
 }
 
 
-
 @media (min-width: 768px){
-
 
     .row{
         display: flex;
         flex-wrap: wrap ;
     }
     .li-footer{
-        font-size: 60%;
+        font-size: var(--sizeFontDesktop);
     }
 
     .title{
         width: 100%;
-        font-size: 60%;
+        font-size: var(--sizeFontDesktopFooter);
         color: white;
         text-transform: capitalize;
         margin-bottom: 15%;
@@ -139,12 +128,36 @@ i{
         position: relative;
     }
 
-    i{
-        margin-top: 15%;
-        width: 25%;
-    }
-
     .Social-networks{
         width: 100%;
+    }
+
+    .Social-icon{
+        display: inline-block;
+        border-radius: 50%;
+        background-color: #1CB005;
+        height : 40px;
+        width: 40px;
+        margin-right: 8px;
+        margin-top: -6px;
+        margin-bottom: 10px;
+        color : white;
+        text-align: center;
+        line-height: 45px;
+    }
+
+    .fab{
+        font-size: 20px;
+    }
+
+    .footer-column h4::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        background-color: #1CB005;
+        height: 2px;
+        width: 60px;
+        box-sizing: border-box;
     }
 }
