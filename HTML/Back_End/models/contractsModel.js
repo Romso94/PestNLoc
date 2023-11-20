@@ -24,7 +24,7 @@ const getAllContracts = async () => {
 const getContractById = async (contractsID) => {
     try{
 
-        const query = "SELECT * FROM CONTRACT Where Id_Contract=?";
+        const query = "SELECT * FROM CONTRACT Where Id_Contract= ? ";
         const result = await execute(query,[contractsID]);
 
         return result

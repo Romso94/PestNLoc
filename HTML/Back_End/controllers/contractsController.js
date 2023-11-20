@@ -4,7 +4,7 @@
 // - `updateContract`: Met à jour un contrat de location existant.
 // - `deleteContract`: Supprime un contrat de location.
 
-const Contract = require('../models/contractsModel');
+const Contract = require('../models/contractsModel.js');
 
 const getContracts = async (req, res) => {
     try {
@@ -26,7 +26,8 @@ const getContractById = async (req,res) =>{
 } catch (error) {
   console.error(error);
   res.status(500).json({ error: 'Internal Server Error' });
-}}
+}
+}
 
 const createContract = async (req,res) =>{}
 
