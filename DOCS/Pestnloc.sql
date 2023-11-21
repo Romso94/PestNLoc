@@ -9,7 +9,7 @@ CREATE TABLE Agency(
    Id_Agency INT NOT NULL AUTO_INCREMENT,
    Agency_Name VARCHAR(50) NOT NULL,
    Address VARCHAR(50) NOT NULL,
-   Phone_Number INT NOT NULL,
+   Phone_Number VARCHAR(50) NOT NULL,
    Email VARCHAR(50) NOT NULL,
    Password VARCHAR(2500) NOT NULL,
    PRIMARY KEY(Id_Agency),
