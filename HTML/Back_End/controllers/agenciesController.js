@@ -4,3 +4,5 @@
 //     - `createRental`: Crée une nouvelle location de voiture.
 //     - `updateRental`: Met à jour une location de voiture existante.
 //     - `deleteRental`: Supprime une location de voiture.
+
+const Agencies = require('../models/clientsModel.js');
