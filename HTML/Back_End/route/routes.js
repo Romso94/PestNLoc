@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { registerUserController } = require('../controllers/authController.js');
 const { getContracts, getContractById, deleteContract } = require('../controllers/contractsController.js');
-const { getRentals,getRentalById } = require('../controllers/rentController.js');
+const { getRentals,getRentalById } = require('../controllers/carController.js');
 
 
 // Routes pour authController
