@@ -6,7 +6,7 @@ const registerUser = async (registerData)  => {
         Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password,
     } = registerData;
     
-    const saltRounds = 10;
+    const saltRounds = 64;
 
     try {
         // Génération du sel
