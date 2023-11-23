@@ -21,6 +21,20 @@ const registerUser = async (registerData)  => {
     }
 };
 
+const getClientById = async (idClient) =>{
+
+    try {
+        const query = "SELECT * FROM client WHERE Id_Client = ?";        
+        const result = await execute(query,[idClient]);
+
+        return result;
+    }
+    catch(error){
+        console.error(error);
+        throw error;
+    }
+}
 
 
-module.exports = { registerUser };
+
+module.exports = { registerUser, getClientById };

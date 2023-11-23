@@ -30,16 +30,46 @@ const getContractById = async (req,res) =>{
     }
 }
 
-const createContract = async (req,res) =>{}
+const createContract = async (req,res) =>{
+    const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = req.body;
 
-const updateContract = async (req,res) =>{}
+    try{
+      const dataContract = {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate};
+      const contracts = await Contract.createContract(dataContract);
+      res.json(contracts);
+
+    }
+    catch(error){
+      console.error(error);
+      res.status(500).json({erro: 'Internal Server Error'});
+    }
+}
+
+const updateContract = async (req,res) =>{
+  
+  const {idContract} = req.params;
+  const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = req.body;
+
+  try{
+
+      const dataContract = {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate};
+      const contracts = await Contract.updateContract(idContract,dataContract);
+      res.json(contracts);
+  }
+  catch(error){
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+
+  }
+ }
 
 const deleteContract = async (req,res) =>{
-      const {id} = req.params;
+      
+  const {id} = req.params;
       
       try {
             const contract = await Contract.deleteContract(id);
-            res.json(Contract);
+            res.json(contract);
           } 
     catch (error) {
         console.error(error);

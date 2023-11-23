@@ -1,8 +1,3 @@
-// - `getAllCars`: Récupère toutes les voitures.
-// - `getCarById`: Récupère une voiture par son ID.
-// - `createCar`: Crée une nouvelle voiture.
-// - `updateCar`: Met à jour une voiture existante.
-// - `deleteCar`: Supprime une voiture.
 
 const {execute} = require ('../dbUtils/db');
 

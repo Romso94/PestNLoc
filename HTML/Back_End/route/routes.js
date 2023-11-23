@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { registerUserController } = require('../controllers/authController.js');
-const { getContracts, getContractById, deleteContract } = require('../controllers/contractsController.js');
+const { getContracts, getContractById, deleteContract, createContract } = require('../controllers/contractsController.js');
 const { getCars,getCarById,createCar,updateCar,deleteCar} = require('../controllers/carController.js');
 
 
@@ -14,6 +14,7 @@ router.post('/pestnloc/register', registerUserController);
 router.get('/pestnloc/contracts', getContracts);
 router.get('/pestnloc/contracts/:id', getContractById );
 router.delete('/pestnloc/contracts/:id',deleteContract);
+router.post('/pestnloc/contracts/register',createContract);
 
 
 // Route pour carController
