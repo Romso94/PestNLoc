@@ -1,15 +1,14 @@
-//- `getRentals`: Récupère la liste des locations de voitures.
-// - `getRentalById`: Récupère une location de voiture par son identifiant.
-// - `createRental`: Crée une nouvelle location de voiture.
-// - `updateRental`: Met à jour une location de voiture existante.
-// - `deleteRental`: Supprime une location de voiture.
 
-const Rental = require ('../models/carsModel.js');
+// - `createCar`: Crée une nouvelle Voiture de location.
+// - `updateCar`: Met à jour une location de voiture existante.
+// - `deleteCar`: Supprime une location de voiture.
 
-const getRentals = async (req,res) =>{
+const Car = require ('../models/carsModel.js');
+
+const getCars = async (req,res) =>{
     try {
-        const rentals = await Rental.getAllCars();
-        res.json(rentals);
+        const cars = await Car.getAllCars();
+        res.json(cars);
        
       } catch (error) {
         console.error(error);
@@ -18,11 +17,11 @@ const getRentals = async (req,res) =>{
 
 }
 
-const getRentalById = async (req,res) => {
+const getCarById = async (req,res) => {
     const {id} = req.params;
   try {
-  const rentals = await Rental.getCarById(id);
-  res.json(rentals);
+  const cars = await Car.getCarById(id);
+  res.json(cars);
  
 } catch (error) {
   console.error(error);
@@ -31,19 +30,30 @@ const getRentalById = async (req,res) => {
 
 }
 
-const createRental = async (req,res) => {
+const createCar = async (req,res) => {
+   const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate} = req.body;
+   try {
+    const carRegister = {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate};
+    const cars = await Car.createCar(carRegister);
+    res.json(cars);
+  } 
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
     
 }
 
-const updateRental = async (req,res) => {
+const updateCar = async (req,res) => {
     
 }
 
-const deleteRental = async (req,res) => {
+const deleteCar = async (req,res) => {
     
 }
 
 
 
 
-module.exports = {getRentals,getRentalById,createRental,updateRental,deleteRental};
+module.exports = {getCars,getCarById,createCar,updateCar,deleteCar};

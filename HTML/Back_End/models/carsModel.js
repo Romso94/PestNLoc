@@ -32,7 +32,21 @@ const  getCarById  = async (licensePlate) =>{
         throw error;
     }
 }
-const  createCar  = async () =>{}
+const  createCar  = async (carRegister) =>{
+    const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate} = carRegister;
+    try{
+        
+        const query = "INSERT INTO car (Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate) VALUES (?,?,?,?,?,?,?)";
+        const  values = [Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate];
+        const result = await execute(query,values);
+
+        return result
+        
+    }catch(error){
+        console.error(error);
+        throw error;
+    }
+}
 const  updateCar  = async () =>{}
 const  deleteCar  = async () =>{}
 

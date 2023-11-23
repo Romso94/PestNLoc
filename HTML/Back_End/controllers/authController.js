@@ -1,10 +1,13 @@
-const Clients = require('../models/clientsModel.js');
+const clients = require ("../models/clientsModel")
 
 const registerUserController = async (req, res) => {
-  const registerData = req.body;
-
+    
+  const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password } = req.body;
   try {
-    const register = await Clients.registerUser(registerData);
+    const registerData = {Name,LastName,Age,Address,Date_Permis_Issue,Email,Phone_Number,Password};
+  
+    const register = await clients.registerUser(registerData);
+    
     res.json(register);
   } catch (error) {
     console.error(error);

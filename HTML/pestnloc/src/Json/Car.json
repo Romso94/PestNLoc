@@ -1,0 +1,20 @@
+[
+  {
+    "Model": "Toyota Corolla",
+    "Brand": "Toyota",
+    "Fuel_State": "Full",
+    "Car_Power": "120 HP",
+    "Car_Type": "Sedan",
+    "Id_Agency": 1,
+    "Id_Registration": "XYZ789"
+  },
+  {
+    "Model": "Honda Civic",
+    "Brand": "Honda",
+    "Fuel_State": "Half",
+    "Car_Power": "110 HP",
+    "Car_Type": "Hatchback",
+    "Id_Agency": 2,
+    "Id_Registration": "GHI987"
+  }
+]

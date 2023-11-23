@@ -9,7 +9,7 @@ const Agencies = require('../models/agenciesModel.js');
 
 const getRentals = async (req, res) => {
     try {
-      const agencies = await Contract.getAllAgencies();
+      const agencies = await Agencies.getAllAgencies();
       res.json(agencies);
       console.log(agencies);
     } catch (error) {
@@ -22,7 +22,7 @@ const getRentals = async (req, res) => {
 const getRentalById = async (req,res) =>{
   const {id} = req.params;
   try {
-  const agency= await Contract.getAgencyById(id);
+const agency= await Agencies.getAgencyById(id);
   res.json(agency);
   console.log(agency);
 } catch (error) {
@@ -33,7 +33,9 @@ const getRentalById = async (req,res) =>{
 
 
 
-const createRental = async (req,res) =>{}
+const createRental = async (req,res) =>{
+  
+}
 
 const updateRental = async (req,res) =>{}
 

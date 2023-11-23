@@ -4,15 +4,15 @@
         <form>
           <div class="divButtonWelcome">
             <!--          Choix du type de la voiture -->
-            <button class="sports" @click= showImage(sportive)>Sportive</button>
-            <button class="electric" @click= showImage(electric)>Electric</button>
-            <button class="Suv" @click= showImage(suv)>Suv</button>
+            <button class="sports" @click="showImage('sportive')">Sportive</button>
+            <button class="electric" @click="showImage('electric')">Electric</button>
+            <button class="Suv" @click="showImage('suv')">Suv</button>
           </div>
           <br><br>
           <div class="divSearchWelcome">
             <input type="search">
           </div>
-          <img src="" class = "showCarImage"/>
+          <img :src="carImage" class = "showCarImage"/>
           <br><br>
           <div class="parallelebutton">
           <div class="divDateWelcome">
@@ -31,31 +31,25 @@
 </template>
 
 <script setup>
-function showImage  (carType) {
-switch (carType){
+let carImage = '';
 
-  case 'sportive' : {
-    const img = document.getElementById('showCarImage');
-    img.src = '../src/assets/sportsdrawing.png';
-    img.style.display = "block";
-    break;
+function showImage(carType) {
+  switch (carType) {
+    case 'sportive':
+      console.log("sportive");
+      carImage = '/src/assets/sportsdrawing.png';
+      console.log("image change");
+      break;
+
+    case 'electric':
+      carImage = '/src/assets/A45.jpg';
+
+      break;
+
+    case 'suv':
+      carImage = '/src/assets/A45.jpg';
+      break;
   }
-
-
-  case 'electric' : {
-    const img = document.getElementById('showCarImage');
-    img.src = 'chemin/vers/image';
-    img.style.display = "block";
-    break;
-  }
-
-  case 'suv' : {
-    const img = document.getElementById('showCarImage');
-    img.src = 'chemin/vers/image';
-    img.style.display = "block";
-    break;
-  }
-}
 }
 
 </script>

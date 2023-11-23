@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { registerUserController } = require('../controllers/authController.js');
 const { getContracts, getContractById, deleteContract } = require('../controllers/contractsController.js');
-const { getRentals,getRentalById } = require('../controllers/carController.js');
+const { getCars,getCarById,createCar } = require('../controllers/carController.js');
 
 
 // Routes pour authController
@@ -15,9 +15,10 @@ router.get('/pestnloc/contracts/:id', getContractById );
 router.delete('/pestnloc/contracts/:id',deleteContract);
 
 
-// Route pour rentController
-router.get('/pestnloc/cars',getRentals);
-router.get('/pestnloc/cars/:id',getRentalById);
+// Route pour carController
+router.get('/pestnloc/cars',getCars);
+router.get('/pestnloc/cars/:id',getCarById);
+router.post('/pestnloc/cars/register',createCar);
 
 
 module.exports = router;
