@@ -32,7 +32,20 @@ const getAgencyById = async (agencyID) => {
     }
 }
 
-const createAgency = async (agencyData) => {}
+const createAgency = async (agencyData) => {
+    try {
+        const { name, location } = agencyData; 
+
+    
+        const query = "INSERT INTO AGENCY (Agency_name, Location) VALUES (?, ?)";
+
+        const result = await execute(query, [name, location]);
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}; 
 
 const updateAgency = async (agencyUpdateData) => {}
 
