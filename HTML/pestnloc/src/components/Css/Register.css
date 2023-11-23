@@ -162,4 +162,9 @@ input[type="submit"]:hover {
     label{
         font-size: var(--sizeFontDesktop);
     }
+
+    .button-container {
+        display: flex;
+        justify-content: space-around;
+    }
 }

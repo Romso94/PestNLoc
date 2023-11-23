@@ -2,10 +2,12 @@
   <div class="maindiv">
     <div class="formRegister">
       <component :is="currentStepComponent" />
-
+      <div class="button-container">
       <button class="bouton" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
 
       <button class="bouton" @click="showNextStep">Next</button>
+
+      </div>
       <a href="/login" onclick="">You already have an account? Click Here to Sign In!</a>
     </div>
   </div>
