@@ -37,14 +37,14 @@ CREATE TABLE Client(
 );
 
 CREATE TABLE Car(
-   Id_Registration VARCHAR(50) NOT NULL,
+   Register_Plate VARCHAR(50) NOT NULL,
    Model VARCHAR(50) NOT NULL,
    Brand VARCHAR(50) NOT NULL,
    Fuel_State varchar(50) NOT NULL,
    Car_Power VARCHAR(50) NOT NULL,
    Car_Type VARCHAR(50) NOT NULL,
    Id_Agency INT NOT NULL,
-   PRIMARY KEY(Id_Registration),
+   PRIMARY KEY(Register_Plate),
    FOREIGN KEY(Id_Agency) REFERENCES Agency(Id_Agency)
 );
 
@@ -55,9 +55,30 @@ CREATE TABLE Contract(
    Price INT NOT NULL,
    End_Date DATE NOT NULL,
    Id_Client INT NOT NULL,
-   Id_Registration VARCHAR(50) NOT NULL,
+   Register_Plate VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Contract),
-   UNIQUE(Id_Registration),
+   UNIQUE(Register_Plate),
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
-   FOREIGN KEY(Id_Registration) REFERENCES Car(Id_Registration)
+   FOREIGN KEY(Register_Plate) REFERENCES Car(Register_Plate)
 );
+
+
+    
+INSERT INTO client (LastName,Name,Age,Address,Date_Permis_Issue,Email,Phone_Number,Password) values ('Doe','Florian',25,'123 Main retgzgzeSt','2022-01-01','john.doee@example.com','095403495','motdepasse123');
+Select * from client;
+
+INSERT INTO agency(Agency_Name,Address,Phone_Number,Email,Password) values ('Test1','TrucMachin',034567,'test.truc@gmail.com','truc');
+SELECT * from Agency;
+
+INSERT INTO car (Register_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
+SELECT * from car; 
+
+
+
+INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,Register_Plate) values (20230217,20230417,150,20240317,1,"FT056TK");
+SELECT * from contract; 
+
+SELECT * from client ;
+SELECT * from contract;
+SELECT * from car;
+SELECT * from agency;
