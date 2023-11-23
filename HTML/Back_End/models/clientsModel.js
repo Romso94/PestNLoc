@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt');
 const { execute } = require('../dbUtils/db.js');
 
 const registerUser = async (registerData)  => {
+
+    // Add the salt to the db 
     
     const {Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password} = registerData;
     const saltRounds = 10;

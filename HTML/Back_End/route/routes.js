@@ -22,7 +22,7 @@ router.put('/pestnloc/contracts/:idContract',updateContract);
 // Route pour carController
 router.get('/pestnloc/cars',getCars);
 router.get('/pestnloc/cars/:licensePlate',getCarById);
-router.post('/pestnloc/cars/register',createCar);
+router.post('/pestnloc/cars',createCar);
 router.put('/pestnloc/cars/:licensePlate',updateCar);
 router.delete('/pestnloc/cars/:licensePlate',deleteCar);
 

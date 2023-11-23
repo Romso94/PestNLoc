@@ -49,6 +49,8 @@ const  createCar  = async (carRegister) =>{
 
 const  updateCar  = async (licensePlate,carRegister) =>{
 
+    // Finish agency and modify the model to verify that Id_Agency exist
+
     const carExist = await getCarById(licensePlate);
     const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency} = carRegister;
 

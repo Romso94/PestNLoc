@@ -1,35 +1,91 @@
 {
     "Contracts": {
-        "method": "GET",
-        "request": "localhost:9000/pestnloc/contracts",
-    },
-    {
-        "method": "GET",
-        "request": "localhost:9000/pestnloc/contracts/:idContract",
-    },
-    {
-        "method": "POST",
-        "request": "localhost:9000/pestnloc/contracts",
-        "body": {
-            "Contract_Availability": 365,
-            "Start_Date": "2023-01-15",
-            "Price": 150,
-            "End_Date": "2023-02-15",
-            "Id_Client": 1,
-            "License_Plate": "XYZ78FF9"
+        "createContract": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/contracts",
+            "body": {
+                "Contract_Availability": 365,
+                "Start_Date": "2023-01-15",
+                "Price": 150,
+                "End_Date": "2023-02-15",
+                "Id_Client": 1,
+                "License_Plate": "XYZ78FF9"
+            }
         },
-    },
-    {
-        "method": "PUT",
-        "request": "localhost:9000/pestnloc/contracts/:idContract",
-        "body": {
-            "Contract_Availability": 365,
-            "Price": 15000,
-            "End_Date": "2024-02-15"
+        "getContracts": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts"
         },
+        "getContractById": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts/:idContract"
+        },
+        "updateContract": {
+            "method": "PUT",
+            "request": "localhost:9000/pestnloc/contracts/:idContract",
+            "body": {
+                "Contract_Availability": 365,
+                "Price": 15000,
+                "End_Date": "2024-02-15"
+            }
+        },
+        "deleteContract": {
+            "method": "DELETE",
+            "request": "localhost:9000/pestnloc/contracts/:idContract"
+        }
     },
-    {
-        "method": "DELETE",
-        "request": "localhost:9000/pestnloc/contracts/:idContract"
+    "car": {
+        "createCar": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/cars",
+            "body": {
+                "License_Plate": "XYZ78FF9",
+                "Model": "Toyota Corona",
+                "Brand": "Zizin",
+                "Fuel_State": "empty",
+                "Car_Power": "500ch",
+                "Car_Type": "Sevran",
+                "Id_Agency": 1
+            }
+        },
+        "getCars": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars"
+        },
+        "getCarById": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate"
+        },
+        "updateCar": {
+            "Comments" : " Incomplete -> Finish agency and modify the model to verify that Id_Agency exist",
+            "method": "PUT",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate",
+            "body": {
+                "Model": "Toyota",
+                "Brand": "Yaris",
+                "Fuel_State": "Full"
+            }
+        },
+        "deleteCar": {
+            "method": "DELETE",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate"
+        }
     },
+    "auth": {
+        "registerUserController": {
+            "Comments" : "Incomplete -> Add the salt to the db ",
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/register",
+            "body": {
+                "Name": "Flo",
+                "LastName": "Smith",
+                "Age": 30,
+                "Address": "456 Oak St",
+                "Date_Permis_Issue": "2021-05-15",
+                "Email": "smith@example.com",
+                "Phone_Number": "+1 555-5678",
+                "Password": "password456"
+            }
+        }
+    }
 }
