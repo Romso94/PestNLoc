@@ -37,14 +37,14 @@ CREATE TABLE Client(
 );
 
 CREATE TABLE Car(
-   Register_Plate VARCHAR(50) NOT NULL,
+   License_Plate VARCHAR(50) NOT NULL,
    Model VARCHAR(50) NOT NULL,
    Brand VARCHAR(50) NOT NULL,
    Fuel_State varchar(50) NOT NULL,
    Car_Power VARCHAR(50) NOT NULL,
    Car_Type VARCHAR(50) NOT NULL,
    Id_Agency INT NOT NULL,
-   PRIMARY KEY(Register_Plate),
+   PRIMARY KEY(License_Plate),
    FOREIGN KEY(Id_Agency) REFERENCES Agency(Id_Agency)
 );
 
@@ -55,11 +55,11 @@ CREATE TABLE Contract(
    Price INT NOT NULL,
    End_Date DATE NOT NULL,
    Id_Client INT NOT NULL,
-   Register_Plate VARCHAR(50) NOT NULL,
+   License_Plate VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Contract),
-   UNIQUE(Register_Plate),
+   UNIQUE(License_Plate),
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
-   FOREIGN KEY(Register_Plate) REFERENCES Car(Register_Plate)
+   FOREIGN KEY(License_Plate) REFERENCES Car(License_Plate)
 );
 
 
@@ -70,12 +70,12 @@ Select * from client;
 INSERT INTO agency(Agency_Name,Address,Phone_Number,Email,Password) values ('Test1','TrucMachin',034567,'test.truc@gmail.com','truc');
 SELECT * from Agency;
 
-INSERT INTO car (Register_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
+INSERT INTO car (License_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
 SELECT * from car; 
 
 
 
-INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,Register_Plate) values (20230217,20230417,150,20240317,1,"FT056TK");
+INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,1,"FT056TK");
 SELECT * from contract; 
 
 SELECT * from client ;
