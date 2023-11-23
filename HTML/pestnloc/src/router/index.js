@@ -6,8 +6,6 @@ import Rent from "../components/RentComponent.vue"
 import Register from "../components/RegisterComponent.vue"
 import DefaultLayout from "../Static_Components/DefaultLayout.vue"
 
-
-
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -19,7 +17,6 @@ const router = createRouter({
                 {
                     path: "/",
                     redirect: "",
-
                 },
                 {
                     path: '/:pathMatch(.*)*',
@@ -32,21 +29,18 @@ const router = createRouter({
                 },
 
                 {
-
                     path : '/Contracts',
                     name : "Contracts",
                     component : Contracts,
                 },
 
                 {
-
                     path : '/Agencies',
                     name : "Agencies",
                     component : Agencies,
                 },
 
                 {
-
                     path : '/Rent',
                     name : "Rent",
                     component : Rent,
@@ -57,12 +51,6 @@ const router = createRouter({
                     name : "Register",
                     component : Register,
                 }
-
-
-
-
-
-
             ]
         },
 

@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <div class="formRegisterInputs">
     <div class="NameInput">
@@ -13,18 +9,18 @@
     <div class="MailPasswordInput">
       <label for="email">Email</label>
       <input type="email" id="email" required>
-
       <label for="password">Password</label>
       <input type="password" id="password" required>
       <label for="Confirmpassword">Confirm Password</label>
       <input type="password" id="Confirmpassword" required>
-
     </div>
   </div>
-
-
   <br><br>
 </template>
+
+<script setup>
+
+</script>
 
 <style scoped>
 

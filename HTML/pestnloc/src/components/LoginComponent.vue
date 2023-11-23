@@ -1,9 +1,7 @@
 <template>
   <div class="maindiv">
-
     <div class="formulaire">
       <form>
-
         <div class="formLogin">
           <tr>
             <td>
@@ -19,22 +17,13 @@
               <a href="/register"  onclick="">No account ? Click Here to Sign up !</a>
             </td>
           </tr>
-
         </div>
-
-
       </form>
-
     </div>
-
-
   </div>
-
 </template>
 
 <script setup>
-
-
 
 </script>
 

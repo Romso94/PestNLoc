@@ -42,7 +42,6 @@ footer{
     box-sizing: border-box;
 }
 
-
 body{
     line-height: 1.2;
     font-family: 'Poppins', sans-serif;
@@ -102,6 +101,7 @@ body{
         display: flex;
         flex-wrap: wrap ;
     }
+
     .li-footer{
         font-size: var(--sizeFontDesktop);
     }

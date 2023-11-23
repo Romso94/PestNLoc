@@ -3,10 +3,8 @@
     <div class="formRegister">
       <component :is="currentStepComponent" />
       <div class="button-container">
-      <button class="bouton" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
-
-      <button class="bouton" @click="showNextStep">Next</button>
-
+        <button class="bouton" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
+        <button class="bouton" @click="showNextStep">Next</button>
       </div>
       <a href="/login" onclick="">You already have an account? Click Here to Sign In!</a>
     </div>
@@ -39,7 +37,6 @@ const showNextStep = () => {
 };
 
 const showPreviousStep = () => {
-  // Adjust the logic to ensure it stays on the first step
   currentStep.value = currentStep.value === 1 ? 1 : currentStep.value - 1;
 };
 </script>

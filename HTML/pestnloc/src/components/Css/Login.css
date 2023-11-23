@@ -14,9 +14,6 @@ body{
     border-radius: 15px;
     padding: 20px;
     border: 1px solid  var(--pestnlocColor);
-
-
-
 }
 
 
@@ -27,10 +24,8 @@ body{
     justify-content: center;
     background: url("/src/assets/loginbg.jpg");
     background-size: cover;
-
     height: 380px;
     width: 100%;
-
 }
 
 tr {
@@ -39,7 +34,6 @@ tr {
     text-align: center;
     font-family: var(--mainFont);
     font-size: var(--sizeFontMobile);
-
 }
 
 td {
@@ -86,6 +80,7 @@ input[type="submit"]:hover {
 }
 
 @media (min-width: 768px){
+
     .maindiv{
         height: 410px;
     }
@@ -102,7 +97,6 @@ input[type="submit"]:hover {
     label{
         font-size: var(--sizeFontTablet);
     }
-
 }
 
 @media (min-width: 1024px){

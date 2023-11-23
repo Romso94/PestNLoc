@@ -2,27 +2,25 @@
   <div class="WelcomeContainer">
       <div class="formResearch">
         <form>
-          <div class="divButtonWelcome">
-            <!--          Choix du type de la voiture -->
+<!--     On va enlever cette div et a la place de cliquer sur un boutton pour la recherche du type de voiture Mets un volet deroulant nono
+         <div class="divButtonWelcome">
             <button class="sports" @click="showImage('sportive')">Sportive</button>
             <button class="electric" @click="showImage('electric')">Electric</button>
             <button class="Suv" @click="showImage('suv')">Suv</button>
-          </div>
+          </div>-->
           <br><br>
           <div class="divSearchWelcome">
             <input type="search">
           </div>
-          <img :src="carImage" class = "showCarImage"/>
           <br><br>
           <div class="parallelebutton">
-          <div class="divDateWelcome">
-            <input type="date">
-            <input type="date">
-          </div>
-
-          <br><br>
-          <div class="separing">
-          <button type="submit"> Show Cars</button>
+            <div class="divDateWelcome">
+              <input type="date">
+              <input type="date">
+            </div>
+            <br><br>
+            <div class="separing">
+              <button type="submit"> Show Cars</button>
             </div>
           </div>
         </form>
@@ -31,26 +29,6 @@
 </template>
 
 <script setup>
-let carImage = '';
-
-function showImage(carType) {
-  switch (carType) {
-    case 'sportive':
-      console.log("sportive");
-      carImage = '/src/assets/sportsdrawing.png';
-      console.log("image change");
-      break;
-
-    case 'electric':
-      carImage = '/src/assets/A45.jpg';
-
-      break;
-
-    case 'suv':
-      carImage = '/src/assets/A45.jpg';
-      break;
-  }
-}
 
 </script>
 
