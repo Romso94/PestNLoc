@@ -11,7 +11,6 @@ const getRentals = async (req, res) => {
     try {
       const agencies = await Agencies.getAllAgencies();
       res.json(agencies);
-      console.log(agencies);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });

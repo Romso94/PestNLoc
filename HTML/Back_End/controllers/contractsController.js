@@ -11,7 +11,6 @@ const getContracts = async (req, res) => {
   try {
       const contracts = await Contract.getAllContracts();
       res.json(contracts);
-      console.log(contracts);
     }
      catch (error) {
       console.error(error);

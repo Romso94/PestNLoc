@@ -23,7 +23,7 @@ const  getAllCars  = async () =>{
 const  getCarById  = async (licensePlate) =>{
     
     try{
-        const query = "SELECT * FROM car Where Id_Registration = ? ";
+        const query = "SELECT * FROM car Where License_Plate = ? ";
         const result = await execute(query,[licensePlate]);
 
         return result 
@@ -44,7 +44,8 @@ const  createCar  = async (carRegister) =>{
 
         return result
         
-    }catch(error){
+    }
+    catch(error){
         console.error(error);
         throw error;
     }

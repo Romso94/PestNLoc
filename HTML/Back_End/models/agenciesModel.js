@@ -11,7 +11,6 @@ const getAllAgencies = async () => {
         const result = await execute(query);
 
         return result
-        
     }
     catch(error){
         console.error(error);
