@@ -5,43 +5,44 @@
 // - `deleteAgency`: Supprime une agence.
 
 const getAllAgencies = async () => {
+    
     try{
-
         const query = "SELECT * FROM AGENCY";
         const result = await execute(query);
 
         return result
         
-    }catch(error){
+    }
+    catch(error){
         console.error(error);
         throw error;
     }
 }
 
 const getAgencyById = async (agencyID) => {
+   
     try{
-
         const query = "SELECT * FROM AGENCY Where Id_Agency= ? ";
         const result = await execute(query,[agencyID]);
 
-        return result
-        
-    }catch(error){
+        return result  
+    }
+    catch(error){
         console.error(error);
         throw error;
     }
 }
 
 const createAgency = async (agencyData) => {
+    
     try {
         const { name, location } = agencyData; 
-
-    
         const query = "INSERT INTO AGENCY (Agency_name, Location) VALUES (?, ?)";
-
         const result = await execute(query, [name, location]);
+
         return result;
-    } catch (error) {
+    } 
+    catch (error) {
         console.error(error);
         throw error;
     }
@@ -50,14 +51,14 @@ const createAgency = async (agencyData) => {
 const updateAgency = async (agencyUpdateData) => {}
 
 const deleteAgency = async (agencyID) => {
+    
     try{
-
         const query = "DELETE FROM AGENCY Where Id_Agency=?";
         const result = await execute(query,[agencyID]);
 
-        return result
-        
-    }catch(error){
+        return result  
+    }
+    catch(error){
         console.error(error);
         throw error;
     }

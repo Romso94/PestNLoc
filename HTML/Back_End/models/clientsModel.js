@@ -12,6 +12,7 @@ const registerUser = async (registerData)  => {
         const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password) VALUES (?,?, ?, ?, ?, ?, ?, ?)';
         const values = [Name,LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, hash];
         const result = await execute(query, values);
+        
         return result;
     } 
     catch (error) {

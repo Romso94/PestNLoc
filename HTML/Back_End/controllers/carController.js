@@ -6,11 +6,12 @@
 const Car = require ('../models/carsModel.js');
 
 const getCars = async (req,res) =>{
-    try {
+    
+  try {
         const cars = await Car.getAllCars();
         res.json(cars);
-       
-      } catch (error) {
+      } 
+      catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
       }
@@ -18,31 +19,33 @@ const getCars = async (req,res) =>{
 }
 
 const getCarById = async (req,res) => {
+    
     const {id} = req.params;
-  try {
-  const cars = await Car.getCarById(id);
-  res.json(cars);
- 
-} catch (error) {
-  console.error(error);
-  res.status(500).json({ error: 'Internal Server Error' });
-}
+    
+    try {
+          const cars = await Car.getCarById(id);
+          res.json(cars);
+        } 
+        catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
 
 }
 
 const createCar = async (req,res) => {
-   const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate} = req.body;
-   try {
-    const carRegister = {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate};
-    const cars = await Car.createCar(carRegister);
-    res.json(cars);
-  } 
-  catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-
     
+  const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate} = req.body;
+   
+  try {
+          const carRegister = {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,Register_Plate};
+          const cars = await Car.createCar(carRegister);
+          res.json(cars);
+        } 
+        catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
 }
 
 const updateCar = async (req,res) => {
