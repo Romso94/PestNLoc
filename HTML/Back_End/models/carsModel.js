@@ -61,7 +61,6 @@ const  updateCar  = async (licensePlate,carRegister) =>{
         const values = [];
         
         Object.keys(carRegister).forEach((key, index, array) => {
-                console.log(carRegister[key]);
                 if(carRegister[key] != undefined){
                     query += `${key} = ?`;
                     values.push(carRegister[key]);
@@ -70,9 +69,10 @@ const  updateCar  = async (licensePlate,carRegister) =>{
                     }
                 }
         });
-            query += " WHERE License_Plate = ?";
+            let rquery = query.slice(0,-2);
+            rquery += " WHERE License_Plate = ?";
             values.push(licensePlate);
-            const result = await execute(query, values);
+            const result = await execute(rquery, values);
 
             return result
         }

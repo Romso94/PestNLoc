@@ -1,8 +1,3 @@
-// - `getContracts`: Récupère la liste des contrats de location.
-// - `getContractById`: Récupère un contrat de location par son identifiant.
-// - `createContract`: Crée un nouveau contrat de location.
-// - `updateContract`: Met à jour un contrat de location existant.
-// - `deleteContract`: Supprime un contrat de location.
 
 const Contract = require('../models/contractsModel.js');
 
@@ -19,10 +14,10 @@ const getContracts = async (req, res) => {
   };
 
 const getContractById = async (req,res) =>{
-      const {id} = req.params;
+      const {idContract} = req.params;
       try {
-            const contract = await Contract.getContractById(id);
-            res.json(contract);
+            const contracts = await Contract.getContractById(idContract);
+            res.json(contracts);
     } 
     catch (error) {
             console.error(error);
@@ -31,7 +26,8 @@ const getContractById = async (req,res) =>{
 }
 
 const createContract = async (req,res) =>{
-    const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = req.body;
+    
+  const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = req.body;
 
     try{
       const dataContract = {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate};
@@ -65,10 +61,10 @@ const updateContract = async (req,res) =>{
 
 const deleteContract = async (req,res) =>{
       
-  const {id} = req.params;
+  const {idContract} = req.params;
       
       try {
-            const contract = await Contract.deleteContract(id);
+            const contract = await Contract.deleteContract(idContract);
             res.json(contract);
           } 
     catch (error) {

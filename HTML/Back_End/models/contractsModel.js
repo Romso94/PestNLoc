@@ -47,7 +47,7 @@ const createContract = async (contractsData) => {
         if (!carExist || carExist.length === 0) {
             throw new Error("Car doesn't exist in the Database!");
           }
-         else if(!clientExist || clientExist.length === 0){
+         if(!clientExist || clientExist.length === 0){
             throw new Error("Client doesn't exist in the Database!");
          }; 
 
@@ -68,15 +68,46 @@ const updateContract = async (idContract,contractsData) => {
 
     const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = contractsData;
     const contractExist = await getContractById(idContract);
-
+   
+    if(Id_Client != undefined){
+        const clientExist = await getClientById(Id_Client);
+        if(!clientExist || clientExist.length === 0){
+            throw new Error ("Client doesn't exist !");
+        }
+        
+    };
+    if(License_Plate != undefined){
+        const carExist = await getCarById(License_Plate);
+        if(!carExist || carExist.length === 0 ){
+            throw new Error ("Car doesn't exist !");
+        }
+    };
+    
     try{
 
         if(!contractExist || contractExist.length === 0){
             throw new Error ("Contract doesn't exist !");
         }
-
         
+        let query = "UPDATE contract SET ";
+        const values = [];
+        
+        Object.keys(contractsData).forEach((key, index, array) => {
+                if(contractsData[key] != undefined){
+                    query += `${key} = ?`;
+                    values.push(contractsData[key]);
+                    if (index < array.length - 1) {
+                        query += ", ";
+                    }
+                }
+        });
+            let rquery = query.slice(0,-2);
+            rquery += " WHERE Id_Contract = ?";
+            values.push(idContract);
+            console.log(rquery);
+            const result = await execute(rquery,values);
 
+            return result;
     }
     catch(error){
         console.error(error);
