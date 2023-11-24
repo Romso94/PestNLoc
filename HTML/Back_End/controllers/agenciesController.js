@@ -7,7 +7,8 @@
 
 const Agencies = require('../models/agenciesModel.js');
 
-const getRentals = async (req, res) => {
+const getAllAgencies = async (req, res) => {
+    
     try {
       const agencies = await Agencies.getAllAgencies();
       res.json(agencies);
@@ -18,37 +19,40 @@ const getRentals = async (req, res) => {
   };
 
 
-const getRentalById = async (req,res) =>{
-  const {id} = req.params;
+const getAgencyById = async (req,res) =>{
+  
+  const {idAgency} = req.params;
+    
   try {
-const agency= await Agencies.getAgencyById(id);
-  res.json(agency);
-  console.log(agency);
-} catch (error) {
-  console.error(error);
-  res.status(500).json({ error: 'Internal Server Error' });
+          const agency= await Agencies.getAgencyById(idAgency);
+          res.json(agency);
+  }
+  catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
-}
 
 
 
-const createRental = async (req,res) =>{
+const createAgency = async (req,res) =>{
   
 }
 
-const updateRental = async (req,res) =>{}
+const updateAgency = async (req,res) =>{}
 
-const deleteRental = async (req,res) =>{
-  const {id} = req.params;
+const deleteAgency = async (req,res) =>{
+  const {idAgency} = req.params;
   try {
-  const agencies = await Agencies.deleteAgency(id);
+  const agencies = await Agencies.deleteAgency(idAgency);
     res.json(Agencies);
-  console.log("Delete Successfull");
-} catch (error) {
+  
+} 
+catch (error) {
   console.error(error);
   res.status(500).json({ error: 'Internal Server Error' });
 }
 
 }
 
-module.exports = {getRentals, getRentalById, createRental, updateRental, deleteRental};
+module.exports = {getAllAgencies, getAgencyById,deleteAgency};
