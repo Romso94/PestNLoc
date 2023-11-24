@@ -12,6 +12,7 @@ CREATE TABLE Agency(
    Phone_Number VARCHAR(50) NOT NULL,
    Email VARCHAR(50) NOT NULL,
    Password VARCHAR(2500) NOT NULL,
+   Salt VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Agency),
    UNIQUE(Agency_Name),
    UNIQUE(Address),
@@ -29,6 +30,7 @@ CREATE TABLE Client(
    Email VARCHAR(50) NOT NULL,
    Phone_Number VARCHAR(50) NOT NULL,
    Password VARCHAR(2500) NOT NULL,
+   Salt VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Client),
    UNIQUE(LastName),
    UNIQUE(Address),
@@ -64,10 +66,10 @@ CREATE TABLE Contract(
 
 
     
-INSERT INTO client (LastName,Name,Age,Address,Date_Permis_Issue,Email,Phone_Number,Password) values ('Doe','Florian',25,'123 Main retgzgzeSt','2022-01-01','john.doee@example.com','095403495','motdepasse123');
+INSERT INTO client (LastName,Name,Age,Address,Date_Permis_Issue,Email,Phone_Number,Password,Salt) values ('Doe','Florian',25,'123 Main retgzgzeSt','2022-01-01','john.doee@example.com','095403495','motdepasse123','test');
 Select * from client;
 
-INSERT INTO agency(Agency_Name,Address,Phone_Number,Email,Password) values ('Test1','TrucMachin',034567,'test.truc@gmail.com','truc');
+INSERT INTO agency(Agency_Name,Address,Phone_Number,Email,Password,Salt) values ('Test1','TrucMachin',034567,'test.truc@gmail.com','truc',"salt");
 SELECT * from Agency;
 
 INSERT INTO car (License_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);

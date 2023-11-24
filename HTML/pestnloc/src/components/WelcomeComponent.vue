@@ -2,15 +2,18 @@
   <div class="WelcomeContainer">
       <div class="formResearch">
         <form>
-<!--     On va enlever cette div et a la place de cliquer sur un boutton pour la recherche du type de voiture Mets un volet deroulant nono
+
          <div class="divButtonWelcome">
             <button class="sports" @click="showImage('sportive')">Sportive</button>
             <button class="electric" @click="showImage('electric')">Electric</button>
             <button class="Suv" @click="showImage('suv')">Suv</button>
-          </div>-->
+          </div>
           <br><br>
           <div class="divSearchWelcome">
             <input type="search">
+            <div class="separing911">
+            <img src="@/assets/911.png" class="ImageWelcome911"/>
+              </div>
           </div>
           <br><br>
           <div class="parallelebutton">
@@ -19,7 +22,7 @@
               <input type="date">
             </div>
             <br><br>
-            <div class="separing">
+            <div class="separingshowcar">
               <button type="submit"> Show Cars</button>
             </div>
           </div>
@@ -29,6 +32,7 @@
 </template>
 
 <script setup>
+let carImage = "./src/assets/911.png"
 
 </script>
 
