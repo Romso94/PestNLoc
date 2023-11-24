@@ -4,6 +4,9 @@
 // - `updateAgency`: Met à jour une agence existante.
 // - `deleteAgency`: Supprime une agence.
 
+const bcrypt = require('bcrypt');
+const { execute } = require('../dbUtils/db.js');
+
 const getAllAgencies = async () => {
     
     try{
@@ -52,8 +55,11 @@ const updateAgency = async (agencyUpdateData) => {}
 const deleteAgency = async (agencyID) => {
     
     try{
-        const query = "DELETE FROM AGENCY Where Id_Agency=?";
-        const result = await execute(query,[agencyID]);
+        const deleteCarsQuery = "DELETE FROM CAR WHERE Id_Agency = ?";
+        await execute(deleteCarsQuery, [agencyID]);
+
+        const deleteAgencyQuery = "DELETE FROM AGENCY WHERE Id_Agency = ?";
+        const result = await execute(deleteAgencyQuery, [agencyID]);
 
         return result  
     }
