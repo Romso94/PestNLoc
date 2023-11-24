@@ -1,7 +1,8 @@
 
+const { execute } = require('../dbUtils/db.js');
 const Car = require ('../models/carsModel.js');
 
-const getCars = async (req,res) =>{
+async function getCars (req,res) {
     
   try {
         const cars = await Car.getAllCars();
@@ -13,7 +14,7 @@ const getCars = async (req,res) =>{
       }
 }
 
-const getCarById = async (req,res) => {
+async function getCarById (req,res) {
     
     const {id} = req.params;
     
@@ -27,7 +28,7 @@ const getCarById = async (req,res) => {
         }
 }
 
-const createCar = async (req,res) => {
+async function  createCar (req,res) {
     
   const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate} = req.body;
    
@@ -43,7 +44,7 @@ const createCar = async (req,res) => {
         }
 }
 
-const updateCar = async (req,res) => {
+async function updateCar (req,res) {
 
   const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency} = req.body;
   const {licensePlate}= req.params;
@@ -60,7 +61,7 @@ const updateCar = async (req,res) => {
         }
 }
 
-const deleteCar = async (req,res) => {
+async function deleteCar (req,res) {
 
   const {licensePlate} = req.params;
     
@@ -74,4 +75,18 @@ const deleteCar = async (req,res) => {
         }
 }
 
-module.exports = {getCars,getCarById,createCar,updateCar,deleteCar};
+async function getAllCarByAgencyId (req,res) {
+
+    const {idAgency} = req.params;
+  try{
+    const cars = await Car.getAllCarByAgencyId(idAgency);
+    res.json(cars);
+
+  }
+  catch(error){
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = {getCars,getCarById,createCar,updateCar,deleteCar,getAllCarByAgencyId};

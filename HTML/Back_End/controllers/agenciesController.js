@@ -37,9 +37,36 @@ const getAgencyById = async (req,res) =>{
 
 const createAgency = async (req,res) =>{
   
+  const {Agency_Name,Address,Phone_Number,Email,Password} = req.body;
+
+  try{
+      const dataAgency = {Agency_Name,Address,Phone_Number,Email,Password};
+      const agencies = await Agencies.createAgency(dataAgency);
+      res.json(agencies);
+  }
+  catch(error){
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+  
+  
 }
 
-const updateAgency = async (req,res) =>{}
+const updateAgency = async (req,res) =>{
+
+    const {idAgency} = req.params;
+    const {Agency_Name,Address,Phone_Number,Email} = req.body;
+
+    try{
+      const dataAgency = {Agency_Name,Address,Phone_Number,Email};
+      const agencies = await Agencies.updateAgency(idAgency,dataAgency);
+      res.json(agencies);
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 
 const deleteAgency = async (req,res) =>{
   const {idAgency} = req.params;
@@ -55,4 +82,4 @@ catch (error) {
 
 }
 
-module.exports = {getAllAgencies, getAgencyById,deleteAgency};
+module.exports = {getAllAgencies, getAgencyById,deleteAgency, createAgency, updateAgency};

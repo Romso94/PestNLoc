@@ -1,7 +1,8 @@
 
 const {execute} = require ('../dbUtils/db');
+const { getAgencyById } = require('./agenciesModel');
 
-const  getAllCars  = async () =>{
+async function getAllCars () {
     
     try{
         const query = "SELECT * FROM car";
@@ -15,7 +16,7 @@ const  getAllCars  = async () =>{
     }
 }
 
-const  getCarById  = async (licensePlate) =>{
+async function  getCarById (licensePlate) {
     
     try{
         const query = "SELECT * FROM car Where License_Plate = ? ";
@@ -29,11 +30,15 @@ const  getCarById  = async (licensePlate) =>{
     }
 }
 
-const  createCar  = async (carRegister) =>{
+async function  createCar (carRegister) {
     
     const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate} = carRegister;
+    const agencyExist = await getAgencyById(Id_Agency);
     
     try{
+        if(!agencyExist || agencyExist.length === 0){
+            throw new Error("Agency doesn't exist !");
+        }
         const query = "INSERT INTO car (Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate) VALUES (?,?,?,?,?,?,?)";
         const  values = [Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate];
         const result = await execute(query,values);
@@ -47,13 +52,19 @@ const  createCar  = async (carRegister) =>{
     }
 }
 
-const  updateCar  = async (licensePlate,carRegister) =>{
-
-    // Finish agency and modify the model to verify that Id_Agency exist
+async function updateCar (licensePlate,carRegister) {
 
     const carExist = await getCarById(licensePlate);
     const {Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency} = carRegister;
-
+    if(Id_Agency!= undefined){
+        const agencyExist = await getAgencyById(Id_Agency);
+        
+        if(!agencyExist || agencyExist.length === 0)
+            {
+                throw new Error("Agency doesn't exist !");
+            }
+    }
+    
     try{
         if (!carExist || carExist.length === 0) {
             throw new Error("Car doesn't exist in the Database!");
@@ -66,7 +77,7 @@ const  updateCar  = async (licensePlate,carRegister) =>{
                 if(carRegister[key] != undefined){
                     query += `${key} = ?`;
                     values.push(carRegister[key]);
-                    if (index < array.length - 1) {
+                    if (index < array.length ) {
                         query += ", ";
                     }
                 }
@@ -84,7 +95,7 @@ const  updateCar  = async (licensePlate,carRegister) =>{
     }
 }
 
-const  deleteCar  = async (licensePlate) =>{
+async function deleteCar (licensePlate) {
 
     try{
         const query = "DELETE contract,car FROM contract JOIN car ON contract.License_Plate=car.License_Plate  Where contract.License_Plate = ? ";
@@ -98,5 +109,25 @@ const  deleteCar  = async (licensePlate) =>{
     }
 }
 
+async function getAllCarByAgencyId (agencyID) {
 
-module.exports = {getAllCars,getCarById,createCar,updateCar,deleteCar};
+    const agencyExist = await getAgencyById(agencyID);
+    
+    try{
+        if(!agencyExist || agencyExist.length === 0){
+            throw new Error("Agency doesn't exist !");
+        }
+
+        const query = "SELECT * FROM car WHERE Id_Agency = ?;";
+        const result = await execute(query,[agencyID]);
+
+        return result;
+    }
+    catch(error){
+        console.error(error);
+        throw error;
+    }
+}
+
+
+module.exports = {getAllCars,getCarById,createCar,updateCar,deleteCar,getAllCarByAgencyId};

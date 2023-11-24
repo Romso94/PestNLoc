@@ -1,9 +1,9 @@
+// Creer un clientController
+
 const bcrypt = require('bcrypt');
 const { execute } = require('../dbUtils/db.js');
 
-const registerUser = async (registerData)  => {
-
-    // Add the salt to the db 
+async function registerUser (registerData) {
     
     const {Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password} = registerData;
     const saltRounds = 10;
@@ -11,8 +11,8 @@ const registerUser = async (registerData)  => {
     try {
         const salt = await bcrypt.genSalt(saltRounds);
         const hash = await bcrypt.hash(registerData.Password, salt);
-        const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password) VALUES (?,?, ?, ?, ?, ?, ?, ?)';
-        const values = [Name,LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, hash];
+        const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, Salt) VALUES (?,?,?,?,?,?,?,?,?)';
+        const values = [Name,LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, hash,salt];
         const result = await execute(query, values);
         
         return result;
@@ -23,7 +23,7 @@ const registerUser = async (registerData)  => {
     }
 };
 
-const getClientById = async (idClient) =>{
+async function getClientById  (idClient) {
 
     try {
         const query = "SELECT * FROM client WHERE Id_Client = ?";        

@@ -1,15 +1,12 @@
-// - Fonctions :
-//     - `getAllContracts`: Récupère tous les contrats.
-//     - `getContractById`: Récupère un contrat par son ID.
-//     - `createContract`: Crée un nouveau contrat.
-//     - `updateContract`: Met à jour un contrat existant.
-//     - `deleteContract`: Supprime un contrat.
+// Fonctions a faire : 
+//          -> Get contract by License_Plate
+//          -> Get contract by Agency id
 
 const { execute } = require('../dbUtils/db.js');
 const { getCarById } = require('./carsModel.js');
 const { getClientById} = require ('./clientsModel.js');
 
-const getAllContracts = async () => {
+async function getAllContracts () {
     try{
 
         const query = "SELECT * FROM CONTRACT";
@@ -23,7 +20,7 @@ const getAllContracts = async () => {
     }
 }
 
-const getContractById = async (contractsID) => {
+async function getContractById  (contractsID) {
     try{
 
         const query = "SELECT * FROM CONTRACT Where Id_Contract= ? ";
@@ -37,7 +34,7 @@ const getContractById = async (contractsID) => {
     }
 }
 
-const createContract = async (contractsData) => {
+async function createContract  (contractsData) {
     
     const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = contractsData;
     const carExist = await getCarById(License_Plate);
@@ -64,7 +61,7 @@ const createContract = async (contractsData) => {
 
 }
 
-const updateContract = async (idContract,contractsData) => {
+async function updateContract (idContract,contractsData) {
 
     const {Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate} = contractsData;
     const contractExist = await getContractById(idContract);
@@ -96,7 +93,7 @@ const updateContract = async (idContract,contractsData) => {
                 if(contractsData[key] != undefined){
                     query += `${key} = ?`;
                     values.push(contractsData[key]);
-                    if (index < array.length - 1) {
+                    if (index < array.length) {
                         query += ", ";
                     }
                 }
@@ -116,7 +113,7 @@ const updateContract = async (idContract,contractsData) => {
 
 }
 
-const deleteContract = async (contractsID) => {
+async function deleteContract (contractsID) {
     
     try{
         const query = "DELETE FROM CONTRACT Where Id_Contract=?";

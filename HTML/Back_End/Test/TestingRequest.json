@@ -56,8 +56,11 @@
             "method": "GET",
             "request": "localhost:9000/pestnloc/cars/:licensePlate"
         },
+        "getCarByAgencyId": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars/agencies/:idAgency"
+        },
         "updateCar": {
-            "Comments" : " Incomplete -> Finish agency and modify the model to verify that Id_Agency exist",
             "method": "PUT",
             "request": "localhost:9000/pestnloc/cars/:licensePlate",
             "body": {
@@ -73,7 +76,7 @@
     },
     "auth": {
         "registerUserController": {
-            "Comments" : "Incomplete -> Add the salt to the db ",
+            "Comments": "Incomplete -> Add the salt to the db ",
             "method": "POST",
             "request": "localhost:9000/pestnloc/register",
             "body": {
@@ -86,6 +89,42 @@
                 "Phone_Number": "+1 555-5678",
                 "Password": "password456"
             }
+        }
+    },
+    "agencies" : {
+        "getAllAgencies" : {
+            "method" : "GET",
+            "request" : "localhost:9000/pestnloc/agencies"
+        },
+        "getAgencyById" : {
+            "method" : "GET",
+            "request" : "localhost:9000/pestnloc/agencies/:idAgency"
+        },
+        "deleteAgency" : {
+            "getAgencyById" : {
+                "method" : "DELETE",
+                "request" : "localhost:9000/pestnloc/agencies/:idAgency"
+            }
+        },
+        "createAgency" : {
+            "method" :"POST",
+            "request" : "localhost:9000/pestnloc/agencies",
+            "body" : {
+                    "Agency_Name": "Budapest Car Rentals",
+                    "Address": "456 Main St",
+                    "Phone_Number": "+36 30 123 4567",
+                    "Email": "info@budapestcarrentals.com",
+                    "Password": "agencyPassword123"
+            }
+        },
+        "updateAgency" : {
+            "method" : "PUT",
+            "request" : "localhost:9000/pestnloc/agencies/:idAgency",
+            "body" : {
+                "Agency_Name": "Budapest Car Rentals",
+                "Address": "456 Main St",
+                "Phone_Number": "+36 30 123 "
+              }
         }
     }
 }
