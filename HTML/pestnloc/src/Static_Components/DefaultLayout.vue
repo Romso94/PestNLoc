@@ -1,10 +1,12 @@
 <template>
-  <HeaderApp/>
-  <router-view/>
-  <div v-if="isHomePage">
-    <WelcomeComponent/>
+  <div>
+    <HeaderApp/>
+    <router-view/>
+    <div v-if="isHomePage">
+      <WelcomeComponent/>
+    </div>
+    <FooterComponent/>
   </div>
-<FooterComponent/>
 </template>
 
 <script setup>
