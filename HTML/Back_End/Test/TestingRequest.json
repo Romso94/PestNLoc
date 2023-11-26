@@ -24,6 +24,10 @@
             "method": "GET",
             "request": "localhost:9000/pestnloc/contracts/cars/:licensePlate"
         },
+        "getContractsByAgency" : {
+            "method" : "GET",
+            "request" : "localhost:9000/pestnloc/contracts/agencies/:idAgency"
+        },
         "updateContract": {
             "method": "PUT",
             "request": "localhost:9000/pestnloc/contracts/:idContract",

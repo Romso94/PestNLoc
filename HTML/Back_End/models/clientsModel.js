@@ -1,4 +1,3 @@
-// Creer un clientController
 
 const bcrypt = require('bcrypt');
 const { execute } = require('../dbUtils/db.js');
@@ -23,10 +22,25 @@ async function registerUser(registerData) {
     }
 };
 
+async function getAllClient() {
+
+    try {
+        const query = "SELECT Id_Client, Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number FROM client;";
+        const result = await execute(query);
+
+        return result;
+
+    }
+    catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 async function getClientById(idClient) {
 
     try {
-        const query = "SELECT * FROM client WHERE Id_Client = ?";
+        const query = "SELECT Id_Client, Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number FROM client WHERE Id_Client = ?";
         const result = await execute(query, [idClient]);
 
         return result;
@@ -37,6 +51,27 @@ async function getClientById(idClient) {
     }
 }
 
+async function deleteClient(idClient) {
+
+    try {
+        const queryContract = "DELETE FROM contract Where Id_Client =?";
+        const resultContract = await execute(queryContract, [idClient]);
+
+        const queryClient = "DELETE FROM client Where Id_Client =?";
+        const resultClient = await execute(queryClient, [idClient]);
+
+        return resultClient
+
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 
-module.exports = { registerUser, getClientById };
+module.exports = {
+    registerUser,
+    getAllClient,
+    getClientById,
+    deleteClient
+};

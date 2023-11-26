@@ -85,8 +85,26 @@ async function getContractByLicensePlate(req, res) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-
-
 }
 
-module.exports = { getContracts, getContractById, createContract, updateContract, deleteContract, getContractByLicensePlate };
+async function getContractsByAgency(req, res) {
+  const { idAgency } = req.params;
+
+  try {
+    const contract = await Contract.getContractsByAgency(idAgency);
+    res.json(contract);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = {
+  getContracts,
+  getContractById,
+  createContract,
+  updateContract, deleteContract,
+  getContractByLicensePlate,
+  getContractsByAgency
+};

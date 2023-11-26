@@ -1,7 +1,5 @@
-// Fonctions a faire : 
-//          -> Get contracts by Agency id
 
-const { getAgencyById } = require('../controllers/agenciesController.js');
+const { getAgencyById } = require('./agenciesModel.js');
 const { execute } = require('../dbUtils/db.js');
 const { getCarById } = require('./carsModel.js');
 const { getClientById } = require('./clientsModel.js');
@@ -147,13 +145,15 @@ async function getContractByLicensePlate(licensePlate) {
 
 async function getContractsByAgency(idAgency) {
 
+    // SELECTIONNER TOUTES LES VOITURES POUR LE ID_AGENCY ET AFFICHER LES CONTRATS 
+
     const agencyExist = await getAgencyById(idAgency);
 
     try {
         if (!agencyExist || agencyExist.length === 0) {
             throw new Error("Agency doesn't exist !")
         }
-        const query = "SELECT * FROM contract where Id_Agency = ?;";
+        const query = "SELECT * FROM contract WHERE Id_Agency = ?;";
         const result = await execute(query, [idAgency]);
 
         return result;
@@ -171,5 +171,6 @@ module.exports = {
     createContract,
     updateContract,
     deleteContract,
-    getContractByLicensePlate
+    getContractByLicensePlate,
+    getContractsByAgency
 };

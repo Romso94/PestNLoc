@@ -1,6 +1,6 @@
-const clients = require("../models/clientsModel")
+const clients = require("../models/clientsModel");
 
-const registerUserController = async (req, res) => {
+async function registerUserController (req, res)  {
 
   const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password } = req.body;
 
