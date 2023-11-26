@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-let carImage = "./src/assets/911.png"
+//let carImage = "./src/assets/911.png"
 
 </script>
 
