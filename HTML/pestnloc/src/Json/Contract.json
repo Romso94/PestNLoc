@@ -1,5 +1,4 @@
-[
-  {
+ [{
     "Contract_Availability": 365,
     "Start_Date": "2023-01-15",
     "Price": 150.0,
@@ -15,4 +14,4 @@
     "Id_Client": 2,
     "Id_Registration": "DEF456"
   }
-]
+ ]
