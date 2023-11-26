@@ -26,6 +26,7 @@ async function getClientById(req, res) {
 }
 
 async function deleteClient(req, res) {
+
     const { idClient } = req.params;
 
     try {
