@@ -10,10 +10,12 @@
           </div>
           <br><br>
           <div class="divSearchWelcome">
+            <div class ="separatingsearch">
             <input type="search">
-            <div class="separing911">
+            </div>
+            <div class ="separating911">
             <img src="@/assets/911.png" class="ImageWelcome911"/>
-              </div>
+            </div>
           </div>
           <br><br>
           <div class="parallelebutton">
@@ -23,7 +25,7 @@
             </div>
             <br><br>
             <div class="separingshowcar">
-              <button type="submit"> Show Cars</button>
+              <button type="submit"> Show cars available</button>
             </div>
           </div>
         </form>
