@@ -5,7 +5,7 @@ const { registerUserController } = require('../controllers/authController.js');
 const { getContracts, getContractById, deleteContract, createContract, updateContract, getContractByLicensePlate, getContractsByAgency } = require('../controllers/contractsController.js');
 const { getCars, getCarById, createCar, updateCar, deleteCar, getAllCarByAgencyId } = require('../controllers/carController.js');
 const { getAllAgencies, getAgencyById, deleteAgency, createAgency, updateAgency } = require('../controllers/agenciesController.js');
-const { getClientById, getAllClient, deleteClient } = require('../controllers/clientController.js');
+const { getClientById, getAllClient, deleteClient, updateClient } = require('../controllers/clientController.js');
 
 
 
@@ -16,6 +16,7 @@ router.post('/pestnloc/register', registerUserController);
 router.get('/pestnloc/clients/:idClient', getClientById);
 router.get('/pestnloc/clients', getAllClient);
 router.delete('/pestnloc/clients/:idClient', deleteClient);
+router.put('/pestnloc/clients/:idClient', updateClient);
 
 //Route pour contractsController 
 router.post('/pestnloc/contracts', createContract);

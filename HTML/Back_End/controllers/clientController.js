@@ -39,16 +39,27 @@ async function deleteClient(req, res) {
     }
 }
 
-async function createClient (req,res) {
-
-}
 
 async function updateClient (req,res) {
     
+    const {idClient} = req.params;
+    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number} = req.body;
+    
+    try{
+        const dataClient = { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number};
+        const clients = await Client.updateClient(idClient,dataClient);
+        res.json(clients);
+
+        }
+    catch(error){
+        console.error(error);
+        res.status(500).json({ error: 'Erreur interne du serveur' });
+    }
 }
 
 module.exports = {
     getAllClient,
     getClientById,
-    deleteClient
+    deleteClient,
+    updateClient
 }

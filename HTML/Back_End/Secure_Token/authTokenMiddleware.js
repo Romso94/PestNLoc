@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-function authenticateToken(req, res, next) {
+async function authenticateToken(req, res, next) {
   const token = req.header('Authorization');
   if (!token) return res.status(401).json({ error: 'Accès non autorisé' });
 
@@ -10,5 +10,6 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
+
 
 module.exports = authenticateToken;

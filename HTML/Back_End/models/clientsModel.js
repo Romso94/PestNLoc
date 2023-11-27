@@ -68,10 +68,47 @@ async function deleteClient(idClient) {
     }
 }
 
+async function updateClient(idClient,dataClient) {
+    const {Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number} = dataClient;
+    const clientExist = await getClientById(idClient);
+
+    try{
+        if (!clientExist || clientExist.length === 0){
+            throw new Error("Client doesn't exist !");
+        }
+
+        let query = "UPDATE client SET ";
+        const values = [];
+
+        Object.keys(dataClient).forEach((key, index, array) => {
+            if (dataClient[key] != undefined) {
+                query += `${key} = ?`;
+                values.push(dataClient[key]);
+                if (index < array.length) {
+                    query += ", ";
+                }
+            }
+        });
+        let rquery = query.slice(0, -2);
+        rquery += " WHERE Id_Client = ?";
+        values.push(idClient);
+        const result = await execute(rquery, values);
+
+        return result;
+
+    }
+    catch(error){
+        console.error(error);
+        throw error;
+    }
+
+}
+
 
 module.exports = {
     registerUser,
     getAllClient,
     getClientById,
-    deleteClient
+    deleteClient,
+    updateClient
 };
