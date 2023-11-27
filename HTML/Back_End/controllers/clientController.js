@@ -39,6 +39,14 @@ async function deleteClient(req, res) {
     }
 }
 
+async function createClient (req,res) {
+
+}
+
+async function updateClient (req,res) {
+    
+}
+
 module.exports = {
     getAllClient,
     getClientById,

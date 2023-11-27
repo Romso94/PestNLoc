@@ -145,15 +145,13 @@ async function getContractByLicensePlate(licensePlate) {
 
 async function getContractsByAgency(idAgency) {
 
-    // SELECTIONNER TOUTES LES VOITURES POUR LE ID_AGENCY ET AFFICHER LES CONTRATS 
-
     const agencyExist = await getAgencyById(idAgency);
 
     try {
         if (!agencyExist || agencyExist.length === 0) {
             throw new Error("Agency doesn't exist !")
         }
-        const query = "SELECT * FROM contract WHERE Id_Agency = ?;";
+        const query = "SELECT Contract.* FROM Contract JOIN Car ON Contract.License_Plate = Car.License_Plate WHERE Car.Id_Agency = ?;";
         const result = await execute(query, [idAgency]);
 
         return result;
