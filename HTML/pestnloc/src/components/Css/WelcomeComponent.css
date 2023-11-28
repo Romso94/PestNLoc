@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.WelcomeContainer{
+    display: flex;
+    background-color : var(--pestnlocColor);
+    margin-top: 50px;
+    height: 380px;
+    width : 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.separingshowcar{
+    padding-left: 200px;
+}
+
+.ImageWelcome911{
+    width: 300px;
+    height: 90px;
+}
+
+.formResearch{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    height: 250px;
+    width: 70vh;
+    border-radius: 3px;
+    flex-direction: column;
+}
+
+
+button{
+    margin-right: 4%;
+    background-color: var(--pestnlocColor);
+
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.parallelebutton{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.divButtonWelcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-top: 20px;
+}
+
+button[type="submit"]{
+    background-color: var(--pestnlocColor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    margin : 0;
+}
+
+button[type="submit"]:hover {
+    background-color: #147E05FF;
+}
+
+input[type="search"],
+input[type="date"]{
+    width: 35%;
+    max-height: 20px;
+    max-width: 100px;
+    min-width: 70px;
+    padding: 5px;
+    margin-bottom: 7px;
+    border: 1px solid ;
+    border-radius: 5px;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+}
+
+.divDateWelcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.divSearchWelcome{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.separating911{
+    padding-left: 100px;
+}
+
+.separatingsearch{
+    margin-top : 30px;
+    min-width: 90px;
+}
+
+@media (min-width: 768px){
+
+    .WelcomeContainer{
+        display: flex;
+        background-color : var(--pestnlocColor);
+        margin-top: 50px;
+        height: 450px;
+        width : 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .separingshowcar{
+        padding-left: 500px;
+    }
+
+    .ImageWelcome911{
+        width: 470px;
+        height: 140px;
+    }
+
+    .formResearch{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        height: 350px;
+        width: 120vh;
+        border-radius: 3px;
+        flex-direction: column;
+
+    }
+
+    button{
+        margin-right: 4%;
+        background-color: var(--pestnlocColor);
+        border: none;
+        border-radius: 5px;
+        padding: 10px 19px;
+        font-size: var(--sizeFontMobile);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .parallelebutton{
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .divButtonWelcome{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        padding-top: 20px;
+    }
+
+    button[type="submit"]{
+        background-color: var(--pestnlocColor);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: var(--sizeFontMobile);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        margin : 0;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #147E05FF;
+    }
+
+    input[type="search"],
+    input[type="date"]{
+        width: 35%;
+        max-height: 30px;
+        max-width: 120px;
+        min-width: 100px;
+        padding: 5px;
+        margin-bottom: 7px;
+        border: 1px solid ;
+        border-radius: 5px;
+        font-size: var(--sizeFontMobile);
+        font-weight: bold;
+    }
+
+    .divDateWelcome{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+    }
+
+    .divSearchWelcome{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+    }
+
+    .separating911{
+        padding-left: 200px;
+    }
+
+    .separatingsearch{
+        margin-top : 60px;
+        min-width: 90px;
+    }
+
+}
