@@ -21,27 +21,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 
-const test = ref(null);
-
-const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:9000/pestnloc/contracts");
-    if (response.ok) {
-      test.value = await response.text();
-      console.log(test.value);
-    } else {
-      console.error("Failed to fetch data:", response.status, response.statusText);
-    }
-  } catch (error) {
-    console.error("An error occurred while fetching data:", error);
-  }
-};
-
-onMounted(() => {
-  fetchData();
-});
 
 </script>
 
