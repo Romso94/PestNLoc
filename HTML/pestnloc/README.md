@@ -1,11 +1,29 @@
-# PestNLoc
+# pestnloc
 
-### POSCENTE Florian - GAS Romain - ROUX Noé
+This template should help get you started developing with Vue 3 in Vite.
 
-## Renting Vehicle in Hungary
+## Recommended IDE Setup
 
-We are going to make a website for a company that rents cars in Hungary. 
-There will be many categories of cars, like sports, family cars, electric cars... 
-On our website we will propose to our client to rent some cars for short to long time.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-We will use Vue.Js files to make this project. 
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
