@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {verifyToken,adminOnly} = require('../middleware/auth.js');
 
-const { registerUserController, loginUser } = require('../controllers/authController.js');
+const { registerUserController, loginUser, registerAdminController, loginAdmin } = require('../controllers/authController.js');
 const { getContracts, getContractById, deleteContract, createContract, updateContract, getContractByLicensePlate, getContractsByAgency, getContractByClient } = require('../controllers/contractsController.js');
 const { getCars, getCarById, createCar, updateCar, deleteCar, getAllCarByAgencyId } = require('../controllers/carController.js');
-const { getAllAgencies, getAgencyById, deleteAgency, createAgency, updateAgency } = require('../controllers/agenciesController.js');
+const { getAllAgencies, getAgencyById, deleteAgency, updateAgency} = require('../controllers/agenciesController.js');
 const { getClientById, getAllClient, deleteClient, updateClient } = require('../controllers/clientController.js');
 
 
@@ -13,6 +13,8 @@ const { getClientById, getAllClient, deleteClient, updateClient } = require('../
 // Routes pour authController
 router.post('/pestnloc/register', registerUserController);
 router.post('/pestnloc/login', loginUser);
+router.post('/pestnloc/admin/register', registerAdminController);
+router.post('/pestnloc/admin/login', loginAdmin);
 
 
 // Routes pour clientController
@@ -43,7 +45,6 @@ router.get('/pestnloc/cars/agencies/:idAgency', getAllCarByAgencyId);
 router.get('/pestnloc/agencies',  getAllAgencies);
 router.get('/pestnloc/agencies/:idAgency',  getAgencyById);
 router.delete('/pestnloc/agencies/:idAgency', verifyToken, adminOnly, deleteAgency);
-router.post('/pestnloc/agencies', verifyToken, adminOnly, createAgency);
 router.put('/pestnloc/agencies/:idAgency', verifyToken, adminOnly, updateAgency);
 
 

@@ -22,6 +22,8 @@ async function registerUser(registerData) {
     }
 };
 
+
+
 async function getAllClient() {
 
     try {
@@ -125,5 +127,6 @@ module.exports = {
     getClientById,
     deleteClient,
     updateClient,
-    getUserByEmail
+    getUserByEmail,
+
 };

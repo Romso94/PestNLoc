@@ -24,9 +24,9 @@
             "method": "GET",
             "request": "localhost:9000/pestnloc/contracts/cars/:licensePlate"
         },
-        "getContractsByAgency" : {
-            "method" : "GET",
-            "request" : "localhost:9000/pestnloc/contracts/agencies/:idAgency"
+        "getContractsByAgency": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts/agencies/:idAgency"
         },
         "updateContract": {
             "method": "PUT",
@@ -96,8 +96,31 @@
                 "Email": "smith@example.com",
                 "Phone_Number": "+1 555-5678",
                 "Password": "password456",
-                "isAdmin" : false
-             }
+                "isAdmin": false
+            }
+        },
+        "loginUser": {
+            "method" : "POST",
+            "request" : "localhost:9000/pestnloc/login",
+            "body" : {
+                "Email" : "smith@example.com",
+                "Password" : "password456"
+            }
+        },
+        "registerAdminController": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/admin/register",
+            "body": {
+                "Agency_Name": "Zinzin",
+                "Address": "456 Oak St",
+                "Email": "smith@example.com",
+                "Phone_Number": "+1 555-5678",
+                "Password": "admin",
+                "isAdmin": true
+            }
+        },
+        "loginAdmin" : {
+
         }
     },
     "agencies": {

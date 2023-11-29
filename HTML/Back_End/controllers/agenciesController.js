@@ -12,7 +12,6 @@ const getAllAgencies = async (req, res) => {
   }
 };
 
-
 const getAgencyById = async (req, res) => {
 
   const { idAgency } = req.params;
@@ -63,7 +62,7 @@ const deleteAgency = async (req, res) => {
   const { idAgency } = req.params;
   try {
     const agencies = await Agencies.deleteAgency(idAgency);
-    res.json(Agencies);
+    res.json(agencies);
   }
   catch (error) {
     console.error(error);
@@ -71,4 +70,11 @@ const deleteAgency = async (req, res) => {
   }
 }
 
-module.exports = { getAllAgencies, getAgencyById, deleteAgency, createAgency, updateAgency };
+module.exports = {
+  getAllAgencies,
+  getAgencyById,
+  deleteAgency,
+  createAgency,
+  updateAgency,
+  
+};

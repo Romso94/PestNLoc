@@ -43,7 +43,7 @@ async function createCar(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
-
+ 
 async function updateCar(req, res) {
 
   const { Model, Brand, Fuel_State, Car_Power, Car_Type, Id_Agency } = req.body;
