@@ -1,28 +1,6 @@
 <template>
   <div>
-    <section>
-      <table>
-
-        <thead>
-        <tr>
-          <td>Agence</td>
-          <td>Adresse</td>
-          <td>Téléphone</td>
-          <td>Email</td>
-          <td>Mot de passe</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="agency in agencies" :key="agency.Agency_Name">
-          <td>{{ agency.Agency_Name }}</td>
-          <td>{{ agency.Address }}</td>
-          <td>{{ agency.Phone_Number }}</td>
-          <td>{{ agency.Email }}</td>
-          <td>{{ agency.Password }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </section>
+    <v-data-table :items="agencies"></v-data-table>
   </div>
 </template>
 
