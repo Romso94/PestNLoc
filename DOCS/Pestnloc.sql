@@ -12,6 +12,7 @@ CREATE TABLE Agency(
    Phone_Number VARCHAR(50) NOT NULL,
    Email VARCHAR(50) NOT NULL,
    Password VARCHAR(2500) NOT NULL,
+   isAdmin boolean NOT NULL,
    Salt VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Agency),
    UNIQUE(Agency_Name),
@@ -30,6 +31,7 @@ CREATE TABLE Client(
    Email VARCHAR(50) NOT NULL,
    Phone_Number VARCHAR(50) NOT NULL,
    Password VARCHAR(2500) NOT NULL,
+   isAdmin boolean NOT NULL,
    Salt VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Client),
    UNIQUE(LastName),
@@ -77,7 +79,7 @@ SELECT * from car;
 
 
 
-INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,1,"FT056TK");
+INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,2,"FT056TK");
 SELECT * from contract; 
 
 SELECT * from client ;
