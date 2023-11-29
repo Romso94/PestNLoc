@@ -4,8 +4,8 @@
       <form>
         <div class="divButtonWelcome">
           <button type = "button" class="sports" @click="changeImage('sportive')">Sportive</button>
-          <button class="electric" @click="changeImage('electric')">Electric</button>
-          <button class="Suv" @click="changeImage('suv')">Suv</button>
+          <button type = "button" class="electric" @click="changeImage('electric')">Electric</button>
+          <button type = "button" class="Suv" @click="changeImage('suv')">Suv</button>
         </div>
         <br><br>
         <div class="divSearchWelcome">
@@ -13,7 +13,7 @@
             <input type="search">
           </div>
           <div class="separating911">
-            <img :src="image.src" class="ImageWelcome911"/>
+            <img :src="imgsport" class="ImageWelcome911"/>
           </div>
         </div>
         <br><br>
@@ -33,20 +33,24 @@
 </template>
 
 <script setup>
-let image = {
-  src: "@/assets/911.png"
-};
+import imagesport from "@/assets/911.png"
+import imagesportive from "@/assets/sportive.jpg"
+import imageElectric from "@/assets/Electric.jpg"
+import imageSuv from "@/assets/Suv.jpg"
 
+let imgsport = imagesport
 const changeImage = (cartype) => {
   switch (cartype) {
     case "sportive":
-      image.src = "@/assets/sportive.jpg";
+      console.log(imgsport)
+      imgsport = imagesportive;
+      console.log(imgsport)
       break;
     case "electric":
-      image.src = "@/assets/electric.jpg";
+      imgsport = imageElectric;
       break;
     case "suv":
-      image.src = "@/assets/suv.jpg";
+      imgsport= imageSuv;
       break;
     default:
       break;
