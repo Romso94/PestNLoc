@@ -41,31 +41,31 @@ li{
 }
 
 .OurAgencies{
-    content: url("/src/assets/logoAgency.svg");
+    content: url("/src/components/assets/logoAgency.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
 
 .Profile{
-    content: url("/src/assets/profile.svg");
+    content: url("/src/components/assets/profile.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
 
 .Langue{
-    content: url("/src/assets/englishL.svg");
+    content: url("/src/components/assets/englishL.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
 
 .Rent{
-    content: url("/src/assets/keys.svg");
+    content: url("/src/components/assets/keys.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
 
 .Contract{
-    content: url("/src/assets/contract.svg");
+    content: url("/src/components/assets/contract.svg");
     width: var(--svgSizeMobile);
     height: var(--svgSizeMobile);
 }
@@ -87,31 +87,31 @@ li{
     }
 
     .OurAgencies{
-        content: url("/src/assets/logoAgency.svg");
+        content: url("/src/components/assets/logoAgency.svg");
         width:  var(--svgSizeTablet);
         height:  var(--svgSizeTablet);
     }
 
     .Profile{
-        content: url("/src/assets/profile.svg");
+        content: url("/src/components/assets/profile.svg");
         width:  var(--svgSizeTablet);
         height:  var(--svgSizeTablet);
     }
 
     .Langue{
-        content: url("/src/assets/englishL.svg");
+        content: url("/src/components/assets/englishL.svg");
         width:  var(--svgSizeTablet);
         height:  var(--svgSizeTablet);
     }
 
     .Rent{
-        content: url("/src/assets/keys.svg");
+        content: url("/src/components/assets/keys.svg");
         width: var(--svgSizeTablet);
         height:  var(--svgSizeTablet);
     }
 
     .Contract{
-        content: url("/src/assets/contract.svg");
+        content: url("/src/components/assets/contract.svg");
         width:  var(--svgSizeTablet);
         height:  var(--svgSizeTablet);
     }
@@ -180,7 +180,7 @@ li{
 
 
     .Langue{
-        content: url("/src/assets/englishL.svg");
+        content: url("/src/components/assets/englishL.svg");
         width: 30px;
         height: 30px;
     }

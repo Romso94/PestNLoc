@@ -19,7 +19,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("/src/assets/loginbg.jpg");
+    background: url("/src/components/assets/loginbg.jpg");
     background-size: cover;
     height: 380px;
     width: 100%;
