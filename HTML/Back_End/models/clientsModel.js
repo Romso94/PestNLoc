@@ -4,14 +4,14 @@ const { execute } = require('../dbUtils/db.js');
 
 async function registerUser(registerData) {
 
-    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password } = registerData;
+    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, isAdmin } = registerData;
     const saltRounds = 10;
 
     try {
         const salt = await bcrypt.genSalt(saltRounds);
-        const hash = await bcrypt.hash(registerData.Password, salt);
-        const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, Salt) VALUES (?,?,?,?,?,?,?,?,?)';
-        const values = [Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, hash, salt];
+        const hash = await bcrypt.hash(registerData.Password + salt , salt);
+        const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number,isAdmin, Password, Salt) VALUES (?,?,?,?,?,?,?,?,?,?)';
+        const values = [Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number,isAdmin, hash, salt];
         const result = await execute(query, values);
 
         return result;
@@ -104,11 +104,26 @@ async function updateClient(idClient,dataClient) {
 
 }
 
+const getUserByEmail = async (email) => {
+    try {
+        const query = 'SELECT * FROM Client WHERE Email = ?';
+        const values = [email];
+        const result = await execute(query, values);
+        return result[0]; 
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
+
+
+
 
 module.exports = {
     registerUser,
     getAllClient,
     getClientById,
     deleteClient,
-    updateClient
+    updateClient,
+    getUserByEmail
 };

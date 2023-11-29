@@ -95,8 +95,9 @@
                 "Date_Permis_Issue": "2021-05-15",
                 "Email": "smith@example.com",
                 "Phone_Number": "+1 555-5678",
-                "Password": "password456"
-            }
+                "Password": "password456",
+                "isAdmin" : false
+             }
         }
     },
     "agencies": {
