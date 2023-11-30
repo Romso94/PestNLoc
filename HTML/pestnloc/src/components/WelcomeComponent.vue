@@ -13,7 +13,7 @@
             <input type="search">
           </div>
           <div class="separating911">
-            <img src="./assets/911.png" class="ImageWelcome911"/>
+            <img src="./assets/911.jpg" class="ImageWelcome911"/>
           </div>
         </div>
         <br><br>
@@ -33,28 +33,24 @@
 </template>
 
 <script setup>
-import sportive from "./assets/sportsdrawing.png";
+import sportive from "./assets/sportive.jpg";
 import electric from "./assets/Electric.jpg";
 import suv from "./assets/Suv.jpg";
 
 const changeImage = (carType) => {
   let image = document.querySelector('.ImageWelcome911');
 
-  console.log(carType);
   switch (carType){
 
     case 'sportive' : {
-      console.log('Sportive Car ')
       image.src = sportive;
       break;
     }
     case 'electric' : {
-      console.log('Electric Car ')
       image.src = electric;
       break;
     }
     case 'suv' : {
-      console.log('Suv Car ')
       image.src = suv;
       break;
     }
