@@ -1,16 +1,16 @@
 <template>
   <div>
-<<<<<<< HEAD
+
     <section>
       <table>
 
         <thead>
 
-          <th>Agence</th>
-          <th>Adresse</th>
-          <th>Téléphone</th>
-          <th>Email</th>
-          <th>Mot de passe</th>
+          <th class ="top">Agence</th>
+          <th class ="top">Adresse</th>
+          <th class ="top">Téléphone</th>
+          <th class ="top">Email</th>
+
 
         </thead>
         <tbody>
@@ -19,14 +19,13 @@
           <td>{{ agency.Address }}</td>
           <td>{{ agency.Phone_Number }}</td>
           <td>{{ agency.Email }}</td>
-          <td>{{ agency.Password }}</td>
+
         </tr>
         </tbody>
       </table>
     </section>
 =======
-    <v-data-table :items="agencies"></v-data-table>
->>>>>>> 3afcd8bf5db64857ef3e9fdb69707e77a7fb30fd
+
   </div>
 </template>
 
@@ -45,7 +44,9 @@ const agencies = jsonData;
   width: 100%;
   margin-top: 50px;
 }
-
+.top{
+  color:#F4CE14;
+}
 table {
   width: 100%;
   border-collapse: collapse;
