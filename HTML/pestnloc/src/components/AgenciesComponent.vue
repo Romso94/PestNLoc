@@ -4,13 +4,13 @@
       <table>
 
         <thead>
-        <tr>
-          <td>Agence</td>
-          <td>Adresse</td>
-          <td>Téléphone</td>
-          <td>Email</td>
-          <td>Mot de passe</td>
-        </tr>
+
+          <th>Agence</th>
+          <th>Adresse</th>
+          <th>Téléphone</th>
+          <th>Email</th>
+          <th>Mot de passe</th>
+
         </thead>
         <tbody>
         <tr v-for="agency in agencies" :key="agency.Agency_Name">
