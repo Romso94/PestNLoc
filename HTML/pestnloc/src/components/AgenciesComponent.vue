@@ -26,7 +26,6 @@
     </section>
 
 
->>>>>>> fe8c0f10c4e4114bdc51e54d6572329a2c922a59
   </div>
 </template>
 
