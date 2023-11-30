@@ -24,7 +24,7 @@
         </tbody>
       </table>
     </section>
-=======
+
 
   </div>
 </template>

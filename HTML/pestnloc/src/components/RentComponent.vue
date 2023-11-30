@@ -4,7 +4,7 @@
   <section>
     <h2>Mercedes A45 AMG</h2>
     <br>
-    <img src="@/assets/A45.jpg" alt="Voiture à louer">
+    <img src="./assets/A45.jpg" alt="Voiture à louer">
 
     <p>Description de la voiture à louer.</p>
     <br>
@@ -12,7 +12,7 @@
 
     <button @click="louerVoiture()">Louer Maintenant</button>
     <h2>Audi Rs3</h2>
-    <img src="@/assets/rs3.jpg" alt="Voiture à louer">
+    <img src="./assets/rs3.jpg" alt="Voiture à louer">
     <br>
     <p>Description de la voiture à louer.</p>
     <br>
