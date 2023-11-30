@@ -38,7 +38,7 @@ async function registerAdmin(registerData) {
         const salt = await bcrypt.genSalt(saltRounds);
         const hash = await bcrypt.hash(registerData.Password + salt, salt);
         const query = 'INSERT INTO Agency (Agency_Name,Address,Phone_Number,Email, isAdmin, Password, Salt) VALUES (?,?,?,?,?,?,?)';
-        const values = [Agency_Name, Address, Phone_Number, Email, isAdmin, hash, salt];
+        const values = [Agency_Name, Address, Phone_Number, Email, true, hash, salt];
         const result = await execute(query, values);
 
         return result;

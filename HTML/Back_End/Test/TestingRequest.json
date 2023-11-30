@@ -1,6 +1,5 @@
-{"Admin for testing API":
 {
-    "First Step " : {
+    "Admin for testing API": {
         "registerAdminController": {
             "method": "POST",
             "request": "localhost:9000/pestnloc/admin/register",
@@ -9,8 +8,7 @@
                 "Address": "456 Oak St",
                 "Email": "zinzin@example.com",
                 "Phone_Number": "+1 555-5678",
-                "Password": "admin",
-                "isAdmin": true
+                "Password": "admin"
             }
         },
         "loginAdmin" : {
@@ -20,13 +18,10 @@
                 "Email" :"zinzin@example.com",
                 "Password" : "admin"
             }
-        },
-        "Get the token et insert it in the header"
-    }
-}}
+        }
+    },
 
 
-{
     "Contracts": {
         "createContract": {
             "method": "POST",
@@ -127,8 +122,7 @@
                 "Date_Permis_Issue": "2021-05-15",
                 "Email": "smith@example.com",
                 "Phone_Number": "+1 555-5678",
-                "Password": "password456",
-                "isAdmin": false
+                "Password": "password456"
             }
         },
         "loginUser": {
