@@ -29,15 +29,16 @@ async function getAgencyById(agencyID) {
     }
 }
 
-async function createAgency(agencyData) {
+async function registerAdmin(registerData) {
 
-    const { Agency_Name, Address, Phone_Number, Email, Password } = agencyData;
+    const { Agency_Name, Address, Phone_Number, Email, Password, isAdmin } = registerData;
     const saltRounds = 10;
+
     try {
         const salt = await bcrypt.genSalt(saltRounds);
-        const hash = await bcrypt.hash(Password, salt);
-        const query = "INSERT INTO AGENCY (Agency_Name,Address,Phone_Number,Email,Password,Salt) VALUES (?,?,?,?,?,?)";
-        const values = [Agency_Name, Address, Phone_Number, Email, hash, salt];
+        const hash = await bcrypt.hash(registerData.Password + salt, salt);
+        const query = 'INSERT INTO Agency (Agency_Name,Address,Phone_Number,Email, isAdmin, Password, Salt) VALUES (?,?,?,?,?,?,?)';
+        const values = [Agency_Name, Address, Phone_Number, Email, isAdmin, hash, salt];
         const result = await execute(query, values);
 
         return result;
@@ -103,7 +104,26 @@ async function deleteAgency(agencyID) {
     }
 }
 
+async function getAgencyByEmail (email) {
+    try {
+        const query = 'SELECT * FROM Agency WHERE Email = ?';
+        const values = [email];
+        const result = await execute(query, values);
+        return result[0]; 
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
 
 
 
-module.exports = { getAllAgencies, getAgencyById, createAgency, updateAgency, deleteAgency };
+
+module.exports = {
+    getAllAgencies,
+    getAgencyById,
+    registerAdmin,
+    updateAgency,
+    deleteAgency,
+    getAgencyByEmail
+};

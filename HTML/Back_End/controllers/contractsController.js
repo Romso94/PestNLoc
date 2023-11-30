@@ -100,11 +100,28 @@ async function getContractsByAgency(req, res) {
   }
 }
 
+async function getContractByClient (req,res) {
+
+  const{clientId} = req.params;
+
+  try{
+      const contract = await Contract.getContractByClient(clientId);
+      res.json(contract);
+
+  }
+  catch(error){
+      console.error(error);
+      res.status(500).json({ error: 'Erreur interne du serveur' });
+  }
+
+}
+
 module.exports = {
   getContracts,
   getContractById,
   createContract,
   updateContract, deleteContract,
   getContractByLicensePlate,
-  getContractsByAgency
+  getContractsByAgency,
+  getContractByClient
 };

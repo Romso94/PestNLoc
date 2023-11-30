@@ -4,8 +4,8 @@
       <form>
         <div class="divButtonWelcome">
           <button type = "button" class="sports" @click="changeImage('sportive')">Sportive</button>
-          <button class="electric" @click="changeImage('electric')">Electric</button>
-          <button class="Suv" @click="changeImage('suv')">Suv</button>
+          <button type = "button" class="electric" @click="changeImage('electric')">Electric</button>
+          <button type = "button" class="Suv" @click="changeImage('suv')">Suv</button>
         </div>
         <br><br>
         <div class="divSearchWelcome">
@@ -13,7 +13,7 @@
             <input type="search">
           </div>
           <div class="separating911">
-            <img :src="image.src" class="ImageWelcome911"/>
+            <img src="./assets/911.png" class="ImageWelcome911"/>
           </div>
         </div>
         <br><br>
@@ -33,25 +33,36 @@
 </template>
 
 <script setup>
-let image = {
-  src: "@/assets/911.png"
-};
+import sportive from "./assets/sportsdrawing.png";
+import electric from "./assets/Electric.jpg";
+import suv from "./assets/Suv.jpg";
 
-const changeImage = (cartype) => {
-  switch (cartype) {
-    case "sportive":
-      image.src = "@/assets/sportive.jpg";
+const changeImage = (carType) => {
+  let image = document.querySelector('.ImageWelcome911');
+
+  console.log(carType);
+  switch (carType){
+
+    case 'sportive' : {
+      console.log('Sportive Car ')
+      image.src = sportive;
       break;
-    case "electric":
-      image.src = "@/assets/electric.jpg";
+    }
+    case 'electric' : {
+      console.log('Electric Car ')
+      image.src = electric;
       break;
-    case "suv":
-      image.src = "@/assets/suv.jpg";
+    }
+    case 'suv' : {
+      console.log('Suv Car ')
+      image.src = suv;
       break;
-    default:
-      break;
+    }
+
   }
-};
+}
+
+
 </script>
 
 <style scoped>

@@ -162,6 +162,26 @@ async function getContractsByAgency(idAgency) {
     }
 }
 
+async function getContractByClient (clientId) {
+
+    const clientExist = await getClientById(clientId);
+
+    try{
+        if(!clientExist || clientExist.length === 0){
+            throw new Error("Client doesn't exist !");
+        }
+
+        const query = "SELECT * from contract WHERE Id_Client = ?;";
+        const result = await execute(query,[clientId]);
+
+        return result;
+
+    }catch(error){
+        console.error(error);
+        throw error;
+    }
+    
+}
 
 module.exports = {
     getAllContracts,
@@ -170,5 +190,6 @@ module.exports = {
     updateContract,
     deleteContract,
     getContractByLicensePlate,
-    getContractsByAgency
+    getContractsByAgency,
+    getContractByClient
 };

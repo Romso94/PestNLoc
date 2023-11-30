@@ -2,7 +2,7 @@
   <header>
     <div class="divlogo">
       <a href="/" >
-        <img class="logo" src="../assets/logo.png"/>
+        <img class="logo" src="../components/assets/logo.png"/>
       </a>
     </div>
     <div class="divButton">

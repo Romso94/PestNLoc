@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <section>
       <table>
 
@@ -23,6 +24,9 @@
         </tbody>
       </table>
     </section>
+=======
+    <v-data-table :items="agencies"></v-data-table>
+>>>>>>> 3afcd8bf5db64857ef3e9fdb69707e77a7fb30fd
   </div>
 </template>
 

@@ -57,9 +57,12 @@ async function updateClient (req,res) {
     }
 }
 
+
+
 module.exports = {
     getAllClient,
     getClientById,
     deleteClient,
-    updateClient
+    updateClient,
+    
 }
