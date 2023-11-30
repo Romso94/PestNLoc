@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-data-table :items="agencies"></v-data-table>
+    <v-data-table :items="agencies"/>
   </div>
 </template>
 
