@@ -1,33 +1,28 @@
 <template>
-  <div class ="topMain"/>
-
-  <section>
-    <h2>Mercedes A45 AMG</h2>
-    <br>
-    <img src="@/assets/A45.jpg" alt="Voiture à louer">
-
-    <p>Description de la voiture à louer.</p>
-    <br>
-    <p>Tarif de Location: $400 par jour</p>
-
-    <button @click="louerVoiture()">Louer Maintenant</button>
-    <h2>Audi Rs3</h2>
-    <img src="@/assets/rs3.jpg" alt="Voiture à louer">
-    <br>
-    <p>Description de la voiture à louer.</p>
-    <br>
-    <p>Tarif de Location: $400 par jour</p>
-
-    <button @click="louerVoiture()">Louer Maintenant</button>
-    </section>
+  <v-card flat>
+    <v-card-title class="d-flex align-center pe-2">
+      <v-icon icon="mdi-video-input-component"></v-icon> &nbsp;
+      Rent of car
 
 
+
+
+    </v-card-title>
+    <v-data-table v-model:search="search" :items="items">
+      <template v-slot:header.stock>
+        <div class="text-end">Stock</div>
+      </template>
+    </v-data-table>
+  </v-card>
 </template>
 
 <script setup>
-function louerVoiture() {
-  alert("Félicitations ! Vous avez loué la voiture !");
-}
+
+import jsonData from '@/Json/car.json';
+
+// Définir les données
+const items = jsonData;
+
 
 </script>
 
