@@ -4,14 +4,14 @@ const { execute } = require('../dbUtils/db.js');
 
 async function registerUser(registerData) {
 
-    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, isAdmin } = registerData;
+    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password } = registerData;
     const saltRounds = 10;
 
     try {
         const salt = await bcrypt.genSalt(saltRounds);
         const hash = await bcrypt.hash(registerData.Password + salt , salt);
         const query = 'INSERT INTO Client (Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number,isAdmin, Password, Salt) VALUES (?,?,?,?,?,?,?,?,?,?)';
-        const values = [Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number,isAdmin, hash, salt];
+        const values = [Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number,false, hash, salt];
         const result = await execute(query, values);
 
         return result;

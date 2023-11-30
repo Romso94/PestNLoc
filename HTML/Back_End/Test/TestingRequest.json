@@ -1,4 +1,27 @@
 {
+    "Admin for testing API": {
+        "registerAdminController": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/admin/register",
+            "body": {
+                "Agency_Name": "Zinzin",
+                "Address": "456 Oak St",
+                "Email": "zinzin@example.com",
+                "Phone_Number": "+1 555-5678",
+                "Password": "admin"
+            }
+        },
+        "loginAdmin" : {
+            "method" : "POST",
+            "request" : "localhost:9000/pestnloc/admin/login",
+            "body" : {
+                "Email" :"zinzin@example.com",
+                "Password" : "admin"
+            }
+        }
+    },
+
+
     "Contracts": {
         "createContract": {
             "method": "POST",
@@ -15,6 +38,10 @@
         "getContracts": {
             "method": "GET",
             "request": "localhost:9000/pestnloc/contracts"
+        },
+        "getContractByClient" : {
+            "method" : "GET",
+            "request" : "localhost:9000/pestnloc/contracts/clients/:idClient"
         },
         "getContractById": {
             "method": "GET",
@@ -64,7 +91,7 @@
             "method": "GET",
             "request": "localhost:9000/pestnloc/cars/:licensePlate"
         },
-        "getCarByAgencyId": {
+        "getAllCarByAgencyId": {
             "method": "GET",
             "request": "localhost:9000/pestnloc/cars/agencies/:idAgency"
         },
@@ -95,8 +122,7 @@
                 "Date_Permis_Issue": "2021-05-15",
                 "Email": "smith@example.com",
                 "Phone_Number": "+1 555-5678",
-                "Password": "password456",
-                "isAdmin": false
+                "Password": "password456"
             }
         },
         "loginUser": {
@@ -113,14 +139,15 @@
             "body": {
                 "Agency_Name": "Zinzin",
                 "Address": "456 Oak St",
-                "Email": "smith@example.com",
+                "Email": "zinzin@example.com",
                 "Phone_Number": "+1 555-5678",
                 "Password": "admin",
                 "isAdmin": true
             }
         },
         "loginAdmin" : {
-
+            "method" : "POST",
+            "request" : "localhost:9000/pestnloc/admin/login"
         }
     },
     "agencies": {
@@ -156,6 +183,28 @@
                 "Agency_Name": "Budapest Car Rentals",
                 "Address": "456 Main St",
                 "Phone_Number": "+36 30 123 "
+            }
+        }
+    },
+    "client" : {
+        "getClientById" : {
+            "method" : "GET",
+            "request" : "localhost:900/pestnloc/clients/:idClient"
+        },
+        "getAllClient" : {
+            "method" : "GET",
+            "request" : "localhost:900/pestnloc/clients"
+        },
+        "deleteClient" : {
+            "method" : "DELETE",
+            "request" : "localhost:900/pestnloc/clients/:idClient"
+        },
+        "updateClient" : {
+            "method" : "PUT",
+            "request" : "localhost:900/pestnloc/clients/:idClient",
+            "body" : {
+                "Address" : "456 Main St",
+                "Email" : "smitfh@example.com"
             }
         }
     }

@@ -1,6 +1,18 @@
 
 <template>
   <div class="topMain">
+
+  <div id="app">
+    <div v-if="contrat">
+      <!-- Affiche le contrat existant s'il y en a un -->
+      <h2>Contrat actuel :</h2>
+      <p>{{ contrat }}</p>
+    </div>
+    <div v-else>
+      <!-- Affiche un bouton pour ajouter un contrat si aucun contrat n'existe -->
+      <button @click="ajouterContrat">Ajouter un contrat</button>
+    </div>
+  </div>
   </div>
 
 </template>

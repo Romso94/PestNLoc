@@ -1,23 +1,39 @@
-
 const clients = require("../models/clientsModel");
-const agency = require ("../models/agenciesModel")
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const agency = require("../models/agenciesModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 async function registerUserController(req, res) {
-
-  const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, isAdmin } = req.body;
+  const {
+    Name,
+    LastName,
+    Age,
+    Address,
+    Date_Permis_Issue,
+    Email,
+    Phone_Number,
+    Password,
+    isAdmin,
+  } = req.body;
 
   try {
-    const registerData = { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Password, isAdmin };
+    const registerData = {
+      Name,
+      LastName,
+      Age,
+      Address,
+      Date_Permis_Issue,
+      Email,
+      Phone_Number,
+      Password,
+    };
     const register = await clients.registerUser(registerData);
     res.json(register);
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erreur interne du serveur' });
+    res.status(500).json({ error: "Erreur interne du serveur" });
   }
-};
+}
 
 async function loginUser(req, res) {
   const { Email, Password } = req.body;
@@ -29,19 +45,20 @@ async function loginUser(req, res) {
       return res.status(401).json({ msg: "Identifiants invalides" });
     }
 
-    const isPasswordMatch = await bcrypt.compare(Password + user.Salt, user.Password);
+    const isPasswordMatch = await bcrypt.compare(
+      Password + user.Salt,
+      user.Password
+    );
 
     if (!isPasswordMatch) {
       return res.status(401).json({ msg: "Mot de passe invalides" });
     }
 
-
     const token = jwt.sign(
-      { user: { id: user.Id_Client, role: user.isAdmin ? true : false } },
+      { user: { id: user.Id_Client, role: user.isAdmin ? 'admin' : 'user' } },
       process.env.JWT_SECRET,
-      // { expiresIn: '1h' } 
+      {expiresIn : "1h"}
     );
-
     res.json({ token });
   } catch (error) {
     console.error(error);
@@ -50,19 +67,25 @@ async function loginUser(req, res) {
 }
 
 async function registerAdminController(req, res) {
-
-  const { Agency_Name, Address, Phone_Number, Email, Password, isAdmin } = req.body;
+  const { Agency_Name, Address, Phone_Number, Email, Password, isAdmin } =
+    req.body;
 
   try {
-    const registerData = { Agency_Name, Address, Phone_Number, Email, Password, isAdmin };
+    const registerData = {
+      Agency_Name,
+      Address,
+      Phone_Number,
+      Email,
+      Password,
+      isAdmin,
+    };
     const register = await agency.registerAdmin(registerData);
     res.json(register);
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erreur interne du serveur' });
+    res.status(500).json({ error: "Erreur interne du serveur" });
   }
-};
+}
 
 async function loginAdmin(req, res) {
   const { Email, Password } = req.body;
@@ -74,17 +97,19 @@ async function loginAdmin(req, res) {
       return res.status(401).json({ msg: "Identifiants invalides" });
     }
 
-    const isPasswordMatch = await bcrypt.compare(Password + user.Salt, user.Password);
+    const isPasswordMatch = await bcrypt.compare(
+      Password + user.Salt,
+      user.Password
+    );
 
     if (!isPasswordMatch) {
       return res.status(401).json({ msg: "Mot de passe invalides" });
     }
 
-
     const token = jwt.sign(
-      { user: { id: user.Id_Client, role: user.isAdmin ? true : false } },
+      { user: { id: user.Id_Client, role: user.isAdmin ? 'admin' : 'user' } },
       process.env.JWT_SECRET,
-      // { expiresIn: '1h' } 
+      {expiresIn : "1h"}
     );
 
     res.json({ token });
@@ -98,6 +123,5 @@ module.exports = {
   registerUserController,
   loginUser,
   registerAdminController,
-  loginAdmin
+  loginAdmin,
 };
-

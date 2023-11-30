@@ -92,8 +92,9 @@ input[type="number"]{
     font-weight: bold;
 }
 
-input[type="submit"] {
-    background-color: var(--pestnlocColor);
+
+.bouton {
+    background-color: var(--pestnlocColor);  /* Ajout de cette ligne */
     color: white;
     border: none;
     border-radius: 5px;
@@ -104,8 +105,12 @@ input[type="submit"] {
     font-weight: bold;
 }
 
+.bouton:hover {
+    background-color: #49B005FF;
+}
+
 input[type="submit"]:hover {
-    background-color: #147E05FF;
+    background-color: #F4CE14FF;
 }
 
 @media (min-width: 768px){
