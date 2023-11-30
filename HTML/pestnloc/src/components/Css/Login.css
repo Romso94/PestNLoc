@@ -2,18 +2,6 @@ body{
     color : var(--fontColor);
 }
 
-.formLogin{
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32vh;
-    border-radius: 15px;
-    padding: 20px;
-    border: 1px solid  var(--pestnlocColor);
-}
-
-
 
 .maindiv{
     display: flex;
@@ -25,52 +13,93 @@ body{
     width: 100%;
 }
 
-tr {
-    font-family: var(--mainFont);
-    font-size: var(--sizeFontMobile);
+.divFormulaire{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 80%;
+    width: 50%;
+    border-radius: 25px;
+    border : 1px solid;
+    border-color: var(--pestnlocColor);
+
 }
 
-td {
+
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+}
+
+.titleLogin{
+    margin-top: 30px;
+}
+
+
+.inputEmail, .inputPassword{
+    margin-top: 35px;
     padding: 10px;
-}
-
-a{
-    margin-top: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-size: var(--sizeFontMobile);
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"] {
-    width: 65%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid ;
+    font-size: 15px ;
+    height: 30px;
     border-radius: 5px;
-    font-size: var(--sizeFontMobile);
-    font-weight: bold;
+    border: 1px solid var(--pestnlocColor);
+    transition: border-color 0.3s ease-in-out;
+    outline: none;
 }
 
-input[type="submit"] {
+.inputEmail:focus, .inputPassword:focus{
+    border-color: var(--pestnlocColor);
+}
+
+
+.submitLogin{
+    margin-top: 35px;
     background-color: var(--pestnlocColor);
-    color: white;
-    border: none;
+    color: var(--fontColor);
     border-radius: 5px;
-    padding: 10px 20px;
     font-size: var(--sizeFontMobile);
+    height: 35px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-weight: bold;
+
+
+
+
+
 }
 
-input[type="submit"]:hover {
-    background-color: #147E05FF;
+.submitLogin:hover{
+    background-color: #917912;
+}
+
+.linkSignup{
+    margin-top: 10px;
+    color: var(--fontColor);
+}
+
+.password-container {
+    position: relative;
+}
+
+.inputPassword {
+    padding-right: 30px;
+}
+
+.togglePassword {
+    position: absolute;
+    top: 80%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.material-icons {
+    font-size: 24px;
+
 }
 
 @media (min-width: 768px){
@@ -79,16 +108,11 @@ input[type="submit"]:hover {
         height: 410px;
     }
 
-    input[type="submit"]{
-        font-size: var(--sizeFontTablet);
+    .linkSignup{
+        margin-top: 20px;
     }
 
-    input[type="text"],
-    input[type="password"]{
-        font-size: var(--sizeFontTablet);
-    }
-
-    label{
+    .submitLogin{
         font-size: var(--sizeFontTablet);
     }
 }
@@ -99,20 +123,16 @@ input[type="submit"]:hover {
         height: 480px;
     }
 
-    .formLogin{
-        width: 50vh;
+    .divFormulaire{
+        width: 25%;
     }
 
-    input[type="submit"]{
-        font-size: var(--sizeFontDesktop);
+    .linkSignup{
+        margin-top: 30px;
+        font-size: 16px;
+    }
+    .submitLogin{
+        font-size: 16px;
     }
 
-    input[type="text"],
-    input[type="password"]{
-        font-size: var(--sizeFontDesktop);
-    }
-
-    label{
-        font-size: var(--sizeFontDesktop);
-    }
 }

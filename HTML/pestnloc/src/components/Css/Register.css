@@ -93,25 +93,7 @@ input[type="number"]{
 }
 
 
-.bouton {
-    background-color: var(--pestnlocColor);  /* Ajout de cette ligne */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: var(--sizeFontMobile);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
-}
 
-.bouton:hover {
-    background-color: #49B005FF;
-}
-
-input[type="submit"]:hover {
-    background-color: #F4CE14FF;
-}
 
 @media (min-width: 768px){
     .maindiv{

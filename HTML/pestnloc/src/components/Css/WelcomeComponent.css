@@ -35,18 +35,18 @@
 }
 
 
-button{
-    margin-right: 4%;
-    background-color: var(--pestnlocColor);
+/*button{*/
+/*    margin-right: 4%;*/
+/*    background-color: var(--pestnlocColor);*/
 
-    border: none;
-    border-radius: 5px;
-    padding: 6px 12px;
-    font-size: var(--sizeFontMobile);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
-}
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    padding: 6px 12px;*/
+/*    font-size: var(--sizeFontMobile);*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s;*/
+/*    font-weight: bold;*/
+/*}*/
 
 .parallelebutton{
     display: flex;
@@ -61,21 +61,19 @@ button{
     padding-top: 20px;
 }
 
-button[type="submit"]{
-    background-color: var(--pestnlocColor);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: var(--sizeFontMobile);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
-    margin : 0;
-}
+/*button[type="submit"]{*/
+/*    background-color: var(--pestnlocColor);*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: var(--sizeFontMobile);*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s;*/
+/*    font-weight: bold;*/
+/*    margin : 0;*/
+/*}*/
 
-button[type="submit"]:hover {
-    background-color: #147E05FF;
-}
+
 
 input[type="search"],
 input[type="date"]{
@@ -145,17 +143,17 @@ input[type="date"]{
 
     }
 
-    button{
-        margin-right: 4%;
-        background-color: var(--pestnlocColor);
-        border: none;
-        border-radius: 5px;
-        padding: 15px 25px;
-        font-size: var(--sizeFontMobile);
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-weight: bold;
-    }
+    /*button{*/
+    /*    margin-right: 4%;*/
+    /*    background-color: var(--pestnlocColor);*/
+    /*    border: none;*/
+    /*    border-radius: 5px;*/
+    /*    padding: 15px 25px;*/
+    /*    font-size: var(--sizeFontMobile);*/
+    /*    cursor: pointer;*/
+    /*    transition: background-color 0.3s;*/
+    /*    font-weight: bold;*/
+    /*}*/
 
     .parallelebutton{
         display: flex;
@@ -170,21 +168,19 @@ input[type="date"]{
         padding-top: 20px;
     }
 
-    button[type="submit"]{
-        background-color: var(--pestnlocColor);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: var(--sizeFontMobile);
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-weight: bold;
-        margin : 0;
-    }
+    /*button[type="submit"]{*/
+    /*    background-color: var(--pestnlocColor);*/
+    /*    color: white;*/
+    /*    border: none;*/
+    /*    border-radius: 5px;*/
+    /*    font-size: var(--sizeFontMobile);*/
+    /*    cursor: pointer;*/
+    /*    transition: background-color 0.3s;*/
+    /*    font-weight: bold;*/
+    /*    margin : 0;*/
+    /*}*/
 
-    button[type="submit"]:hover {
-        background-color: #147E05FF;
-    }
+
 
     input[type="search"],
     input[type="date"]{
