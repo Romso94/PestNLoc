@@ -171,7 +171,6 @@
     
     "auth": {
         "registerUserController": {
-            "Comments": "Incomplete -> Add the salt to the db ",
             "method": "POST",
             "request": "localhost:9000/pestnloc/register",
             "body": {
