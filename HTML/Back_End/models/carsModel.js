@@ -96,11 +96,15 @@ async function updateCar(licensePlate, carRegister) {
 
 async function deleteCar(licensePlate) {
 
+        console.log(licensePlate)
     try {
-        const query = "DELETE contract,car FROM contract JOIN car ON contract.License_Plate=car.License_Plate  Where contract.License_Plate = ? ";
+        const query = "DELETE  FROM contract  Where License_Plate = ? ";
         const result = await execute(query, [licensePlate]);
 
-        return result
+        const queryCar = "DELETE FROM car where License_Plate = ?;";
+        const newResult = await execute(queryCar,[licensePlate]);
+
+        return newResult;
     }
     catch (error) {
         console.error(error);
