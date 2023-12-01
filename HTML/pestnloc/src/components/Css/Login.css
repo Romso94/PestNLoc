@@ -63,15 +63,11 @@ body{
     height: 35px;
     cursor: pointer;
     transition: background-color 0.3s;
-
-
-
-
-
 }
 
 .submitLogin:hover{
-    background-color: #917912;
+    background-color: #c9a71b;
+    color: var(--whiteFontColor);
 }
 
 .linkSignup{
