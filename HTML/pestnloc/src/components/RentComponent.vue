@@ -12,6 +12,8 @@
       <template v-slot:header.stock>
         <div class="text-end">Stock</div>
       </template>
+
+      
     </v-data-table>
   </v-card>
 </template>
