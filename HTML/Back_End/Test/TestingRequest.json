@@ -21,54 +21,6 @@
         }
     },
 
-
-    "Contracts": {
-        "createContract": {
-            "method": "POST",
-            "request": "localhost:9000/pestnloc/contracts",
-            "body": {
-                "Contract_Availability": 365,
-                "Start_Date": "2023-01-15",
-                "Price": 150,
-                "End_Date": "2023-02-15",
-                "Id_Client": 1,
-                "License_Plate": "XYZ78FF9"
-            }
-        },
-        "getContracts": {
-            "method": "GET",
-            "request": "localhost:9000/pestnloc/contracts"
-        },
-        "getContractByClient" : {
-            "method" : "GET",
-            "request" : "localhost:9000/pestnloc/contracts/clients/:idClient"
-        },
-        "getContractById": {
-            "method": "GET",
-            "request": "localhost:9000/pestnloc/contracts/:idContract"
-        },
-        "getContractByLicensePlate": {
-            "method": "GET",
-            "request": "localhost:9000/pestnloc/contracts/cars/:licensePlate"
-        },
-        "getContractsByAgency": {
-            "method": "GET",
-            "request": "localhost:9000/pestnloc/contracts/agencies/:idAgency"
-        },
-        "updateContract": {
-            "method": "PUT",
-            "request": "localhost:9000/pestnloc/contracts/:idContract",
-            "body": {
-                "Contract_Availability": 365,
-                "Price": 15000,
-                "End_Date": "2024-02-15"
-            }
-        },
-        "deleteContract": {
-            "method": "DELETE",
-            "request": "localhost:9000/pestnloc/contracts/:idContract"
-        }
-    },
     "car": {
         "createCar": {
             "method": "POST",
@@ -107,47 +59,6 @@
         "deleteCar": {
             "method": "DELETE",
             "request": "localhost:9000/pestnloc/cars/:licensePlate"
-        }
-    },
-    "auth": {
-        "registerUserController": {
-            "Comments": "Incomplete -> Add the salt to the db ",
-            "method": "POST",
-            "request": "localhost:9000/pestnloc/register",
-            "body": {
-                "Name": "Flo",
-                "LastName": "Smith",
-                "Age": 30,
-                "Address": "456 Oak St",
-                "Date_Permis_Issue": "2021-05-15",
-                "Email": "smith@example.com",
-                "Phone_Number": "+1 555-5678",
-                "Password": "password456"
-            }
-        },
-        "loginUser": {
-            "method" : "POST",
-            "request" : "localhost:9000/pestnloc/login",
-            "body" : {
-                "Email" : "smith@example.com",
-                "Password" : "password456"
-            }
-        },
-        "registerAdminController": {
-            "method": "POST",
-            "request": "localhost:9000/pestnloc/admin/register",
-            "body": {
-                "Agency_Name": "Zinzin",
-                "Address": "456 Oak St",
-                "Email": "zinzin@example.com",
-                "Phone_Number": "+1 555-5678",
-                "Password": "admin",
-                "isAdmin": true
-            }
-        },
-        "loginAdmin" : {
-            "method" : "POST",
-            "request" : "localhost:9000/pestnloc/admin/login"
         }
     },
     "agencies": {
@@ -207,5 +118,97 @@
                 "Email" : "smitfh@example.com"
             }
         }
+    },
+
+
+    "Contracts": {
+        "createContract": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/contracts",
+            "body": {
+                "Contract_Availability": 365,
+                "Start_Date": "2023-01-15",
+                "Price": 150,
+                "End_Date": "2023-02-15",
+                "Id_Client": 1,
+                "License_Plate": "XYZ78FF9"
+            }
+        },
+        "getContracts": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts"
+        },
+        "getContractByClient" : {
+            "method" : "GET",
+            "request" : "localhost:9000/pestnloc/contracts/clients/:idClient"
+        },
+        "getContractById": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts/:idContract"
+        },
+        "getContractByLicensePlate": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts/cars/:licensePlate"
+        },
+        "getContractsByAgency": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/contracts/agencies/:idAgency"
+        },
+        "updateContract": {
+            "method": "PUT",
+            "request": "localhost:9000/pestnloc/contracts/:idContract",
+            "body": {
+                "Contract_Availability": 365,
+                "Price": 15000,
+                "End_Date": "2024-02-15"
+            }
+        },
+        "deleteContract": {
+            "method": "DELETE",
+            "request": "localhost:9000/pestnloc/contracts/:idContract"
+        }
+    },
+    
+    "auth": {
+        "registerUserController": {
+            "Comments": "Incomplete -> Add the salt to the db ",
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/register",
+            "body": {
+                "Name": "Flo",
+                "LastName": "Smith",
+                "Age": 30,
+                "Address": "456 Oak St",
+                "Date_Permis_Issue": "2021-05-15",
+                "Email": "smith@example.com",
+                "Phone_Number": "+1 555-5678",
+                "Password": "password456"
+            }
+        },
+        "loginUser": {
+            "method" : "POST",
+            "request" : "localhost:9000/pestnloc/login",
+            "body" : {
+                "Email" : "smith@example.com",
+                "Password" : "password456"
+            }
+        },
+        "registerAdminController": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/admin/register",
+            "body": {
+                "Agency_Name": "Zinzin",
+                "Address": "456 Oak St",
+                "Email": "zinzin@example.com",
+                "Phone_Number": "+1 555-5678",
+                "Password": "admin",
+                "isAdmin": true
+            }
+        },
+        "loginAdmin" : {
+            "method" : "POST",
+            "request" : "localhost:9000/pestnloc/admin/login"
+        }
     }
+    
 }
