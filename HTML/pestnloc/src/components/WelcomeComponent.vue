@@ -3,9 +3,9 @@
     <div class="formResearch">
       <form>
         <div class="divButtonWelcome">
-          <button type = "button" class="sports" @click="changeImage('sportive')">Sportive</button>
-          <button type = "button" class="electric" @click="changeImage('electric')">Electric</button>
-          <button type = "button" class="Suv" @click="changeImage('suv')">Suv</button>
+          <button type = "button" class="sports choiceCar" @click="changeImage('sportive')">Sportive</button>
+          <button type = "button" class="electric choiceCar" @click="changeImage('electric')">Electric</button>
+          <button type = "button" class="Suv choiceCar" @click="changeImage('suv')">Suv</button>
         </div>
         <br><br>
         <div class="divSearchWelcome">
