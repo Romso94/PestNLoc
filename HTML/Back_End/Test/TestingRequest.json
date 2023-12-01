@@ -18,9 +18,130 @@
         "Email": "zinzin@example.com",
         "Password": "admin"
       }
+      ,
+      "registerUserController": {
+        "method": "POST",
+        "request": "localhost:9000/pestnloc/register",
+        "body": {
+          "Name": "Flo",
+          "LastName": "Smith",
+          "Age": 30,
+          "Address": "456 Oak St",
+          "Date_Permis_Issue": "2021-05-15",
+          "Email": "smith@example.com",
+          "Phone_Number": "+1 555-5678",
+          "Password": "password456"
+        }
+      },
+      "loginUser": {
+        "method": "POST",
+        "request": "localhost:9000/pestnloc/login",
+        "body": {
+          "Email": "smith@example.com",
+          "Password": "password456"
+        }
+      }
+    },  
+
+    "car": {
+        "createCar": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/cars",
+            "body": {
+                "License_Plate": "XYZ78FF9",
+                "Model": "Toyota Corona",
+                "Brand": "Zizin",
+                "Fuel_State": "empty",
+                "Car_Power": "500ch",
+                "Car_Type": "Sevran",
+                "Id_Agency": 1
+            }
+        },
+        "getCars": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars"
+        },
+        "getCarById": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate"
+        },
+        "getAllCarByAgencyId": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/cars/agencies/:idAgency"
+        },
+        "updateCar": {
+            "method": "PUT",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate",
+            "body": {
+                "Model": "Toyota",
+                "Brand": "Yaris",
+                "Fuel_State": "Full"
+            }
+        },
+        "deleteCar": {
+            "method": "DELETE",
+            "request": "localhost:9000/pestnloc/cars/:licensePlate"
+        }
+    },
+    "agencies": {
+        "getAllAgencies": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/agencies"
+        },
+        "getAgencyById": {
+            "method": "GET",
+            "request": "localhost:9000/pestnloc/agencies/:idAgency"
+        },
+        "deleteAgency": {
+            "getAgencyById": {
+                "method": "DELETE",
+                "request": "localhost:9000/pestnloc/agencies/:idAgency"
+            }
+        },
+        "createAgency": {
+            "method": "POST",
+            "request": "localhost:9000/pestnloc/agencies",
+            "body": {
+                "Agency_Name": "Budapest Car Rentals",
+                "Address": "456 Main St",
+                "Phone_Number": "+36 30 123 4567",
+                "Email": "info@budapestcarrentals.com",
+                "Password": "agencyPassword123"
+            }
+        },
+        "updateAgency": {
+            "method": "PUT",
+            "request": "localhost:9000/pestnloc/agencies/:idAgency",
+            "body": {
+                "Agency_Name": "Budapest Car Rentals",
+                "Address": "456 Main St",
+                "Phone_Number": "+36 30 123 "
+            }
+        }
+    },
+    "client" : {
+        "getClientById" : {
+            "method" : "GET",
+            "request" : "localhost:900/pestnloc/clients/:idClient"
+        },
+        "getAllClient" : {
+            "method" : "GET",
+            "request" : "localhost:900/pestnloc/clients"
+        },
+        "deleteClient" : {
+            "method" : "DELETE",
+            "request" : "localhost:900/pestnloc/clients/:idClient"
+        },
+        "updateClient" : {
+            "method" : "PUT",
+            "request" : "localhost:900/pestnloc/clients/:idClient",
+            "body" : {
+                "Address" : "456 Main St",
+                "Email" : "smitfh@example.com"
+            }
+        }
     }
   },
-
   "car": {
     "createCar": {
       "method": "POST",

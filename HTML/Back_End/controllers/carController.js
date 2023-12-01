@@ -16,10 +16,10 @@ async function getCars(req, res) {
 
 async function getCarById(req, res) {
 
-  const { id } = req.params;
+  const { licensePlate } = req.params;
 
   try {
-    const cars = await Car.getCarById(id);
+    const cars = await Car.getCarById(licensePlate);
     res.json(cars);
   }
   catch (error) {
