@@ -18,7 +18,29 @@
                 "Email" :"zinzin@example.com",
                 "Password" : "admin"
             }
-        }
+        },
+        "auth": {
+            "registerUserController": {
+                "method": "POST",
+                "request": "localhost:9000/pestnloc/register",
+                "body": {
+                    "Name": "Flo",
+                    "LastName": "Smith",
+                    "Age": 30,
+                    "Address": "456 Oak St",
+                    "Date_Permis_Issue": "2021-05-15",
+                    "Email": "smith@example.com",
+                    "Phone_Number": "+1 555-5678",
+                    "Password": "password456"
+                }
+            },
+            "loginUser": {
+                "method" : "POST",
+                "request" : "localhost:9000/pestnloc/login",
+                "body" : {
+                    "Email" : "smith@example.com",
+                    "Password" : "password456"
+                }
     },
 
 
@@ -206,6 +228,8 @@
                 "Address" : "456 Main St",
                 "Email" : "smitfh@example.com"
             }
+        }
+    }
         }
     }
 }
