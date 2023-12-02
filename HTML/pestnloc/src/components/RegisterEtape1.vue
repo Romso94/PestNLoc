@@ -1,18 +1,14 @@
 <template>
   <div class="formRegisterInputs">
     <div class="NameInput">
-      <label>First Name</label>
-      <input type="text" id="FirstName" required>
-      <label>Last Name</label>
-      <input type="text" id="LastName" required>
+      <input type="text" id="FirstName" placeholder="First Name" required>
+
+      <input type="text" id="LastName" placeholder="Last Name" required>
     </div>
     <div class="MailPasswordInput">
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-      <label for="Confirmpassword">Confirm Password</label>
-      <input type="password" id="Confirmpassword" required>
+      <input type="email" id="email"  placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="Confirmpassword" placeholder="Confirm Password" required>
     </div>
   </div>
   <br><br>
