@@ -3,144 +3,142 @@ body{
     padding: 0 0 0;
 }
 
-.maindiv{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.formRegisterInputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.formRegister{
-    background: white;
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 100px;
-    border: 1px solid  var(--pestnlocColor);
-}
-
-.NameInput{
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: center;
-}
-
-.MailPasswordInput{
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: center;
-
-}
 
 .maindiv{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("/src/components/assets/loginbg.jpg");
+    background: url("/src/components/assets/registerbg.jpg");
     background-size: cover;
-    height: 380px;
+    height: 480px;
     width: 100%;
 }
 
-a{
-    margin-top: 15px;
+.divFormulaire{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90%;
+    width: 50%;
+    border-radius: 25px;
+    border : 1px solid;
+    border-color: var(--pestnlocColor);
+
+}
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-size: var(--sizeFontMobile);
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="file"],
-input[type="data"]
-{
-    width: 65%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid ;
+.previous-button, .next-button, .send-button{
+    background-color: var(--pestnlocColor);
+    color: var(--fontColor);
     border-radius: 5px;
     font-size: var(--sizeFontMobile);
-    font-weight: bold;
+    height: 35px;
+    width: 60px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
-input[type="tel"],
-input[type="number"]{
-    width: 77%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid ;
-    border-radius: 5px;
+
+.previous-button:hover, .next-button:hover, .send-button:hover{
+    background-color: #c9a71b;
+    color: var(--whiteFontColor);
+}
+
+.svg-car{
+    height: 40px;
+    width: 40px;
+    position: relative;
+    top : 14.3px;
+}
+
+.image-steper{
+    display: flex;
+    width: 99.84%;
+    justify-content: left;
+}
+
+.steper-line{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.steper-line-first{
+    background-color:  var(--fontColor);
+    height: 5px;
+    width: 49.92%;
+    border-radius: 50px;
+}
+
+.steper-line-second{
+    background-color:  var(--fontColor);
+    height: 5px;
+    width: 49.92%;
+    border-radius: 50px;
+}
+
+.div-steper{
+    display: flex;
+    flex-direction: column ;
+    width: 90%;
+
+
+}
+
+.currentStep{
+    color: var(--pestnlocColor);
+}
+
+.steper-text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
     font-size: var(--sizeFontMobile);
-    font-weight: bold;
+    color: rgb(178, 178, 178);
 }
-
-
 
 
 @media (min-width: 768px){
     .maindiv{
-        height: 410px;
+        height: 510px;
     }
 
-    input[type="submit"]{
+    .button-container{
         font-size: var(--sizeFontTablet);
     }
 
-    input[type="text"],
-    input[type="password"]{
-        font-size: var(--sizeFontTablet);
-    }
 
-    label{
-        font-size: var(--sizeFontTablet);
-    }
+
+
 }
 
 @media (min-width: 1024px){
 
     .maindiv{
-        height: 480px;
+        height: 580px;
     }
 
-    .formRegisterInputs{
-        width: 50vh;
-        display: flex;
-        flex-direction: row;
-    }
-
-    input[type="submit"]{
+    .button-container{
         font-size: var(--sizeFontDesktop);
     }
 
-    input[type="text"],
-    input[type="password"]{
-        font-size: var(--sizeFontDesktop);
+    .svg-car{
+        height: 50px;
+        width: 50px;
+        position: relative;
+        top : 16.8px;
+    }
+    .previous-button, .next-button, .send-button{
+        width: 100px;
     }
 
-    label{
-        font-size: var(--sizeFontDesktop);
-    }
-
-    .button-container {
-        display: flex;
-        justify-content: space-around;
+    .steper-text{
+        font-size: 15px;
     }
 }
