@@ -14,7 +14,7 @@ body{
 }
 
 .divFormulaire{
-    background-color: white;
+    background-color: var(--whiteFontColor);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -23,6 +23,7 @@ body{
     border-radius: 25px;
     border : 1px solid;
     border-color: var(--pestnlocColor);
+
 
 }
 

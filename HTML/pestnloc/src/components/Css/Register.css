@@ -8,7 +8,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("/src/components/assets/loginbg.jpg");
+    background: url("/src/components/assets/registerbg.jpg");
     background-size: cover;
     height: 480px;
     width: 100%;
@@ -30,7 +30,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 65%;
+    width: 75%;
 }
 
 .previous-button, .next-button, .send-button{
@@ -39,7 +39,7 @@ body{
     border-radius: 5px;
     font-size: var(--sizeFontMobile);
     height: 35px;
-    width: 100px;
+    width: 60px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -86,11 +86,11 @@ body{
     display: flex;
     flex-direction: column ;
     width: 90%;
-    color: rgb(178, 178, 178);
+
 
 }
 
-.steper-text:active {
+.currentStep{
     color: var(--pestnlocColor);
 }
 
@@ -99,6 +99,8 @@ body{
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+    font-size: var(--sizeFontMobile);
+    color: rgb(178, 178, 178);
 }
 
 
@@ -110,6 +112,8 @@ body{
     .button-container{
         font-size: var(--sizeFontTablet);
     }
+
+
 
 
 }
@@ -129,5 +133,12 @@ body{
         width: 50px;
         position: relative;
         top : 16.8px;
+    }
+    .previous-button, .next-button, .send-button{
+        width: 100px;
+    }
+
+    .steper-text{
+        font-size: 15px;
     }
 }
