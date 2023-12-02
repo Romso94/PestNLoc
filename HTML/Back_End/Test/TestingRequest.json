@@ -1,48 +1,4 @@
 {
-<<<<<<< HEAD
-    "Admin for testing API": {
-        "registerAdminController": {
-            "method": "POST",
-            "request": "localhost:9000/pestnloc/admin/register",
-            "body": {
-                "Agency_Name": "Zinzin",
-                "Address": "456 Oak St",
-                "Email": "zinzin@example.com",
-                "Phone_Number": "+1 555-5678",
-                "Password": "admin"
-            }
-        },
-        "loginAdmin" : {
-            "method" : "POST",
-            "request" : "localhost:9000/pestnloc/admin/login",
-            "body" : {
-                "Email" :"zinzin@example.com",
-                "Password" : "admin"
-            }
-        },
-        "auth": {
-            "registerUserController": {
-                "method": "POST",
-                "request": "localhost:9000/pestnloc/register",
-                "body": {
-                    "Name": "Flo",
-                    "LastName": "Smith",
-                    "Age": 30,
-                    "Address": "456 Oak St",
-                    "Date_Permis_Issue": "2021-05-15",
-                    "Email": "smith@example.com",
-                    "Phone_Number": "+1 555-5678",
-                    "Password": "password456"
-                }
-            },
-            "loginUser": {
-                "method" : "POST",
-                "request" : "localhost:9000/pestnloc/login",
-                "body" : {
-                    "Email" : "smith@example.com",
-                    "Password" : "password456"
-                }
-=======
   "Admin for testing API": {
     "registerAdminController": {
       "method": "POST",
@@ -54,7 +10,7 @@
         "Phone_Number": "+1 555-5678",
         "Password": "admin"
       }
->>>>>>> fba4e7c52a6d486748ee00164f573a14bbec9725
+
     },
     "loginAdmin": {
       "method": "POST",
@@ -184,14 +140,12 @@
                 "Address" : "456 Main St",
                 "Email" : "smitfh@example.com"
             }
-        }
-    }
-<<<<<<< HEAD
+
         }
     }
 }
-=======
-  },
+
+  ,
   "car": {
     "createCar": {
       "method": "POST",
