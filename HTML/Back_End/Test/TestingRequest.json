@@ -150,6 +150,55 @@
             }
         }
     },
+    
+
+  "Contracts": {
+    "createContract": {
+      "method": "POST",
+      "request": "localhost:9000/pestnloc/contracts",
+      "body": {
+        "Contract_Availability": 365,
+        "Start_Date": "2023-01-15",
+        "Price": 150,
+        "End_Date": "2023-02-15",
+        "Id_Client": 1,
+        "License_Plate": "XYZ78FF9"
+      }
+    },
+    "getContracts": {
+      "method": "GET",
+      "request": "localhost:9000/pestnloc/contracts"
+    },
+    "getContractByClient": {
+      "method": "GET",
+      "request": "localhost:9000/pestnloc/contracts/clients/:idClient"
+    },
+    "getContractById": {
+      "method": "GET",
+      "request": "localhost:9000/pestnloc/contracts/:idContract"
+    },
+    "getContractByLicensePlate": {
+      "method": "GET",
+      "request": "localhost:9000/pestnloc/contracts/cars/:licensePlate"
+    },
+    "getContractsByAgency": {
+      "method": "GET",
+      "request": "localhost:9000/pestnloc/contracts/agencies/:idAgency"
+    },
+    "updateContract": {
+      "method": "PUT",
+      "request": "localhost:9000/pestnloc/contracts/:idContract",
+      "body": {
+        "Contract_Availability": 365,
+        "Price": 15000,
+        "End_Date": "2024-02-15"
+      }
+    },
+    "deleteContract": {
+      "method": "DELETE",
+      "request": "localhost:9000/pestnloc/contracts/:idContract"
+    }
+  },
     "client" : {
         "getClientById" : {
             "method" : "GET",
