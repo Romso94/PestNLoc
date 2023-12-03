@@ -1,17 +1,20 @@
 <template>
   <div class="formRegisterInputs">
+    <h1 class="register-form-title">Personal Informations</h1>
+    <div class="wrap-input">
     <div class="NameInput">
-      <input type="text" id="FirstName" placeholder="First Name" required>
-
-      <input type="text" id="LastName" placeholder="Last Name" required>
+      <input type="text" class="first-name input-text" placeholder="First Name" required>
+      <input type="text" class="last-name input-text" placeholder="Last Name" required>
+      <input type="text" class="address input-text" placeholder="Address" required>
     </div>
     <div class="MailPasswordInput">
-      <input type="email" id="email"  placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <input type="password" id="Confirmpassword" placeholder="Confirm Password" required>
+      <input type="email" class="email input-text"  placeholder="Email" required>
+      <input type="password" class="password input-text" placeholder="Password" required>
+      <input type="password" class="confirm-password input-text" placeholder="Confirm Password" required>
+    </div>
     </div>
   </div>
-  <br><br>
+
 </template>
 
 <script setup>

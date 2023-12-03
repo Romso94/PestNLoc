@@ -2,12 +2,30 @@
 
 <template>
 
-  <div class="Agenumber">
-    <label for="Age">Age :</label>
-    <input type="number" id="age" name="age" min="18" required>
-    <label for="Phone_Number">Phone Number :</label>
-    <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" placeholder="Format : 1234567890" required></div>
-  <div/>
+  <div class="formRegisterInputs">
+    <label for="age">Âge :</label>
+    <input type="number" id="age" name="age" required>
+    <br>
+
+
+
+    <label for="codePays">Code pays :</label>
+    <input type="text" id="codePays" name="codePays" pattern="\+\d{1,4}" required>
+    <br>
+
+    <label for="telephone">Numéro de téléphone :</label>
+    <input type="tel" id="telephone" name="telephone" pattern="\d{9,15}" required>
+    <small>Format : 1234567890 (sans espace)</small>
+
+
+    <label for="sexe">Sexe :</label>
+    <select id="sexe" name="sexe" required>
+      <option value="homme">Homme</option>
+      <option value="femme">Femme</option>
+      <option value="autre">Autre</option>
+    </select>
+
+  </div>
 </template>
 
 <script setup>

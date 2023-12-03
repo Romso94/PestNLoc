@@ -23,7 +23,7 @@
         <button class="next-button" @click="showNextStep" v-show="areButtonsVisible ">Next</button>
         <button class="send-button" v-if="isLastStep"  @click="sendFunction" v-show="!areButtonsVisible">Send</button>
       </div>
-      <a href="/login" onclick="">You already have an account? Click Here to Sign In!</a>
+      <a href="/login" class="sign-in">Sign In</a>
     </div>
   </div>
 </template>

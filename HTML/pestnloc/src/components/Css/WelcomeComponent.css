@@ -62,19 +62,19 @@
 
 
 
-input[type="search"],
-input[type="date"]{
-    width: 35%;
-    max-height: 20px;
-    max-width: 100px;
-    min-width: 70px;
-    padding: 5px;
-    margin-bottom: 7px;
-    border: 1px solid ;
-    border-radius: 5px;
-    font-size: var(--sizeFontMobile);
-    font-weight: bold;
-}
+/*input[type="search"],*/
+/*input[type="date"]{*/
+/*    width: 35%;*/
+/*    max-height: 20px;*/
+/*    max-width: 100px;*/
+/*    min-width: 70px;*/
+/*    padding: 5px;*/
+/*    margin-bottom: 7px;*/
+/*    border: 1px solid ;*/
+/*    border-radius: 5px;*/
+/*    font-size: var(--sizeFontMobile);*/
+/*    font-weight: bold;*/
+/*}*/
 
 .divDateWelcome{
     display: flex;
@@ -159,19 +159,19 @@ input[type="date"]{
 
 
 
-    input[type="search"],
-    input[type="date"]{
-        width: 35%;
-        max-height: 30px;
-        max-width: 120px;
-        min-width: 100px;
-        padding: 5px;
-        margin-bottom: 7px;
-        border: 1px solid ;
-        border-radius: 5px;
-        font-size: var(--sizeFontMobile);
-        font-weight: bold;
-    }
+    /*input[type="search"],*/
+    /*input[type="date"]{*/
+    /*    width: 35%;*/
+    /*    max-height: 30px;*/
+    /*    max-width: 120px;*/
+    /*    min-width: 100px;*/
+    /*    padding: 5px;*/
+    /*    margin-bottom: 7px;*/
+    /*    border: 1px solid ;*/
+    /*    border-radius: 5px;*/
+    /*    font-size: var(--sizeFontMobile);*/
+    /*    font-weight: bold;*/
+    /*}*/
 
     .divDateWelcome{
         display: flex;
