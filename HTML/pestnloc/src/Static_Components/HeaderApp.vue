@@ -7,10 +7,10 @@
     </div>
     <div class="divButton">
       <ul>
-        <li><router-link to="/Rent" class="Rent" exact-active-class="active" >Rent</router-link></li>
-        <li><router-link to="/Agencies" class="OurAgencies"  exact-active-class="active">Agencies</router-link></li>
-        <li><router-link to="/Contracts" class="Contract" exact-active-class="active" >Contracts</router-link></li>
-        <li>
+        <li class="li-header"><router-link to="/Rent" class="Rent" exact-active-class="active" >Rent</router-link></li>
+        <li class="li-header"><router-link to="/Agencies" class="OurAgencies"  exact-active-class="active">Agencies</router-link></li>
+        <li class="li-header"><router-link to="/Contracts" class="Contract" exact-active-class="active" >Contracts</router-link></li>
+        <li class="li-header">
           <div>
             <router-link to="/login" class="Profile" exact-active-class="active" >Sign In</router-link>
           </div>
