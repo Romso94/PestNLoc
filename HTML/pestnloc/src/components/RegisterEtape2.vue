@@ -1,35 +1,37 @@
 <template>
   <div class="formRegisterInputs">
-    <select id="Genre" required>
-      <option value="Homme">Homme</option>
-      <option value="Femme">Femme</option>
-      <option value="Autre">Autre</option>
-    </select>
+    <h1 class="register-form-title">Privacy Information</h1>
+    <div class="register-wrapper">
+      <img src="./assets/registerage.jpg" class="register-car-picture" />
+      <div class="select-wrapper">
+        <select id="sex" class="selector" v-model="selectedSex" required>
+          <option value="Select your Sex" disabled>Select your Sex</option>
+          <option value="Homme">Male</option>
+          <option value="Femme">Female</option>
+          <option value="Autre">Other</option>
+        </select>
 
-    <select id="dayOfBirth" v-model="selectedDay" required>
-      <option value="Select your birth day" disabled>Select your birth day</option>
-      <option v-for="day in days" :key="day" :value="day">{{ day }}</option>
-    </select>
+        <select id="monthOfBirth" class="selector" v-model="selectedMonth" required>
+          <option value="Select your birth month" disabled>Select your birth month</option>
+          <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
+        </select>
 
-    <select id="monthOfBirth" v-model="selectedMonth" required>
-      <option value="Select your birth month" disabled>Select your birth month</option>
-      <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
-    </select>
+        <select id="yearOfBirth" class="selector" v-model="selectedYear" required>
+          <option value="Select your birth year" disabled>Select your birth year</option>
+          <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
+        </select>
 
-    <select id="yearOfBirth" v-model="selectedYear" required>
-      <option value="Select your birth year" disabled>Select your birth year</option>
-      <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
-    </select>
-
-
-    <select id="countryIndex" v-model="selectedCountry" required>
-      <option value="Select your country" disabled>Select your country</option>
-      <option v-for="country in sortedCountries" :key="country.name" :value="country">
-        <img v-if="country.flag" :src="country.flag" alt="Flag" class="country-flag" />
-        {{ country.name }}
-      </option>
-    </select>
-    <input class="phone-number" placeholder="phone-number">
+        <div class="phone-input">
+          <select id="countryIndex" class="selector phone-selector" v-model="selectedCountry" required>
+            <option value="Select your country" disabled>Select your country</option>
+            <option v-for="country in sortedCountries" :key="country.name" :value="country">
+              {{ country.name }}
+            </option>
+          </select>
+          <input class="phone-number" placeholder="Phone number">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,26 +40,22 @@ import { ref, onMounted } from 'vue';
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 
-const selectedDay = ref("Select your birth day");
 const selectedMonth = ref("Select your birth month");
 const selectedYear = ref("Select your birth year");
 const selectedCountry = ref("Select your country");
+const selectedSex = ref("Select your Sex");
 
-const days = Array.from({ length: 31 }, (_, index) => index + 1);
-const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const years = Array.from({ length: 100 }, (_, index) => 2023 - index);
 const sortedCountries = ref([]);
-
 const countryData = ref([]);
-
-
 
 onMounted(async () => {
   try {
     const response = await fetch('https://restcountries.com/v3.1/all');
     const countries = await response.json();
 
-    if (Array.isArray(countries) && countries.length > 0)  {
+    if (Array.isArray(countries) && countries.length > 0) {
       countryData.value = countries.map(country => {
         const name = country.name?.common || '';
         const flag = country.flags?.svg || '';
@@ -69,18 +67,14 @@ onMounted(async () => {
       sortedCountries.value = countryData.value.sort((a, b) => a.name.localeCompare(b.name));
       console.log(sortedCountries);
     } else {
-      console.error('Les données des pays sont vides ou non définies.');
+      console.error('Country data is empty or undefined.');
     }
   } catch (error) {
-    console.error('Erreur lors de la récupération des données des pays :', error);
+    console.error('Error fetching country data:', error);
   }
 });
-
-
 </script>
 
 <style scoped>
 @import 'Css/Register.css';
-
-
 </style>

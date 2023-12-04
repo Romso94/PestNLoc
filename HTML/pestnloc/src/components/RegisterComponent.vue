@@ -13,7 +13,7 @@
 
         <div class="steper-text">
           <p class="steper-text1" >1. Identity</p>
-          <p class="steper-text2" >2. Age</p>
+          <p class="steper-text2" >2. Privacy</p>
           <p class="steper-text3" >3. License</p>
         </div>
       </div>
