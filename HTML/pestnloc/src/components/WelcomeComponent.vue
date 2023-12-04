@@ -24,7 +24,7 @@
           </div>
           <br><br>
           <div class="separingshowcar">
-            <button class ="Showcarbutton"type="submit"> Show cars available</button>
+            <button class ="Showcarbutton" type="submit"> Show cars available</button>
           </div>
         </div>
       </form>

@@ -102,10 +102,10 @@ async function getContractsByAgency(req, res) {
 
 async function getContractByClient (req,res) {
 
-  const{clientId} = req.params;
+  const{idClient} = req.params;
 
   try{
-      const contract = await Contract.getContractByClient(clientId);
+      const contract = await Contract.getContractByClient(idClient);
       res.json(contract);
 
   }
