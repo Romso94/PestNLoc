@@ -19,12 +19,12 @@
         <br><br>
         <div class="parallelebutton">
           <div class="divDateWelcome">
-            <input type="date">
-            <input type="date">
+            <input class = "thedates" type="date">
+            <input class = "thedates" type="date">
           </div>
           <br><br>
           <div class="separingshowcar">
-            <button type="submit"> Show cars available</button>
+            <button class ="Showcarbutton"type="submit"> Show cars available</button>
           </div>
         </div>
       </form>
