@@ -3,27 +3,34 @@
 <template>
 
   <div class="formRegisterInputs">
-    <label for="age">Âge :</label>
-    <input type="number" id="age" name="age" required>
-    <br>
+    <h1 class="register-form-title">Personal Informations</h1>
+    <div class="wrap-input">
+      <!-- raccourcis les input -->
+    <div class="NameInput">
+        <input type="text" class="age input-text" placeholder="Age" required>
+        <input type="text" class="country input-text" placeholder="Country Code" pattern="\+\d{1,4}" required>
+      <input type="tel" id="phone" name="phone" class="tel input-text" placeholder="Phone number" pattern="\d{10}" required>
+      <select id="sexe" class= "sex input-text" name="sexe" required>
+        <option value="homme">Homme</option>
+        <option value="femme">Femme</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
 
 
 
-    <label for="codePays">Code pays :</label>
-    <input type="text" id="codePays" name="codePays" pattern="\+\d{1,4}" required>
-    <br>
-
-    <label for="telephone">Numéro de téléphone :</label>
-    <input type="tel" id="telephone" name="telephone" pattern="\d{9,15}" required>
-    <small>Format : 1234567890 (sans espace)</small>
 
 
-    <label for="sexe">Sexe :</label>
-    <select id="sexe" name="sexe" required>
-      <option value="homme">Homme</option>
-      <option value="femme">Femme</option>
-      <option value="autre">Autre</option>
-    </select>
+      </div>
+
+
+
+
+
+
+
+
+
 
   </div>
 </template>

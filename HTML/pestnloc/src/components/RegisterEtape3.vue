@@ -1,8 +1,14 @@
 <template>
-    <label for="licensePhoto"> Driving license Photo :</label>
-    <input type="file" id="licensePhoto" name="licensePhoto" accept="image/*" required>
-    <label for="dateOfIssue">Permit issue date :</label>
-    <input type="date" id="dateOfIssue" name="dateOfIssue" required>
+  <div class="formRegisterInputs">
+    <!--permet au bouton d'etre bien en bas -->
+  <div class="NameInput">
+    <h1 class="register-form-title">Driving Information</h1>
+
+    <input type="file" class="licence input-text" placeholder="Licence Photo" accept="image/*" required>
+    <input type="date" class="date input-text" placeholder="Date of Issue" required>
+
+  </div>
+    </div>
 
 </template>
 
