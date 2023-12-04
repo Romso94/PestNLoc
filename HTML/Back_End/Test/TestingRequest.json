@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "Admin for testing API": {
     "registerAdminController": {
       "method": "POST",
@@ -11,51 +10,6 @@
         "Phone_Number": "+1 555-5678",
         "Password": "admin"
       }
-
-=======
-    "Admin for testing API": {
-        "registerAdminController": {
-            "method": "POST",
-            "request": "localhost:9000/pestnloc/admin/register",
-            "body": {
-                "Agency_Name": "Zinzin",
-                "Address": "456 Oak St",
-                "Email": "zinzin@example.com",
-                "Phone_Number": "+1 555-5678",
-                "Password": "admin"
-            }
-        },
-        "loginAdmin" : {
-            "method" : "POST",
-            "request" : "localhost:9000/pestnloc/admin/login",
-            "body" : {
-                "Email" :"zinzin@example.com",
-                "Password" : "admin"
-            }
-        },
-        "auth": {
-            "registerUserController": {
-                "method": "POST",
-                "request": "localhost:9000/pestnloc/register",
-                "body": {
-                    "Name": "Flo",
-                    "LastName": "Smith",
-                    "Age": 30,
-                    "Address": "456 Oak St",
-                    "Date_Permis_Issue": "2021-05-15",
-                    "Email": "smith@example.com",
-                    "Phone_Number": "+1 555-5678",
-                    "Password": "password456"
-                }
-            },
-            "loginUser": {
-                "method" : "POST",
-                "request" : "localhost:9000/pestnloc/login",
-                "body" : {
-                    "Email" : "smith@example.com",
-                    "Password" : "password456"
-                }
->>>>>>> 63229f05a1018c8a3c6dd5da92d230a66f4b06ec
     },
     "loginAdmin": {
       "method": "POST",
@@ -165,33 +119,10 @@
             }
         }
     },
-<<<<<<< HEAD
-    "client" : {
-        "getClientById" : {
-            "method" : "GET",
-            "request" : "localhost:900/pestnloc/clients/:idClient"
-        },
-        "getAllClient" : {
-            "method" : "GET",
-            "request" : "localhost:900/pestnloc/clients"
-        },
-        "deleteClient" : {
-            "method" : "DELETE",
-            "request" : "localhost:900/pestnloc/clients/:idClient"
-        },
-        "updateClient" : {
-            "method" : "PUT",
-            "request" : "localhost:900/pestnloc/clients/:idClient",
-            "body" : {
-                "Address" : "456 Main St",
-                "Email" : "smitfh@example.com"
-            }
 
-        }
-    }
-}
 
-  ,
+
+  
   "car": {
     "createCar": {
       "method": "POST",
@@ -247,17 +178,7 @@
         "request": "localhost:9000/pestnloc/agencies/:idAgency"
       }
     },
-    "createAgency": {
-      "method": "POST",
-      "request": "localhost:9000/pestnloc/agencies",
-      "body": {
-        "Agency_Name": "Budapest Car Rentals",
-        "Address": "456 Main St",
-        "Phone_Number": "+36 30 123 4567",
-        "Email": "info@budapestcarrentals.com",
-        "Password": "agencyPassword123"
-      }
-    },
+   
     "updateAgency": {
       "method": "PUT",
       "request": "localhost:9000/pestnloc/agencies/:idAgency",
@@ -271,28 +192,28 @@
   "client": {
     "getClientById": {
       "method": "GET",
-      "request": "localhost:900/pestnloc/clients/:idClient"
+      "request": "localhost:9000/pestnloc/clients/:idClient"
     },
     "getAllClient": {
       "method": "GET",
-      "request": "localhost:900/pestnloc/clients"
+      "request": "localhost:9000/pestnloc/clients"
     },
     "deleteClient": {
       "method": "DELETE",
-      "request": "localhost:900/pestnloc/clients/:idClient"
+      "request": "localhost:9000/pestnloc/clients/:idClient"
     },
     "updateClient": {
       "method": "PUT",
-      "request": "localhost:900/pestnloc/clients/:idClient",
+      "request": "localhost:9000/pestnloc/clients/:idClient",
       "body": {
         "Address": "456 Main St",
         "Email": "smitfh@example.com"
       }
     }
   },
-=======
+
     
->>>>>>> 63229f05a1018c8a3c6dd5da92d230a66f4b06ec
+
 
   "Contracts": {
     "createContract": {
@@ -340,29 +261,7 @@
       "method": "DELETE",
       "request": "localhost:9000/pestnloc/contracts/:idContract"
     }
-  },
-    "client" : {
-        "getClientById" : {
-            "method" : "GET",
-            "request" : "localhost:900/pestnloc/clients/:idClient"
-        },
-        "getAllClient" : {
-            "method" : "GET",
-            "request" : "localhost:900/pestnloc/clients"
-        },
-        "deleteClient" : {
-            "method" : "DELETE",
-            "request" : "localhost:900/pestnloc/clients/:idClient"
-        },
-        "updateClient" : {
-            "method" : "PUT",
-            "request" : "localhost:900/pestnloc/clients/:idClient",
-            "body" : {
-                "Address" : "456 Main St",
-                "Email" : "smitfh@example.com"
-            }
+  }
         }
     }
-        }
-    }
-}
+

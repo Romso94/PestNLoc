@@ -3,10 +3,12 @@
 <template>
 
   <div class="formRegisterInputs">
+
     <select id="dayOfBirth" v-model="selectedDay" required>
       <option value="" disabled>Sélectionnez le jour</option>
       <option v-for="day in days" :key="day" :value="day">{{ day }}</option>
     </select>
+
 
 
     <select id="monthOfBirth" v-model="selectedMonth" required>
@@ -20,12 +22,6 @@
       <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
     </select>
 
-    <label for="sexe">Sexe :</label>
-    <select id="sexe" name="sexe" required>
-      <option value="homme">Homme</option>
-      <option value="femme">Femme</option>
-      <option value="autre">Autre</option>
-    </select>
 
     <div>
       <select id="countryIndex">
