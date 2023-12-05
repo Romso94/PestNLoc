@@ -17,6 +17,8 @@
           </button>
         </div>
         <button class="submitLogin" type="submit">Login</button>
+        <!-- Affiche le message d'erreur s'il y en a un -->
+        <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       </form>
       <a class="linkSignup" href="/register">Sign up</a>
     </div>
@@ -31,6 +33,7 @@ const email = ref('');
 const password = ref('');
 const showPassword = ref(false);
 const router = useRouter();
+const errorMessage = ref('');
 
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
@@ -58,7 +61,6 @@ const submitLoginForm = async () => {
 
     document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
 
-
     console.log('Token from server:', document.cookie);
 
     // Rediriger vers la page '/Rent'
@@ -66,10 +68,18 @@ const submitLoginForm = async () => {
 
   } catch (error) {
     console.error('Erreur lors de la requête :', error);
+
+    // Afficher un message d'erreur
+    errorMessage.value = 'Identifiants incorrects. Veuillez réessayer.';
   }
 };
 </script>
 
 <style scoped>
 @import 'Css/Login.css';
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
 </style>
