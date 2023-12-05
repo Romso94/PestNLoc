@@ -70,8 +70,8 @@
 .thedates[type="date"]{
     width: 35%;
     max-height: 20px;
-   max-width: 100px;
-   min-width: 70px;
+   max-width: 120px;
+   min-width: 100px;
    padding: 5px;
     margin-top: 16px;
     margin-left: 4px;
@@ -104,7 +104,7 @@
 
 .ImageWelcome911{
     width: 200px;
-    height: 100px;
+    height: 111px;
 }
 
 @media (min-width: 768px){
@@ -113,7 +113,7 @@
         display: flex;
         background-color : var(--pestnlocColor);
         margin-top: 50px;
-        height: 500px;
+        height: 550px;
         width : 100%;
         align-items: center;
         justify-content: center;
@@ -124,8 +124,8 @@
     }
 
     .ImageWelcome911{
-        width: 400px;
-        height: 200px;
+        width: 440px;
+        height: 244px;
     }
 
     .formResearch{
@@ -133,8 +133,8 @@
         align-items: center;
         justify-content: center;
         background-color: white;
-        height: 430px;
-        width: 120vh;
+        height: 470px;
+        width: 110vh;
         border-radius: 3px;
         flex-direction: column;
 
@@ -147,7 +147,7 @@
         border-radius: 5px;
         padding-bottom: 25px;
         padding-top: 10px;
-        font-size: var(--sizeFontMobile);
+        font-size: var(--sizeFonTButton);
         cursor: pointer;
         transition: background-color 0.3s;
         font-weight: bold;
@@ -155,11 +155,11 @@
     }
 
     .choiceCar2{
-        padding-bottom: 38px;
+        padding-bottom: 44px;
         padding-top: 12px;
         padding-left: 10px;
         padding-right: 10px;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 
     .parallelebutton{
@@ -183,6 +183,7 @@
         min-width: 100px;
         padding: 5px;
         margin-left: 10px;
+        margin-top: 22px;
         border: 1px solid ;
         border-radius: 5px;
        font-size: var(--sizeFontMobile);

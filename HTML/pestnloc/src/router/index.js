@@ -45,9 +45,18 @@ const router = createRouter({
                 },
 
                 {
-                    path : '/Contracts',
-                    name : "Contracts",
-                    component : Contracts,
+                    path: '/Contracts',
+                    name: "Contracts",
+                    component: Contracts,
+                    beforeEnter: (to, from, next) => {
+
+                        if (isAuthenticated()) {
+                            next();
+                        } else {
+
+                            next('/login');
+                        }
+                    },
                 },
 
                 {
