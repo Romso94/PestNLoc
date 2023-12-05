@@ -6,7 +6,7 @@ const routes = require('./route/routes.js');
 const {verifyToken,adminOnly} = require('./middleware/auth.js'); 
 
 
-const allowedOrigins = ['http://localhost'];
+const allowedOrigins = ['http://localhost:5173'];
 
 const corsOptions = {
   origin: function (origin, callback) {

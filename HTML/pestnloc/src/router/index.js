@@ -6,6 +6,14 @@ import Rent from "../components/RentComponent.vue"
 import Register from "../components/RegisterComponent.vue"
 import DefaultLayout from "../Static_Components/DefaultLayout.vue"
 
+const isAuthenticated = () => {
+
+    const jwtCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('jwt='));
+
+    return jwtCookie !== undefined;
+};
+
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -20,12 +28,20 @@ const router = createRouter({
                 },
                 {
                     path: '/:pathMatch(.*)*',
-                    redirect: "/",
                 },
                 {
                     path :'/login',
                     name : "Login",
                     component : Login ,
+                    beforeEnter: (to, from, next) => {
+
+                        if (isAuthenticated()) {
+                            next('/');
+                        } else {
+
+                            next();
+                        }
+                    },
                 },
 
                 {

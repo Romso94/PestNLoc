@@ -25,10 +25,12 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const email = ref('');
 const password = ref('');
 const showPassword = ref(false);
+const router = useRouter();
 
 const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
@@ -36,7 +38,7 @@ const togglePasswordVisibility = () => {
 
 const submitLoginForm = async () => {
   try {
-    const response = await fetch('/pestnloc/login', {
+    const response = await fetch('http://localhost:9000/pestnloc/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,12 +54,18 @@ const submitLoginForm = async () => {
     }
 
     const result = await response.json();
-    console.log(result);
+    const token = result.token;
 
-    // Traitez le résultat comme nécessaire (par exemple, redirigez l'utilisateur, stockez le token, etc.)
+    document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
+
+
+    console.log('Token from server:', document.cookie);
+
+    // Rediriger vers la page '/Rent'
+    router.push('/Rent');
+
   } catch (error) {
     console.error('Erreur lors de la requête :', error);
-    // Traitez l'erreur de manière appropriée (affichez un message d'erreur, par exemple)
   }
 };
 </script>

@@ -10,13 +10,10 @@
   "dependencies": {
     "express": "^4.18.2",
     "vue": "^3.3.4",
-    "vue-phone-number-input": "^1.12.13",
     "vue-route": "^1.5.1",
     "vue-router": "^4.2.5",
-    "vue-select": "^3.20.2",
-    "vue-tel-input": "^8.2.0",
-    "vue3-tel-input": "^1.0.4",
-    "vuetify": "^3.4.3"
+    "vuetify": "^3.4.3",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
