@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+li{
+    list-style: none;
+}
+
 footer{
     background-color: var(--fontColor);
     padding-top: 3%;

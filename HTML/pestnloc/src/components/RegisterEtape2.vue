@@ -4,11 +4,11 @@
     <div class="register-wrapper">
       <img src="./assets/registerage.jpg" class="register-car-picture" />
       <div class="select-wrapper">
-        <select id="sex" class="selector" v-model="selectedSex" required>
-          <option value="Select your Sex" disabled>Select your Sex</option>
-          <option value="Homme">Male</option>
-          <option value="Femme">Female</option>
-          <option value="Autre">Other</option>
+        <select id="sex" class="selector" v-model="selectedGender" required>
+          <option value="Select your gender" disabled>Select your gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
         </select>
 
         <select id="monthOfBirth" class="selector" v-model="selectedMonth" required>
@@ -42,7 +42,7 @@ import { ref, onMounted } from 'vue';
 const selectedMonth = ref("Select your birth month");
 const selectedYear = ref("Select your birth year");
 const selectedCountry = ref("Select your country");
-const selectedSex = ref("Select your Sex");
+const selectedGender = ref("Select your gender");
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const years = Array.from({ length: 100 }, (_, index) => 2023 - index);
