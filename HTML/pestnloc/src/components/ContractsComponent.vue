@@ -3,39 +3,34 @@
   <div class="topMain">
 
   <div id="app">
-    <div v-if="contrat">
+    <div class ="AddNameLogout">
+        <button @click="ajouterContrat" class="ml-auto">Ajouter un contrat</button>
+        <div class="Name">Welcome Name Surname</div>
+      <button @click="logout" color="primary" class="ml-auto">Logout</button>
+    </div>
+    <h2>Contrat actuel :</h2>
+  </div>
+  </div>
+
+    <div>
       <!-- Affiche le contrat existant s'il y en a un -->
-      <h2>Contrat actuel :</h2>
       <p>{{ contrat }}</p>
     </div>
-    <div v-else>
-      <!-- Affiche un bouton pour ajouter un contrat si aucun contrat n'existe -->
-      <button @click="ajouterContrat">Ajouter un contrat</button>
-    </div>
-  </div>
-  </div>
+
 
 </template>
 
 <script setup>
+import jsonData from '@/Json/car.json';
+const items = jsonData;
 
-
-
+const logout = () => {
+  document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+  window.location.href = '/login';
+};
 </script>
 
 <style scoped>
-
-  p{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-  .topMain{
-  background: var(--pestnlocColor);
-  height: 250px;
-  width: 100%;
-  margin-top: 50px;
-}
+@import  "Css/Contract.css";
 
 </style>

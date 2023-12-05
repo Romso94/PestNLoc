@@ -1,0 +1,27 @@
+.topMain{
+    background: var(--pestnlocColor);
+    height: 250px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.ml-auto {
+    margin: 2%;
+    background-color: beige;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: var(--sizeFontMobile);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    color: black;
+}
+
+.AddNameLogout{
+    display: flex;
+    flex-direction: row;
+}
+@media (min-width: 768px) {
+
+}
