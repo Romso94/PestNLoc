@@ -37,8 +37,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import vSelect from 'vue-select';
-import 'vue-select/dist/vue-select.css';
+
 
 const selectedMonth = ref("Select your birth month");
 const selectedYear = ref("Select your birth year");
