@@ -5,9 +5,9 @@
     margin-top: 50px;
 }
 
-.ml-auto {
+.Buttoncontract {
     margin: 2%;
-    background-color: beige;
+    background-color: #45474B;
     border: none;
     border-radius: 5px;
     padding: 8px;
@@ -15,12 +15,26 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: bold;
-    color: black;
+    color: var(--pestnlocColor);
+}
+
+.Buttoncontract2{
+    margin-left: 0;
+}
+
+.NameandSurname{
+    font-size: var(--sizeFontTitle);
+    font-weight: bold;
+    padding-right: 40px;
+    padding-left: 40px;
+    margin-left: 10vh;
 }
 
 .AddNameLogout{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 @media (min-width: 768px) {
 
