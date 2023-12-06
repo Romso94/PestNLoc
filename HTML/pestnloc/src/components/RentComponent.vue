@@ -60,6 +60,9 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+const registerFirstName = ref('')
+
 </script>
 
 <style scoped>
