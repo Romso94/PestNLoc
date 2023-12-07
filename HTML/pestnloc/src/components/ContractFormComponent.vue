@@ -1,9 +1,18 @@
-<script setup>
+<script>
+export default {
+  data() {
+    return {
+  }
+  },
+
+  methods : {},
+}
+
 
 </script>
 
 <template>
-sdds
+
 </template>
 
 <style scoped>

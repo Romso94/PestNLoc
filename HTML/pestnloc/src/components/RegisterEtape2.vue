@@ -35,43 +35,57 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted } from 'vue';
+<script>
+import {ref, onMounted, onBeforeMount} from 'vue';
 
-
-const selectedMonth = ref("Select your birth month");
-const selectedYear = ref("Select your birth year");
-const selectedCountry = ref("Select your country");
-const selectedGender = ref("Select your gender");
-
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const years = Array.from({ length: 100 }, (_, index) => 2023 - index);
-const sortedCountries = ref([]);
-const countryData = ref([]);
-
-onMounted(async () => {
-  try {
-    const response = await fetch('https://restcountries.com/v3.1/all');
-    const countries = await response.json();
-
-    if (Array.isArray(countries) && countries.length > 0) {
-      countryData.value = countries.map(country => {
-        const name = country.name?.common || '';
-        const flag = country.flags?.svg || '';
-        const index = country.cca2 || '';
-        return { name, flag, index };
-      });
-
-      countryData.value = countryData.value.filter(country => country.name !== 'Afghanistan' && country.flag !== 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg');
-      sortedCountries.value = countryData.value.sort((a, b) => a.name.localeCompare(b.name));
-      console.log(sortedCountries);
-    } else {
-      console.error('Country data is empty or undefined.');
+export default {
+  data() {
+    return{
+       selectedMonth : ref("Select your birth month"),
+       selectedYear : ref("Select your birth year"),
+       selectedCountry : ref("Select your country"),
+       selectedGender : ref("Select your gender"),
+       months : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+       years : Array.from({ length: 100 }, (_, index) => 2023 - index),
+       sortedCountries : ref([]),
+       countryData : ref([])
     }
-  } catch (error) {
-    console.error('Error fetching country data:', error);
-  }
-});
+  },
+
+  async beforeMount()  {
+    try {
+      const response = await fetch('https://restcountries.com/v3.1/all');
+      const countries = await response.json();
+
+      if (Array.isArray(countries) && countries.length > 0) {
+        this.countryData = countries.map(country => {
+          const name = country.name?.common || '';
+          const flag = country.flags?.svg || '';
+          const index = country.cca2 || '';
+          return {name, flag, index};
+        });
+
+        this.countryData = this.countryData.filter(country => country.name !== 'Afghanistan' && country.flag !== 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg');
+        this.sortedCountries = this.countryData.sort((a, b) => a.name.localeCompare(b.name));
+
+      } else {
+        console.error('Country data is empty or undefined.');
+      }
+    } catch (error) {
+      console.error('Error fetching country data:', error);
+    }
+  },
+
+  methods : {
+
+  },
+}
+
+
+
+
+
+
 </script>
 
 <style scoped>

@@ -21,72 +21,85 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script>
+import { shallowRef} from 'vue';
 import { useRouter } from 'vue-router';
+import router from "../router";
 
-const email = ref('');
-const password = ref('');
-const showPassword = ref(false);
-const router = useRouter();
-const errorMessage = ref('');
-const errorEmptyMail = ref('');
-const errorEmptyPassword = ref('');
-
-const togglePasswordVisibility = () => {
-  showPassword.value = !showPassword.value;
-};
-
-const submitLoginForm = async () => {
-  let inputEmail = document.querySelector(".inputEmail");
-  let inputPass = document.querySelector(".inputPassword");
-  inputEmail.style.borderColor = "#F4CE14";
-  inputPass.style.borderColor = "#F4CE14";
-  errorEmptyMail.value = "";
-  errorEmptyPassword.value = "";
-  if(email.value===''){
-  inputEmail.style.borderColor = "red";
-  errorEmptyMail.value = "Mail can't be empty !"
-  return
-  }
-  if(password.value===""){
-    inputPass.style.borderColor = "red";
-    errorEmptyPassword.value = "Password can't be empty !"
-    return
-  }
-  try {
-    const response = await fetch('http://localhost:9000/pestnloc/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        Email: email.value,
-        Password: password.value,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP : ${response.status}`);
+export default {
+  data() {
+    return {
+       email : shallowRef(''),
+       password : shallowRef(''),
+       showPassword : shallowRef(false),
+       router : useRouter(),
+       errorMessage : shallowRef(''),
+       errorEmptyMail : shallowRef(''),
+       errorEmptyPassword : shallowRef('')
     }
+  },
 
-    const result = await response.json();
-    const token = result.token;
+  methods : {
+     togglePasswordVisibility  ()  {
+      this.showPassword = !this.showPassword;
+    },
 
-    document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
+    async submitLoginForm  ()  {
+      let inputEmail = document.querySelector(".inputEmail");
+      let inputPass = document.querySelector(".inputPassword");
+      inputEmail.style.borderColor = "#F4CE14";
+      inputPass.style.borderColor = "#F4CE14";
+      this.errorEmptyMail = "";
+      this.errorEmptyPassword = "";
+      if(this.email === ''){
+        inputEmail.style.borderColor = "red";
+        this.errorEmptyMail = "Mail can't be empty !"
+        return
+      }
+      if(this.password===""){
+        inputPass.style.borderColor = "red";
+        this.errorEmptyPassword = "Password can't be empty !"
+        return
+      }
+      try {
+        const response = await fetch('http://localhost:9000/pestnloc/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            Email: this.email,
+            Password: this.password,
+          }),
+        });
 
-    console.log('Token from server:', document.cookie);
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP : ${response.status}`);
+        }
 
-    // Rediriger vers la page '/Rent'
-    router.push('/Rent');
+        const result = await response.json();
+        const token = result.token;
 
-  } catch (error) {
-    console.error('Erreur lors de la requête :', error);
+        document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
+
+        console.log('Token from server:', document.cookie);
+
+        // Rediriger vers la page '/Rent'
+        await router.push('/Rent');
+
+      } catch (error) {
+        console.error('Erreur lors de la requête :', error);
 
 
-    errorMessage.value = 'Wrong Email or Password ! Try again';
+        this.errorMessage = 'Wrong Email or Password ! Try again';
+      }
+    }
   }
-};
+}
+
+
+
+
 </script>
 
 <style scoped>

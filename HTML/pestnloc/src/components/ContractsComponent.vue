@@ -42,31 +42,43 @@
 
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script >
+import {ref, shallowRef} from 'vue';
 import ContractForm from "./ContractFormComponent.vue";
-
-const contrat = ref(null);
-const showForm = ref(false);
-
 import jsonData from '@/Json/car.json';
-const items = jsonData;
-const Name = "Florian";
-const Surname = "Poscente"
 
-const logout = () => {
-  document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-  window.location.href = '/login';
-};
+export default {
+  data() {
+    return {
+       contrat : shallowRef(null),
+       showForm : ref(false),
+       items : jsonData,
+       Name : "Florian",
+       Surname : "Poscente"
+    }
+  },
 
-const contratAjoute = (nouveauContrat) => {
-  contrat.value = nouveauContrat;
-  showForm.value = false; // Masquer le formulaire après l'ajout du contrat
-};
+  components : {
+    ContractForm
+  },
 
-const toggleForm = () => {
-  showForm.value = !showForm.value;
-};
+  methods : {
+     logout ()  {
+      document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      window.location.href = '/login';
+    },
+
+     contratAjoute (nouveauContrat)  {
+      this.contrat = nouveauContrat;
+      this.showForm = false;
+    },
+
+    toggleForm () {
+      this.showForm = !this.showForm;
+    }
+  },
+}
+
 </script>
 
 <style scoped>

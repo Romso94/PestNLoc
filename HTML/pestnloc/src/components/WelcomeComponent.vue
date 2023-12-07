@@ -32,31 +32,42 @@
   </div>
 </template>
 
-<script setup>
+<script >
 import sportive from "./assets/sportive.jpg";
 import electric from "./assets/Electric.jpg";
 import suv from "./assets/Suv.jpg";
 
-const changeImage = (carType) => {
-  let image = document.querySelector('.ImageWelcome911');
+export default {
+  data() {
+    return{
 
-  switch (carType){
+    }
+  },
 
-    case 'sportive' : {
-      image.src = sportive;
-      break;
-    }
-    case 'electric' : {
-      image.src = electric;
-      break;
-    }
-    case 'suv' : {
-      image.src = suv;
-      break;
-    }
+  methods : {
+     changeImage  (carType) {
+      let image = document.querySelector('.ImageWelcome911');
 
-  }
+      switch (carType){
+
+        case 'sportive' : {
+          image.src = sportive;
+          break;
+        }
+        case 'electric' : {
+          image.src = electric;
+          break;
+        }
+        case 'suv' : {
+          image.src = suv;
+          break;
+        }
+      }
+    }
+  },
 }
+
+
 
 
 </script>

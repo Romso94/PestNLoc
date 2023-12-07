@@ -29,12 +29,16 @@
   </div>
 </template>
 
-<script setup>
-// Importer le fichier JSON
-import jsonData from '@/Json/agencies.json';
+<script >
+export default {
+  data() {
+    return{
 
-// Définir les données
-const agencies = jsonData;
+    }
+  },
+
+  methods : {},
+}
 </script>
 
 <style scoped>

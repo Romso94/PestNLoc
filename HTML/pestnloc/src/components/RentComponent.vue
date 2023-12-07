@@ -59,9 +59,18 @@
   </v-card>
 </template>
 
-<script setup>
+<script >
 import {ref} from "vue";
-const registerFirstName = ref('')
+
+export default {
+  data() {
+    return {
+      registerFirstName: ref('')
+    }
+
+  }
+}
+
 
 </script>
 
