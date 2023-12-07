@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h2>Liste des Voitures</h2>
+    <h2>Car to rent</h2>
     <table>
       <thead>
       <tr>
-        <th>Marque</th>
-        <th>Modèle</th>
+        <th>Brand</th>
+        <th>Model</th>
         <th>Agence</th>
-        <th>Louer</th>
+        <th>Rent</th>
       </tr>
       </thead>
       <tbody>
