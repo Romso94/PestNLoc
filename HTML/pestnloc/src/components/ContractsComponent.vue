@@ -49,10 +49,11 @@ export default {
   data() {
     return {
        contrat : shallowRef(null),
-       showForm : ref(false),
+       showForm : shallowRef(false),
        items : jsonData,
        Name : "Florian",
-       Surname : "Poscente"
+       Surname : "Poscente",
+      responseData : null
     }
   },
 
@@ -72,22 +73,28 @@ export default {
     async fetchContract () {
        const decodedCookie = decodeURIComponent(document.cookie);
        let cookie = decodedCookie.split("=");
-       let sendCookie = decodedCookie.split("=");
+       let sendCookie = cookie[1];
        const realcookie = cookie[1].split(".");
        cookie= realcookie[1];
        const decodedString = atob(cookie);
-      const decodedObject = JSON.parse(decodedString);
-      const id_user = decodedObject.user.id;
+       const decodedObject = JSON.parse(decodedString);
+       const id_user = decodedObject.user.id;
 
-      console.log(decodedCookie);
       try {
-        const response = await fetch(`http://localhost:9000/pestnloc/contracts/${id_user}`, {
+        const response = await fetch(`http://localhost:9000/pestnloc/contracts/clients/${id_user}`, {
               method: 'GET',
               headers:{
-                'Authorization' : 'Bearer ${sendCookie}'
+                'Authorization': `Bearer ${sendCookie}`
               }});
 
-       console.log(response);
+        if (response.ok) {
+
+          const responseData = await response.json();
+          console.log(responseData[0]);
+        } else {
+          console.error('La requête a échoué avec le statut :', response.status);
+        }
+
       } catch (error) {
         console.error('Erreur lors de la récupération du contrat :', error);
       }
@@ -100,6 +107,7 @@ export default {
 
     toggleForm () {
       this.showForm = !this.showForm;
+
     }
   },
 }
