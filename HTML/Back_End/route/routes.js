@@ -26,7 +26,7 @@ router.put('/pestnloc/clients/:idClient', verifyToken, adminOnly, updateClient);
 //Route pour contractsController
 router.post('/pestnloc/contracts', verifyToken, adminOnly, createContract);
 router.get('/pestnloc/contracts', verifyToken, adminOnly, getContracts);
-router.get('/pestnloc/contracts/:idContract', verifyToken, adminOnly, getContractById);
+router.get('/pestnloc/contracts/:idContract', verifyToken,getContractById);
 router.get('/pestnloc/contracts/clients/:idClient', getContractByClient);
 router.get('/pestnloc/contracts/cars/:licensePlate', verifyToken, adminOnly, getContractByLicensePlate);
 router.get('/pestnloc/contracts/agencies/:idAgency', verifyToken, adminOnly, getContractsByAgency);

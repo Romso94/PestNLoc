@@ -60,10 +60,37 @@ export default {
     ContractForm
   },
 
+  beforeMount() {
+    this.fetchContract();
+  },
+
   methods : {
      logout ()  {
       document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
       window.location.href = '/login';
+    },
+    async fetchContract () {
+       const decodedCookie = decodeURIComponent(document.cookie);
+       let cookie = decodedCookie.split("=");
+       let sendCookie = decodedCookie.split("=");
+       const realcookie = cookie[1].split(".");
+       cookie= realcookie[1];
+       const decodedString = atob(cookie);
+      const decodedObject = JSON.parse(decodedString);
+      const id_user = decodedObject.user.id;
+
+      console.log(decodedCookie);
+      try {
+        const response = await fetch(`http://localhost:9000/pestnloc/contracts/${id_user}`, {
+              method: 'GET',
+              headers:{
+                'Authorization' : 'Bearer ${sendCookie}'
+              }});
+
+       console.log(response);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du contrat :', error);
+      }
     },
 
      contratAjoute (nouveauContrat)  {
@@ -76,6 +103,8 @@ export default {
     }
   },
 }
+
+
 
 </script>
 
