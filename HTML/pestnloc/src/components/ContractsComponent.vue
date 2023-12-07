@@ -2,12 +2,24 @@
   <div class="topMain">
     <div id="app">
 
-      <div v-if="contrat">
-        <!-- Affiche le contrat existant s'il y en a un -->
-        <h2>Contrat actuel :</h2>
-        <p>{{ contrat }}</p>
+      <div>
+
+        <div id="app">
+          <div class ="AddNameLogout">
+
+            <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
+            <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
+          </div>
+          <div class ="AddNameLogout">
+            <div>You don't have any contracts</div>
+          </div>
+          <div class ="AddNameLogout">
+            <button @click="ajouterContrat" class="Buttoncontract Buttoncontract2">Ajouter un contrat</button>
+          </div>
+          <h2>Contrat actuel :</h2>
+        </div>
       </div>
-      <div v-else>
+      <div>
         <!-- Affiche le bouton pour afficher le formulaire -->
         <button @click="toggleForm">Ajouter un contrat</button>
 
@@ -18,20 +30,6 @@
     </div>
   </div>
   <div>
-    <div id="app">
-      <div class ="AddNameLogout">
-
-        <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
-        <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
-      </div>
-      <div class ="AddNameLogout">
-        <div>You don't have any contracts</div>
-      </div>
-      <div class ="AddNameLogout">
-        <button @click="ajouterContrat" class="Buttoncontract Buttoncontract2">Ajouter un contrat</button>
-      </div>
-      <h2>Contrat actuel :</h2>
-    </div>
   </div>
 
   <div>
@@ -84,19 +82,6 @@ export default {
 <style scoped>
 
 @import "Css/Contract.css";
-p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.topMain {
-  background: var(--pestnlocColor);
-  height: 250px;
-  width: 100%;
-  margin-top: 50px;
-
-}
 
 </style>
 
