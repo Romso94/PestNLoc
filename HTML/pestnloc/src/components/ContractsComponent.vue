@@ -2,12 +2,24 @@
   <div class="topMain">
     <div id="app">
 
-      <div v-if="contrat">
-        <!-- Affiche le contrat existant s'il y en a un -->
-        <h2>Contrat actuel :</h2>
-        <p>{{ contrat }}</p>
+      <div>
+
+        <div id="app">
+          <div class ="AddNameLogout">
+
+            <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
+            <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
+          </div>
+          <div class ="AddNameLogout">
+            <div>You don't have any contracts</div>
+          </div>
+          <div class ="AddNameLogout">
+            <button @click="ajouterContrat" class="Buttoncontract Buttoncontract2">Ajouter un contrat</button>
+          </div>
+          <h2>Contrat actuel :</h2>
+        </div>
       </div>
-      <div v-else>
+      <div>
         <!-- Affiche le bouton pour afficher le formulaire -->
         <button @click="toggleForm">Ajouter un contrat</button>
 
@@ -18,20 +30,6 @@
     </div>
   </div>
   <div>
-    <div id="app">
-      <div class ="AddNameLogout">
-
-        <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
-        <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
-      </div>
-      <div class ="AddNameLogout">
-        <div>You don't have any contracts</div>
-      </div>
-      <div class ="AddNameLogout">
-        <button @click="ajouterContrat" class="Buttoncontract Buttoncontract2">Ajouter un contrat</button>
-      </div>
-      <h2>Contrat actuel :</h2>
-    </div>
   </div>
 
   <div>
@@ -62,10 +60,37 @@ export default {
     ContractForm
   },
 
+  beforeMount() {
+    this.fetchContract();
+  },
+
   methods : {
      logout ()  {
       document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
       window.location.href = '/login';
+    },
+    async fetchContract () {
+       const decodedCookie = decodeURIComponent(document.cookie);
+       let cookie = decodedCookie.split("=");
+       let sendCookie = decodedCookie.split("=");
+       const realcookie = cookie[1].split(".");
+       cookie= realcookie[1];
+       const decodedString = atob(cookie);
+      const decodedObject = JSON.parse(decodedString);
+      const id_user = decodedObject.user.id;
+
+      console.log(decodedCookie);
+      try {
+        const response = await fetch(`http://localhost:9000/pestnloc/contracts/${id_user}`, {
+              method: 'GET',
+              headers:{
+                'Authorization' : 'Bearer ${sendCookie}'
+              }});
+
+       console.log(response);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du contrat :', error);
+      }
     },
 
      contratAjoute (nouveauContrat)  {
@@ -79,24 +104,13 @@ export default {
   },
 }
 
+
+
 </script>
 
 <style scoped>
 
 @import "Css/Contract.css";
-p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.topMain {
-  background: var(--pestnlocColor);
-  height: 250px;
-  width: 100%;
-  margin-top: 50px;
-
-}
 
 </style>
 

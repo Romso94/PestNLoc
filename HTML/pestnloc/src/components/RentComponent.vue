@@ -1,79 +1,86 @@
 <template>
-  <v-card flat>
-    <v-card-title class="d-flex align-center pe-2">
-      <v-icon icon="mdi-video-input-component"></v-icon> &nbsp;
-      Find a Graphics Card
-
-      <v-spacer></v-spacer>
-
-      <v-text-field
-          v-model="search"
-          prepend-inner-icon="mdi-magnify"
-          density="compact"
-          label="Search"
-          single-line
-          flat
-          hide-details
-          variant="solo-filled"
-      ></v-text-field>
-    </v-card-title>
-
-    <v-divider></v-divider>
-    <v-data-table v-model:search="search" :items="items">
-      <template v-slot:header.stock>
-        <div class="text-end">Stock</div>
-      </template>
-
-      <template v-slot:item.image="{ item }">
-        <v-card class="my-2" elevation="2" rounded>
-          <v-img
-              :src="`https://cdn.vuetifyjs.com/docs/images/graphics/gpus/${item.image}`"
-              height="64"
-              cover
-          ></v-img>
-        </v-card>
-      </template>
-
-      <template v-slot:item.rating="{ item }">
-        <v-rating
-            :model-value="item.rating"
-            color="orange-darken-2"
-            density="compact"
-            size="small"
-            readonly
-        ></v-rating>
-      </template>
-
-      <template v-slot:item.stock="{ item }">
-        <div class="text-end">
-          <v-chip
-              :color="item.stock ? 'green' : 'red'"
-              :text="item.stock ? 'In stock' : 'Out of stock'"
-              class="text-uppercase"
-              label
-              size="small"
-          ></v-chip>
-        </div>
-      </template>
-    </v-data-table>
-  </v-card>
+  <div>
+    <h2>Liste des Voitures</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Marque</th>
+        <th>Modèle</th>
+        <th>Agence</th>
+        <th>Louer</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="car in cars" :key="car.id">
+        <td>{{ car.Brand }}</td>
+        <td>{{ car.Model }}</td>
+        <td>{{ car.agencyname }}</td>
+        <td>
+          <button type="submit" @click="louerVoiture(car.id)">Louer</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
-<script >
-import {ref} from "vue";
+<script>
+import { ref, onMounted } from "vue";
 
 export default {
   data() {
     return {
-      registerFirstName: ref('')
+      cars: ref([]),
+      agence: ref([]),
+    };
+  },
+  async beforeMount() {
+    try {
+      const response = await fetch("http://localhost:9000/pestnloc/cars");
+      const response2 = await fetch("http://localhost:9000/pestnloc/agencies");
+      const data = await response.json();
+      const data2 = await response2.json();
+      this.cars = data;
+      this.agence = data2;
+
+      this.cars.forEach((car) => {
+        const matchingAgency = this.agence.find(
+            (agency) => car.Id_Agency === agency.Id_Agency
+        );
+
+        if (matchingAgency) {
+          // Ajoutez une nouvelle propriété agencyname à l'objet car
+          car.agencyname = matchingAgency.Agency_Name;
+        }
+      });
+
+      console.log(this.cars);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données:", error);
     }
-
-  }
-}
-
-
+  },
+  methods: {
+    louerVoiture(carId) {
+      console.log("Car louée avec ID:", carId);
+    },
+  },
+};
 </script>
 
 <style scoped>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
 
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
 </style>
