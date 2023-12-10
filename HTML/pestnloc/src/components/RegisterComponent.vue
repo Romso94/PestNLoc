@@ -17,7 +17,7 @@
           <p class="steper-text3">3. License</p>
         </div>
       </div>
-      <component :is="currentStepComponent" />
+      <component :is="currentStepComponent"  ref="currentStep"   />
       <div class="button-container">
         <button class="previous-button" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
         <button class="next-button" @click="showNextStep" v-show="areButtonsVisible">Next</button>
@@ -32,23 +32,26 @@
 import RegisterEtape1 from "@/components/RegisterEtape1.vue";
 import RegisterEtape2 from "@/components/RegisterEtape2.vue";
 import RegisterEtape3 from "@/components/RegisterEtape3.vue";
-import { shallowRef, watch} from "vue";
+import {  watch,shallowRef} from "vue";
 
 
 
 
 export default {
+  name : "RegisterComponent",
   data() {
     return {
       currentStep: shallowRef(1),
       currentStepComponent: shallowRef(RegisterEtape1),
-      Step1Ref: shallowRef(RegisterEtape1),
-      // errorFirstName: ref(""),
-      // errorLastName: ref(""),
-      // errorAddress: ref(""),
-      // errorMail: ref(""),
-      // errorPassword: ref(""),
-      // errorConfirmPassword: ref("")
+      formData:{
+        registerFirstName: '' ,
+        registerLastName: ''  ,
+        registerMail: '',
+        registerAddress : '' ,
+        registerPassword:  '',
+        registerPasswordConfirm: '',
+      },
+
     };
   },
   components : {
@@ -80,27 +83,27 @@ export default {
           progressBar1.style.backgroundColor = "#45474B";
           progressBar2.style.backgroundColor = "#45474B";
         } else {
-          textStep1.classList.remove("currentStep");
+          textStep1.classList.remove("currentstep");
         }
       }
       if (textStep2) {
         if (this.currentStep === 2) {
-          textStep2.classList.add("currentStep");
+          textStep2.classList.add("currentstep");
           carSVG.style.justifyContent = "center";
           progressBar1.style.backgroundColor = "#F4CE14";
           progressBar2.style.backgroundColor = "#45474B";
         } else {
-          textStep2.classList.remove("currentStep");
+          textStep2.classList.remove("currentstep");
         }
       }
       if (textStep3) {
         if (this.currentStep === 3) {
-          textStep3.classList.add("currentStep");
+          textStep3.classList.add("currentstep");
           carSVG.style.justifyContent = "right";
           progressBar1.style.backgroundColor = "#F4CE14";
           progressBar2.style.backgroundColor = "#F4CE14";
         } else {
-          textStep3.classList.remove("currentStep");
+          textStep3.classList.remove("currentstep");
         }
       }
 
@@ -115,12 +118,22 @@ export default {
 
     showNextStep() {
       if (this.currentStep < 3) {
+        if(this.currentStep === 1){
+          if (this.$refs.currentStep.verifInput()){
+            return
+          }
+          this.formData = this.$refs.currentStep.getFormData();
+        }
         this.currentStep += 1;
       }
     },
 
     showPreviousStep() {
       this.currentStep = this.currentStep === 1 ? 1 : this.currentStep - 1;
+    },
+
+    getFormDataRegister(){
+      return this.formData;
     },
 
     areButtonsVisible() {

@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-
+import RegisterComponent from "@/components/RegisterComponent.vue";
 
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
