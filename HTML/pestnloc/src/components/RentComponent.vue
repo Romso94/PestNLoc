@@ -1,9 +1,10 @@
+<!-- Rent.vue -->
 <template>
   <div>
     <h2>Car to rent</h2>
     <table>
       <thead>
-      <tr>
+      <tr class="info">
         <th>Brand</th>
         <th>Model</th>
         <th>Agence</th>
@@ -11,76 +12,47 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="car in cars" :key="car.id">
+      <tr class="info" v-for="car in cars" :key="car.id">
         <td>{{ car.Brand }}</td>
         <td>{{ car.Model }}</td>
         <td>{{ car.agencyname }}</td>
         <td>
-          <button type="submit" @click="louerVoiture(car.id)">Louer</button>
+          <button class="but" type="submit" @click="openRentForm(car.id)">Louer</button>
         </td>
       </tr>
       </tbody>
     </table>
+
+    <!-- Intégration conditionnelle de la modal RentFormComponent -->
+    <RentFormComponent v-if="showModal" />
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
+import RentFormComponent from "@/components/RentFormComponent.vue";
+
+import { ref } from 'vue';
 
 export default {
   data() {
     return {
-      cars: ref([]),
-      agence: ref([]),
+      cars: [],
+      agence: [],
+      showModal: false, // Variable d'état pour la visibilité de la modal
     };
   },
   async beforeMount() {
-    try {
-      const response = await fetch("http://localhost:9000/pestnloc/cars");
-      const response2 = await fetch("http://localhost:9000/pestnloc/agencies");
-      const data = await response.json();
-      const data2 = await response2.json();
-      this.cars = data;
-      this.agence = data2;
-
-      this.cars.forEach((car) => {
-        const matchingAgency = this.agence.find(
-            (agency) => car.Id_Agency === agency.Id_Agency
-        );
-
-        if (matchingAgency) {
-          // Ajoutez une nouvelle propriété agencyname à l'objet car
-          car.agencyname = matchingAgency.Agency_Name;
-        }
-      });
-
-      console.log(this.cars);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des données:", error);
-    }
+    // ... Votre code pour récupérer les données
   },
   methods: {
-    louerVoiture(carId) {
+    openRentForm(carId) {
       console.log("Car louée avec ID:", carId);
+      this.showModal = true;
     },
   },
 };
 </script>
 
 <style scoped>
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
-}
+@import "Css/Rent.css";
 </style>

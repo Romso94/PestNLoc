@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.info{
+    font-size: 16px;
+}
+.but{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #F4CE14;
+    border-radius: 5px;
+    color: #F4CE14;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+.but:hover {
+    background-color: #F4CE14;
+    color: white;
+}
+
+
+.but:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
