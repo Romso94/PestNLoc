@@ -25,7 +25,7 @@ CREATE TABLE Client(
    Id_Client INT NOT NULL AUTO_INCREMENT,
    LastName VARCHAR(50) NOT NULL,
    Name VARCHAR(50) NOT NULL,
-   Age INT NOT NULL,
+   YearOfBirth INT NOT NULL,
    Address VARCHAR(50) NOT NULL,
    Date_Permis_Issue DATE NOT NULL,
    Email VARCHAR(50) NOT NULL,
