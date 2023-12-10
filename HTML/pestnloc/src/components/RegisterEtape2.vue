@@ -37,10 +37,20 @@
 
 <script>
 import {ref} from 'vue';
+import RegisterEtape1 from "@//components/RegisterEtape1.vue";
+
 
 export default {
   data() {
     return{
+      formData: {
+        registerFirstName: '',
+        registerLastName: '' ,
+        registerMail: '',
+        registerAddress : '',
+        registerPassword: '',
+        registerPasswordConfirm:'',
+      },
        selectedMonth : ref("Select your birth month"),
        selectedYear : ref("Select your birth year"),
        selectedCountry : ref("Select your country"),
@@ -51,6 +61,7 @@ export default {
        countryData : ref([])
     }
   },
+
 
   async beforeMount()  {
     try {
@@ -77,6 +88,13 @@ export default {
   },
 
   methods : {
+    getFormData() {
+      return this.formData;
+    },
+    fillFormData(formData) {
+      this.formData = formData;
+      RegisterEtape1.fillData1(this.formData);
+    },
 
   },
 }

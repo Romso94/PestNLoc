@@ -76,29 +76,20 @@ export default {
         if (!response.ok) {
           throw new Error(`Erreur HTTP : ${response.status}`);
         }
-
         const result = await response.json();
         const token = result.token;
-
         document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
-
         console.log('Token from server:', document.cookie);
-
         // Rediriger vers la page '/Rent'
         await router.push('/Rent');
 
       } catch (error) {
         console.error('Erreur lors de la requête :', error);
-
-
         this.errorMessage = 'Wrong Email or Password ! Try again';
       }
     }
   }
 }
-
-
-
 
 </script>
 
