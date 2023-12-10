@@ -32,6 +32,7 @@
 import RegisterEtape1 from "@/components/RegisterEtape1.vue";
 import RegisterEtape2 from "@/components/RegisterEtape2.vue";
 import RegisterEtape3 from "@/components/RegisterEtape3.vue";
+import * as registerFunction from "../components/registerfunctions";
 import {  watch,shallowRef} from "vue";
 
 
@@ -43,15 +44,6 @@ export default {
     return {
       currentStep: shallowRef(1),
       currentStepComponent: shallowRef(RegisterEtape1),
-      formData:{
-        registerFirstName: '' ,
-        registerLastName: ''  ,
-        registerMail: '',
-        registerAddress : '' ,
-        registerPassword:  '',
-        registerPasswordConfirm: '',
-      },
-
     };
   },
   components : {
@@ -122,18 +114,16 @@ export default {
           if (this.$refs.currentStep.verifInput()){
             return
           }
-          this.formData = this.$refs.currentStep.getFormData();
+          if(!this.$refs.currentStep.checkPassword()){
+
+          }
         }
+        registerFunction.showFormData();
         this.currentStep += 1;
       }
     },
-
     showPreviousStep() {
       this.currentStep = this.currentStep === 1 ? 1 : this.currentStep - 1;
-    },
-
-    getFormDataRegister(){
-      return this.formData;
     },
 
     areButtonsVisible() {

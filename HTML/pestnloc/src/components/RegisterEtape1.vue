@@ -26,22 +26,25 @@
 <script>
 
 import {shallowRef} from "vue";
-import RegisterComponent from "@/components/RegisterComponent.vue";
 import * as registerFunction from "../components/registerfunctions";
 
 export default {
 
   data () {
     return {
-      formData: {
-        registerFirstName: '' ,
-        registerLastName: ''  ,
-        registerMail: '',
-        registerAddress : '' ,
-        registerPassword:  '',
-        registerPasswordConfirm: '',
+      formData  : {
+        registerFirstName: "",
+        registerLastName: "",
+        registerMail: "",
+        registerAddress: "",
+        registerPassword: "",
+        registerPasswordConfirm: "",
+        selectedMonth : "Select your birth month",
+        selectedYear : "Select your birth year",
+        selectedCountry : "Select your country",
+        selectedGender : "Select your gender",
+        phoneNumber : "",
       },
-
       // Check error input :
       errorFirstName : shallowRef(''),
       errorLastName : shallowRef(''),
@@ -56,7 +59,8 @@ export default {
 
   beforeMount() {
     this.formData = registerFunction.formData;
-    registerFunction.showFormData();
+    // registerFunction.showFormData();
+
   },
 
   methods : {
@@ -119,6 +123,10 @@ export default {
     getFormData(){
        return this.formData;
     },
+
+    checkPassword () {
+       return this.formData.registerPassword === this.formData.registerPasswordConfirm;
+    }
 
   }
 
