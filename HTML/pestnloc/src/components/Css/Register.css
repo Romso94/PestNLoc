@@ -7,12 +7,19 @@ body{
     display: none;
 }
 
+.togglePassword {
+    position: relative;
+    margin-top: -24px;
+    margin-right: -115px;
+    font-size: var(--sizeFontMobile) ;
+}
+
 .select-wrapper{
     display: flex;
     flex-direction: column;
     margin-top: 40px;
 }
-.phone-selector{
+.country-selector{
     width: 100%;
 }
 .selector{
@@ -23,6 +30,7 @@ body{
     text-align: center;
     transition: border-color 0.3s ease-in-out;
     outline: none;
+    font-size: 13px;
 }
 .maindiv{
     display: flex;
@@ -88,11 +96,6 @@ body{
     justify-content: space-between;
 
 }
-
-
-
-
-
 
 .steper-line-first{
     background-color:  var(--fontColor);
@@ -178,7 +181,7 @@ body{
 }
 
 .phone-number{
-    margin-top: 20px;
+    margin-top: 35px;
     padding: 10px;
     font-size: 16px ;
     height: 30px;
@@ -214,7 +217,8 @@ body{
     }
 
     .selector{
-        margin-top: 20px;
+        margin-top: 30px;
+        font-size: 15px;
     }
 }
 
@@ -271,10 +275,10 @@ body{
     }
 
     .selector{
-        margin-top: 25px;
+        margin-top: 35px;
     }
 
-    .phone-selector{
+    .country-selector{
         width: 100%;
     }
     .register-car-picture{
@@ -289,6 +293,12 @@ body{
         flex-direction: row;
         justify-content: space-around;
         margin-top: 20px;
-
     }
+
+    .togglePassword {
+        position: relative;
+        margin-top: -30px;
+        margin-right: -150px;
+    }
+
 }

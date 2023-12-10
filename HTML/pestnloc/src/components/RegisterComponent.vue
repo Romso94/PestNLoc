@@ -22,7 +22,10 @@
         <button class="previous-button" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
         <button class="next-button" @click="showNextStep" v-show="areButtonsVisible">Next</button>
         <button class="send-button" v-if="isLastStep" @click="sendFunction" v-show="!areButtonsVisible">Send</button>
+
       </div>
+
+
       <a href="/login" class="sign-in">Sign In</a>
     </div>
   </div>
@@ -32,7 +35,8 @@
 import RegisterEtape1 from "@/components/RegisterEtape1.vue";
 import RegisterEtape2 from "@/components/RegisterEtape2.vue";
 import RegisterEtape3 from "@/components/RegisterEtape3.vue";
-import * as registerFunction from "../components/registerfunctions";
+
+import * as registerFunction from "./js/registerfunctions";
 import {  watch,shallowRef} from "vue";
 
 
@@ -44,12 +48,14 @@ export default {
     return {
       currentStep: shallowRef(1),
       currentStepComponent: shallowRef(RegisterEtape1),
+      isModalVisible: false,
+      modalErrorMessage: "",
     };
   },
   components : {
     RegisterEtape1,
     RegisterEtape2,
-    RegisterEtape3
+    RegisterEtape3,
   },
 
   beforeMount() {
@@ -115,7 +121,8 @@ export default {
             return
           }
           if(!this.$refs.currentStep.checkPassword()){
-
+            alert("Password Doesn't match");
+            return;
           }
         }
         registerFunction.showFormData();
@@ -136,7 +143,8 @@ export default {
 
     sendFunction() {
       console.log('Send button clicked!');
-    }
+    },
+
   }
 };
 </script>

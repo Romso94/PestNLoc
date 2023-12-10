@@ -4,31 +4,28 @@
     <div class="register-wrapper">
       <img src="./assets/registerage.jpg" class="register-car-picture" />
       <div class="select-wrapper">
-        <select id="sex" class="selector" v-model="formData.selectedGender" required>
+        <select id="gender" class="selector gender" v-model="formData.selectedGender" required>
           <option value="Select your gender" disabled>Select your gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
 
-        <select id="monthOfBirth" class="selector" v-model="formData.selectedMonth" required>
-          <option value="Select your birth month" disabled>Select your birth month</option>
-          <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
-        </select>
 
-        <select id="yearOfBirth" class="selector" v-model="formData.selectedYear" required>
+
+        <select id="yearOfBirth" class="selector yearOfBirth"  v-model="formData.selectedYear" required>
           <option value="Select your birth year" disabled>Select your birth year</option>
           <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
         </select>
 
         <div class="phone-input">
-          <select id="countryIndex" class="selector phone-selector" v-model="formData.selectedCountry" required>
+          <select id="countrySelector" class="selector country-selector " v-model="formData.selectedCountry" required>
             <option value="Select your country" disabled>Select your country</option>
             <option v-for="country in sortedCountries" :key="country.name" :value="country">
               {{ country.name }}
             </option>
           </select>
-          <input class="phone-number" placeholder="Phone number" v-model="formData.phoneNumber">
+          <input class="phone-number phoneNumber" placeholder="Phone number" v-model="formData.phoneNumber">
         </div>
       </div>
     </div>
@@ -36,8 +33,8 @@
 </template>
 
 <script>
-import {ref} from 'vue';
-import * as registerFunction from "../components/registerfunctions";
+import {ref, shallowRef} from 'vue';
+import * as registerFunction from "./js/registerfunctions";
 
 
 export default {
@@ -50,16 +47,18 @@ export default {
         registerAddress: "",
         registerPassword: "",
         registerPasswordConfirm: "",
-        selectedMonth : "Select your birth month",
         selectedYear : "Select your birth year",
         selectedCountry : "Select your country",
         selectedGender : "Select your gender",
         phoneNumber : "",
       },
-       months : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
        years : Array.from({ length: 100 }, (_, index) => 2023 - index),
-       sortedCountries : ref([]),
-       countryData : ref([])
+       sortedCountries : shallowRef([]),
+       countryData : shallowRef([]),
+       errorGender : shallowRef(''),
+       errorYear : shallowRef(''),
+       errorCountry : shallowRef(''),
+       errorPhone : shallowRef(''),
     }
   },
 
@@ -95,11 +94,26 @@ export default {
     getFormData() {
       return this.formData;
     },
-    fillFormData(formData) {
-      this.formData = formData;
-      RegisterEtape1.fillData1(this.formData);
-    },
 
+    verifSelect(){
+      let blockNext = false;
+
+      let selectedYear = document.querySelector(".yearOfBirth");
+      let selectedCountry = document.querySelector(".country-selector");
+      let selectedGender = document.querySelector(".gender");
+      let phoneNumber = document.querySelector(".phoneNumber");
+
+      selectedYear.style.borderColor = "#F4CE14";
+      selectedCountry.style.borderColor = "#F4CE14";
+      selectedGender.style.borderColor = "#F4CE14";
+      phoneNumber.style.borderColor = "#F4CE14";
+
+      this.errorGender = '';
+      this.errorYear = '';
+      this.errorCountry = '';
+      this.errorPhone = '';
+
+    }
   },
 }
 

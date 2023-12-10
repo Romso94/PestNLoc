@@ -6,7 +6,6 @@ export const formData = {
     registerAddress: "",
     registerPassword: "",
     registerPasswordConfirm: "",
-    selectedMonth : "Select your birth month",
     selectedYear : "Select your birth year",
     selectedCountry : "Select your country",
     selectedGender : "Select your gender",
