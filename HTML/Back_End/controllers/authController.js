@@ -13,6 +13,8 @@ async function registerUserController(req, res) {
     Email,
     Phone_Number,
     Password,
+    Country,
+    Gender,
     isAdmin,
   } = req.body;
 
@@ -26,6 +28,8 @@ async function registerUserController(req, res) {
       Email,
       Phone_Number,
       Password,
+      Country,
+      Gender
     };
     const register = await clients.registerUser(registerData);
     res.json(register);

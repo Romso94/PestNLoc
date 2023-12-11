@@ -29,7 +29,7 @@
         </select>
         <p v-if="errorCountry" class="error-message">{{ errorCountry }}</p>
 
-        <input class="phone-number" placeholder="Phone number" v-model="formData.phoneNumber">
+        <input pattern="[0-9]*" class="phone-number" placeholder="Phone number" v-model="formData.phoneNumber" maxlength="12">
         <p v-if="errorPhone" class="error-message">{{ errorPhone }}</p>
 
       </div>
@@ -38,25 +38,13 @@
 </template>
 
 <script>
-import {ref, shallowRef} from 'vue';
+import { shallowRef} from 'vue';
 import * as registerFunction from "./js/registerfunctions";
 
 
 export default {
   data() {
     return{
-      formData  : {
-        registerFirstName: "",
-        registerLastName: "",
-        registerMail: "",
-        registerAddress: "",
-        registerPassword: "",
-        registerPasswordConfirm: "",
-        selectedYear : "Select your birth year",
-        selectedCountry : "Select your country",
-        selectedGender : "Select your gender",
-        phoneNumber : "",
-      },
        years : Array.from({ length: 100 }, (_, index) => 2023 - index),
        sortedCountries : shallowRef([]),
        countryData : shallowRef([]),
@@ -159,6 +147,19 @@ export default {
 
 <style scoped>
 @import 'Css/Register.css';
+
+.phone-number:invalid{
+  animation: shake 300ms;
+  border-color: red;
+
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(0);}
+  25% {transform: translate(0.125rem);}
+  75% {transform: translate(-0.125rem);}
+
+}
 
 .error-message {
   text-align: center;

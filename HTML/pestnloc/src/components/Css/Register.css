@@ -39,7 +39,7 @@ body{
     background: url("/src/components/assets/registerbg.jpg");
     background-size: cover;
     background-position: center center;
-    height: 680px;
+    height: 730px;
     width: 100%;
 }
 .divFormulaire{
@@ -47,7 +47,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 90%;
+    height: 95%;
     width: 60%;
     border-radius: 25px;
     border : 1px solid;
@@ -73,9 +73,42 @@ body{
     transition: background-color 0.3s;
 }
 
+.label-license-Date{
+    margin-top: 30px;
+    margin-bottom: -25px;
+    font-size: 16px;
+}
+
 .previous-button:hover, .next-button:hover, .send-button:hover{
     background-color: #c9a71b;
     color: var(--whiteFontColor);
+}
+
+.upload-label{
+    margin-top: 30px;
+    font-size: 13px;
+    padding-top: 5px ;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid var(--pestnlocColor);
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+
+.upload-label:hover{
+    color: var(--pestnlocColor);
+}
+
+
+.jean-in-the-car{
+    margin-top: 25px;
+    height: 40%;
+    width: 80%;
+    border-radius: 25px;
+    border: 2px solid var(--pestnlocColor);
 }
 
 .svg-car{
@@ -123,6 +156,18 @@ body{
     width: 90%;
 }
 
+.date {
+    margin-top: 30px;
+    font-size: 13px;
+    padding-top: 5px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid var(--pestnlocColor);
+    width: 80%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 .currentstep{
     color: var(--pestnlocColor);
 }
@@ -149,7 +194,7 @@ body{
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: -20px;
 }
 
@@ -172,12 +217,14 @@ body{
     margin-top: 30px;
     padding: 10px;
     font-size: 13px ;
-    height: 25px;
+    height: 35px;
     border-radius: 5px;
     border: 2px solid var(--pestnlocColor);
     transition: border-color 0.3s ease-in-out;
     outline: none;
     width: 80%;
+    text-align: center;
+
 }
 
 .phone-number{
@@ -190,10 +237,15 @@ body{
     transition: border-color 0.3s ease-in-out;
     outline: none;
     width: 100%;
+    text-align: center;
 }
 
 
 @media (min-width: 768px){
+
+    .jean-in-the-car{
+        display: none;
+    }
 
     .register-form-title{
         font-size: 20px;

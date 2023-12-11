@@ -38,6 +38,8 @@ import RegisterEtape3 from "@/components/RegisterEtape3.vue";
 
 import * as registerFunction from "./js/registerfunctions";
 import {  watch,shallowRef} from "vue";
+import {formData} from "./js/registerfunctions";
+import router from "../router";
 
 
 
@@ -135,7 +137,7 @@ export default {
           }
 
         }
-        registerFunction.showFormData();
+        // registerFunction.showFormData();
         this.currentStep += 1;
       }
     },
@@ -151,8 +153,54 @@ export default {
       return this.currentStep === 3;
     },
 
-    sendFunction() {
-      console.log('Send button clicked!');
+    async sendFunction() {
+      if(this.currentStep === 3){
+        if(this.$refs.currentStep.verifInput()){
+          return;
+        }
+        let registerFirstName = formData.registerFirstName;
+        let registerLastName = formData.registerLastName;
+        let registerMail = formData.registerMail;
+        let registerAddress = formData.registerAddress;
+        let registerPassword = formData.registerPassword
+        let registerPasswordConfirm = formData.registerPasswordConfirm;
+        let selectedYear = formData.selectedYear;
+        let selectedCountry = formData.selectedCountry.name;
+        let selectedGender = formData.selectedGender;
+        let phoneNumber = formData.phoneNumber;
+        let LicenseDateIssue = formData.LicenseDateIssue;
+
+        try{
+          const response = await  fetch("http://localhost:9000/pestnloc/register", {
+            method : 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              "Name": registerFirstName,
+              "LastName": registerLastName,
+              "YearOfBirth": selectedYear,
+              "Address": registerAddress,
+              "Date_Permis_Issue": LicenseDateIssue,
+              "Email": registerMail,
+              "Phone_Number": phoneNumber,
+              "Password": registerPassword,
+              "Country" : selectedCountry,
+              "Gender"  : selectedGender,
+            }),
+          });
+
+          console.log("user Register")
+
+          if(response.ok){
+            await router.push("/login");
+          }
+
+        }catch (error){
+          console.log("Error",error)
+        }
+      }
+
     },
 
   }

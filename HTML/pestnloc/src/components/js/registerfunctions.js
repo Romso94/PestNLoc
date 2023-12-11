@@ -10,6 +10,7 @@ export const formData = {
     selectedCountry : "Select your country",
     selectedGender : "Select your gender",
     phoneNumber : "",
+    LicenseDateIssue : ""
 };
 
 export function getFormData() {
