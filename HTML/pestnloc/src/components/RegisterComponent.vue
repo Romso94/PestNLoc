@@ -20,8 +20,8 @@
       <component :is="currentStepComponent"  ref="currentStep"   />
       <div class="button-container">
         <button class="previous-button" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
-        <button class="next-button" @click="showNextStep" v-show="areButtonsVisible">Next</button>
-        <button class="send-button" v-if="isLastStep" @click="sendFunction" v-show="!areButtonsVisible">Send</button>
+        <button class="next-button" @click="showNextStep" v-show="areButtonsVisible()">Next</button>
+        <button class="send-button" @click="sendFunction" v-show="isLastStep()">Send</button>
 
       </div>
 
@@ -124,6 +124,16 @@ export default {
             alert("Password Doesn't match");
             return;
           }
+          if(this.$refs.currentStep.checkPasswordLength()){
+            alert("Password need to be 12 caracters or more !");
+            return;
+          }
+        }
+        if(this.currentStep === 2){
+          if(this.$refs.currentStep.verifSelect()){
+            return;
+          }
+
         }
         registerFunction.showFormData();
         this.currentStep += 1;

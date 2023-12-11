@@ -4,12 +4,14 @@
     <div class="register-wrapper">
       <img src="./assets/registerage.jpg" class="register-car-picture" />
       <div class="select-wrapper">
+
         <select id="gender" class="selector gender" v-model="formData.selectedGender" required>
           <option value="Select your gender" disabled>Select your gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
+        <p v-if="errorGender" class="error-message">{{ errorGender }}</p>
 
 
 
@@ -17,16 +19,19 @@
           <option value="Select your birth year" disabled>Select your birth year</option>
           <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
         </select>
+        <p v-if="errorYear" class="error-message">{{ errorYear }}</p>
 
-        <div class="phone-input">
-          <select id="countrySelector" class="selector country-selector " v-model="formData.selectedCountry" required>
-            <option value="Select your country" disabled>Select your country</option>
-            <option v-for="country in sortedCountries" :key="country.name" :value="country">
-              {{ country.name }}
-            </option>
-          </select>
-          <input class="phone-number phoneNumber" placeholder="Phone number" v-model="formData.phoneNumber">
-        </div>
+        <select id="countrySelector" class="selector country-selector " v-model="formData.selectedCountry" required>
+          <option value="Select your country" disabled>Select your country</option>
+          <option v-for="country in sortedCountries" :key="country.name" :value="country">
+            {{ country.name }}
+          </option>
+        </select>
+        <p v-if="errorCountry" class="error-message">{{ errorCountry }}</p>
+
+        <input class="phone-number" placeholder="Phone number" v-model="formData.phoneNumber">
+        <p v-if="errorPhone" class="error-message">{{ errorPhone }}</p>
+
       </div>
     </div>
   </div>
@@ -96,22 +101,50 @@ export default {
     },
 
     verifSelect(){
+
       let blockNext = false;
 
       let selectedYear = document.querySelector(".yearOfBirth");
       let selectedCountry = document.querySelector(".country-selector");
       let selectedGender = document.querySelector(".gender");
-      let phoneNumber = document.querySelector(".phoneNumber");
+      let phone_number = document.querySelector(".phone-number");
 
       selectedYear.style.borderColor = "#F4CE14";
       selectedCountry.style.borderColor = "#F4CE14";
       selectedGender.style.borderColor = "#F4CE14";
-      phoneNumber.style.borderColor = "#F4CE14";
+      phone_number.style.borderColor = "#F4CE14";
 
       this.errorGender = '';
       this.errorYear = '';
       this.errorCountry = '';
       this.errorPhone = '';
+
+      if(this.formData.selectedGender === "Select your gender"){
+        selectedGender.style.borderColor = "red";
+        this.errorGender = "Please select your gender";
+        blockNext=true;
+      }
+
+      if(this.formData.selectedYear === "Select your birth year"){
+        selectedYear.style.borderColor = "red";
+        this.errorYear = "Please select your year of birth";
+        blockNext = true;
+      }
+
+      if(this.formData.selectedCountry === "Select your country"){
+        selectedCountry.style.borderColor = "red";
+        this.errorCountry = "Please select your country";
+        blockNext = true;
+      }
+
+      if(this.formData.phoneNumber === ''){
+        phone_number.style.borderColor = "red";
+        this.errorPhone = "Please enter a phone number ";
+        blockNext = true;
+      }
+
+      return blockNext;
+
 
     }
   },
@@ -126,4 +159,12 @@ export default {
 
 <style scoped>
 @import 'Css/Register.css';
+
+.error-message {
+  text-align: center;
+  font-size: 13px;
+  color: red;
+  margin-top: 5px;
+  margin-bottom: -20px;
+}
 </style>

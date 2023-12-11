@@ -9,6 +9,7 @@ export const formData = {
     selectedYear : "Select your birth year",
     selectedCountry : "Select your country",
     selectedGender : "Select your gender",
+    phoneNumber : "",
 };
 
 export function getFormData() {

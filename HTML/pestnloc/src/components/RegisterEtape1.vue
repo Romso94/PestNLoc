@@ -148,6 +148,10 @@ export default {
 
     checkPassword () {
        return this.formData.registerPassword === this.formData.registerPasswordConfirm;
+    },
+
+    checkPasswordLength(){
+      return this.formData.registerPassword.length < 12;
     }
 
   }

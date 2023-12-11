@@ -7,7 +7,7 @@ async function registerUserController(req, res) {
   const {
     Name,
     LastName,
-    Age,
+    YearOfBirth,
     Address,
     Date_Permis_Issue,
     Email,
@@ -20,7 +20,7 @@ async function registerUserController(req, res) {
     const registerData = {
       Name,
       LastName,
-      Age,
+      YearOfBirth,
       Address,
       Date_Permis_Issue,
       Email,
