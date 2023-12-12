@@ -23,9 +23,27 @@
     </table>
 
     <div class="modal" v-if="showModal">
+      <button class ="close" @click="CloseModal">X</button>
 
 
-      {{carid}}
+      <h1 class = "title-modal">{{modal_car_model}}</h1>
+
+      <div class="car-mod">
+        <p class ="mod-inf-car">License Plate : {{modal_car_plate}} </p>
+        <p class ="mod-inf-car">Brand : {{modal_car_brand}}</p>
+        <p class ="mod-inf-car">Model : {{modal_car_model}}</p>
+        <p class ="mod-inf-car">Type: {{modal_car_type}}</p>
+        <p class ="mod-inf-car">Fuel state : {{modal_car_fuel}}</p>
+        <p class ="mod-inf-car">Car power : {{modal_car_power}}</p>
+
+        <img :src="this.showCarImage"/>
+
+
+
+
+
+
+      </div>
 
     </div>
 
@@ -35,6 +53,7 @@
 <script>
 
 import RentFormComponent from "@/components/RentFormComponent.vue";
+
 
 
 
@@ -57,7 +76,8 @@ export default {
       modal_car_brand : ref(""),
       modal_car_power : ref(""),
       modal_car_type : ref(""),
-      modal_car_agency : ref("")
+      modal_car_agency : ref(""),
+      showCarImage : ref('')
     };
   },
   async beforeMount() {
@@ -100,9 +120,19 @@ export default {
       this.modal_car_model = this.carid.Model;
       this.modal_car_fuel = this.carid.Fuel_State;
       this.modal_car_brand = this.carid.Brand;
-      this.modal_car_power
+      this.modal_car_power = this.carid.Car_Power;
+      this.modal_car_agency = this.carid.agencyname;
+      this.modal_car_type = this.carid.Car_Type;
+
+      this.showCarImage = `/src/components/RentDirectory/${this.modal_car_brand}_${this.modal_car_model}.jpg`;
+
+
+
 
     },
+    CloseModal(){
+      this.showModal = false;
+    }
   },
 };
 </script>
@@ -110,16 +140,5 @@ export default {
 <style scoped>
 @import "Css/Rent.css";
 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  width: 50%;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000000;
-}
+
 </style>
