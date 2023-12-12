@@ -43,10 +43,10 @@ async function deleteClient(req, res) {
 async function updateClient (req,res) {
     
     const {idClient} = req.params;
-    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number} = req.body;
+    const { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Country, Gender} = req.body;
     
     try{
-        const dataClient = { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number};
+        const dataClient = { Name, LastName, Age, Address, Date_Permis_Issue, Email, Phone_Number, Country, Gender};
         const clients = await Client.updateClient(idClient,dataClient);
         res.json(clients);
 

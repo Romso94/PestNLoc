@@ -1,11 +1,29 @@
-<script setup>
-
-</script>
 
 <template>
-sqd
+  <div class="modal">
+    <!-- Contenu de votre modal RentFormComponent -->
+    <h2>Rent Form Component</h2>
+    <!-- ... Autres éléments ... -->
+  </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  // Logique du composant
+};
+</script>
 
+<style scoped>
+/* Styles pour la modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
 </style>

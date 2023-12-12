@@ -20,9 +20,12 @@
       <component :is="currentStepComponent"  ref="currentStep"   />
       <div class="button-container">
         <button class="previous-button" @click="showPreviousStep" :disabled="currentStep.value === 1">Previous</button>
-        <button class="next-button" @click="showNextStep" v-show="areButtonsVisible">Next</button>
-        <button class="send-button" v-if="isLastStep" @click="sendFunction" v-show="!areButtonsVisible">Send</button>
+        <button class="next-button" @click="showNextStep" v-show="areButtonsVisible()">Next</button>
+        <button class="send-button" @click="sendFunction" v-show="isLastStep()">Send</button>
+
       </div>
+
+
       <a href="/login" class="sign-in">Sign In</a>
     </div>
   </div>
@@ -32,7 +35,11 @@
 import RegisterEtape1 from "@/components/RegisterEtape1.vue";
 import RegisterEtape2 from "@/components/RegisterEtape2.vue";
 import RegisterEtape3 from "@/components/RegisterEtape3.vue";
+
+import * as registerFunction from "./js/registerfunctions";
 import {  watch,shallowRef} from "vue";
+import {formData} from "./js/registerfunctions";
+import router from "../router";
 
 
 
@@ -43,21 +50,14 @@ export default {
     return {
       currentStep: shallowRef(1),
       currentStepComponent: shallowRef(RegisterEtape1),
-      formData:{
-        registerFirstName: '' ,
-        registerLastName: ''  ,
-        registerMail: '',
-        registerAddress : '' ,
-        registerPassword:  '',
-        registerPasswordConfirm: '',
-      },
-
+      isModalVisible: false,
+      modalErrorMessage: "",
     };
   },
   components : {
     RegisterEtape1,
     RegisterEtape2,
-    RegisterEtape3
+    RegisterEtape3,
   },
 
   beforeMount() {
@@ -122,18 +122,27 @@ export default {
           if (this.$refs.currentStep.verifInput()){
             return
           }
-          this.formData = this.$refs.currentStep.getFormData();
+          if(!this.$refs.currentStep.checkPassword()){
+            alert("Password Doesn't match");
+            return;
+          }
+          if(this.$refs.currentStep.checkPasswordLength()){
+            alert("Password need to be 12 caracters or more !");
+            return;
+          }
         }
+        if(this.currentStep === 2){
+          if(this.$refs.currentStep.verifSelect()){
+            return;
+          }
+
+        }
+        // registerFunction.showFormData();
         this.currentStep += 1;
       }
     },
-
     showPreviousStep() {
       this.currentStep = this.currentStep === 1 ? 1 : this.currentStep - 1;
-    },
-
-    getFormDataRegister(){
-      return this.formData;
     },
 
     areButtonsVisible() {
@@ -144,9 +153,56 @@ export default {
       return this.currentStep === 3;
     },
 
-    sendFunction() {
-      console.log('Send button clicked!');
-    }
+    async sendFunction() {
+      if(this.currentStep === 3){
+        if(this.$refs.currentStep.verifInput()){
+          return;
+        }
+        let registerFirstName = formData.registerFirstName;
+        let registerLastName = formData.registerLastName;
+        let registerMail = formData.registerMail;
+        let registerAddress = formData.registerAddress;
+        let registerPassword = formData.registerPassword
+        let registerPasswordConfirm = formData.registerPasswordConfirm;
+        let selectedYear = formData.selectedYear;
+        let selectedCountry = formData.selectedCountry.name;
+        let selectedGender = formData.selectedGender;
+        let phoneNumber = formData.phoneNumber;
+        let LicenseDateIssue = formData.LicenseDateIssue;
+
+        try{
+          const response = await  fetch("http://localhost:9000/pestnloc/register", {
+            method : 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              "Name": registerFirstName,
+              "LastName": registerLastName,
+              "YearOfBirth": selectedYear,
+              "Address": registerAddress,
+              "Date_Permis_Issue": LicenseDateIssue,
+              "Email": registerMail,
+              "Phone_Number": phoneNumber,
+              "Password": registerPassword,
+              "Country" : selectedCountry,
+              "Gender"  : selectedGender,
+            }),
+          });
+
+          console.log("user Register")
+
+          if(response.ok){
+            await router.push("/login");
+          }
+
+        }catch (error){
+          console.log("Error",error)
+        }
+      }
+
+    },
+
   }
 };
 </script>

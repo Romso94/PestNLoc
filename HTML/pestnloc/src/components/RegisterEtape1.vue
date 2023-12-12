@@ -10,14 +10,34 @@
       <input type="text" class="address input-text" placeholder="Address" v-model="formData.registerAddress">
       <p v-if="errorAddress" class="error-message">{{errorAddress}}</p>
     </div>
-    <div class="MailPasswordInput">
-      <input type="email" class="email input-text"  placeholder="Email" v-model="formData.registerMail">
-      <p v-if="errorMail" class="error-message">{{errorMail}}</p>
-      <input type="password" class="password input-text" placeholder="Password" v-model="formData.registerPassword">
-      <p v-if="errorPassword" class="error-message">{{errorPassword}}</p>
-      <input type="password" class="confirm-password input-text" placeholder="Confirm Password" v-model="formData.registerPasswordConfirm">
-      <p v-if="errorPasswordConfirm" class="error-message">{{errorPasswordConfirm}}</p>
-    </div>
+      <div class="MailPasswordInput">
+        <input
+            type="text"
+            class="email input-text"
+            placeholder="Email"
+            v-model="formData.registerMail"
+        />
+        <p v-if="errorMail" class="error-message">{{ errorMail }}</p>
+        <input
+            :type="showPassword ? 'text' : 'password'"
+            class="password input-text"
+            placeholder="Password"
+            v-model="formData.registerPassword"
+        />
+        <p v-if="errorPassword" class="error-message">{{ errorPassword }}</p>
+        <button type="button" class="togglePassword" @click="togglePasswordVisibility">
+          <i v-if="showPassword" class="material-icons">visibility</i>
+          <i v-else class="material-icons">visibility_off</i>
+        </button>
+        <input
+            :type="showPassword ? 'text' : 'password'"
+            class="confirm-password input-text"
+            placeholder="Confirm Password"
+            v-model="formData.registerPasswordConfirm"
+        />
+        <p v-if="errorPasswordConfirm" class="error-message">{{ errorPasswordConfirm }}</p>
+
+      </div>
     </div>
   </div>
 
@@ -26,23 +46,27 @@
 <script>
 
 import {shallowRef} from "vue";
-import RegisterComponent from "@/components/RegisterComponent.vue";
-import * as registerFunction from "../components/registerfunctions";
+import * as registerFunction from "./js/registerfunctions";
 
 export default {
 
   data () {
     return {
-      formData: {
-        registerFirstName: '' ,
-        registerLastName: ''  ,
-        registerMail: '',
-        registerAddress : '' ,
-        registerPassword:  '',
-        registerPasswordConfirm: '',
+      formData  : {
+        registerFirstName: "",
+        registerLastName: "",
+        registerMail: "",
+        registerAddress: "",
+        registerPassword: "",
+        registerPasswordConfirm: "",
+        selectedYear : "Select your birth year",
+        selectedCountry : "Select your country",
+        selectedGender : "Select your gender",
+        phoneNumber : "",
       },
-
       // Check error input :
+
+      showPassword: shallowRef(false),
       errorFirstName : shallowRef(''),
       errorLastName : shallowRef(''),
       errorAddress : shallowRef(''),
@@ -56,10 +80,12 @@ export default {
 
   beforeMount() {
     this.formData = registerFunction.formData;
-    registerFunction.showFormData();
-  },
+      },
 
   methods : {
+    togglePasswordVisibility() {
+      this.showPassword = !this.showPassword;
+    },
      verifInput(){
        let blockNext = false;
        let inputFirstName = document.querySelector(".first-name");
@@ -119,6 +145,14 @@ export default {
     getFormData(){
        return this.formData;
     },
+
+    checkPassword () {
+       return this.formData.registerPassword === this.formData.registerPasswordConfirm;
+    },
+
+    checkPasswordLength(){
+      return this.formData.registerPassword.length < 12;
+    }
 
   }
 

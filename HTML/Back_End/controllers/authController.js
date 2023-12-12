@@ -7,12 +7,14 @@ async function registerUserController(req, res) {
   const {
     Name,
     LastName,
-    Age,
+    YearOfBirth,
     Address,
     Date_Permis_Issue,
     Email,
     Phone_Number,
     Password,
+    Country,
+    Gender,
     isAdmin,
   } = req.body;
 
@@ -20,12 +22,14 @@ async function registerUserController(req, res) {
     const registerData = {
       Name,
       LastName,
-      Age,
+      YearOfBirth,
       Address,
       Date_Permis_Issue,
       Email,
       Phone_Number,
       Password,
+      Country,
+      Gender
     };
     const register = await clients.registerUser(registerData);
     res.json(register);

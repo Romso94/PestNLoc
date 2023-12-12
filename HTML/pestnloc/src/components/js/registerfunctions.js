@@ -1,3 +1,4 @@
+
 export const formData = {
     registerFirstName: "",
     registerLastName: "",
@@ -5,6 +6,11 @@ export const formData = {
     registerAddress: "",
     registerPassword: "",
     registerPasswordConfirm: "",
+    selectedYear : "Select your birth year",
+    selectedCountry : "Select your country",
+    selectedGender : "Select your gender",
+    phoneNumber : "",
+    LicenseDateIssue : ""
 };
 
 export function getFormData() {

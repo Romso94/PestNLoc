@@ -25,7 +25,7 @@ CREATE TABLE Client(
    Id_Client INT NOT NULL AUTO_INCREMENT,
    LastName VARCHAR(50) NOT NULL,
    Name VARCHAR(50) NOT NULL,
-   Age INT NOT NULL,
+   YearOfBirth INT NOT NULL,
    Address VARCHAR(50) NOT NULL,
    Date_Permis_Issue DATE NOT NULL,
    Email VARCHAR(50) NOT NULL,
@@ -33,6 +33,8 @@ CREATE TABLE Client(
    Password VARCHAR(2500) NOT NULL,
    isAdmin boolean NOT NULL,
    Salt VARCHAR(50) NOT NULL,
+   Country VARCHAR(150) NOT NULL,
+   Gender VARCHAR(50) NOT NULL,
    PRIMARY KEY(Id_Client),
    UNIQUE(LastName),
    UNIQUE(Address),
@@ -65,24 +67,3 @@ CREATE TABLE Contract(
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
    FOREIGN KEY(License_Plate) REFERENCES Car(License_Plate)
 );
-
-
-    
-INSERT INTO client (LastName,Name,Age,Address,Date_Permis_Issue,Email,Phone_Number,Password,Salt) values ('Doe','Florian',25,'123 Main retgzgzeSt','2022-01-01','john.doee@example.com','095403495','motdepasse123','test');
-Select * from client;
-
-INSERT INTO agency(Agency_Name,Address,Phone_Number,Email,Password,Salt) values ('Test1','TrucMachin',034567,'test.truc@gmail.com','truc',"salt");
-SELECT * from Agency;
-
-INSERT INTO car (License_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
-SELECT * from car; 
-
-
-
-INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,2,"FT056TK");
-SELECT * from contract; 
-
-SELECT * from client ;
-SELECT * from contract;
-SELECT * from car;
-SELECT * from agency;
