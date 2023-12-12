@@ -5,6 +5,28 @@
     margin-top: 50px;
 }
 
+.paralleleidclient{
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+}
+
+
+.Nocontract{
+    font-size: var(--sizeFontDesktop);
+    font-weight: bold;
+    color: red;
+    padding-right: 15px;
+    margin-left: 10vh;
+    width: 350px;
+}
+
+
+
 .Contract_component{
     display: flex;
     flex-direction: column;

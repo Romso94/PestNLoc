@@ -8,18 +8,19 @@
             <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
             <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
           </div>
-          <div class ="AddNameLogout">
-            <div>You don't have any contracts</div>
-          </div>
+
 
           <div class="White_contract">
-          <h2>Contrat actuel :</h2>
-          <div>Id Client : {{Id_client}}</div>
-          <div>Id Contract : {{Id_contract}}</div>
-          <div>Starting Date : {{Start_Date_Year}}-{{Start_Date_Month}}-{{Start_Date_Day}}</div>
-          <div>Ending Date : {{End_Date_Year}}-{{End_Date_Month}}-{{End_Date_Day}}</div>
-          <div>Price : {{Price}}</div>
-          <div>License Plate : {{License_Plate}}</div>
+          <div class = "paralleleidclient">
+          <div>{{Actualcontract}}</div>
+          <div class ="Nocontract">{{Nocontract}}</div>
+            <div> {{Id_client}}</div>
+          </div>
+          <div> {{Id_contract}}</div>
+          <div> {{Start_Date_Year}}{{Start_Date_Month}}{{Start_Date_Day}}</div>
+          <div> {{End_Date_Year}}{{End_Date_Month}}{{End_Date_Day}}</div>
+          <div> {{Price}}</div>
+          <div> {{License_Plate}}</div>
           </div>
 
       <div>
@@ -64,6 +65,8 @@ export default {
       End_Date_Day : shallowRef(""),
       License_Plate : shallowRef(""),
       Price : shallowRef(""),
+      Nocontract : shallowRef(""),
+      Actualcontract : shallowRef(""),
       responseData : null
     }
   },
@@ -90,57 +93,61 @@ export default {
        const decodedString = atob(cookie);
        const decodedObject = JSON.parse(decodedString);
        const id_user = decodedObject.user.id;
-
       try {
-        const response = await fetch(`http://localhost:9000/pestnloc/contracts/clients/${id_user}`, {
-              method: 'GET',
-              headers:{
-                'Authorization': `Bearer ${sendCookie}`
-              }});
+        const response = await fetch(`http://localhost:9000/pestnloc/clients/${id_user}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${sendCookie}`
+          }
+        });
 
         if (response.ok) {
-
-          const responseData = await response.json();
-          console.log(responseData[0].Id_Contract);
-          this.Id_client = responseData[0].Id_Client;
-          this.Id_contract = responseData[0].Id_contract;
-          this.Start_Date_Year = responseData[0].Start_Date.slice(0,4);
-          this.Start_Date_Month = responseData[0].Start_Date.slice(5,7);
-          this.Start_Date_Day = responseData[0].Start_Date.slice(8,10);
-          this.End_Date_Year = responseData[0].End_Date.slice(0,4);
-          this.End_Date_Month = responseData[0].End_Date.slice(5,7);
-          this.End_Date_Day = responseData[0].End_Date.slice(8,10);
-          this.License_Plate = responseData[0].License_Plate;
-          this.Price = responseData[0].Price;
+          const infoclient = await response.json();
+          console.log(infoclient)
+          this.Name = infoclient[0].Name;
+          this.Surname = infoclient[0].LastName;
 
 
           try {
-            const response = await fetch(`http://localhost:9000/pestnloc/clients/${this.Id_client}`, {
+            const response = await fetch(`http://localhost:9000/pestnloc/contracts/clients/${id_user}`, {
               method: 'GET',
-              headers:{
+              headers: {
                 'Authorization': `Bearer ${sendCookie}`
-              }});
+              }
+            });
 
-            if (response.ok){
-              const infoclient = await response.json();
-              console.log(infoclient)
-              this.Name = infoclient[0].Name;
-              this.Surname = infoclient[0].LastName;
+            if (response.ok) {
+
+              const responseData = await response.json();
+              console.log(responseData[0].Id_Contract);
+              this.Actualcontract = "Actual contract :";
+              this.Id_client = "Id Client : " + responseData[0].Id_Client;
+              this.Id_contract = "Id Contract : " + responseData[0].Id_contract;
+              this.Start_Date_Year = "Starting Date : " + responseData[0].Start_Date.slice(0, 4) + "-";
+              this.Start_Date_Month = responseData[0].Start_Date.slice(5, 7) + "-";
+              this.Start_Date_Day = responseData[0].Start_Date.slice(8, 10);
+              this.End_Date_Year = "Ending Date : " + responseData[0].End_Date.slice(0, 4) + "-";
+              this.End_Date_Month = "" + responseData[0].End_Date.slice(5, 7) + "-";
+              this.End_Date_Day = "" + responseData[0].End_Date.slice(8, 10);
+              this.License_Plate = "License Plate : " + responseData[0].License_Plate;
+              this.Price = "Price : " + responseData[0].Price;
+
 
             }
-          }
-          catch (error){
-            console.log('Erreur lors de la récupération des infos clients')
+
+          } catch (error) {
+            this.Nocontract = "You don't have any contract"
           }
 
 
         } else {
           console.error('La requête a échoué avec le statut :', response.status);
         }
-
-      } catch (error) {
-        console.error('Erreur lors de la récupération du contrat :', error);
       }
+
+      catch (error){
+          console.log('Erreur lors de la récupération des infos clients')
+        }
     },
 
      contratAjoute (nouveauContrat)  {
