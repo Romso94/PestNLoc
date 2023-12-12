@@ -5,6 +5,25 @@
     margin-top: 50px;
 }
 
+.Nocontract{
+    font-size: var(--sizeFontDesktop);
+    font-weight: bold;
+    color: red;
+    padding-right: 15px;
+    margin-left: 10vh;
+    width: 350px;
+}
+
+.Actualcontract{
+    font-size: var(--sizeFontDesktop);
+    font-weight: bold;
+    padding-right: 15px;
+    margin-left: 10vh;
+    width: 350px;
+    padding-left: 60px;
+}
+
+
 .Contract_component{
     display: flex;
     flex-direction: column;
