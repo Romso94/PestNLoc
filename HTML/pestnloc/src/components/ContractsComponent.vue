@@ -11,9 +11,11 @@
 
 
           <div class="White_contract">
-          <div class ="Actualcontract">{{Actualcontract}}</div>
+          <div class = "paralleleidclient">
+          <div>{{Actualcontract}}</div>
           <div class ="Nocontract">{{Nocontract}}</div>
-          <div> {{Id_client}}</div>
+            <div> {{Id_client}}</div>
+          </div>
           <div> {{Id_contract}}</div>
           <div> {{Start_Date_Year}}{{Start_Date_Month}}{{Start_Date_Day}}</div>
           <div> {{End_Date_Year}}{{End_Date_Month}}{{End_Date_Day}}</div>
