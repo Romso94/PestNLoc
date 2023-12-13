@@ -6,16 +6,34 @@
 }
 
 .paralleleidclient{
-    font-size: var(--sizeFontMobile);
-    font-weight: bold;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 10px;
+    padding-bottom: 30px;
+    text-underline: #333333;
+
 }
 
+.separateprice{
+    padding-top: 30px;
+    padding-left: 310px;
+    text-decoration: underline;
+}
 
+.Startdate{
+    padding-bottom: 2px;
+}
+
+.Enddate{
+    padding-bottom: 2px;
+}
+.columnthing{
+    display: flex;
+    flex-direction: column;
+}
+
+.toseparate{
+    width: 180px;
+}
 .Nocontract{
     font-size: var(--sizeFontDesktop);
     font-weight: bold;
@@ -45,6 +63,8 @@
     flex-direction: column;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-size: var(--sizeFontMobile);
+    font-weight: bold;
 }
 
 .Buttoncontract {
@@ -80,5 +100,104 @@
     justify-content: center;
 }
 @media (min-width: 768px) {
+    .topMain{
+        background: var(--pestnlocColor);
+        height: 570px;
+        width: 100%;
+        margin-top: 70px;
+    }
 
+    .paralleleidclient{
+        display: flex;
+        flex-direction: row;
+        padding-bottom: 40px;
+        text-underline: #333333;
+
+    }
+
+    .separateprice{
+        padding-top: 40px;
+        padding-left: 550px;
+        text-decoration: underline;
+    }
+
+    .Startdate{
+        padding-bottom: 3px;
+    }
+
+    .Enddate{
+        padding-bottom: 3px;
+    }
+    .columnthing{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .toseparate{
+        width: 380px;
+    }
+
+    .Nocontract{
+        font-size: var(--sizeFontTitle);
+        font-weight: bold;
+        color: red;
+        padding-right: 15px;
+        margin-left: 10vh;
+        width: 350px;
+    }
+
+    .Contract_component{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .White_contract{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        height: 300px;
+        width: 80vh;
+        border-radius: 3px;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: var(--sizeFontContract);
+        font-weight: bold;
+    }
+
+    .Buttoncontract {
+        margin: 2%;
+        background-color: #45474B;
+        border: none;
+        border-radius: 5px;
+        padding: 8px;
+        font-size: var(--sizeFontMobile);
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        color: var(--pestnlocColor);
+    }
+
+    .Buttoncontract2{
+        margin-left: 0;
+    }
+
+    .NameandSurname{
+        font-size: var(--sizeFontTitle);
+        font-weight: bold;
+        padding-right: 15px;
+        padding-left: 65px;
+        margin-left: 10vh;
+        width: 450px;
+    }
+
+    .AddNameLogout{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
 }

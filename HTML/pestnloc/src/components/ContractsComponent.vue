@@ -13,14 +13,17 @@
           <div class="White_contract">
           <div class = "paralleleidclient">
           <div>{{Actualcontract}}</div>
-          <div class ="Nocontract">{{Nocontract}}</div>
+            <div class ="toseparate"></div>
+            <div class ="columnthing">
             <div> {{Id_client}}</div>
+              <div> {{Id_contract}}</div>
+            </div>
           </div>
-          <div> {{Id_contract}}</div>
-          <div> {{Start_Date_Year}}{{Start_Date_Month}}{{Start_Date_Day}}</div>
-          <div> {{End_Date_Year}}{{End_Date_Month}}{{End_Date_Day}}</div>
-          <div> {{Price}}</div>
+            <div class ="Nocontract">{{Nocontract}}</div>
+          <div class ="Startdate"> {{Start_Date_Year}}{{Start_Date_Month}}{{Start_Date_Day}}</div>
+          <div class ="Enddate"> {{End_Date_Year}}{{End_Date_Month}}{{End_Date_Day}}</div>
           <div> {{License_Plate}}</div>
+            <div class ="separateprice"> {{Price}}</div>
           </div>
 
       <div>
@@ -122,7 +125,7 @@ export default {
               console.log(responseData[0].Id_Contract);
               this.Actualcontract = "Actual contract :";
               this.Id_client = "Id Client : " + responseData[0].Id_Client;
-              this.Id_contract = "Id Contract : " + responseData[0].Id_contract;
+              this.Id_contract = "Id Contract : " + responseData[0].Id_Contract;
               this.Start_Date_Year = "Starting Date : " + responseData[0].Start_Date.slice(0, 4) + "-";
               this.Start_Date_Month = responseData[0].Start_Date.slice(5, 7) + "-";
               this.Start_Date_Day = responseData[0].Start_Date.slice(8, 10);
@@ -130,7 +133,7 @@ export default {
               this.End_Date_Month = "" + responseData[0].End_Date.slice(5, 7) + "-";
               this.End_Date_Day = "" + responseData[0].End_Date.slice(8, 10);
               this.License_Plate = "License Plate : " + responseData[0].License_Plate;
-              this.Price = "Price : " + responseData[0].Price;
+              this.Price = "Price : " + responseData[0].Price + "$";
 
 
             }
