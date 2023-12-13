@@ -7,3 +7,12 @@
 .admin-form{
     margin-top: 100px;
 }
+
+.card-register{
+    margin-top: 70px;
+    border: 2px solid #F4CE14;
+}
+
+.link-login{
+    color : #45474B;
+}

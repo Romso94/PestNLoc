@@ -1,16 +1,17 @@
 <template>
   <v-card
-      class="mx-auto text-center"
+      class="mx-auto text-center card-register"
       max-width="344"
-      title="Agency Registration"
   >
-    <v-container>
+    <h1  class="admin-form-title my-6">Agency Registration</h1>
+    <v-container ref="form">
       <v-text-field
           clearable
           v-model="AgencyName"
           color="primary"
           label="Agency Name"
           variant="underlined"
+          :rules = "[rules.required]"
       ></v-text-field>
 
       <v-text-field
@@ -19,6 +20,7 @@
           color="primary"
           label="Address"
           variant="underlined"
+          :rules = "[rules.required]"
       ></v-text-field>
 
       <v-text-field
@@ -27,6 +29,7 @@
           color="primary"
           label="Phone Number"
           variant="underlined"
+          :rules = "[rules.required]"
       ></v-text-field>
 
       <v-text-field
@@ -36,6 +39,7 @@
           label="Email"
           placeholder="testAdmin@gmail.com"
           variant="underlined"
+          :rules = "[rules.required]"
       ></v-text-field>
 
       <v-text-field
@@ -45,27 +49,49 @@
           label="Admin Password"
           variant="underlined"
           @click:append-inner="visible = !visible"
+          :rules = "[rules.required]"
+          v-model="password"
+
       ></v-text-field>
 
-      <v-btn @click="submitForm" color="primary">Submit</v-btn>
+      <v-btn @click="submitForm" class="submit-register">Submit</v-btn>
+      <v-btn @click="clearForm" class="ml-15 submit-register">
+        Clear
+      </v-btn>
     </v-container>
+    <v-card-text class="text-center">
+      <a
+          class="text-decoration-none link-login"
+          href="/admin/login"
+          rel="noopener noreferrer"
+          target="_blank"
+      >Login
+        <v-icon icon="mdi-chevron-right"></v-icon>
+
+      </a>
+    </v-card-text>
   </v-card>
 </template>
 
 <script>
 import { shallowRef } from "vue";
+import router from "../router";
 
 export default {
   name: "AdminRegisterComponent",
 
   data() {
     return {
-      AgencyName: shallowRef(''),
-      AgencyAddress: shallowRef(''),
-      phoneNumber: shallowRef(''),
-      email: shallowRef(''),
-      password: shallowRef(''),
+      AgencyName: shallowRef(null),
+      AgencyAddress: shallowRef(null),
+      phoneNumber: shallowRef(null),
+      email: shallowRef(null),
+      password: shallowRef(null),
       visible : false,
+      rules: {
+        required: value => !!value || 'Field is required',
+      },
+
     };
   },
 
@@ -74,14 +100,66 @@ export default {
       this.passwordVisible = !this.passwordVisible;
     },
 
-    submitForm() {
-      // Implement your form submission logic here
-      console.log('Form submitted!');
+   async submitForm() {
+      if(this.verifInput()){
+        return
+      }
+
+      try{
+        const response = await  fetch("http://localhost:9000/pestnloc/admin/register", {
+          method : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+
+          },
+          body: JSON.stringify({
+            "Agency_Name": this.AgencyName,
+            "Address": this.AgencyAddress,
+            "Email": this.email,
+            "Phone_Number": this.phoneNumber,
+            "Password": this.password
+          }),
+        });
+
+        console.log("user Register")
+
+        if(response.ok){
+          await router.push("/admin/login");
+        }
+
+      }catch (error){
+        console.log("Error : ",error);
+      }
+    },
+
+    verifInput() {
+      if(this.AgencyName === null || this.AgencyAddress === null  || this.phoneNumber === null || this.email === null || this.password === null){
+        alert("Please fill all field !")
+        return true;
+      }
+      return  false
+    },
+    clearForm () {
+      this.AgencyName = null;
+      this.AgencyAddress = null;
+      this.phoneNumber = null;
+      this.email = null;
+      this.password = null;
     },
   },
 };
 </script>
 
 <style scoped>
-/* Ajoutez du style si nécessaire */
+@import "Css/AdminSign.css";
+
+.submit-register{
+  color: #F5F7F8;
+  background-color:#45474B;
+}
+
+.submit-register:hover{
+  color: #F4CE14;
+}
+
 </style>

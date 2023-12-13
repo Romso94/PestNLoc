@@ -15,13 +15,14 @@ const isAuthenticated = () => {
 };
 
 const isAdmin = () => {
-    const jwtCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('jwt='));
-    console.log('Router : ' + jwtCookie);
+    const decodedCookie = decodeURIComponent(document.cookie);
+    let cookie = decodedCookie.split("=");
+    const realcookie = cookie[1].split(".");
+    cookie= realcookie[1];
+    const decodedString = atob(cookie);
+    const decodedObject = JSON.parse(decodedString);
 
-    // Implement your logic to check if the user is an admin based on the cookie
-    // For example, decode the JWT and check for an "admin" claim
-    // Replace the following line with your logic
-    return false;
+    return decodedObject.user.role === "admin";
 };
 
 const router = createRouter({
@@ -91,6 +92,12 @@ const router = createRouter({
                     path: "login",
                     name: "Login Admin",
                     component: AdminLoginComponent,
+                    beforeEnter : (to,from,next)=>{
+                        if (isAdmin()){
+                            next("/admin")
+                        }
+                        next()
+                    }
                 },
 
                 {
