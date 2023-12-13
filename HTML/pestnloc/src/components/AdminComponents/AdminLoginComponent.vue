@@ -60,7 +60,7 @@
 
 <script>
 import {shallowRef} from "vue";
-import router from "../router";
+import router from "../../router";
 
 export default {
   name: "AdminComponent",
@@ -96,7 +96,6 @@ export default {
         const result = await response.json();
         const token = result.token;
         document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
-        console.log('Token from server:', document.cookie);
         await router.push('/admin');
 
       } catch (error) {
@@ -109,7 +108,7 @@ export default {
 </script>
 
 <style scoped>
-@import "Css/AdminSign.css";
+@import "../Css/AdminSign.css";
 
 .link-signup{
   color: #45474B;

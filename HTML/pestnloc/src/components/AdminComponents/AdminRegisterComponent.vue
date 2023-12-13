@@ -75,7 +75,7 @@
 
 <script>
 import { shallowRef } from "vue";
-import router from "../router";
+import router from "../../router";
 
 export default {
   name: "AdminRegisterComponent",
@@ -151,7 +151,7 @@ export default {
 </script>
 
 <style scoped>
-@import "Css/AdminSign.css";
+@import "../Css/AdminSign.css";
 
 .submit-register{
   color: #F5F7F8;

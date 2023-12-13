@@ -35,13 +35,7 @@
         <p class ="mod-inf-car">Type: {{modal_car_type}}</p>
         <p class ="mod-inf-car">Fuel state : {{modal_car_fuel}}</p>
         <p class ="mod-inf-car">Car power : {{modal_car_power}}</p>
-
         <img :src="this.showCarImage"/>
-
-
-
-
-
 
       </div>
 

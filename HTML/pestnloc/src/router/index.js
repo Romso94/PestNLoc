@@ -5,9 +5,11 @@ import Agencies from "../components/AgenciesComponent.vue";
 import Rent from "../components/RentComponent.vue";
 import Register from "../components/RegisterComponent.vue";
 import DefaultLayout from "../Static_Components/DefaultLayout.vue";
-import AdminComponent from "../components/AdminComponent.vue";
-import AdminLoginComponent from "../components/AdminLoginComponent.vue";
-import AdminRegisterComponent from "../components/AdminRegisterComponent.vue";
+import AdminComponent from "../components/AdminComponents/AdminComponent.vue";
+import AdminLoginComponent from "../components/AdminComponents/AdminLoginComponent.vue";
+import AdminRegisterComponent from "../components/AdminComponents/AdminRegisterComponent.vue";
+import CarsCrudComponent from "../components/AdminComponents/CRUD_Tables/CarsCrudComponent.vue";
+import AgencyCrudComponent from "../components/AdminComponents/CRUD_Tables/AgencyCrudComponent.vue";
 
 const isAuthenticated = () => {
     const jwtCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('jwt='));
@@ -15,14 +17,23 @@ const isAuthenticated = () => {
 };
 
 const isAdmin = () => {
-    const decodedCookie = decodeURIComponent(document.cookie);
-    let cookie = decodedCookie.split("=");
-    const realcookie = cookie[1].split(".");
-    cookie= realcookie[1];
-    const decodedString = atob(cookie);
-    const decodedObject = JSON.parse(decodedString);
+    try{
+        const decodedCookie = decodeURIComponent(document.cookie);
+        let cookie = decodedCookie.split("=");
+        const realcookie = cookie[1].split(".");
+        cookie= realcookie[1];
+        const decodedString = atob(cookie);
+        const decodedObject = JSON.parse(decodedString);
+        if(decodedObject !== undefined){
+            return decodedObject.user.role === "admin";
+        }
 
-    return decodedObject.user.role === "admin";
+    }catch (error){
+        return false;
+    }
+
+
+
 };
 
 const router = createRouter({
@@ -73,6 +84,8 @@ const router = createRouter({
                     path: '/Register',
                     name: "Register",
                     component: Register,
+
+
                 }
             ]
         },
@@ -104,6 +117,31 @@ const router = createRouter({
                     path: "register",
                     name: "Register Admin",
                     component: AdminRegisterComponent
+                },
+
+                {
+                    path: "cars",
+                    name: "Cars CRUD Table",
+                    component : CarsCrudComponent,
+                    beforeEnter : (to,from,next)=>{
+                        if (isAdmin()){
+                            next()
+                        }
+                        next("/admin/login")
+                    }
+                },
+
+                {
+                    path : "agencies",
+                    name: "Agency CRUD Tables",
+                    component: AgencyCrudComponent,
+                    beforeEnter : (to,from,next)=>{
+                        if (isAdmin()){
+                            next()
+                        }
+                        next("/admin/login")
+                    }
+
                 }
 
             ],

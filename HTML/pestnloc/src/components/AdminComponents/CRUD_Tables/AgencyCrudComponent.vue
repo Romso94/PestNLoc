@@ -1,0 +1,165 @@
+<template>
+  <div class="main-wrapper">
+    <div class="wrapper-agencies" style="background-color: #45474B;">
+
+      <h1 class="table-title">
+        <input v-model="searchQuery" type="text" placeholder="Search..." class="search-agencies"/>
+        Agencies
+      </h1>
+      <table class="custom-table">
+        <thead>
+        <tr class="info">
+          <th>Id Agency</th>
+          <th>Agency Name</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Actions</th> <!-- Added Actions column -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info" v-for="agencyItem in filteredAgencies" :key="agencyItem.Id_Agency">
+          <td>{{ agencyItem.Id_Agency }}</td>
+          <td>{{ agencyItem.Agency_Name }}</td>
+          <td>{{ agencyItem.Address }}</td>
+          <td>{{ agencyItem.Phone_Number }}</td>
+          <td>{{ agencyItem.Email }}</td>
+          <td class="action-agency">
+            <button class="small-but" @click="onModifier(agencyItem)">Modifier</button>
+            <button class="small-but" @click="onSupprimer(agencyItem)">Supprimer</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref } from "vue";
+
+export default {
+  name: "AgencyCrudComponent",
+  data() {
+    return {
+      agencies: ref([]),
+      searchQuery: "",
+    };
+  },
+
+  async beforeMount() {
+    try {
+      const response = await fetch("http://localhost:9000/pestnloc/agencies");
+      const data = await response.json();
+      this.agencies = data;
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données:", error);
+    }
+  },
+
+  computed: {
+    filteredAgencies() {
+      return this.agencies.filter((agency) =>
+          Object.values(agency).some(
+              (value) =>
+                  typeof value === "string" &&
+                  value.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
+      );
+    },
+  },
+
+  methods: {
+    onSupprimer(agency) {
+      // Logique pour la suppression
+      console.log("Supprimer", agency);
+    },
+    onModifier(agency) {
+      // Logique pour la modification
+      console.log("Modifier", agency);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.search-agencies {
+  position: absolute;
+  left: 200px;
+  background-color: #333333;
+  border-radius: 5px;
+  padding-left: 5px;
+  color: #F4CE14;
+  border: 1px solid #F4CE14;
+  transition: border-color 0.3s;
+}
+
+.search-agencies:focus {
+  border-color: yellow;
+  outline: none;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.wrapper-agencies {
+  text-align: center;
+  color: white;
+  width: 80%;
+  border-radius: 15px;
+}
+
+.table-title {
+  margin-top: 20px;
+  color: #F4CE14;
+}
+
+table.custom-table {
+  width: 90%;
+  margin: 20px auto;
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  color: black;
+}
+
+.info {
+  font-size: 16px;
+}
+
+.small-but {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #F4CE14;
+  border-radius: 5px;
+  color: #F4CE14;
+  background-color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.small-but:hover {
+  background-color: #F4CE14;
+  color: white;
+}
+
+.small-but:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.action-agency {
+  display: flex;
+  justify-content: space-evenly;
+}
+</style>
