@@ -10,6 +10,8 @@ import AdminLoginComponent from "../components/AdminComponents/AdminLoginCompone
 import AdminRegisterComponent from "../components/AdminComponents/AdminRegisterComponent.vue";
 import CarsCrudComponent from "../components/AdminComponents/CRUD_Tables/CarsCrudComponent.vue";
 import AgencyCrudComponent from "../components/AdminComponents/CRUD_Tables/AgencyCrudComponent.vue";
+import ContractsCrudComponent from "../components/AdminComponents/CRUD_Tables/ContractsCrudComponent.vue";
+import ClientsCrudComponent from "../components/AdminComponents/CRUD_Tables/ClientsCrudComponent.vue";
 
 const isAuthenticated = () => {
     const jwtCookie = document.cookie.split(';').find((cookie) => cookie.trim().startsWith('jwt='));
@@ -130,7 +132,6 @@ const router = createRouter({
                         next("/admin/login")
                     }
                 },
-
                 {
                     path : "agencies",
                     name: "Agency CRUD Tables",
@@ -142,6 +143,28 @@ const router = createRouter({
                         next("/admin/login")
                     }
 
+                },
+                {
+                    path : "contracts",
+                    name: "Contract CRUD Tables",
+                    component: ContractsCrudComponent,
+                    beforeEnter : (to,from,next)=>{
+                        if (isAdmin()){
+                            next()
+                        }
+                        next("/admin/login")
+                    }
+                },
+                {
+                    path: "clients",
+                    name: "Client CRUD Tables",
+                    component: ClientsCrudComponent,
+                    beforeEnter : (to,from,next)=>{
+                        if (isAdmin()){
+                            next()
+                        }
+                        next("/admin/login")
+                    }
                 }
 
             ],

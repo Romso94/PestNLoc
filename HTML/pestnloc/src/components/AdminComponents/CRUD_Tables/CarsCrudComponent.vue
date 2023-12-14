@@ -1,7 +1,6 @@
 <template>
   <div class="main-wrapper">
     <div class="wrapper-cars" style="background-color: #45474B;">
-
       <h1 class="table-title">
         <input v-model="searchQuery" type="text" placeholder="Search..." class="search-cars"/>
         Car to rent
@@ -85,7 +84,7 @@ export default {
 
 .search-cars{
   position: absolute;
-  left: 200px;
+  left: 14%;
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;

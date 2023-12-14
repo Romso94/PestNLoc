@@ -1,36 +1,42 @@
 <template>
   <div class="main-wrapper">
-    <div class="wrapper-contracts" style="background-color: #45474B;">
+    <div class="wrapper-clients" style="background-color: #45474B;">
 
       <h1 class="table-title">
-        <input v-model="searchQuery" type="text" placeholder="Search..." class="search-contracts"/>
-        Contracts
+        <input v-model="searchQuery" type="text" placeholder="Search..." class="search-clients"/>
+        Clients
       </h1>
       <table class="custom-table">
         <thead>
         <tr class="info">
-          <th>Id Contract</th>
-          <th>License Plate</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Price</th>
           <th>Id Client</th>
-          <th>Contract Availability</th>
-          <th>Actions</th> <!-- Added Actions column -->
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Year of Birth</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Date Permis Issue</th>
+          <th>Country</th>
+          <th>Address</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="info" v-for="contractItem in filteredContracts" :key="contractItem.Id_Contract">
-          <td>{{ contractItem.Id_Contract }}</td>
-          <td>{{ contractItem.License_Plate }}</td>
-          <td>{{ contractItem.Start_Date }}</td>
-          <td>{{ contractItem.End_Date }}</td>
-          <td>{{ contractItem.Price }}</td>
-          <td>{{ contractItem.Id_Client }}</td>
-          <td>{{ contractItem.Contract_Availability }}</td>
-          <td class="action-contract">
-            <button class="small-but" @click="onModifier(contractItem)">Modifier</button>
-            <button class="small-but" @click="onSupprimer(contractItem)">Supprimer</button>
+        <tr class="info" v-for="clientItem in filteredClients" :key="clientItem.Id_Client">
+          <td>{{ clientItem.Id_Client }}</td>
+          <td>{{ clientItem.Name }}</td>
+          <td>{{ clientItem.LastName }}</td>
+          <td>{{ clientItem.Gender }}</td>
+          <td>{{ clientItem.YearOfBirth }}</td>
+          <td>{{ clientItem.Email }}</td>
+          <td>{{ clientItem.Phone_Number }}</td>
+          <td>{{ clientItem.Date_Permis_Issue }}</td>
+          <td>{{ clientItem.Country }}</td>
+          <td>{{ clientItem.Address }}</td>
+          <td class="action-client">
+            <button class="small-but" @click="onModifier(clientItem)">Modifier</button>
+            <button class="small-but" @click="onSupprimer(clientItem)">Supprimer</button>
           </td>
         </tr>
         </tbody>
@@ -43,10 +49,10 @@
 import { ref } from "vue";
 
 export default {
-  name: "ContractsCrudComponent",
+  name: "ClientsCrudComponent",
   data() {
     return {
-      contracts: ref([]),
+      clients: ref([]),
       searchQuery: "",
     };
   },
@@ -57,7 +63,7 @@ export default {
       let cookie = decodedCookie.split("=");
       let token = cookie[1];
 
-      const response = await fetch("http://localhost:9000/pestnloc/contracts", {
+      const response = await fetch("http://localhost:9000/pestnloc/clients", {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -65,15 +71,15 @@ export default {
       });
 
       const data = await response.json();
-      this.contracts = data;
+      this.clients = data;
 
-      console.log(this.contracts)
+      console.log(this.clients)
 
-      this.contracts.forEach((contract) => {
-        contract.Start_Date = contract.Start_Date.split("T")[0];
-        contract.End_Date = contract.End_Date.split("T")[0];
+      this.clients.forEach((client) => {
+        // Format the date in the desired format
+        client.Date_Permis_Issue = client.Date_Permis_Issue.split("T")[0];
+        // Add more formatting if needed
       });
-
 
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
@@ -81,9 +87,9 @@ export default {
   },
 
   computed: {
-    filteredContracts() {
-      return this.contracts.filter((contract) =>
-          Object.values(contract).some(
+    filteredClients() {
+      return this.clients.filter((client) =>
+          Object.values(client).some(
               (value) =>
                   typeof value === "string" &&
                   value.toLowerCase().includes(this.searchQuery.toLowerCase())
@@ -93,20 +99,20 @@ export default {
   },
 
   methods: {
-    onSupprimer(contract) {
+    onSupprimer(client) {
       // Logique pour la suppression
-      console.log("Supprimer", contract);
+      console.log("Supprimer", client);
     },
-    onModifier(contract) {
+    onModifier(client) {
       // Logique pour la modification
-      console.log("Modifier", contract);
+      console.log("Modifier", client);
     },
   },
 };
 </script>
 
 <style scoped>
-.search-contracts {
+.search-clients {
   position: absolute;
   left: 200px;
   background-color: #333333;
@@ -117,7 +123,7 @@ export default {
   transition: border-color 0.3s;
 }
 
-.search-contracts:focus {
+.search-clients:focus {
   border-color: yellow;
   outline: none;
 }
@@ -128,10 +134,10 @@ export default {
   margin-top: 50px;
 }
 
-.wrapper-contracts {
+.wrapper-clients {
   text-align: center;
   color: white;
-  width: 80%;
+  width: 90%;
   border-radius: 15px;
 }
 
@@ -181,7 +187,7 @@ th, td {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.action-contract {
+.action-client {
   display: flex;
   justify-content: space-evenly;
 }
