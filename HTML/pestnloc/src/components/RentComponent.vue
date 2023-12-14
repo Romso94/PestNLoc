@@ -131,8 +131,13 @@ export default {
     },
     async redirigerVersContratForm(cars) {
       await router.push({
-        name: 'ContractFromComponent', // Nom de la route spécifié ici
-        params: { cars },
+        name: 'ContractFromComponent',
+        params: {
+
+            plate: this.modal_car_plate,
+            // Ajoutez d'autres propriétés de carData ici si nécessaire
+
+        }
       });
     },
 
