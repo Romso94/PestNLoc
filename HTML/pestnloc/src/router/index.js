@@ -86,9 +86,8 @@ const router = createRouter({
                     path: '/Register',
                     name: "Register",
                     component: Register,
+                },
 
-
-                }
             ]
         },
         {

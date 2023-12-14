@@ -49,6 +49,59 @@
       </table>
     </div>
   </div>
+
+  <template v-if="updateClient">
+    <v-row justify="center">
+      <v-dialog v-model="updateClient" persistent width="1024">
+        <v-card>
+          <v-card-title>
+            <span class="text-h5 mx-auto">Client Update</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="Address" v-model="selectedClient.Address"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Country" v-model="selectedClient.Country"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Date Permis Issue" v-model="selectedClient.Date_Permis_Issue"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Email" v-model="selectedClient.Email"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Gender" v-model="selectedClient.Gender"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="ID Client" v-model="selectedClient.Id_Client"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Last Name" v-model="selectedClient.LastName"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Name" v-model="selectedClient.Name"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Phone Number" v-model="selectedClient.Phone_Number"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Year of Birth" v-model="selectedClient.YearOfBirth"></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue-darken-1" variant="text" @click="updateClient = false">Close</v-btn>
+            <v-btn color="blue-darken-1" variant="text" @click="saveClientDetails">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+  </template>
 </template>
 
 <script>
@@ -60,6 +113,19 @@ export default {
     return {
       clients: ref([]),
       searchQuery: "",
+      updateClient: false,
+      selectedClient: {
+        Address: "",
+        Country: "",
+        Date_Permis_Issue: "",
+        Email: "",
+        Gender: "",
+        Id_Client: "",
+        LastName: "",
+        Name: "",
+        Phone_Number: "",
+        YearOfBirth: ""
+      }
     };
   },
 
@@ -124,8 +190,8 @@ export default {
 
     },
     onModifier(client) {
-      // Logique pour la modification
-      console.log("Modifier", client);
+      this.selectedClient = { ...client };
+      this.updateClient = true;
     },
   },
 };
