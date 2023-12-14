@@ -191,15 +191,6 @@ export default {
           }
         }
       }
-
-      console.log(this.selectedCar.Model,
-          this.selectedCar.Brand,
-          this.selectedCar.Fuel_State,
-          this.selectedCar.Car_Power,
-          this.selectedCar.Car_Type,
-          this.selectedCar.Id_Agency,
-          this.selectedCar.License_Plate);
-
       try {
         let showAlert = "created";
         let linkToApi = "http://localhost:9000/pestnloc/cars";

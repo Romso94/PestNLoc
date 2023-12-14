@@ -8,9 +8,9 @@
         <div class="title-container">
           <h1>Agency</h1>
         </div>
-        <div class="button-container">
-          <button class="button-add-agency" @click="addAgency">New Agency</button>
-        </div>
+<!--        <div class="button-container">-->
+<!--          <button class="button-add-agency" @click="addAgency">New Agency</button>-->
+<!--        </div>-->
       </div>
       <table class="custom-table">
         <thead>
@@ -60,7 +60,7 @@
                   <v-text-field label="Email" v-model="selectedAgency.Email" ></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="ID Agency" v-model="selectedAgency.Id_Agency" ></v-text-field>
+                  <v-text-field label="ID Agency" v-model="selectedAgency.Id_Agency" readonly></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field label="Phone Number" v-model="selectedAgency.Phone_Number" ></v-text-field>
@@ -72,7 +72,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="#45474B" variant="text" @click="updateAgency = false">Close</v-btn>
-            <v-btn color="#45474B" variant="text" @click="">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="saveAgency">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -99,6 +99,7 @@ export default {
         Phone_Number: ""
       },
       statusDialog : ref(""),
+      methodAgency : "",
     };
   },
 
@@ -160,21 +161,58 @@ export default {
     },
     onModifier(agency) {
       this.selectedAgency = { ...agency };
-      this.statusDialog = "Update Agency",
+      this.statusDialog = "Update Agency";
+      this.methodAgency = "PUT";
       this.updateAgency = true;
     },
 
-    addAgency(){
-      this.selectedAgency = {
-        Address: "",
-        Agency_Name: "",
-        Email: "",
-        Id_Agency: "",
-        Phone_Number: ""
+    async saveAgency(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+
+
+      for (const key in this.selectedAgency) {
+        if (this.selectedAgency.hasOwnProperty(key)) {
+          if (this.selectedAgency[key] === "") {
+            alert("Please fill every field");
+            return
+          }
+        }
       }
-      this.statusDialog = "Add an Agency",
-      this.updateAgency = true;
+      try {
+        let showAlert = "created";
+        let linkToApi = "http://localhost:9000/pestnloc/agencies";
+        if(this.methodAgency === "PUT"){
+          linkToApi  += `/${this.selectedAgency.Id_Agency}`;
+          showAlert = "updated";
+        }
+        const response = await fetch(linkToApi,{
+          method : this.methodAgency,
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`,
+            'Content-Type': 'application/json'
+          },
+          body : JSON.stringify({
+            Agency_Name : this.selectedAgency.Agency_Name,
+            Address : this.selectedAgency.Address,
+            Phone_Number : this.selectedAgency.Phone_Number,
+            Email : this.selectedAgency.Email
+          })
+        });
+
+        if(response.ok){
+          alert(`Agency ${this.selectedAgency.Id_Agency}  ${showAlert}`);
+          window.location.reload();
+        }
+
+        this.updateAgency = false;
+
+      }catch (error){
+        console.log("Error : ", error);
+      }
     }
+
   },
 };
 </script>
