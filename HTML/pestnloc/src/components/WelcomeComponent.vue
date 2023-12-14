@@ -17,16 +17,13 @@
           </div>
         </div>
         <br><br>
-        <div class="parallelebutton">
-          <div class="divDateWelcome">
-            <input class = "thedates" type="date">
-            <input class = "thedates" type="date">
-          </div>
+
+
           <br><br>
-          <div class="separingshowcar">
-            <button class ="choiceCar choiceCar2" type="submit"> Show cars available</button>
-          </div>
-        </div>
+
+
+
+
       </form>
     </div>
   </div>
