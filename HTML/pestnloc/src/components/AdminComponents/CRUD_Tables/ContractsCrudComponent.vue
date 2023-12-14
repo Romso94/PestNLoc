@@ -9,7 +9,7 @@
           <h1>Contract</h1>
         </div>
         <div class="button-container">
-          <button class="button-add-contract">New Contract</button>
+          <button class="button-add-contract" @click="addContract">New Contract</button>
         </div>
       </div>
       <table class="custom-table">
@@ -22,7 +22,7 @@
           <th>Price</th>
           <th>Id Client</th>
           <th>Contract Availability</th>
-          <th>Actions</th> <!-- Added Actions column -->
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -49,7 +49,7 @@
       <v-dialog v-model="updateContract" persistent width="1024">
         <v-card>
           <v-card-title>
-            <span class="text-h5 mx-auto">Contract Update</span>
+            <span class="text-h5 mx-auto">{{ statusContract }}</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -80,8 +80,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue-darken-1" variant="text" @click="updateContract = false">Close</v-btn>
-            <v-btn color="blue-darken-1" variant="text" @click="">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="updateContract = false">Close</v-btn>
+            <v-btn color="#45474B" variant="text" @click="">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -108,7 +108,8 @@ export default {
         License_Plate: "",
         Price: "",
         Start_Date: ""
-      }
+      },
+      statusContract : "",
     };
   },
 
@@ -178,8 +179,25 @@ export default {
     },
     onModifier(contract) {
       this.selectedContract = { ...contract };
+      this.statusContract = "Update Contract",
       this.updateContract = true;
     },
+
+    addContract(){
+      this.selectedContract ={
+        Contract_Availability: "",
+            End_Date: "",
+            Id_Client: "",
+            Id_Contract: "",
+            License_Plate: "",
+            Price: "",
+            Start_Date: ""
+      };
+       this.statusContract = "Add a new contract";
+
+       this.updateContract = true;
+
+    }
   },
 };
 </script>

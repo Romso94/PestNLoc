@@ -9,7 +9,7 @@
           <h1>Clients</h1>
         </div>
         <div class="button-container">
-          <button class="button-add-clients">New Client</button>
+          <button class="button-add-clients" @click="addClient">New Client</button>
         </div>
       </div>
       <table class="custom-table">
@@ -55,7 +55,7 @@
       <v-dialog v-model="updateClient" persistent width="1024">
         <v-card>
           <v-card-title>
-            <span class="text-h5 mx-auto">Client Update</span>
+            <span class="text-h5 mx-auto">{{statusClient}}</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -95,8 +95,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue-darken-1" variant="text" @click="updateClient = false">Close</v-btn>
-            <v-btn color="blue-darken-1" variant="text" @click="saveClientDetails">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="updateClient = false">Close</v-btn>
+            <v-btn color="#45474B" variant="text" @click="saveClientDetails">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -125,7 +125,8 @@ export default {
         Name: "",
         Phone_Number: "",
         YearOfBirth: ""
-      }
+      },
+      statusClient : "",
     };
   },
 
@@ -193,6 +194,24 @@ export default {
       this.selectedClient = { ...client };
       this.updateClient = true;
     },
+
+    addClient(){
+
+          this.selectedClient = {
+        Address: "",
+            Country: "",
+            Date_Permis_Issue: "",
+            Email: "",
+            Gender: "",
+            Id_Client: "",
+            LastName: "",
+            Name: "",
+            Phone_Number: "",
+            YearOfBirth: ""
+      };
+      this.statusClient = "";
+      this.updateClient = true;
+    }
   },
 };
 </script>

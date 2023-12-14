@@ -9,7 +9,7 @@
           <h1>Car</h1>
         </div>
         <div class="button-container">
-          <button class="button-add-car">New Car</button>
+          <button class="button-add-car" @click="addCar">New Car</button>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
       <v-dialog v-model="updateCar" persistent width="1024">
         <v-card>
           <v-card-title>
-            <span class="text-h5 mx-auto">Car Update</span>
+            <span class="text-h5 mx-auto">{{ statusCar }}</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -73,13 +73,16 @@
                 <v-col cols="12">
                   <v-text-field label="Model" v-model="selectedCar.Model"></v-text-field>
                 </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Agency ID" v-model="selectedCar.Id_Agency"></v-text-field>
+                </v-col>
               </v-row>
             </v-container>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue-darken-1" variant="text" @click="updateCar = false">Close</v-btn>
-            <v-btn color="blue-darken-1" variant="text" @click="saveCarDetails">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="updateCar = false">Close</v-btn>
+            <v-btn color="#45474B" variant="text" @click="saveCar">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -101,8 +104,11 @@ export default {
         Car_Type: "",
         Fuel_State: "",
         License_Plate: "",
-        Model: ""
-      }
+        Model: "",
+        Id_Agency : ""
+      },
+      statusCar : "",
+      methodCar : "",
     };
   },
   async beforeMount() {
@@ -110,7 +116,6 @@ export default {
       const response = await fetch("http://localhost:9000/pestnloc/cars");
       const data = await response.json();
       this.cars = data;
-      console.log(this.cars)
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
     }
@@ -151,8 +156,86 @@ export default {
     },
     onModifier(car) {
       this.selectedCar = { ...car };
+      this.statusCar = "Update Car"
+      this.updateCar = true;
+      this.methodCar = "PUT";
+    },
+
+    addCar(){
+      this.selectedCar ={
+        Brand: "",
+        Car_Power: "",
+        Car_Type: "",
+        Fuel_State: "",
+        License_Plate: "",
+        Model: "",
+        Id_Agency: "",
+      };
+      this.methodCar = "POST";
+      this.statusCar = "Add a new Car";
       this.updateCar = true;
     },
+    async saveCar(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+
+
+      console.log(`Methode utilisé : ${this.methodCar}`);
+
+      for (const key in this.selectedCar) {
+        if (this.selectedCar.hasOwnProperty(key)) {
+          if (this.selectedCar[key] === "") {
+            alert("Please fill every field");
+            return
+          }
+        }
+      }
+
+      console.log(this.selectedCar.Model,
+          this.selectedCar.Brand,
+          this.selectedCar.Fuel_State,
+          this.selectedCar.Car_Power,
+          this.selectedCar.Car_Type,
+          this.selectedCar.Id_Agency,
+          this.selectedCar.License_Plate);
+
+      try {
+        let showAlert = "created";
+        let linkToApi = "http://localhost:9000/pestnloc/cars";
+        if(this.methodCar === "PUT"){
+           linkToApi  += `/${this.selectedCar.License_Plate}`;
+           showAlert = "updated";
+        }
+        const response = await fetch(linkToApi,{
+          method : this.methodCar,
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`,
+            'Content-Type': 'application/json'
+          },
+          body : JSON.stringify({
+            Model : this.selectedCar.Model,
+            Brand : this.selectedCar.Brand,
+            Fuel_State : this.selectedCar.Fuel_State,
+            Car_Power : this.selectedCar.Car_Power,
+            Car_Type : this.selectedCar.Car_Type,
+            Id_Agency : this.selectedCar.Id_Agency,
+            License_Plate : this.selectedCar.License_Plate
+          })
+        });
+
+        if(response.ok){
+          alert(`Car ${this.selectedCar.Model} ${this.selectedCar.Brand} ${showAlert}`);
+          window.location.reload();
+        }
+
+        this.updateCar = false;
+
+      }catch (error){
+        console.log("Error : ", error);
+      }
+    }
+
   },
 };
 </script>

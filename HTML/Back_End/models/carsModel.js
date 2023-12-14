@@ -39,6 +39,7 @@ async function createCar(carRegister) {
         if (!agencyExist || agencyExist.length === 0) {
             throw new Error("Agency doesn't exist !");
         }
+        
         const query = "INSERT INTO car (Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate) VALUES (?,?,?,?,?,?,?)";
         const values = [Model, Brand, Fuel_State, Car_Power, Car_Type, Id_Agency, License_Plate];
         const result = await execute(query, values);

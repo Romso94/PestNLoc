@@ -9,7 +9,7 @@
           <h1>Agency</h1>
         </div>
         <div class="button-container">
-          <button class="button-add-agency">New Agency</button>
+          <button class="button-add-agency" @click="addAgency">New Agency</button>
         </div>
       </div>
       <table class="custom-table">
@@ -40,12 +40,12 @@
     </div>
   </div>
 
-  <template v-if="updateCar">
+  <template v-if="updateAgency">
     <v-row justify="center">
-      <v-dialog v-model="updateCar" persistent width="1024">
+      <v-dialog v-model="updateAgency" persistent width="1024">
         <v-card>
           <v-card-title>
-            <span class="text-h5 mx-auto">Agency Update</span>
+            <span class="text-h5 mx-auto">{{statusDialog}}</span>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -71,18 +71,18 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue-darken-1" variant="text" @click="updateCar = false">Close</v-btn>
-            <v-btn color="blue-darken-1" variant="text" @click="">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="updateAgency = false">Close</v-btn>
+            <v-btn color="#45474B" variant="text" @click="">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
     </v-row>
   </template>
-
 </template>
 
 <script>
 import { ref } from "vue";
+
 
 export default {
   name: "AgencyCrudComponent",
@@ -90,14 +90,15 @@ export default {
     return {
       agencies: ref([]),
       searchQuery: "",
-      updateCar : false,
+      updateAgency : false,
       selectedAgency: {
         Address: "",
         Agency_Name: "",
         Email: "",
         Id_Agency: "",
         Phone_Number: ""
-      }
+      },
+      statusDialog : ref(""),
     };
   },
 
@@ -141,7 +142,7 @@ export default {
             'Authorization': `Bearer ${sendCookie}`
           }});
         if (reponse.ok) {
-          alert(`Agency : deleted`);
+          alert(`Agency : ${agency.Id_Agency} deleted`);
           if(agency.Id_Agency === id_admin){
             this.logout();
           }
@@ -159,8 +160,21 @@ export default {
     },
     onModifier(agency) {
       this.selectedAgency = { ...agency };
-      this.updateCar = true;
+      this.statusDialog = "Update Agency",
+      this.updateAgency = true;
     },
+
+    addAgency(){
+      this.selectedAgency = {
+        Address: "",
+        Agency_Name: "",
+        Email: "",
+        Id_Agency: "",
+        Phone_Number: ""
+      }
+      this.statusDialog = "Add an Agency",
+      this.updateAgency = true;
+    }
   },
 };
 </script>
