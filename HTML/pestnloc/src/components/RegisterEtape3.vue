@@ -6,7 +6,7 @@
         Upload a png of your License
       </label>
       <input type="file"  id="fileInput" class="licence" placeholder="Licence Photo" accept="image/*" style="display: none;">
-      <h2 class="label-license-Date">License Date Issue :</h2>
+      <h2 class="label-license-Date">Permit date</h2>
       <input type="date" class="date " placeholder="dd/mm/yyyy" v-model="formData.LicenseDateIssue" lang="en">
       <p v-if="errorDate" class="error-message">{{errorDate}}</p>
         <img class="jean-in-the-car" src="./assets/jeanvoiture.jpg">

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../components/LoginComponent.vue";
 import Contracts from "../components/ContractsComponent.vue";
+import ContractForm from "../components/ContractFormComponent.vue";
 import Agencies from "../components/AgenciesComponent.vue";
 import Rent from "../components/RentComponent.vue";
 import Register from "../components/RegisterComponent.vue";
@@ -86,9 +87,13 @@ const router = createRouter({
                     path: '/Register',
                     name: "Register",
                     component: Register,
-
-
+                },
+                {
+                    path: '/newcontract',
+                    name: "ContractFromComponent",
+                    component: ContractForm,
                 }
+
             ]
         },
         {

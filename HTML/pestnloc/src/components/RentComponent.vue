@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <h2>Car to rent</h2>
     <table>
@@ -35,9 +36,11 @@
         <p class ="mod-inf-car">Type: {{modal_car_type}}</p>
         <p class ="mod-inf-car">Fuel state : {{modal_car_fuel}}</p>
         <p class ="mod-inf-car">Car power : {{modal_car_power}}</p>
-        <img :src="this.showCarImage"/>
+        <img class="imcar" :src="this.showCarImage"/>
+
 
       </div>
+      <button class ="but" type="submit" @click="redirigerVersContratForm(this.cars)" >Lou</button>
 
     </div>
 
@@ -46,8 +49,8 @@
 
 <script>
 
-import RentFormComponent from "@/components/RentFormComponent.vue";
 
+import router from "../router"
 
 
 
@@ -55,8 +58,9 @@ import RentFormComponent from "@/components/RentFormComponent.vue";
 import {th} from "vuetify/locale";
 
 export default {
+
   components:{
-    RentFormComponent
+
   },
   data() {
     return {
@@ -110,6 +114,7 @@ export default {
           break
         }
       }
+
       this.modal_car_plate = this.carid.License_Plate;
       this.modal_car_model = this.carid.Model;
       this.modal_car_fuel = this.carid.Fuel_State;
@@ -124,6 +129,15 @@ export default {
 
 
     },
+    async redirigerVersContratForm(cars) {
+      await router.push({
+        name: 'ContractFromComponent', // Nom de la route spécifié ici
+        params: { cars },
+      });
+    },
+
+
+
     CloseModal(){
       this.showModal = false;
     }
