@@ -64,9 +64,6 @@
                   <v-text-field label="ID Client" v-model="selectedContract.Id_Client"></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="ID Contract" v-model="selectedContract.Id_Contract"></v-text-field>
-                </v-col>
-                <v-col cols="12">
                   <v-text-field label="License Plate" v-model="selectedContract.License_Plate"></v-text-field>
                 </v-col>
                 <v-col cols="12">
@@ -81,7 +78,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="#45474B" variant="text" @click="updateContract = false">Close</v-btn>
-            <v-btn color="#45474B" variant="text" @click="">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="saveContract">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -110,6 +107,7 @@ export default {
         Start_Date: ""
       },
       statusContract : "",
+      methodContract : ""
     };
   },
 
@@ -179,24 +177,75 @@ export default {
     },
     onModifier(contract) {
       this.selectedContract = { ...contract };
-      this.statusContract = "Update Contract",
+      this.statusContract = "Update Contract";
+      this.methodContract = "PUT";
       this.updateContract = true;
     },
 
     addContract(){
       this.selectedContract ={
         Contract_Availability: "",
-            End_Date: "",
-            Id_Client: "",
-            Id_Contract: "",
-            License_Plate: "",
-            Price: "",
-            Start_Date: ""
+        End_Date: "",
+        Id_Client: "",
+        Id_Contract: "",
+        License_Plate: "",
+        Price: "",
+        Start_Date: ""
       };
        this.statusContract = "Add a new contract";
-
+       this.methodContract = "POST";
        this.updateContract = true;
+    },
+    async saveContract(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
 
+      for (const key in this.selectedContract) {
+        if (this.selectedContract.hasOwnProperty(key)) {
+          if (this.selectedContract[key] === "" && key !== "Id_Contract" ) {
+            alert("Please fill every field");
+            return
+          }
+        }
+      }
+      try {
+        let showAlert = "created";
+        let linkToApi = "http://localhost:9000/pestnloc/contracts";
+        if(this.methodContract === "PUT"){
+          linkToApi  += `/${this.selectedContract.Id_Contract}`;
+          showAlert = "updated";
+        }
+        const response = await fetch(linkToApi,{
+          method : this.methodContract,
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`,
+            'Content-Type': 'application/json'
+          },
+          body : JSON.stringify({
+            Contract_Availability : this.selectedContract.Contract_Availability,
+            Start_Date : this.selectedContract.Start_Date,
+            Price : this.selectedContract.Price,
+            End_Date : this.selectedContract.End_Date,
+            Id_Client : this.selectedContract.Id_Client,
+            License_Plate : this.selectedContract.License_Plate
+          })
+        });
+
+        if(response.ok){
+          alert(`Contract ${this.selectedContract.Id_Contract}  ${showAlert}`);
+          window.location.reload();
+          this.updateContract = false;
+          return
+        }
+
+        alert("Check if the Licence Plate or the Id Client exist");
+
+
+
+      }catch (error){
+        console.log("Error : ", error);
+      }
     }
   },
 };

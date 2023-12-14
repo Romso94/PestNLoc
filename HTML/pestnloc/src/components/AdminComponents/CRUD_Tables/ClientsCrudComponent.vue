@@ -8,9 +8,6 @@
         <div class="title-container">
           <h1>Clients</h1>
         </div>
-        <div class="button-container">
-          <button class="button-add-clients" @click="addClient">New Client</button>
-        </div>
       </div>
       <table class="custom-table">
         <thead>
@@ -76,7 +73,7 @@
                   <v-text-field label="Gender" v-model="selectedClient.Gender"></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="ID Client" v-model="selectedClient.Id_Client"></v-text-field>
+                  <v-text-field label="ID Client" v-model="selectedClient.Id_Client" readonly></v-text-field>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field label="Last Name" v-model="selectedClient.LastName"></v-text-field>
@@ -96,7 +93,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="#45474B" variant="text" @click="updateClient = false">Close</v-btn>
-            <v-btn color="#45474B" variant="text" @click="saveClientDetails">Save</v-btn>
+            <v-btn color="#45474B" variant="text" @click="saveClient">Save</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -127,6 +124,7 @@ export default {
         YearOfBirth: ""
       },
       statusClient : "",
+      methodClient : "PUT",
     };
   },
 
@@ -145,6 +143,8 @@ export default {
 
       const data = await response.json();
       this.clients = data;
+
+      console.log(this.clients)
 
       this.clients.forEach((client) => {
         client.Date_Permis_Issue = client.Date_Permis_Issue.split("T")[0];
@@ -168,51 +168,87 @@ export default {
   },
 
   methods: {
-   async onSupprimer(client) {
-     const decodedCookie = decodeURIComponent(document.cookie);
-     let cookie = decodedCookie.split("=");
-     let sendCookie = cookie[1];
+    async onSupprimer(client) {
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
 
-      try{
-        const reponse = await fetch(`http://localhost:9000/pestnloc/clients/${client.Id_Client}`,{
-          method : "DELETE",
-          headers : {
+      try {
+        const reponse = await fetch(`http://localhost:9000/pestnloc/clients/${client.Id_Client}`, {
+          method: "DELETE",
+          headers: {
             'Authorization': `Bearer ${sendCookie}`
-          }});
+          }
+        });
         if (reponse.ok) {
           alert(`Client : Id =${client.Id_Client} ${client.Name}  ${client.LastName} deleted`);
           window.location.reload();
         } else {
           console.error("La suppression a échoué avec le statut :", reponse.status);
         }
-      }catch (error){
+      } catch (error) {
         console.log("Error :", error);
       }
 
     },
     onModifier(client) {
-      this.selectedClient = { ...client };
+      this.selectedClient = {...client};
       this.updateClient = true;
     },
 
-    addClient(){
+    async saveClient(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
 
-          this.selectedClient = {
-        Address: "",
-            Country: "",
-            Date_Permis_Issue: "",
-            Email: "",
-            Gender: "",
-            Id_Client: "",
-            LastName: "",
-            Name: "",
-            Phone_Number: "",
-            YearOfBirth: ""
-      };
-      this.statusClient = "";
-      this.updateClient = true;
+
+      for (const key in this.selectedClient) {
+        if (this.selectedClient.hasOwnProperty(key)) {
+          if (this.selectedClient[key] === "") {
+            alert("Please fill every field");
+            return
+          }
+        }
+      }
+      try {
+        let showAlert = "created";
+        let linkToApi = "http://localhost:9000/pestnloc/clients";
+        if(this.methodClient === "PUT"){
+          linkToApi  += `/${this.selectedClient.Id_Client}`;
+          showAlert = "updated";
+        }
+        const response = await fetch(linkToApi,{
+          method : this.methodClient,
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`,
+            'Content-Type': 'application/json'
+          },
+          body : JSON.stringify({
+            Address : this.selectedClient.Address,
+            Country : this.selectedClient.Country,
+            Date_Permis_Issue : this.selectedClient.Date_Permis_Issue,
+            Email : this.selectedClient.Email,
+            Gender : this.selectedClient.Gender,
+            Id_Client : this.selectedClient.Id_Client,
+            LastName : this.selectedClient.LastName,
+            Name : this.Name,
+            Phone_Number : this.selectedClient.Phone_Number,
+            YearOfBirth : this.YearOfBirth,
+            })
+        });
+
+        if(response.ok){
+          alert(`Client ${this.selectedClient.Id_Client}  ${showAlert}`);
+          window.location.reload();
+        }
+
+        this.updateClient = false;
+
+      }catch (error){
+        console.log("Error : ", error);
+      }
     }
-  },
+  }
 };
 </script>
 
