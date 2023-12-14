@@ -2,13 +2,18 @@
 export default {
   data() {
     return {
-      carData: null, // Variable pour stocker les données de la voiture
+      clientId: null,
+      // Variable pour stocker les données de la voiture
+      numberOfDays:null,
+      startDate:null,
+      Car:null,
+
     };
   },
   mounted() {
     // Accéder aux paramètres de la route
-    this.carData = this.$route.params.carData;
-    console.log("Données de la voiture dans newcontract :", this.carData);
+    this.plate = this.$route.params.plate;
+    console.log("Données de la voiture dans newcontract :", this.plate);
   },
   methods: {},
 };
