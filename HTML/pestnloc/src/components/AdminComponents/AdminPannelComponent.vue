@@ -23,11 +23,13 @@ export default {
 }
 
 .button-pannel-admin{
-  border-radius: 10px;
-  background-color: #45474B;
   color: #F5F7F8;
-  height: 50px;
-  width: 100px;
+  background-color: #333333;
+  border-radius: 5px;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 22px;
+
   text-decoration: none;
   text-align: center;
   display: flex;

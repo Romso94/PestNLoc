@@ -1,7 +1,7 @@
 <template>
-
-  <div>
-    <h2>Car to rent</h2>
+  <div class="main-wrapper">
+    <div class="wrapper">
+    <h1 class ="h1">Car to rent</h1>
     <table>
       <thead>
       <tr class ="info">
@@ -17,11 +17,12 @@
         <td>{{ car.Model }}</td>
         <td>{{ car.agencyname }}</td>
         <td>
-          <button class ="but" type="submit" @click="louerVoiture(car.License_Plate)">Rent Car</button>
+          <button class ="but" type="submit" @click="louerVoiture(car.License_Plate)">Rent this car</button>
         </td>
       </tr>
       </tbody>
     </table>
+  </div>
 
     <div class="modal" v-if="showModal">
       <button class ="close" @click="CloseModal">X</button>
@@ -151,7 +152,129 @@ export default {
 </script>
 
 <style scoped>
-@import "Css/Rent.css";
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  width: 70%;
+}
+
+.main-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4ce14;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  background-color: #F5F7F8;
+
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.info{
+  font-size: 16px;
+}
+.but{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #F4CE14;
+  border-radius: 5px;
+  color: #F4CE14;
+  background-color: #45474b;
+  transition: background-color 0.3s, color 0.3s;
+}
+.but:hover {
+  background-color: #F4CE14;
+  color: white;
+}
+
+
+.but:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+
+  width: 50%;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  height: 80%;
+}
+
+.car-mod {
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: space-between;
+  margin-top: 30px;
+
+
+}
+.imcar{
+
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+
+
+
+
+}
+.mod-inf-car
+{
+  margin-top: 10px;
+}
+.title-modal{
+  text-align: center;
+  margin-top: 20px;
+}
+.close{
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+
+}
+
+.close:hover{
+  color: white;
+  background: red;
+}
+
+.h1{
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #45474b;
+  font-size: 24px;
+}
 
 </style>

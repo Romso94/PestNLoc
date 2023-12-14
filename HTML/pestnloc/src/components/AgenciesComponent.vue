@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <h2 class ="h2">Agency List</h2>
+  <div class="main-wrapper">
+  <div class="wrapper">
+    <h1 class ="h1">Agency List</h1>
     <table>
       <thead>
       <tr>
         <th>Agency Name</th>
         <th>Adress</th>
         <th>Phone Number</th>
-
       </tr>
       </thead>
       <tbody>
@@ -15,12 +15,29 @@
         <td>{{ age.Agency_Name }}</td>
         <td>{{ age.Address }}</td>
         <td>{{ age.Phone_Number }}</td>
-
       </tr>
       </tbody>
     </table>
   </div>
-
+  </div>
+  <div class="second-section">
+    <div>
+      <h2 class="title-second">Explore Our Agencies</h2>
+      <p class="text-block">
+        Discover all our car rental agencies on this page
+        <br>
+        Get ready to embark on a seamless journey with PestnLoc
+        <br>
+        Find the information you need, including contact numbers,
+        to connect with any of our agencies
+        <br>
+        Your <strong>next</strong>adventure starts <strong>HERE</strong>
+      </p>
+    </div>
+    <div>
+      <img class="img-agency" src="./assets/agency_img.jpg" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -50,29 +67,73 @@ export default {
 
 
 <style scoped>
-.topMain {
-  background: var(--pestnlocColor);
-  height: 250px;
-  width: 100%;
+.second-section {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.img-agency {
+  height: 30%;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.title-second{
+  font-size: 26px;
+  margin-top: -70px;
+  margin-bottom: 20px;
+  color: #45474b;
+}
+
+.text-block {
+  max-width: 600px;
+  font-size: 18px;
+  margin-top: 30px;
+  color: #45474b;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 50px;
+  margin-bottom: 50px;
+  width: 70%;
 }
-.top{
-  color:#F4CE14;
+
+.main-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4ce14;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  background-color: #f5f7f8;
+  text-align: center;
 }
 
 th {
   background-color: #f2f2f2;
 }
 
+.h1 {
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #45474b;
+  font-size: 24px;
+}
 </style>
