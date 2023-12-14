@@ -43,6 +43,51 @@
       </table>
     </div>
   </div>
+
+  <template v-if="updateContract">
+    <v-row justify="center">
+      <v-dialog v-model="updateContract" persistent width="1024">
+        <v-card>
+          <v-card-title>
+            <span class="text-h5 mx-auto">Contract Update</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="Contract Availability" v-model="selectedContract.Contract_Availability"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="End Date" v-model="selectedContract.End_Date"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="ID Client" v-model="selectedContract.Id_Client"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="ID Contract" v-model="selectedContract.Id_Contract"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="License Plate" v-model="selectedContract.License_Plate"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Price" v-model="selectedContract.Price"></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Start Date" v-model="selectedContract.Start_Date"></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue-darken-1" variant="text" @click="updateContract = false">Close</v-btn>
+            <v-btn color="blue-darken-1" variant="text" @click="">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+  </template>
+
 </template>
 
 <script>
@@ -54,6 +99,16 @@ export default {
     return {
       contracts: ref([]),
       searchQuery: "",
+      updateContract: false,
+      selectedContract: {
+        Contract_Availability: "",
+        End_Date: "",
+        Id_Client: "",
+        Id_Contract: "",
+        License_Plate: "",
+        Price: "",
+        Start_Date: ""
+      }
     };
   },
 
@@ -119,11 +174,11 @@ export default {
       }catch (error){
         console.log("Error :", error);
       }
-      console.log("Supprimer", client);
+      console.log("Supprimer", contract);
     },
     onModifier(contract) {
-      // Logique pour la modification
-      console.log("Modifier", contract);
+      this.selectedContract = { ...contract };
+      this.updateContract = true;
     },
   },
 };

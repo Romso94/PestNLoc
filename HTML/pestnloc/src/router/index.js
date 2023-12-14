@@ -87,14 +87,13 @@ const router = createRouter({
                     path: '/Register',
                     name: "Register",
                     component: Register,
-
-
                 },
                 {
                     path: '/newcontract',
                     name: "ContractFromComponent",
                     component: ContractForm,
                 }
+
             ]
         },
         {

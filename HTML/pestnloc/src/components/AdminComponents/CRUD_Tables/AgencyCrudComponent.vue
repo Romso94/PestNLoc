@@ -20,7 +20,7 @@
           <th>Address</th>
           <th>Phone Number</th>
           <th>Email</th>
-          <th>Actions</th> <!-- Added Actions column -->
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +39,46 @@
       </table>
     </div>
   </div>
+
+  <template v-if="updateCar">
+    <v-row justify="center">
+      <v-dialog v-model="updateCar" persistent width="1024">
+        <v-card>
+          <v-card-title>
+            <span class="text-h5 mx-auto">Agency Update</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="Address" v-model="selectedAgency.Address" ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Agency Name" v-model="selectedAgency.Agency_Name" ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Email" v-model="selectedAgency.Email" ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="ID Agency" v-model="selectedAgency.Id_Agency" ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="Phone Number" v-model="selectedAgency.Phone_Number" ></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue-darken-1" variant="text" @click="updateCar = false">Close</v-btn>
+            <v-btn color="blue-darken-1" variant="text" @click="">Save</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+  </template>
+
 </template>
 
 <script>
@@ -50,6 +90,14 @@ export default {
     return {
       agencies: ref([]),
       searchQuery: "",
+      updateCar : false,
+      selectedAgency: {
+        Address: "",
+        Agency_Name: "",
+        Email: "",
+        Id_Agency: "",
+        Phone_Number: ""
+      }
     };
   },
 
@@ -110,8 +158,8 @@ export default {
       window.location.href = '/admin/login';
     },
     onModifier(agency) {
-      // Logique pour la modification
-      console.log("Modifier", agency);
+      this.selectedAgency = { ...agency };
+      this.updateCar = true;
     },
   },
 };
