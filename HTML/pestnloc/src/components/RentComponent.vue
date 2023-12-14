@@ -17,7 +17,7 @@
         <td>{{ car.Model }}</td>
         <td>{{ car.agencyname }}</td>
         <td>
-          <button class ="but" type="submit" @click="louerVoiture(car.License_Plate)">Louer</button>
+          <button class ="but" type="submit" @click="louerVoiture(car.License_Plate)">Rent Car</button>
         </td>
       </tr>
       </tbody>
@@ -40,7 +40,7 @@
 
 
       </div>
-      <button class ="but" type="submit" @click="redirigerVersContratForm(this.cars)" >Lou</button>
+      <button class ="but" type="submit" @click="redirigerVersContratForm(this.cars)" >Rent</button>
 
     </div>
 

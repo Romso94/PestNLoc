@@ -5,10 +5,7 @@
         <div class = "footer-column">
              <h4 class ="title ">About us</h4>
               <ul class="ulFooter">
-                <li class ="li-footer"><a class="linkFooter" href="#">Ex turba vero imae sortis et
-                  paupertinae in tabernis aliqui pernoctant
-                  vinariis, non nulli velariis umbraculorum
-                  theatralium latent;</a></li>
+                <li class ="li-footer"><a class="linkFooter" href="#">We are a company passionate about cars, join us!</a></li>
               </ul>
         </div>
         <div class = "footer-column localisation">
