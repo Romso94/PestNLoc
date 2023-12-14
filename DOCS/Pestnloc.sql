@@ -67,3 +67,12 @@ CREATE TABLE Contract(
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
    FOREIGN KEY(License_Plate) REFERENCES Car(License_Plate)
 );
+
+
+INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,6,"FT056TK");
+SELECT * from contract; 
+
+select * from client;
+
+INSERT INTO car (License_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
+SELECT * from car; 
