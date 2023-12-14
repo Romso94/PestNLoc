@@ -111,7 +111,7 @@ async function loginAdmin(req, res) {
     }
 
     const token = jwt.sign(
-      { user: { id: user.Id_Client, role: user.isAdmin ? 'admin' : 'user' } },
+      { user: { id: user.Id_Agency, role: user.isAdmin ? 'admin' : 'user' } },
       process.env.JWT_SECRET,
       {expiresIn : "1h"}
     );

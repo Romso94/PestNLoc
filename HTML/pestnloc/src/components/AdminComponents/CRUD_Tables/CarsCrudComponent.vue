@@ -28,8 +28,8 @@
           <td>{{ car.Car_Type }}</td>
           <td>{{ car.Id_Agency }}</td>
           <td class="action-car">
-            <button class="small-but" @click="onModifier(car)">Modifier</button>
-            <button class="small-but" @click="onSupprimer(car)">Supprimer</button>
+            <button class="small-but" @click="onModifier(car)">Update</button>
+            <button class="small-but" @click="onSupprimer(car)">Delete</button>
           </td>
         </tr>
         </tbody>
@@ -68,9 +68,27 @@ export default {
     },
   },
   methods: {
-    onSupprimer(car) {
-      // Logique pour la suppression
-      console.log("Supprimer", car);
+    async onSupprimer(car) {
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+
+      try{
+        const reponse = await fetch(`http://localhost:9000/pestnloc/cars/${car.License_Plate}`,{
+          method : "DELETE",
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`
+          }});
+        if (reponse.ok) {
+          alert(`Car : ${car.License_Plate}, ${car.Brand} ${car.Model} deleted`);
+          window.location.reload();
+        } else {
+          console.error("La suppression a échoué avec le statut :", reponse.status);
+        }
+      }catch (error){
+        console.log("Error :", error);
+      }
+
     },
     onModifier(car) {
       // Logique pour la modification

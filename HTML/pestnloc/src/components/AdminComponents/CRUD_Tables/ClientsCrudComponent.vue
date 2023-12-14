@@ -35,8 +35,8 @@
           <td>{{ clientItem.Country }}</td>
           <td>{{ clientItem.Address }}</td>
           <td class="action-client">
-            <button class="small-but" @click="onModifier(clientItem)">Modifier</button>
-            <button class="small-but" @click="onSupprimer(clientItem)">Supprimer</button>
+            <button class="small-but mx-1" @click="onModifier(clientItem)">Update</button>
+            <button class="small-but" @click="onSupprimer(clientItem)">Delete</button>
           </td>
         </tr>
         </tbody>
@@ -73,12 +73,8 @@ export default {
       const data = await response.json();
       this.clients = data;
 
-      console.log(this.clients)
-
       this.clients.forEach((client) => {
-        // Format the date in the desired format
         client.Date_Permis_Issue = client.Date_Permis_Issue.split("T")[0];
-        // Add more formatting if needed
       });
 
     } catch (error) {
@@ -99,9 +95,27 @@ export default {
   },
 
   methods: {
-    onSupprimer(client) {
-      // Logique pour la suppression
-      console.log("Supprimer", client);
+   async onSupprimer(client) {
+     const decodedCookie = decodeURIComponent(document.cookie);
+     let cookie = decodedCookie.split("=");
+     let sendCookie = cookie[1];
+
+      try{
+        const reponse = await fetch(`http://localhost:9000/pestnloc/clients/${client.Id_Client}`,{
+          method : "DELETE",
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`
+          }});
+        if (reponse.ok) {
+          alert(`Client : Id =${client.Id_Client} ${client.Name}  ${client.LastName} deleted`);
+          window.location.reload();
+        } else {
+          console.error("La suppression a échoué avec le statut :", reponse.status);
+        }
+      }catch (error){
+        console.log("Error :", error);
+      }
+
     },
     onModifier(client) {
       // Logique pour la modification
@@ -114,7 +128,7 @@ export default {
 <style scoped>
 .search-clients {
   position: absolute;
-  left: 200px;
+  left: 7%;
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;
@@ -187,8 +201,9 @@ th, td {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.action-client {
+.action-client{
   display: flex;
+  height: 56px;
   justify-content: space-evenly;
 }
 </style>

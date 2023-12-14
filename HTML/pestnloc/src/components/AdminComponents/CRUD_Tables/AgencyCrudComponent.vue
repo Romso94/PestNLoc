@@ -25,8 +25,8 @@
           <td>{{ agencyItem.Phone_Number }}</td>
           <td>{{ agencyItem.Email }}</td>
           <td class="action-agency">
-            <button class="small-but" @click="onModifier(agencyItem)">Modifier</button>
-            <button class="small-but" @click="onSupprimer(agencyItem)">Supprimer</button>
+            <button class="small-but" @click="onModifier(agencyItem)">Update</button>
+            <button class="small-but" @click="onSupprimer(agencyItem)">Delete</button>
           </td>
         </tr>
         </tbody>
@@ -70,9 +70,38 @@ export default {
   },
 
   methods: {
-    onSupprimer(agency) {
-      // Logique pour la suppression
-      console.log("Supprimer", agency);
+    async onSupprimer(agency) {
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+      const realcookie = cookie[1].split(".");
+      cookie= realcookie[1];
+      const decodedString = atob(cookie);
+      const decodedObject = JSON.parse(decodedString);
+      const id_admin = decodedObject.user.id;
+
+      try{
+        const reponse = await fetch(`http://localhost:9000/pestnloc/agencies/${agency.Id_Agency}`,{
+          method : "DELETE",
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`
+          }});
+        if (reponse.ok) {
+          alert(`Agency : deleted`);
+          if(agency.Id_Agency === id_admin){
+            this.logout();
+          }
+        } else {
+          console.error("La suppression a échoué avec le statut :", reponse.status);
+        }
+      }catch (error){
+        console.log("Error :", error);
+      }
+
+    },
+    logout ()  {
+      document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      window.location.href = '/admin/login';
     },
     onModifier(agency) {
       // Logique pour la modification
@@ -85,7 +114,7 @@ export default {
 <style scoped>
 .search-agencies {
   position: absolute;
-  left: 200px;
+  left: 14%;
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;

@@ -29,8 +29,8 @@
           <td>{{ contractItem.Id_Client }}</td>
           <td>{{ contractItem.Contract_Availability }}</td>
           <td class="action-contract">
-            <button class="small-but" @click="onModifier(contractItem)">Modifier</button>
-            <button class="small-but" @click="onSupprimer(contractItem)">Supprimer</button>
+            <button class="small-but" @click="onModifier(contractItem)">Update</button>
+            <button class="small-but" @click="onSupprimer(contractItem)">Delete</button>
           </td>
         </tr>
         </tbody>
@@ -93,9 +93,27 @@ export default {
   },
 
   methods: {
-    onSupprimer(contract) {
-      // Logique pour la suppression
-      console.log("Supprimer", contract);
+    async onSupprimer(contract) {
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+
+      try{
+        const reponse = await fetch(`http://localhost:9000/pestnloc/contracts/${contract.Id_Contract}`,{
+          method : "DELETE",
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`
+          }});
+        if (reponse.ok) {
+          alert(`Contract : ${contract.Id_Contract} deleted`);
+          window.location.reload();
+        } else {
+          console.error("La suppression a échoué avec le statut :", reponse.status);
+        }
+      }catch (error){
+        console.log("Error :", error);
+      }
+      console.log("Supprimer", client);
     },
     onModifier(contract) {
       // Logique pour la modification
@@ -108,7 +126,7 @@ export default {
 <style scoped>
 .search-contracts {
   position: absolute;
-  left: 200px;
+  left: 12%;
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;
