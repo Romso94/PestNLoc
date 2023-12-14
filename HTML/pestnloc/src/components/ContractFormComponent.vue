@@ -19,36 +19,35 @@ export default {
     <h2>Nouveau Contrat</h2>
     <form @submit.prevent="submitForm" class="form-square">
       <div class="form-group">
-        <label for="contractAvailability">Disponibilité du contrat:</label>
-        <input v-model="contractAvailability" type="text" id="contractAvailability" required>
+        <label for="carr">Car : </label>
+        <input class="champ" v-model="Car" type="text" id="Car" required>
       </div>
 
       <div class="form-group">
-        <label for="startDate">Date de début:</label>
-        <input v-model="startDate" type="date" id="startDate" required>
+        <label for="startDate">Start date : </label>
+        <input  v-model="startDate" type="date" id="startDate" required>
       </div>
 
       <div class="form-group">
-        <label for="price">Prix:</label>
-        <input v-model="price" type="number" id="price" required>
+        <label for="price">Price : </label>
+
       </div>
 
       <div class="form-group">
-        <label for="endDate">Date de fin:</label>
-        <input v-model="endDate" type="date" id="endDate" required>
+        <label for="numberOfDays">Number of days : </label>
+        <select class="champ"  v-model="numberOfDays" id="numberOfDays" required>
+          <option v-for="day in 30" :key="day" :value="day">{{ day }}</option>
+        </select>
       </div>
 
       <div class="form-group">
-        <label for="clientId">ID du client:</label>
-        <input v-model="clientId" type="text" id="clientId" required>
+        <label for="clientId">ID of client:</label>
+        <input class="champ"  v-model="clientId" type="text" id="clientId" required>
       </div>
 
-      <div class="form-group">
-        <label for="licensePlate">Plaque d'immatriculation:</label>
-        <input v-model="licensePlate" type="text" id="licensePlate" required>
-      </div>
 
-      <button type="submit">Soumettre</button>
+
+      <button type="submit">Submit</button>
     </form>
   </div>
 </template>
@@ -61,6 +60,10 @@ export default {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
+
+  width: 100%;
+  height: 80%;
+  font-size: 20px;
 
   border: 1px solid #ccc; /* Bordure grise */
   border-radius: 8px; /* Coins arrondis */
@@ -83,5 +86,10 @@ button {
 button:hover {
   background-color: #45a049;
 }
+.champ{
+ background-color: #f0f4c3;
+  font-size: 9px;
+}
+
 </style>
 
