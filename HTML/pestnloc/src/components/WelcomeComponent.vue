@@ -2,6 +2,8 @@
   <div class="WelcomeContainer">
     <div class="formResearch">
       <form>
+        <div class ="Weare We">We are a luxury car rental agency with several rental sites throughout Hungary.</div>
+          <div class ="Weare">Mainly present in Budapest, we invite you to discover some vehicles that we would be happy to rent to you. Click  below ;)</div>
         <div class="divButtonWelcome">
           <button type = "button" class="sports choiceCar" @click="changeImage('sportive')">Sportive</button>
           <button type = "button" class="electric choiceCar" @click="changeImage('electric')">Electric</button>
