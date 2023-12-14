@@ -93,9 +93,6 @@
     justify-content: left;
 }
 
-.separating911{
-    padding-left: 100px;
-}
 
 .separatingsearch{
     margin-top : 30px;
@@ -124,8 +121,8 @@
     }
 
     .ImageWelcome911{
-        width: 440px;
-        height: 244px;
+        width: 550px;
+        height: 302px;
     }
 
     .formResearch{
@@ -206,9 +203,7 @@
         justify-content: left;
     }
 
-    .separating911{
-        padding-left: 250px;
-    }
+
 
     .separatingsearch{
         margin-top : 90px;
