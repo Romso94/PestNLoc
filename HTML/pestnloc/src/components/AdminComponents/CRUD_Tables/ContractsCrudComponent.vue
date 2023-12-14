@@ -1,11 +1,17 @@
 <template>
   <div class="main-wrapper">
     <div class="wrapper-contracts" style="background-color: #45474B;">
-
-      <h1 class="table-title">
-        <input v-model="searchQuery" type="text" placeholder="Search..." class="search-contracts"/>
-        Contracts
-      </h1>
+      <div class="wrapper-head-contract">
+        <div class="search-container">
+          <input v-model="searchQuery" type="text" placeholder="Search..." class="search-contracts"/>
+        </div>
+        <div class="title-container">
+          <h1>Contract</h1>
+        </div>
+        <div class="button-container">
+          <button class="button-add-contract">New Contract</button>
+        </div>
+      </div>
       <table class="custom-table">
         <thead>
         <tr class="info">
@@ -124,20 +130,63 @@ export default {
 </script>
 
 <style scoped>
+
 .search-contracts {
-  position: absolute;
-  left: 12%;
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;
   color: #F4CE14;
   border: 1px solid #F4CE14;
-  transition: border-color 0.3s;
+  font-size: 22px;
+  font-weight: bold;
+
 }
 
 .search-contracts:focus {
-  border-color: yellow;
+  border-color: #F4CE14;
   outline: none;
+}
+.wrapper-head-contract{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin: 20px auto;
+
+}
+
+.search-container,
+.title-container,
+.button-container {
+  flex: 1;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+.title-container h1 {
+  color: #F4CE14;
+}
+
+
+.button-add-contract {
+  color: #F4CE14;
+  background-color: #333333;
+  border: 2px solid #F4CE14;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.button-add-contract:hover{
+  color: #45474B;
+  background-color: #F4CE14;
 }
 
 .main-wrapper {
@@ -153,10 +202,7 @@ export default {
   border-radius: 15px;
 }
 
-.table-title {
-  margin-top: 20px;
-  color: #F4CE14;
-}
+
 
 table.custom-table {
   width: 95%;

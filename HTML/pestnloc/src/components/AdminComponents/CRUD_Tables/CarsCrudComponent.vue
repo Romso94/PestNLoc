@@ -1,10 +1,18 @@
 <template>
   <div class="main-wrapper">
     <div class="wrapper-cars" style="background-color: #45474B;">
-      <h1 class="table-title">
-        <input v-model="searchQuery" type="text" placeholder="Search..." class="search-cars"/>
-        Car to rent
-      </h1>
+      <div class="wrapper-head-cars">
+        <div class="search-container">
+          <input v-model="searchQuery" type="text" placeholder="Search..." class="search-cars"/>
+        </div>
+        <div class="title-container">
+          <h1>Car</h1>
+        </div>
+        <div class="button-container">
+          <button class="button-add-car">New Car</button>
+        </div>
+      </div>
+
       <table class="custom-table">
         <thead>
         <tr class="info">
@@ -100,31 +108,61 @@ export default {
 
 <style scoped>
 
-.search-cars{
-  position: absolute;
-  left: 14%;
+.search-cars {
   background-color: #333333;
   border-radius: 5px;
   padding-left: 5px;
   color: #F4CE14;
   border: 1px solid #F4CE14;
+  font-size: 22px;
+  font-weight: bold;
+  width: 80%;
+
 }
+
 .search-cars:focus {
   border-color: #F4CE14;
   outline: none;
 }
 
-.main-wrapper{
+.main-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
+.wrapper-head-cars {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin: 20px auto;
+
+}
+
+.search-container,
+.title-container,
+.button-container {
+  flex: 1;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+}
+
+.title-container h1 {
+  color: #F4CE14;
+}
 
 .wrapper-cars {
   text-align: center;
+  justify-content: center;
   color: white;
-  width: 80%;
   border-radius: 15px;
 }
 
@@ -133,9 +171,18 @@ export default {
   justify-content: space-evenly;
 }
 
-.table-title {
-  margin-top: 20px;
+.button-add-car {
   color: #F4CE14;
+  background-color: #333333;
+  border: 2px solid #F4CE14;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.button-add-car:hover{
+  color: #45474B;
+  background-color: #F4CE14;
 }
 
 table.custom-table {
