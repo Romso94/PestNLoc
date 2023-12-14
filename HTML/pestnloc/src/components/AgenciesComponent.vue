@@ -11,7 +11,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="age in agence" :key="age.id">
+      <tr v-for="age in agence" >
         <td>{{ age.Agency_Name }}</td>
         <td>{{ age.Address }}</td>
         <td>{{ age.Phone_Number }}</td>
