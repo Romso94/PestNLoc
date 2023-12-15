@@ -63,7 +63,7 @@
                 </v-col>
                 <v-col cols="12">
                   <v-select
-                      label="Reserved"
+                      label="Car Type"
                       v-model="selectedCar.Car_Type"
                       :items="['Sports', 'Suv','Electric']"
                   ></v-select>

@@ -1,28 +1,36 @@
 <template>
   <div class="main-wrapper">
     <div class="wrapper">
-    <h1 class ="h1">Car to rent</h1>
-    <table>
-      <thead>
-      <tr class ="info">
-        <th>Brand</th>
-        <th>Model</th>
-        <th>Agence</th>
-        <th>Rent</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class ="info" v-for="car in cars" >
-        <td>{{ car.Brand }}</td>
-        <td>{{ car.Model }}</td>
-        <td>{{ car.agencyname }}</td>
-        <td>
-          <button class ="but" type="submit" @click="louerVoiture(car.License_Plate)">Rent this car</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+      <h1 class="h1">Car to rent</h1>
+      <table>
+        <thead>
+        <tr class="info">
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Agence</th>
+          <th>Rent</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info" v-for="car in cars">
+          <td>{{ car.Brand }}</td>
+          <td>{{ car.Model }}</td>
+          <td>{{ car.agencyname }}</td>
+          <td>
+            <button class="but" type="submit" @click="louerVoiture(car.License_Plate)">
+              Rent this car
+            </button>
+          </td>
+        </tr>
+        <!-- Ajout de la ligne pour afficher le message -->
+        <tr v-if="cars.length === 0">
+          <td colspan="4" style="text-align: center; font-weight: bold;">
+            No More Cars Available
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="modal" v-if="showModal">
       <button class ="close" @click="CloseModal">X</button>
@@ -77,7 +85,8 @@ export default {
       modal_car_power : ref(""),
       modal_car_type : ref(""),
       modal_car_agency : ref(""),
-      showCarImage : ref('')
+      showCarImage : ref(''),
+      contractExist : ref(false),
     };
   },
   async beforeMount() {
@@ -88,9 +97,11 @@ export default {
       const data2 = await response2.json();
       this.cars = data;
       this.agence = data2;
+      this.contractExist = await this.getInfoContratUser();
+
 
       this.cars = data
-          .filter(car => !car.isReserved) // Exclure les voitures avec isReserved=true
+          .filter(car => !car.isReserved)
           .map(car => ({
             ...car,
             agencyname: this.agence.find(agency => car.Id_Agency === agency.Id_Agency)?.Agency_Name
@@ -101,6 +112,12 @@ export default {
   },
   methods: {
     louerVoiture(carId) {
+
+      if(!this.contractExist){
+        alert("You already have a contract !");
+        return
+      }
+
       this.showModal = true;
       for (let i=0;i<this.cars.length;i++){
         if (this.cars[i].License_Plate === carId){
@@ -138,6 +155,38 @@ export default {
 
     CloseModal(){
       this.showModal = false;
+    },
+
+    async getInfoContratUser(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
+      const realcookie = cookie[1].split(".");
+      cookie= realcookie[1];
+      const decodedString = atob(cookie);
+      const decodedObject = JSON.parse(decodedString);
+      const id_user = decodedObject.user.id;
+
+      try{
+        const response = await  fetch(`http://localhost:9000/pestnloc/contracts/clients/${id_user}`, {
+          method : "GET",
+          headers: {
+            'Authorization': `Bearer ${sendCookie}`
+          }
+        });
+        if(response.ok){
+          const data = await response.json();
+
+          if (Array.isArray(data) && data.length === 0) {
+            return true;
+          }
+
+          return false;
+        }
+
+      }catch (error){
+        console.log("Error :", error)
+      }
     }
   },
 };
@@ -160,6 +209,8 @@ export default {
   align-items: center;
   justify-content: center;
   background-color: #f4ce14;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 table {
