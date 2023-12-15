@@ -31,7 +31,7 @@
         Find the information you need, including contact numbers,
         to connect with any of our agencies
         <br>
-        Your <strong>next</strong>adventure starts <strong>HERE</strong>
+        Your <strong>next</strong> adventure starts <strong>HERE</strong>
       </p>
     </div>
     <div>

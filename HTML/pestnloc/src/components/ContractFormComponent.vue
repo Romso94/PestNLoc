@@ -191,7 +191,7 @@ export default {
 
       this.startDate = formattedStartDate;
 
-      console.log(this.cars, formattedStartDate, formattedEndDate, this.price);
+
 
       const decodedCookie = decodeURIComponent(document.cookie);
       let cookie = decodedCookie.split("=");
@@ -201,9 +201,6 @@ export default {
       const decodedString = atob(cookie);
       const decodedObject = JSON.parse(decodedString);
       const id_user = decodedObject.user.id;
-
-
-
 
       try{
         console.log(this.startDate,

@@ -4,13 +4,35 @@
     width: 100%;
     margin-top: 50px;
 }
+.contract-img{
+    height: 150px;
+    width: 150px;
+    margin-left: 50px;
+    border-radius: 10px ;
+}
+
+.text-contrat-wrap{
+
+}
 
 .paralleleidclient{
     display: flex;
     flex-direction: row;
     padding-bottom: 30px;
     text-underline: #333333;
+}
+.wrapp-contract-info{
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+}
+
+.title-contract{
+    margin-bottom: 30px;
+    margin-top: -50px;
+    font-size: 22px;
 }
 
 .separateprice{
@@ -77,12 +99,13 @@
     cursor: pointer;
     transition: background-color 0.3s;
     font-weight: bold;
-    color: var(--pestnlocColor);
+    color: #F5F7F8;
 }
 
-.Buttoncontract2{
-    margin-left: 0;
+.Buttoncontract:hover{
+    color: #F4CE14;
 }
+
 
 .NameandSurname{
     font-size: var(--sizeFontTitle);
@@ -179,11 +202,11 @@
         cursor: pointer;
         transition: background-color 0.3s;
         font-weight: bold;
-        color: var(--pestnlocColor);
+        color: #F5F7F8;
     }
 
-    .Buttoncontract2{
-        margin-left: 0;
+    .Buttoncontract:hover{
+        color: #F4CE14;
     }
 
     .NameandSurname{

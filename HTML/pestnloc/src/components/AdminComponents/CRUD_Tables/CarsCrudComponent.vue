@@ -62,7 +62,11 @@
                   <v-text-field label="Car Power" v-model="selectedCar.Car_Power"></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="Car Type" v-model="selectedCar.Car_Type"></v-text-field>
+                  <v-select
+                      label="Reserved"
+                      v-model="selectedCar.Car_Type"
+                      :items="['Sports', 'Suv','Electric']"
+                  ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-select

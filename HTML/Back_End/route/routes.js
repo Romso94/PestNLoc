@@ -31,7 +31,7 @@ router.get('/pestnloc/contracts/clients/:idClient',verifyToken, getContractByCli
 router.get('/pestnloc/contracts/cars/:licensePlate', verifyToken, adminOnly, getContractByLicensePlate);
 router.get('/pestnloc/contracts/agencies/:idAgency', verifyToken, adminOnly, getContractsByAgency);
 router.put('/pestnloc/contracts/:idContract', verifyToken, adminOnly, updateContract);
-router.delete('/pestnloc/contracts/:idContract', verifyToken, adminOnly, deleteContract);
+router.delete('/pestnloc/contracts/:idContract', verifyToken,  deleteContract);
 
 // Route pour carController
 router.get('/pestnloc/cars', getCars);

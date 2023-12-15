@@ -1,46 +1,41 @@
 <template>
   <div class="topMain">
     <div class="Contract_component">
-
-
           <div class ="AddNameLogout">
-
             <div class="NameandSurname">Welcome {{Name}} {{ Surname }}</div>
             <button @click="logout" color="primary" class="Buttoncontract">Logout</button>
           </div>
 
+          <div   class="White_contract">
+            <h3 class="title-contract">Your Contract</h3>
+            <div v-if="contractBool" class="wrapp-contract-info">
+              <div class="text-contrat-wrap">
+                <p>Id Client : {{this.contrat.Id_Client}}</p>
+                <p>Id Contract : {{this.contrat.Id_Contract}}</p>
+                <p>License Plate : {{this.contrat.License_Plate}}</p>
+                <p>Starting Date : {{this.contrat.Start_Date}}</p>
+                <p>End Date : {{this.contrat.End_Date}}</p>
+                <p>Price : {{this.contrat.Price}}$</p>
+              </div>
+              <img class="contract-img" src="./assets/contract.png"/>
 
-          <div class="White_contract">
-          <div class = "paralleleidclient">
-          <div>{{Actualcontract}}</div>
-            <div class ="toseparate"></div>
-            <div class ="columnthing">
-            <div> {{Id_client}}</div>
-              <div> {{Id_contract}}</div>
             </div>
+            <div class ="Nocontract" v-if="!contractBool">{{Nocontract}}</div>
           </div>
-            <div class ="Nocontract">{{Nocontract}}</div>
-          <div class ="Startdate"> {{Start_Date_Year}}{{Start_Date_Month}}{{Start_Date_Day}}</div>
-          <div class ="Enddate"> {{End_Date_Year}}{{End_Date_Month}}{{End_Date_Day}}</div>
-          <div> {{License_Plate}}</div>
-            <div class ="separateprice"> {{Price}}</div>
-          </div>
+
+
+
 
       <div>
         <div class ="AddNameLogout">
-          <button @click="ajouterContrat" class="Buttoncontract Buttoncontract2">Ajouter un contrat</button>
+          <button @click="deleteContract" class="Buttoncontract ">Delete your contract</button>
         </div>
-        <ContractForm v-if="showForm" @contratAjoute="contratAjoute" />
       </div>
     </div>
   </div>
   <div>
   </div>
 
-  <div>
-    <!-- Affiche le contrat existant s'il y en a un -->
-    <p>{{ contrat }}</p>
-  </div>
 
 
 </template>
@@ -53,23 +48,12 @@ import jsonData from '@/Json/car.json';
 export default {
   data() {
     return {
-       contrat : shallowRef(null),
-       showForm : shallowRef(false),
+       contrat : shallowRef(""),
        items : jsonData,
        Name : shallowRef(""),
        Surname : shallowRef(""),
-      Id_client : shallowRef(""),
-      Id_contract : shallowRef(""),
-      Start_Date_Year : shallowRef(""),
-      Start_Date_Month : shallowRef(""),
-      Start_Date_Day : shallowRef(""),
-      End_Date_Year : shallowRef(""),
-      End_Date_Month : shallowRef(""),
-      End_Date_Day : shallowRef(""),
-      License_Plate : shallowRef(""),
-      Price : shallowRef(""),
       Nocontract : shallowRef(""),
-      Actualcontract : shallowRef(""),
+      contractBool : shallowRef(false),
       responseData : null
     }
   },
@@ -120,47 +104,59 @@ export default {
             });
 
             if (response.ok) {
+              this.contractBool = true;
+              const dataResponse = await response.json();
 
-              const responseData = await response.json();
-              console.log(responseData[0].Id_Contract);
-              this.Actualcontract = "Actual contract :";
-              this.Id_client = "Id Client : " + responseData[0].Id_Client;
-              this.Id_contract = "Id Contract : " + responseData[0].Id_Contract;
-              this.Start_Date_Year = "Starting Date : " + responseData[0].Start_Date.slice(0, 4) + "-";
-              this.Start_Date_Month = responseData[0].Start_Date.slice(5, 7) + "-";
-              this.Start_Date_Day = responseData[0].Start_Date.slice(8, 10);
-              this.End_Date_Year = "Ending Date : " + responseData[0].End_Date.slice(0, 4) + "-";
-              this.End_Date_Month = "" + responseData[0].End_Date.slice(5, 7) + "-";
-              this.End_Date_Day = "" + responseData[0].End_Date.slice(8, 10);
-              this.License_Plate = "License Plate : " + responseData[0].License_Plate;
-              this.Price = "Price : " + responseData[0].Price + "$";
+              this.contrat = dataResponse[0];
 
+              this.contrat.Start_Date = new Date(this.contrat.Start_Date);
+              this.contrat.End_Date = new Date(this.contrat.End_Date);
+
+              const formattedStartDate = this.formatDate(this.contrat.Start_Date);
+              const formattedEndDate = this.formatDate(this.contrat.End_Date);
+
+              this.contrat.Start_Date = formattedStartDate;
+              this.contrat.End_Date = formattedEndDate;
 
             }
 
           } catch (error) {
+            this.contractBool = false;
             this.Nocontract = "You don't have any contract"
           }
-
-
         } else {
           console.error('La requête a échoué avec le statut :', response.status);
         }
       }
-
       catch (error){
           console.log('Erreur lors de la récupération des infos clients')
         }
     },
+   async deleteContract(){
+      const decodedCookie = decodeURIComponent(document.cookie);
+      let cookie = decodedCookie.split("=");
+      let sendCookie = cookie[1];
 
-     contratAjoute (nouveauContrat)  {
-      this.contrat = nouveauContrat;
-      this.showForm = false;
+      try{
+        const reponse = await fetch(`http://localhost:9000/pestnloc/contracts/${this.contrat.Id_Contract}`,{
+          method : "DELETE",
+          headers : {
+            'Authorization': `Bearer ${sendCookie}`
+          }});
+        if (reponse.ok) {
+          window.location.reload();
+        } else {
+          console.error("La suppression a échoué avec le statut :", reponse.status);
+        }
+      }catch (error){
+        console.log("Error :", error);
+      }
     },
-
-    toggleForm () {
-      this.showForm = !this.showForm;
-
+    formatDate(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
     }
   },
 }
@@ -172,6 +168,8 @@ export default {
 <style scoped>
 
 @import "Css/Contract.css";
+
+
 
 </style>
 
