@@ -19,7 +19,7 @@
           <th>License Plate</th>
           <th>Model</th>
           <th>Brand</th>
-          <th>Fuel State</th>
+          <th>Reserved</th>
           <th>Car Power</th>
           <th>Car Type</th>
           <th>ID Agency</th>
@@ -31,7 +31,7 @@
           <td>{{ car.License_Plate }}</td>
           <td>{{ car.Model }}</td>
           <td>{{ car.Brand }}</td>
-          <td>{{ car.Fuel_State }}</td>
+          <td>{{ car.isReserved ? 'true' : 'false' }}</td>
           <td>{{ car.Car_Power }}</td>
           <td>{{ car.Car_Type }}</td>
           <td>{{ car.Id_Agency }}</td>
@@ -65,7 +65,11 @@
                   <v-text-field label="Car Type" v-model="selectedCar.Car_Type"></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field label="Fuel State" v-model="selectedCar.Fuel_State"></v-text-field>
+                  <v-select
+                      label="Reserved"
+                      v-model="selectedCar.isReserved"
+                      :items="['true', 'false']"
+                  ></v-select>
                 </v-col>
                 <v-col cols="12">
                   <v-text-field label="License Plate" v-model="selectedCar.License_Plate"></v-text-field>
@@ -102,7 +106,7 @@ export default {
         Brand: "",
         Car_Power: "",
         Car_Type: "",
-        Fuel_State: "",
+        isReserved: false,
         License_Plate: "",
         Model: "",
         Id_Agency : ""
@@ -116,6 +120,7 @@ export default {
       const response = await fetch("http://localhost:9000/pestnloc/cars");
       const data = await response.json();
       this.cars = data;
+      console.log(this.cars)
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
     }
@@ -154,11 +159,15 @@ export default {
       }
 
     },
-    onModifier(car) {
-      this.selectedCar = { ...car };
-      this.statusCar = "Update Car"
-      this.updateCar = true;
-      this.methodCar = "PUT";
+    async onModifier(car) {
+
+        this.selectedCar = car;
+        this.selectedCar.isReserved = Boolean(this.selectedCar.isReserved);
+        this.statusCar = "Update Car";
+        this.updateCar = true;
+        this.methodCar = "PUT";
+        console.log(this.selectedCar)
+
     },
 
     addCar(){
@@ -166,7 +175,7 @@ export default {
         Brand: "",
         Car_Power: "",
         Car_Type: "",
-        Fuel_State: "",
+        isReserved: false,
         License_Plate: "",
         Model: "",
         Id_Agency: "",
@@ -191,6 +200,13 @@ export default {
           }
         }
       }
+
+      if(this.selectedCar.isReserved === "true"){
+        this.selectedCar.isReserved = 1;
+      }else {
+        this.selectedCar.isReserved = 0;
+      }
+
       try {
         let showAlert = "created";
         let linkToApi = "http://localhost:9000/pestnloc/cars";
@@ -207,7 +223,7 @@ export default {
           body : JSON.stringify({
             Model : this.selectedCar.Model,
             Brand : this.selectedCar.Brand,
-            Fuel_State : this.selectedCar.Fuel_State,
+            isReserved : this.selectedCar.isReserved,
             Car_Power : this.selectedCar.Car_Power,
             Car_Type : this.selectedCar.Car_Type,
             Id_Agency : this.selectedCar.Id_Agency,

@@ -27,28 +27,28 @@ async function getContractById(req, res) {
 
 async function createContract(req, res) {
 
-  const { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate } = req.body;
+  const {  Start_Date, Price, End_Date, Id_Client, License_Plate } = req.body;
 
   try {
-    const dataContract = { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate };
+    const dataContract = {  Start_Date, Price, End_Date, Id_Client, License_Plate };
     const contracts = await Contract.createContract(dataContract);
     res.json(contracts);
 
   }
   catch (error) {
     console.error(error);
-    res.status(500).json({ erro: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
 async function updateContract(req, res) {
 
   const { idContract } = req.params;
-  const { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate } = req.body;
+  const { Start_Date, Price, End_Date, Id_Client, License_Plate } = req.body;
 
   try {
 
-    const dataContract = { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate };
+    const dataContract = {  Start_Date, Price, End_Date, Id_Client, License_Plate };
     const contracts = await Contract.updateContract(idContract, dataContract);
     res.json(contracts);
   }

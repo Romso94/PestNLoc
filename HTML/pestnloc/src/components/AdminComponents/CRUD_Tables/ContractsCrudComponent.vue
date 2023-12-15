@@ -21,7 +21,6 @@
           <th>End Date</th>
           <th>Price</th>
           <th>Id Client</th>
-          <th>Contract Availability</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -33,7 +32,6 @@
           <td>{{ contractItem.End_Date }}</td>
           <td>{{ contractItem.Price }}</td>
           <td>{{ contractItem.Id_Client }}</td>
-          <td>{{ contractItem.Contract_Availability }}</td>
           <td class="action-contract">
             <button class="small-but" @click="onModifier(contractItem)">Update</button>
             <button class="small-but" @click="onSupprimer(contractItem)">Delete</button>
@@ -54,9 +52,6 @@
           <v-card-text>
             <v-container>
               <v-row>
-                <v-col cols="12">
-                  <v-text-field label="Contract Availability" v-model="selectedContract.Contract_Availability"></v-text-field>
-                </v-col>
                 <v-col cols="12">
                   <v-text-field label="End Date" v-model="selectedContract.End_Date"></v-text-field>
                 </v-col>
@@ -98,7 +93,6 @@ export default {
       searchQuery: "",
       updateContract: false,
       selectedContract: {
-        Contract_Availability: "",
         End_Date: "",
         Id_Client: "",
         Id_Contract: "",
@@ -184,7 +178,6 @@ export default {
 
     addContract(){
       this.selectedContract ={
-        Contract_Availability: "",
         End_Date: "",
         Id_Client: "",
         Id_Contract: "",
@@ -223,7 +216,6 @@ export default {
             'Content-Type': 'application/json'
           },
           body : JSON.stringify({
-            Contract_Availability : this.selectedContract.Contract_Availability,
             Start_Date : this.selectedContract.Start_Date,
             Price : this.selectedContract.Price,
             End_Date : this.selectedContract.End_Date,

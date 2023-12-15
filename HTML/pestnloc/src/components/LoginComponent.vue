@@ -80,7 +80,6 @@ export default {
         const token = result.token;
         document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
         console.log('Token from server:', document.cookie);
-        // Rediriger vers la page '/Rent'
         await router.push('/Rent');
 
       } catch (error) {

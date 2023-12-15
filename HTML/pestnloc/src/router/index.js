@@ -20,23 +20,20 @@ const isAuthenticated = () => {
 };
 
 const isAdmin = () => {
-    try{
+    try {
         const decodedCookie = decodeURIComponent(document.cookie);
         let cookie = decodedCookie.split("=");
         const realcookie = cookie[1].split(".");
-        cookie= realcookie[1];
+        cookie = realcookie[1];
         const decodedString = atob(cookie);
         const decodedObject = JSON.parse(decodedString);
-        if(decodedObject !== undefined){
+        if (decodedObject !== undefined) {
             return decodedObject.user.role === "admin";
         }
 
-    }catch (error){
+    } catch (error) {
         return false;
     }
-
-
-
 };
 
 const router = createRouter({
@@ -92,8 +89,14 @@ const router = createRouter({
                     path: '/newcontract',
                     name: "ContractFromComponent",
                     component: ContractForm,
+                    beforeEnter: (to, from, next) => {
+                        if (isAuthenticated()) {
+                            next();
+                        } else {
+                            next('/login');
+                        }
+                    }
                 }
-
             ]
         },
         {
@@ -112,67 +115,63 @@ const router = createRouter({
                     path: "login",
                     name: "Login Admin",
                     component: AdminLoginComponent,
-                    beforeEnter : (to,from,next)=>{
-                        if (isAdmin()){
-                            next("/admin")
+                    beforeEnter: (to, from, next) => {
+                        if (isAdmin()) {
+                            next("/admin");
                         }
-                        next()
+                        next();
                     }
                 },
-
                 {
                     path: "register",
                     name: "Register Admin",
                     component: AdminRegisterComponent
                 },
-
                 {
                     path: "cars",
                     name: "Cars CRUD Table",
-                    component : CarsCrudComponent,
-                    beforeEnter : (to,from,next)=>{
-                        if (isAdmin()){
-                            next()
+                    component: CarsCrudComponent,
+                    beforeEnter: (to, from, next) => {
+                        if (isAdmin()) {
+                            next();
                         }
-                        next("/admin/login")
+                        next("/admin/login");
                     }
                 },
                 {
-                    path : "agencies",
+                    path: "agencies",
                     name: "Agency CRUD Tables",
                     component: AgencyCrudComponent,
-                    beforeEnter : (to,from,next)=>{
-                        if (isAdmin()){
-                            next()
+                    beforeEnter: (to, from, next) => {
+                        if (isAdmin()) {
+                            next();
                         }
-                        next("/admin/login")
+                        next("/admin/login");
                     }
-
                 },
                 {
-                    path : "contracts",
+                    path: "contracts",
                     name: "Contract CRUD Tables",
                     component: ContractsCrudComponent,
-                    beforeEnter : (to,from,next)=>{
-                        if (isAdmin()){
-                            next()
+                    beforeEnter: (to, from, next) => {
+                        if (isAdmin()) {
+                            next();
                         }
-                        next("/admin/login")
+                        next("/admin/login");
                     }
                 },
                 {
                     path: "clients",
                     name: "Client CRUD Tables",
                     component: ClientsCrudComponent,
-                    beforeEnter : (to,from,next)=>{
-                        if (isAdmin()){
-                            next()
+                    beforeEnter: (to, from, next) => {
+                        if (isAdmin()) {
+                            next();
                         }
-                        next("/admin/login")
+                        next("/admin/login");
                     }
                 }
-
-            ],
+            ]
         }
     ]
 });

@@ -41,7 +41,7 @@
 
 
       </div>
-      <button class ="but" type="submit" @click="redirigerVersContratForm(this.cars)" >Rent</button>
+      <button class="but" type="submit" @click="redirigerVersContratForm()">Rent</button>
 
     </div>
 
@@ -55,8 +55,9 @@ import router from "../router"
 
 
 
-  import { ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import {th} from "vuetify/locale";
+import {rentCar} from "./js/carsRent";
 
 export default {
 
@@ -71,7 +72,7 @@ export default {
       carid : ref([]),
       modal_car_plate : ref(""),
       modal_car_model : ref(""),
-      modal_car_fuel : ref(""),
+      modal_car_reserved : ref(false),
       modal_car_brand : ref(""),
       modal_car_power : ref(""),
       modal_car_type : ref(""),
@@ -88,26 +89,18 @@ export default {
       this.cars = data;
       this.agence = data2;
 
-      console.log(this.cars);
-
-      this.cars.forEach((car) => {
-        const matchingAgency = this.agence.find(
-            (agency) => car.Id_Agency === agency.Id_Agency
-        );
-
-        if (matchingAgency) {
-          car.agencyname = matchingAgency.Agency_Name;
-        }
-      });
-
-      console.log(this.cars);
+      this.cars = data
+          .filter(car => !car.isReserved) // Exclure les voitures avec isReserved=true
+          .map(car => ({
+            ...car,
+            agencyname: this.agence.find(agency => car.Id_Agency === agency.Id_Agency)?.Agency_Name
+          }));
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
     }
   },
   methods: {
     louerVoiture(carId) {
-      console.log("Car louée avec ID:", carId);
       this.showModal = true;
       for (let i=0;i<this.cars.length;i++){
         if (this.cars[i].License_Plate === carId){
@@ -118,7 +111,7 @@ export default {
 
       this.modal_car_plate = this.carid.License_Plate;
       this.modal_car_model = this.carid.Model;
-      this.modal_car_fuel = this.carid.Fuel_State;
+      this.modal_car_reserved = this.carid.isReserved;
       this.modal_car_brand = this.carid.Brand;
       this.modal_car_power = this.carid.Car_Power;
       this.modal_car_agency = this.carid.agencyname;
@@ -126,23 +119,22 @@ export default {
 
       this.showCarImage = `/src/components/RentDirectory/${this.modal_car_brand}_${this.modal_car_model}.jpg`;
 
+    },
+    async redirigerVersContratForm() {
+
+      rentCar.Brand = this.modal_car_brand;
+      rentCar.Car_Power = this.modal_car_power;
+      rentCar.Car_Type = this.modal_car_type;
+      rentCar.isReserved = this.modal_car_reserved;
+      rentCar.Id_Agency = this.carid.Id_Agency;
+      rentCar.License_Plate = this.modal_car_plate;
+      rentCar.Model = this.modal_car_model;
+      rentCar.agencyname = this.modal_car_agency;
 
 
+      await router.push("/newcontract");
 
     },
-    async redirigerVersContratForm(cars) {
-      await router.push({
-        name: 'ContractFromComponent',
-        params: {
-
-            plate: this.modal_car_plate,
-            // Ajoutez d'autres propriétés de carData ici si nécessaire
-
-        }
-      });
-    },
-
-
 
     CloseModal(){
       this.showModal = false;

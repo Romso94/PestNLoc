@@ -3,6 +3,7 @@ const { getAgencyById } = require('./agenciesModel.js');
 const { execute } = require('../dbUtils/db.js');
 const { getCarById } = require('./carsModel.js');
 const { getClientById } = require('./clientsModel.js');
+const e = require('express');
 
 async function getAllContracts() {
 
@@ -32,11 +33,41 @@ async function getContractById(contractsID) {
     }
 }
 
+async function reservedCar(License_Plate){
+    try{
+        const query = "UPDATE car SET isReserved = true WHERE License_Plate = ?;"
+        const result = await execute(query,[License_Plate]);
+        return result;
+    }catch(error){
+        console.error(error);
+        throw error;
+    }
+}
+
+async function deleteReservedCar(License_Plate) {
+    try {
+        
+        const licensePlate = License_Plate[0].License_Plate;
+
+        
+
+        const query = "UPDATE car SET isReserved = 0 WHERE License_Plate = ?;";
+        const result = await execute(query, [licensePlate]);
+
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
+
 async function createContract(contractsData) {
 
-    const { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate } = contractsData;
+    const {  Start_Date, Price, End_Date, Id_Client, License_Plate } = contractsData;
     const carExist = await getCarById(License_Plate);
     const clientExist = await getClientById(Id_Client);
+
 
     try {
         if (!carExist || carExist.length === 0) {
@@ -46,9 +77,13 @@ async function createContract(contractsData) {
             throw new Error("Client doesn't exist in the Database!");
         };
 
-        const query = "INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) VALUES (?,?,?,?,?,?)";
-        const values = [Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate];
+        const query = "INSERT INTO contract (Start_Date,Price,End_Date,Id_Client,License_Plate) VALUES (?,?,?,?,?)";
+        const values = [ Start_Date, Price, End_Date, Id_Client, License_Plate];
         const result = await execute(query, values);
+
+        const resultReservedCar = await reservedCar(License_Plate);
+
+
 
         return result;
     }
@@ -58,9 +93,11 @@ async function createContract(contractsData) {
     }
 }
 
+
+
 async function updateContract(idContract, contractsData) {
 
-    const { Contract_Availability, Start_Date, Price, End_Date, Id_Client, License_Plate } = contractsData;
+    const {  Start_Date, Price, End_Date, Id_Client, License_Plate } = contractsData;
     const contractExist = await getContractById(idContract);
 
     if (Id_Client != undefined) {
@@ -112,8 +149,17 @@ async function updateContract(idContract, contractsData) {
 async function deleteContract(contractsID) {
 
     try {
+        const queryLicensePlate = "SELECT License_Plate from Contract WHERE Id_Contract =?";
+        const licensePlate = await execute(queryLicensePlate,[contractsID]);
+
+        const unreservCar = await deleteReservedCar(licensePlate);
+        
+        console.log(unreservCar);
+
         const query = "DELETE FROM CONTRACT Where Id_Contract=?";
         const result = await execute(query, [contractsID]);
+
+        
 
         return result
 
@@ -191,5 +237,6 @@ module.exports = {
     deleteContract,
     getContractByLicensePlate,
     getContractsByAgency,
-    getContractByClient
+    getContractByClient,
+    reservedCar
 };

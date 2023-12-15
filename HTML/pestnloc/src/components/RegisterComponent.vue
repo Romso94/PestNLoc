@@ -137,7 +137,6 @@ export default {
           }
 
         }
-        // registerFunction.showFormData();
         this.currentStep += 1;
       }
     },

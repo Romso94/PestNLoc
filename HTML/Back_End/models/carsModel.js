@@ -32,7 +32,7 @@ async function getCarById(licensePlate) {
 
 async function createCar(carRegister) {
 
-    const { Model, Brand, Fuel_State, Car_Power, Car_Type, Id_Agency, License_Plate } = carRegister;
+    const { Model, Brand,isReserved, Car_Power, Car_Type, Id_Agency, License_Plate } = carRegister;
     const agencyExist = await getAgencyById(Id_Agency);
 
     try {
@@ -40,8 +40,8 @@ async function createCar(carRegister) {
             throw new Error("Agency doesn't exist !");
         }
         
-        const query = "INSERT INTO car (Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency,License_Plate) VALUES (?,?,?,?,?,?,?)";
-        const values = [Model, Brand, Fuel_State, Car_Power, Car_Type, Id_Agency, License_Plate];
+        const query = "INSERT INTO car (Model,Brand,isReserved,Car_Power,Car_Type,Id_Agency,License_Plate) VALUES (?,?,?,?,?,?,?)";
+        const values = [Model, Brand, isReserved, Car_Power, Car_Type, Id_Agency, License_Plate];
         const result = await execute(query, values);
 
         return result
@@ -56,7 +56,7 @@ async function createCar(carRegister) {
 async function updateCar(licensePlate, carRegister) {
 
     const carExist = await getCarById(licensePlate);
-    const { Model, Brand, Fuel_State, Car_Power, Car_Type, Id_Agency } = carRegister;
+    const { Model, Brand, isReserved, Car_Power, Car_Type, Id_Agency } = carRegister;
     if (Id_Agency != undefined) {
         const agencyExist = await getAgencyById(Id_Agency);
 

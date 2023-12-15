@@ -24,7 +24,7 @@ router.delete('/pestnloc/clients/:idClient', verifyToken, adminOnly, deleteClien
 router.put('/pestnloc/clients/:idClient', verifyToken, adminOnly, updateClient);
 
 //Route pour contractsController
-router.post('/pestnloc/contracts', verifyToken, adminOnly, createContract);
+router.post('/pestnloc/contracts', verifyToken, createContract);
 router.get('/pestnloc/contracts', verifyToken, adminOnly, getContracts);
 router.get('/pestnloc/contracts/:idContract', verifyToken, adminOnly, getContractById);
 router.get('/pestnloc/contracts/clients/:idClient',verifyToken, getContractByClient);
