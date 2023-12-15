@@ -79,7 +79,6 @@ export default {
         const result = await response.json();
         const token = result.token;
         document.cookie = `jwt=${token}; path=/; secure; samesite=strict`;
-        console.log('Token from server:', document.cookie);
         await router.push('/Rent');
 
       } catch (error) {

@@ -156,7 +156,6 @@ export default {
 
  async beforeMount() {
     this.cars = rentCar;
-    console.log(this.cars);
     if (this.cars.Car_Type === "Sports") {
       this.price_car = 200;
     }
@@ -205,11 +204,6 @@ export default {
       const id_user = decodedObject.user.id;
 
       try{
-        console.log(this.startDate,
-            this.price,
-            formattedEndDate,
-            id_user,
-            this.cars.License_Plate)
         const response = await fetch(`http://localhost:9000/pestnloc/contracts`, {
           method: 'POST',
           headers: {

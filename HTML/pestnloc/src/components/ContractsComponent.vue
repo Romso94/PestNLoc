@@ -90,7 +90,6 @@ export default {
 
         if (response.ok) {
           const infoclient = await response.json();
-          console.log(infoclient)
           this.Name = infoclient[0].Name;
           this.Surname = infoclient[0].LastName;
 

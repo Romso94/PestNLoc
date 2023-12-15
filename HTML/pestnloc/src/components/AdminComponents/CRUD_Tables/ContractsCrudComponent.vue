@@ -121,8 +121,6 @@ export default {
       const data = await response.json();
       this.contracts = data;
 
-      console.log(this.contracts)
-
       this.contracts.forEach((contract) => {
         contract.Start_Date = contract.Start_Date.split("T")[0];
         contract.End_Date = contract.End_Date.split("T")[0];

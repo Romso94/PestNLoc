@@ -190,8 +190,6 @@ export default {
             }),
           });
 
-          console.log("user Register")
-
           if(response.ok){
             await router.push("/login");
           }

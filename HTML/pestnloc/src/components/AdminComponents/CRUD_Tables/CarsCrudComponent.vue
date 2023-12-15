@@ -124,7 +124,6 @@ export default {
       const response = await fetch("http://localhost:9000/pestnloc/cars");
       const data = await response.json();
       this.cars = data;
-      console.log(this.cars)
     } catch (error) {
       console.error("Erreur lors de la récupération des données:", error);
     }
@@ -170,7 +169,6 @@ export default {
         this.statusCar = "Update Car";
         this.updateCar = true;
         this.methodCar = "PUT";
-        console.log(this.selectedCar)
 
     },
 
@@ -192,9 +190,6 @@ export default {
       const decodedCookie = decodeURIComponent(document.cookie);
       let cookie = decodedCookie.split("=");
       let sendCookie = cookie[1];
-
-
-      console.log(`Methode utilisé : ${this.methodCar}`);
 
       for (const key in this.selectedCar) {
         if (this.selectedCar.hasOwnProperty(key)) {

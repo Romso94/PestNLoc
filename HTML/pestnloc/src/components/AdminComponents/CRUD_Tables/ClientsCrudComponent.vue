@@ -144,7 +144,6 @@ export default {
       const data = await response.json();
       this.clients = data;
 
-      console.log(this.clients)
 
       this.clients.forEach((client) => {
         client.Date_Permis_Issue = client.Date_Permis_Issue.split("T")[0];

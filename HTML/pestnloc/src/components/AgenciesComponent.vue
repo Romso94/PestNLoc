@@ -54,9 +54,7 @@ export default {
       const response2 = await fetch("http://localhost:9000/pestnloc/agencies");
       const data2 = await response2.json();
       this.agence = data2;
-      console.log(this.agence);
     } catch (error) {
-
       console.error("Erreur lors de la récupération des données:", error);
     }
   },
