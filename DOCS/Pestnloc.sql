@@ -1,4 +1,4 @@
- SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 0;
  Drop Table if exists Agency ;
  Drop Table if exists Car ;
  Drop Table if exists client ;
@@ -46,7 +46,7 @@ CREATE TABLE Car(
    License_Plate VARCHAR(50) NOT NULL,
    Model VARCHAR(50) NOT NULL,
    Brand VARCHAR(50) NOT NULL,
-   Fuel_State varchar(50) NOT NULL,
+   isReserved boolean NOT NULL,
    Car_Power VARCHAR(50) NOT NULL,
    Car_Type VARCHAR(50) NOT NULL,
    Id_Agency INT NOT NULL,
@@ -56,7 +56,6 @@ CREATE TABLE Car(
 
 CREATE TABLE Contract(
    Id_Contract INT NOT NULL AUTO_INCREMENT,
-   Contract_Availability INT NOT NULL,
    Start_Date DATE NOT NULL,
    Price INT NOT NULL,
    End_Date DATE NOT NULL,
@@ -67,12 +66,3 @@ CREATE TABLE Contract(
    FOREIGN KEY(Id_Client) REFERENCES Client(Id_Client),
    FOREIGN KEY(License_Plate) REFERENCES Car(License_Plate)
 );
-
-
-INSERT INTO contract (Contract_Availability,Start_Date,Price,End_Date,Id_Client,License_Plate) values (20230217,20230417,150,20240317,6,"FT056TK");
-SELECT * from contract; 
-
-select * from client;
-
-INSERT INTO car (License_Plate,Model,Brand,Fuel_State,Car_Power,Car_Type,Id_Agency) values ("FT056TK","M4","BMW",100,"500ch","Sports",1);
-SELECT * from car; 
