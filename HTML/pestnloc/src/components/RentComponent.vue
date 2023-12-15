@@ -17,12 +17,11 @@
           <td>{{ car.Model }}</td>
           <td>{{ car.agencyname }}</td>
           <td>
-            <button class="but" type="submit" @click="louerVoiture(car.License_Plate)">
+            <button class="button-submit" type="submit" @click="louerVoiture(car.License_Plate)">
               Rent this car
             </button>
           </td>
         </tr>
-        <!-- Ajout de la ligne pour afficher le message -->
         <tr v-if="cars.length === 0">
           <td colspan="4" style="text-align: center; font-weight: bold;">
             No More Cars Available
@@ -33,23 +32,29 @@
     </div>
 
     <div class="modal" v-if="showModal">
-      <button class ="close" @click="CloseModal">X</button>
+      <button class ="close" @click="CloseModal">x</button>
 
 
       <h1 class = "title-modal">{{modal_car_model}}</h1>
 
       <div class="car-mod">
-        <p class ="mod-inf-car">License Plate : {{modal_car_plate}} </p>
-        <p class ="mod-inf-car">Brand : {{modal_car_brand}}</p>
-        <p class ="mod-inf-car">Model : {{modal_car_model}}</p>
-        <p class ="mod-inf-car">Type: {{modal_car_type}}</p>
-        <p class ="mod-inf-car">Fuel state : {{modal_car_fuel}}</p>
-        <p class ="mod-inf-car">Car power : {{modal_car_power}}</p>
-        <img class="imcar" :src="this.showCarImage"/>
+        <div>
+          <p class ="mod-inf-car">License Plate : {{modal_car_plate}} </p>
+          <p class ="mod-inf-car">Brand : {{modal_car_brand}}</p>
+          <p class ="mod-inf-car">Model : {{modal_car_model}}</p>
+          <p class ="mod-inf-car">Type: {{modal_car_type}}</p>
+          <p class ="mod-inf-car">Car power : {{modal_car_power}}</p>
+        </div>
+        <div >
+          <img class="imcar" :src="this.showCarImage"/>
+        </div>
 
 
       </div>
-      <button class="but" type="submit" @click="redirigerVersContratForm()">Rent</button>
+
+      <div class="button-wrapper">
+        <button class="but" type="submit" @click="redirigerVersContratForm()">Rent</button>
+      </div>
 
     </div>
 
@@ -194,6 +199,7 @@ export default {
 
 <style scoped>
 
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -235,6 +241,21 @@ th {
   font-size: 16px;
 }
 .but{
+  display: flex;
+  padding: 20px;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #F4CE14;
+  border-radius: 10px;
+  color: #F4CE14;
+  background-color: #45474b;
+  transition: background-color 0.3s, color 0.3s;
+
+}
+
+.button-submit{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -242,16 +263,23 @@ th {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid #F4CE14;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #F4CE14;
   background-color: #45474b;
   transition: background-color 0.3s, color 0.3s;
 }
-.but:hover {
+
+.but:hover, .button-submit:hover {
   background-color: #F4CE14;
   color: white;
 }
 
+.button-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
 
 .but:active {
   transform: scale(0.95);
@@ -260,6 +288,8 @@ th {
 
 .modal {
   position: fixed;
+
+justify-content: center;
 
   top: 50%;
   left: 50%;
@@ -276,21 +306,20 @@ th {
 .car-mod {
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
   margin-left: 10px;
-  justify-content: space-between;
-  margin-top: 30px;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 70px;
+  width: 100%;
+  font-size: 22px;
+
 
 
 }
 .imcar{
-
   height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-
-
-
+  border-radius: 15px;
 
 }
 .mod-inf-car

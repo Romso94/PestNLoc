@@ -67,6 +67,7 @@ export default {
 
 
 <style scoped>
+
 .second-section {
   display: flex;
   margin-top: 40px;

@@ -84,6 +84,13 @@ const router = createRouter({
                     path: '/Register',
                     name: "Register",
                     component: Register,
+                    beforeEnter: (to, from, next) => {
+                        if (isAuthenticated()) {
+                            next('/');
+                        } else {
+                            next();
+                        }
+                    },
                 },
                 {
                     path: '/newcontract',

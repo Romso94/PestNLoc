@@ -1,4 +1,5 @@
 <template>
+  <div class="card-wrapper">
   <v-card class="mx-auto text-center card-register" max-width="500">
     <h1 class="admin-form-title my-6">Car Rental Registration</h1>
     <v-container ref="form">
@@ -133,6 +134,7 @@
       </v-row>
     </v-container>
   </v-card>
+  </div>
 </template>
 
 <script>
@@ -266,5 +268,10 @@ button {
 
 button:hover {
   background-color: #45474b;
+}
+
+.card-wrapper{
+  background-color: #F4CE14;
+  padding: 50px;
 }
 </style>
